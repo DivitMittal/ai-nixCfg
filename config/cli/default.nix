@@ -1,3 +1,8 @@
 {lib, ...}: {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./aichat.nix
+    ./fabric.nix
+    ./mods.nix
+    ./vcs.nix
+  ];
 }
