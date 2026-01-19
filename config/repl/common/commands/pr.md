@@ -1,8 +1,3 @@
----
-allowed-tools: Bash(git:*), Bash(gh:*)
-argument-hint: [title]
-description: Create a pull request with description
----
 ## Context
 
 - Current branch: !`git branch --show-current`

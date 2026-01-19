@@ -1,8 +1,3 @@
----
-allowed-tools: Read, Edit, Write, Grep, Glob
-argument-hint: <file-or-symbol>
-description: Refactor code while preserving behavior
----
 ## Task
 
 Refactor $ARGUMENTS to improve:

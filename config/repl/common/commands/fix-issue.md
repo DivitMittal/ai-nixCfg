@@ -1,8 +1,3 @@
----
-allowed-tools: Bash(gh:*), Bash(git:*), Read, Edit, Write
-argument-hint: <issue-number>
-description: Fix a GitHub issue
----
 ## Context
 
 - Issue details: !`gh issue view $ARGUMENTS 2>/dev/null || echo "Could not fetch issue"`

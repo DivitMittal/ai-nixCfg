@@ -1,7 +1,3 @@
----
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*)
-description: Create git commit(s) with proper message(s)
----
 ## Context
 
 - Current git status: !`git status`

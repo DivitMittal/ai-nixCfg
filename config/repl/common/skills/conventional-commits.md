@@ -1,8 +1,3 @@
----
-name: conventional-commits
-description: Conventional Commits format. Use when creating commit messages.
----
-
 # Conventional Commits
 
 ## Format
