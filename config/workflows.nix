@@ -11,10 +11,10 @@ in {
     ## Spec Kit
     # spec-kit = customPkgs.spec-kit;
     ## OpenSpec CLI
-    # openspec = pkgs.writeShellScriptBin "openspec" ''
-    #   exec ${pkgs.uv}/bin/uv tool run @fission-ai/openspec@latest "$@"
-    # '';
-    openspec = customPkgs.openspec;
+    openspec = pkgs.writeShellScriptBin "openspec" ''
+      exec ${pkgs.uv}/bin/uv tool run @fission-ai/openspec@latest "$@"
+    '';
+    # openspec = customPkgs.openspec;
 
     ## Ralph Wiggum
     ralph-tui = pkgs.writeShellScriptBin "ralph-tui" ''
