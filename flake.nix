@@ -5,10 +5,7 @@
     inherit (inputs.flake-parts.lib) mkFlake;
     specialArgs.customLib = import (inputs.OS-nixCfg + "/lib/custom.nix") {inherit (inputs.nixpkgs) lib;};
   in
-    mkFlake {inherit inputs specialArgs;} ({
-      inputs,
-      ...
-    }: {
+    mkFlake {inherit inputs specialArgs;} ({inputs, ...}: {
       systems = import inputs.systems;
       imports = [
         ./flake
@@ -56,8 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     aicommit2 = {
-      #url = "path:/Users/div/Projects/Forks/aicommit2";
-      #url = "github:DivitMittal/aicommit2/update-fix-pnpm-err";
+      #url = "github:DivitMittal/aicommit2";
       url = "github:tak-bro/aicommit2";
       inputs = {
         nixpkgs.follows = "nixpkgs";
