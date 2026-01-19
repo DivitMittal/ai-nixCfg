@@ -68,7 +68,7 @@ in {
         })
       cfg.skills)
 
-      # Prompts: each prompt is a markdown file
+      # Prompts: each prompt is a markdown file (Slash Commands)
       (lib.mapAttrs' (name: content:
         lib.nameValuePair "codex/prompts/${name}.md" {
           text = content;
