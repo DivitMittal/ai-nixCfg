@@ -30,28 +30,29 @@ This repository contains Nix home-manager modules and personal configurations fo
 .
 ├── flake.nix                 # Main flake entry point
 ├── flake/                    # Flake-parts module definitions
+│   ├── actions/              # GitHub Actions workflow definitions
 │   ├── checks.nix            # Pre-commit hooks
 │   ├── devshells.nix         # Development shell
-│   └── formatters.nix        # Code formatters
-├── pkgs/                     # Custom package definitions (for consumers to import)
+│   └── formatters.nix        # Code formatters (treefmt)
+├── pkgs/                     # Custom package definitions
 │   └── custom/               # Package derivations (bv-bin, gowa)
 ├── modules/                  # Home-manager modules (reusable)
 │   └── home/
 │       ├── claude-code.nix   # Claude Code module
 │       ├── codex.nix         # OpenAI Codex module
 │       └── github-copilot.nix # GitHub Copilot CLI module
-└── myCfg/                    # Personal configurations
-    ├── cli/                  # CLI tools (aichat, mods, fabric)
-    ├── repl/                 # REPL configurations
-    │   ├── claude/           # Claude Code settings
-    │   ├── codex/            # Codex settings
-    │   ├── copilot/          # Copilot settings
-    │   ├── crush/            # Crush settings
-    │   ├── gemini/           # Gemini settings
-    │   └── opencode/         # OpenCode settings
-    ├── cloud.nix             # Cloud AI services
-    ├── mcp.nix               # MCP server configurations
-    └── workflows.nix         # AI workflow tools
+├── config/                   # Personal configurations
+│   ├── cli/                  # CLI tools (aichat, mods, fabric)
+│   ├── repl/                 # REPL configurations
+│   │   ├── claude/           # Claude Code settings
+│   │   ├── codex/            # Codex settings
+│   │   ├── copilot/          # Copilot settings
+│   │   ├── crush/            # Crush settings
+│   │   ├── gemini/           # Gemini settings
+│   │   └── opencode/         # OpenCode settings
+│   └── workflows.nix         # AI workflow tools
+├── .claude/                  # Claude Code project config
+└── AGENTS.md                 # AI agent instructions
 ```
 
 ## Usage
