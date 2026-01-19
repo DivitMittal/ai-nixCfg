@@ -1,3 +1,10 @@
 {lib, ...}: {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./claude
+    ./codex
+    ./copilot
+    ./crush
+    ./gemini
+    ./opencode
+  ];
 }
