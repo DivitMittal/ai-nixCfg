@@ -1,9 +1,3 @@
----
-allowed-tools: Read, Edit, Write, Grep, Glob
-argument-hint: <file-or-symbol>
-description: Refactor code to appear human-written by eliminating AI/LLM telltale patterns
----
-
 # Human Code Refactor
 
 Refactor code to eliminate patterns that signal AI/LLM authorship.

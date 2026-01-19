@@ -1,8 +1,3 @@
----
-name: nix-flakes
-description: Deep knowledge of Nix flakes. Use when working with flake.nix, inputs, or outputs.
----
-
 # Nix Flakes Expertise
 
 ## Flake Structure

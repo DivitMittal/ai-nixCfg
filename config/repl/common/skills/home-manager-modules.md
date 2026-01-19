@@ -1,8 +1,3 @@
----
-name: home-manager-modules
-description: Home Manager module patterns. Use when creating or modifying home-manager configs.
----
-
 # Home Manager Module Patterns
 
 ## Module Structure

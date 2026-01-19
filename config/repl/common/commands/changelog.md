@@ -1,8 +1,3 @@
----
-allowed-tools: Bash(git log:*), Bash(git diff:*), Read, Edit
-argument-hint: [version]
-description: Update CHANGELOG.md with new entry
----
 ## Context
 
 - Recent commits: !`git log --oneline -20`

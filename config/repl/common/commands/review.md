@@ -1,8 +1,3 @@
----
-allowed-tools: Read, Grep, Glob, Bash(git diff:*)
-argument-hint: [file-or-path]
-description: Review code for issues
----
 ## Context
 
 - Files to review: $ARGUMENTS or staged changes
@@ -17,6 +12,6 @@ Review the code for:
 4. **Style**: Naming, complexity, documentation
 
 Output format:
-- 🔴 Critical (must fix)
-- 🟡 Warning (should fix)
-- 🟢 Suggestion (nice to have)
+- Critical (must fix)
+- Warning (should fix)
+- Suggestion (nice to have)
