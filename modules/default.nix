@@ -4,7 +4,7 @@
   ...
 }: {
   flake.homeManagerModules = {
-    default = import customLib.scanPaths ./.;
+    default = import ./home {inherit customLib;};
     claude-code = import ./home/claude-code.nix;
     codex = import ./home/codex.nix;
     crush = import ./home/crush.nix;
