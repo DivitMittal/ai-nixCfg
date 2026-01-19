@@ -324,6 +324,9 @@
   commandNames = builtins.attrNames commandMeta;
   skillNames = builtins.attrNames skillMeta;
   agentNames = builtins.attrNames agentMeta;
+
+  # Combined rules for tools that need all rules in one string
+  combinedRules = lib.concatStringsSep "\n\n---\n\n" (map readRule ruleNames);
 in {
   # Export metadata for reference
   inherit commandMeta skillMeta agentMeta;
@@ -366,7 +369,6 @@ in {
   claude.rules = lib.genAttrs ruleNames readRule;
 
   # Codex/OpenCode: combined rules with separator
-  combinedRules = lib.concatStringsSep "\n\n---\n\n" (map readRule ruleNames);
   codex.rules = memoryInstruction + "\n\n" + combinedRules;
   opencode.rules = memoryInstruction + "\n\n" + combinedRules;
   gemini.rules = memoryInstruction + "\n\n" + combinedRules;
