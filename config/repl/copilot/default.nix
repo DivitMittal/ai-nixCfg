@@ -1,14 +1,23 @@
 {
   pkgs,
   lib,
+  self,
   ...
-}: {
-  imports = lib.custom.scanPaths ./.;
+}: let
+  myPkgs = self.packages.${pkgs.system};
+in {
+  imports =
+    (lib.custom.scanPaths ./.)
+    ++ [
+      self.homeManagerModules.github-copilot
+    ];
 
-  programs.github-copilot = {
-    enable = true;
+  programs.github-copilot = let
     package = pkgs.writeShellScriptBin "copilot" ''
-      exec ${pkgs.copilot-cli}/bin/copilot --enable-all-github-mcp-tools --banner "$@"
+      exec ${myPkgs.copilot-cli}/bin/copilot --enable-all-github-mcp-tools --banner "$@"
     '';
+  in {
+    enable = true;
+    inherit package;
   };
 }

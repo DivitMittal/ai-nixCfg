@@ -2,17 +2,20 @@
   pkgs,
   lib,
   config,
+  self,
   ...
 }: let
   inherit (lib) mkIf;
+  customPkgs = self.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = lib.custom.scanPaths ./.;
+  imports =
+    (lib.custom.scanPaths ./.)
+    ++ [
+      self.homeManagerModules.claude-code
+    ];
 
   home.packages = mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
-    ## CCUsage
-    inherit (pkgs) ccusage;
-    ## CCStatusLine
-    inherit (pkgs) ccstatusline;
+    inherit (customPkgs) ccusage ccstatusline;
     claude-code-switcher = pkgs.writeShellScriptBin "ccs" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx @kaitranntt/ccs "$@"
     '';
@@ -20,6 +23,6 @@ in {
 
   programs.claude-code = {
     enable = true;
-    package = pkgs.claude-code;
+    package = customPkgs.claude-code;
   };
 }

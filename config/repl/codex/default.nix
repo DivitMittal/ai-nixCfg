@@ -2,20 +2,24 @@
   pkgs,
   lib,
   config,
+  self,
   ...
 }: let
   inherit (lib) mkIf;
+  customPkgs = self.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = lib.custom.scanPaths ./.;
+  imports =
+    (lib.custom.scanPaths ./.)
+    ++ [
+      self.homeManagerModules.codex
+    ];
 
   home.packages = mkIf config.programs.codex.enable (lib.attrsets.attrValues {
-    inherit (pkgs) ccusage-codex;
+    inherit (customPkgs) ccusage-codex;
   });
 
-  programs.codex = let
-    package = pkgs.codex;
-  in {
+  programs.codex = {
     enable = true;
-    inherit package;
+    package = customPkgs.codex;
   };
 }
