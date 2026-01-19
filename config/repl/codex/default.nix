@@ -6,7 +6,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  customPkgs = ai-nixCfg.inputs.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = lib.custom.scanPaths ./.;
 

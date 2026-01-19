@@ -4,7 +4,7 @@
   ai-nixCfg,
   ...
 }: let
-  customPkgs = ai-nixCfg.inputs.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   home.packages = lib.attrsets.attrValues {
     ## WhatsApp MCP Server
