@@ -1,8 +1,3 @@
----
-allowed-tools: Read, Edit, Write
-argument-hint: <file-or-symbol>
-description: Generate or improve documentation
----
 ## Task
 
 Document $ARGUMENTS:
