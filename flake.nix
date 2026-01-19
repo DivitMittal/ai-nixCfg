@@ -11,6 +11,7 @@
         ./flake
         ./modules
         ./pkgs
+        ./config
       ];
     });
 

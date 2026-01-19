@@ -1,14 +1,6 @@
-self: {
-  imports = [
-    ./cli
-    ./repl
-    ./cloud.nix
-    ./mcp.nix
-    ./workflows.nix
-    self.homeManagerModules.default
-  ];
-
-  _module.args = {
-    ai-nixCfg = self;
+{self, ...}: {
+  flake.homeManagerConfigurations = rec {
+    Cfg = import ./setup.nix self;
+    default = Cfg;
   };
 }
