@@ -8,7 +8,15 @@
   inherit (lib) mkIf;
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./formatters.nix
+    ./lsp.nix
+    ./mcp.nix
+    ./memory.nix
+    ./oh-my-opencode.nix
+    ./providers.nix
+    ./themes
+  ];
 
   home.packages = mkIf config.programs.opencode.enable (lib.attrsets.attrValues {
     inherit (customPkgs) ccusage-opencode;
