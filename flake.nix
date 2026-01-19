@@ -7,20 +7,14 @@
   in
     mkFlake {inherit inputs specialArgs;} ({
       inputs,
-      self,
       ...
     }: {
       systems = import inputs.systems;
       imports = [
         ./flake
         ./modules
+        ./pkgs
       ];
-
-      flake.overlays = {
-        custom = final: prev: {
-          custom = import ./pkgs/custom {pkgs = final;};
-        };
-      };
     });
 
   inputs = {
@@ -50,6 +44,10 @@
     OS-nixCfg = {
       url = "github:DivitMittal/OS-nixCfg";
       flake = false;
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ## AI packages
