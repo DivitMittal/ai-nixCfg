@@ -1,13 +1,11 @@
 {
   pkgs,
-  lib,
   ai-nixCfg,
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
-    ./agents.nix
     ./commands.nix
     ./mcp.nix
     ./permissions.nix
