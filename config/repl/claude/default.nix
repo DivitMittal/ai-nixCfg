@@ -11,7 +11,7 @@ in {
   imports = lib.custom.scanPaths ./.;
 
   home.packages = mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
-    inherit (customPkgs) ccusage ccstatusline;
+    inherit (customPkgs) ccusage;
     claude-code-switcher = pkgs.writeShellScriptBin "ccs" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx @kaitranntt/ccs "$@"
     '';
