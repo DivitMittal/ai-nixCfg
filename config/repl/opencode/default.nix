@@ -2,21 +2,23 @@
   pkgs,
   lib,
   config,
+  ai-nixCfg,
   ...
 }: let
   inherit (lib) mkIf;
+  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = lib.custom.scanPaths ./.;
 
   home.packages = mkIf config.programs.opencode.enable (lib.attrsets.attrValues {
-    inherit (pkgs) ccusage-opencode;
+    inherit (customPkgs) ccusage-opencode;
   });
 
   programs.opencode = let
     package = pkgs.writeShellScriptBin "opencode" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx opencode-ai "$@"
     '';
-    # package = pkgs.opencode;
+    # package = customPkgs.opencode;
   in {
     enable = true;
     inherit package;
