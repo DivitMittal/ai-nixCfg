@@ -8,6 +8,6 @@
       (pkgs)
       geminicommit
       ;
-    # aicommit2 = inputs.aicommit2.packages.${hostPlatform.system}.default;
+    # aicommit2 = ai-nixCfg.inputs.aicommit2.packages.${hostPlatform.system}.default;
   };
 }

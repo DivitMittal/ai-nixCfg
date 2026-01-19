@@ -1,20 +1,16 @@
 {
   pkgs,
   lib,
-  self,
+  ai-nixCfg,
   ...
 }: let
-  myPkgs = self.packages.${pkgs.system};
+  customPkgs = ai-nixCfg.inputs.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports =
-    (lib.custom.scanPaths ./.)
-    ++ [
-      self.homeManagerModules.github-copilot
-    ];
+  imports = lib.custom.scanPaths ./.;
 
   programs.github-copilot = let
     package = pkgs.writeShellScriptBin "copilot" ''
-      exec ${myPkgs.copilot-cli}/bin/copilot --enable-all-github-mcp-tools --banner "$@"
+      exec ${customPkgs.copilot-cli}/bin/copilot --enable-all-github-mcp-tools --banner "$@"
     '';
   in {
     enable = true;

@@ -1,10 +1,14 @@
 {
   lib,
   pkgs,
+  ai-nixCfg,
   ...
-}: {
+}: let
+  customPkgs = ai-nixCfg.inputs.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+in {
   home.packages = lib.attrsets.attrValues {
-    inherit (pkgs.custom) gowa;
+    ## WhatsApp MCP Server
+    inherit (customPkgs) gowa;
   };
 
   programs.mcp = {

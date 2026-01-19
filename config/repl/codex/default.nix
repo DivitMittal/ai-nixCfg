@@ -2,17 +2,13 @@
   pkgs,
   lib,
   config,
-  self,
+  ai-nixCfg,
   ...
 }: let
   inherit (lib) mkIf;
-  customPkgs = self.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+  customPkgs = ai-nixCfg.inputs.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports =
-    (lib.custom.scanPaths ./.)
-    ++ [
-      self.homeManagerModules.codex
-    ];
+  imports = lib.custom.scanPaths ./.;
 
   home.packages = mkIf config.programs.codex.enable (lib.attrsets.attrValues {
     inherit (customPkgs) ccusage-codex;
