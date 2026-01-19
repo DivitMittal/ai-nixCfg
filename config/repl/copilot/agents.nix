@@ -1,5 +1,5 @@
 {lib, ...}: let
   common = import ../common {inherit lib;};
 in {
-  programs.github-copilot.commands = common.copilot.commands;
+  programs.github-copilot.agents = common.copilot.agents;
 }
