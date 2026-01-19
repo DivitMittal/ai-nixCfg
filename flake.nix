@@ -52,12 +52,18 @@
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    aicommit2 = {
-      #url = "github:DivitMittal/aicommit2";
-      url = "github:tak-bro/aicommit2";
+    # aicommit2 = {
+    #   #url = "github:DivitMittal/aicommit2";
+    #   url = "github:tak-bro/aicommit2";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     flake-parts.follows = "flake-parts";
+    #   };
+    # };
+    lumen = {
+      url = "github:jnsahaj/lumen";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
   };
