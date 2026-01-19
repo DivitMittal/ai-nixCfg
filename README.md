@@ -6,14 +6,11 @@
 ---
 
 <div align="center">
-    <a href="https://github.com/DivitMittal/ai-nixCfg/stargazers">
-        <img src="https://img.shields.io/github/stars/DivitMittal/ai-nixCfg?&style=for-the-badge&logo=starship&logoColor=white&color=purple" alt="stars"/>
+    <a href="https://github.com/DivitMittal/ai-nixCfg/actions/workflows/flake-check.yml">
+        <img src="https://github.com/DivitMittal/ai-nixCfg/actions/workflows/flake-check.yml/badge.svg" alt="nix-flake-check"/>
     </a>
-    <a href="https://github.com/DivitMittal/ai-nixCfg/">
-        <img src="https://img.shields.io/github/repo-size/DivitMittal/ai-nixCfg?&style=for-the-badge&logo=github&logoColor=white&color=purple" alt="size" />
-    </a>
-    <a href="https://github.com/DivitMittal/ai-nixCfg/blob/main/LICENSE">
-        <img src="https://img.shields.io/github/license/DivitMittal/ai-nixCfg?&style=for-the-badge&logo=unlicense&logoColor=white&color=purple" alt="license"/>
+    <a href="https://github.com/DivitMittal/ai-nixCfg/actions/workflows/flake-lock-update.yml">
+        <img src="https://github.com/DivitMittal/ai-nixCfg/actions/workflows/flake-lock-update.yml/badge.svg" alt="flake-lock-update"/>
     </a>
 </div>
 
@@ -36,6 +33,8 @@ This repository contains Nix home-manager modules and personal configurations fo
 │   ├── checks.nix            # Pre-commit hooks
 │   ├── devshells.nix         # Development shell
 │   └── formatters.nix        # Code formatters
+├── pkgs/                     # Custom package definitions (for consumers to import)
+│   └── custom/               # Package derivations (bv-bin, gowa)
 ├── modules/                  # Home-manager modules (reusable)
 │   └── home/
 │       ├── claude-code.nix   # Claude Code module
