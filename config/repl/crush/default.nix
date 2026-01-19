@@ -6,7 +6,13 @@
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./commands.nix
+    ./lsp.nix
+    ./mcp.nix
+    ./permissions.nix
+    ./rules.nix
+  ];
 
   programs.crush = {
     enable = true;

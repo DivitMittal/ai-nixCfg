@@ -3,7 +3,12 @@
   lib,
   ...
 }: {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./commands.nix
+    ./mcp.nix
+    ./rules.nix
+    ./settings.nix
+  ];
 
   programs.gemini-cli = {
     enable = true;

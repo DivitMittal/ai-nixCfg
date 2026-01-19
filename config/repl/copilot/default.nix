@@ -6,7 +6,13 @@
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = lib.custom.scanPaths ./.;
+  imports = [
+    ./agents.nix
+    ./commands.nix
+    ./mcp.nix
+    ./permissions.nix
+    ./settings.nix
+  ];
 
   programs.github-copilot = let
     package = pkgs.writeShellScriptBin "copilot" ''
