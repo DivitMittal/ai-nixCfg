@@ -64,12 +64,6 @@ in {
       '';
     };
 
-    schema = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
-      default = "https://charm.land/crush.json";
-      description = "JSON schema URL for crush configuration.";
-    };
-
     lsp = lib.mkOption {
       type = lib.types.attrsOf lspServerType;
       default = {};
@@ -174,7 +168,7 @@ in {
           source = jsonFormat.generate "crush-config.json" (
             lib.recursiveUpdate cfg.settings (
               lib.filterAttrs (_: v: v != null && v != {}) {
-                "$schema" = cfg.schema;
+                "$schema" = "https://charm.land/crush.json";
                 inherit (cfg) lsp;
                 inherit (cfg) mcp;
                 inherit (cfg) permissions;
