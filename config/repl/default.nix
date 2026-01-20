@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   imports = [
     ./claude
     ./codex
@@ -6,5 +6,6 @@
     ./crush
     ./gemini
     ./opencode
+    ./misc.nix
   ];
 }
