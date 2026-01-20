@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   imports = [
     ./aichat.nix
     ./fabric.nix
