@@ -10,6 +10,6 @@
       geminicommit
       ;
     # aicommit2 = ai-nixCfg.inputs.aicommit2.packages.${pkgs.stdenvNoCC.hostPlatform.system}.default;
-    lumen = ai-nixCfg.inputs.lumen.packages.${pkgs.stdenvNoCC.hostPlatform.system}.lumen;
+    inherit (ai-nixCfg.inputs.lumen.packages.${pkgs.stdenvNoCC.hostPlatform.system}) lumen;
   };
 }
