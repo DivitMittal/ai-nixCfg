@@ -1,39 +1,65 @@
-## Motive
+# PROJECT KNOWLEDGE BASE
 
-This repository provides reusable Nix home-manager modules and personal configurations for AI coding assistants. It enables declarative, reproducible setup of tools like Claude Code, OpenAI Codex, GitHub Copilot CLI, Gemini, and others through the Nix ecosystem.
+## OVERVIEW
+Nix flake with home-manager modules and personal configs for AI coding assistants (Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush), LLM CLI/workflow tools, and custom packages (bv-bin, gowa). Uses flake-parts, home-manager, treefmt-nix, git-hooks, actions-nix, nix-direnv; imports customLib from OS-nixCfg for scanPaths.
 
-Key goals:
-- Provide home-manager modules with typed options for AI assistant configuration
-- Share personal configs as examples for customization
-- Maintain consistent formatting, linting, and CI across all Nix code
+## STRUCTURE
+```
+./
+├── flake/                 # flake-parts modules: actions/, checks.nix, devshells.nix, formatters.nix
+├── modules/               # reusable home-manager modules (claude-code, codex, github-copilot, crush)
+├── config/                # personal configs: repl/ per tool, cli/, cloud.nix, mcp.nix, workflows.nix, setup.nix
+├── pkgs/                  # custom packages (bv-bin, gowa) + default export
+├── .github/workflows/     # autogen from flake/actions (do not hand-edit)
+└── AGENTS.md              # this file
+```
 
----
+## WHERE TO LOOK
+| Task | Location | Notes |
+|------|----------|-------|
+| Add/understand modules | modules/home/*.nix | Follow standard header; typed options; mkIf cfg.enable |
+| AI REPL generators | config/repl/common/default.nix | Shared commands/skills/agents/rules factory (380 lines) |
+| OpenCode profiles | config/repl/opencode/oh-my-opencode.nix | Profile/model mappings; symlink logic |
+| Tool configs | config/repl/{claude,codex,copilot,crush,gemini,opencode}/ | Each imports common outputs |
+| CLI tools | config/cli/*.nix | aichat, mods, fabric, vcs |
+| CI/formatting/hooks | flake/actions/*, flake/formatters.nix, flake/checks.nix | Render workflows via nix run .#render-workflows |
 
-Guidance for agentic coding workflows in this repository. Keep responses concise, follow the established Nix/home-manager patterns, and respect the security and git rules below.
+## CODE MAP
+| Symbol | Type | Location | Role |
+|--------|------|----------|------|
+| mkClaudeCommand/mkCodexPrompt/... | functions | config/repl/common/default.nix | Generate tool-specific frontmatter + files |
+| mcpServerType/permissionsType | submodules | modules/home/{github-copilot,crush}.nix | Typed MCP/LSP/permission configs |
+| mkProfileFiles | function | config/repl/opencode/oh-my-opencode.nix | Emit profile files + activation symlinks |
 
-## Nix Module Style
-- File header shape:
-  ```nix
-  {
-    config,
-    lib,
-    pkgs,
-    ...
-  }: let
-    inherit (lib) mkIf mkOption types; # add others explicitly
-    cfg = config.programs.<name>;
-  in {
-    options = { ... };
-    config = mkIf cfg.enable { ... };
-  }
-  ```
-- Use `lib.types.*` for mkOption; always add `description`.
-- Use `literalExpression` for examples; `attrsOf`, `listOf`, `nullOr`, `enum`, `submodule` as needed.
-- Prefer `mkIf` for conditional attrs; `mkMerge` for combining; `optionalAttrs` over `if-then-else {}`; `filterAttrs` to drop nulls; avoid `with`.
-- Naming: options/attrs in kebab-case; local variables concise (`cfg` for config subtree).
-- Imports: prefer `lib.custom.scanPaths ./` for directory defaults; module exports in modules/default.nix via `flake.homeManagerModules.*`.
+## CONVENTIONS
+- Module header: `{ config, lib, pkgs, ... }: let inherit (lib) mkIf mkOption types; cfg = config.programs.<name>; in { options = {...}; config = mkIf cfg.enable {...}; }`
+- Types: lib.types.* with descriptions; literalExpression for examples; prefer submodules for nested records.
+- Conditionals/merging: mkIf, mkMerge, optionalAttrs, filterAttrs; avoid `with`.
+- Naming: kebab-case options/attrs; concise locals (`cfg`). Paths via xdg.configFile or home.file; use pkgs.formats.json {} for generated JSON.
+- Formatting: `nix fmt` (alejandra + deadnix + statix); .editorconfig enforces UTF-8, LF, 2-space, trim trailing whitespace.
 
-## Testing Notes
-- Primary: `nix flake check` (no traditional unit tests in repo)
-- CI flavor: `nix -vL flake check --impure --all-systems --no-build`
-- Targeted builds: `nix build .#<attr>` for specific derivations.
+## ANTI-PATTERNS (PROJECT)
+- Do not hand-edit `.github/workflows/*` (render via Nix).
+- Do not commit secrets; use agenix/ragenix; `.env` must stay ignored.
+- No force-push to main; Conventional Commits required.
+- Avoid deep nesting; prefer early returns and explicit error handling.
+
+## UNIQUE STYLES
+- `customLib.scanPaths` auto-import pattern in flake/, modules/home/, flake/actions/.
+- Shared content factory in `config/repl/common/default.nix` emits commands/skills/agents/rules for multiple tools.
+- OpenCode profile system generates per-profile JSONC and manages symlinked current profile.
+
+## COMMANDS
+```bash
+nix fmt
+nix -vL flake check --impure --all-systems --no-build
+nix build .#<attr>
+nix develop
+nix run .#render-workflows
+nix run .#pre-commit
+```
+
+## NOTES
+- Primary validation via flake check; no traditional unit tests.
+- Direnv enabled (.envrc) for nix-direnv; allow before working.
+- If modifying flake/actions, rerun `nix run .#render-workflows` and commit YAML outputs.
