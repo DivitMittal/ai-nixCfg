@@ -1,19 +1,15 @@
 {
   pkgs,
   config,
-  lib,
   ...
-}: let
-  inherit (lib) mkIf;
-in {
+}: {
   programs.mods = {
-    enable = true;
+    enable = false;
     package = pkgs.mods;
 
     enableBashIntegration = false;
     enableFishIntegration = config.programs.fish.enable;
-    # Disable automatic Zsh integration - loading it manually after compinit
-    enableZshIntegration = false;
+    enableZshIntegration = config.programs.zsh.enable;
 
     settings = {
       default-model = "gpt-oss";
@@ -71,12 +67,5 @@ in {
         };
       };
     };
-  };
-
-  # Manual Zsh integration - loaded after compinit to avoid "command not found: compdef" error
-  programs.zsh = mkIf config.programs.zsh.enable {
-    initContent = ''
-      source <(${pkgs.mods}/bin/mods completion zsh)
-    '';
   };
 }
