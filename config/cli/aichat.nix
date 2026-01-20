@@ -24,14 +24,14 @@
           # api_key = ""; # Using environment variables instead
         }
         {
-          type = "gemini";
-          api_base = "https://generativelanguage.googleapis.com/v1beta";
-          # api_key = ""; # Using environment variables instead
-        }
-        {
           type = "openai-compatible";
           name = "openrouter";
           api_base = "https://openrouter.ai/api/v1";
+        }
+        {
+          type = "gemini";
+          api_base = "https://generativelanguage.googleapis.com/v1beta";
+          # api_key = ""; # Using environment variables instead
         }
       ];
     };

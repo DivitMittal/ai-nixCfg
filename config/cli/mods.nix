@@ -42,19 +42,6 @@ in {
             };
           };
         };
-        google = {
-          api-key-env = "GEMINI_API_KEY";
-          models = {
-            "gemini-3-flash-preview" = {
-              aliases = ["gemini-flash"];
-              max-input-chars = 392000;
-            };
-            "gemini-3-pro-preview" = {
-              aliases = ["gemini-pro"];
-              max-input-chars = 392000;
-            };
-          };
-        };
         openrouter = {
           base-url = "https://openrouter.ai/api/v1";
           api-key-env = "OPENROUTER_API_KEY";
@@ -66,6 +53,19 @@ in {
             "z-ai/glm-4.5-air:free" = {
               aliases = ["glm"];
               max-input-chars = 24500;
+            };
+          };
+        };
+        google = {
+          api-key-env = "GEMINI_API_KEY";
+          models = {
+            "gemini-3-flash-preview" = {
+              aliases = ["gemini-flash"];
+              max-input-chars = 392000;
+            };
+            "gemini-3-pro-preview" = {
+              aliases = ["gemini-pro"];
+              max-input-chars = 392000;
             };
           };
         };
