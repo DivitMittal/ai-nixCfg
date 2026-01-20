@@ -196,16 +196,6 @@
   in "---\n${lib.concatStringsSep "\n" lines}\n---\n";
 
   # TOML generator for Gemini
-  mkToml = attrs: let
-    formatValue = v:
-      if builtins.isString v
-      then
-        if lib.hasInfix "\n" v
-        then ''"""\n${v}"""''
-        else ''"${v}"''
-      else toString v;
-  in
-    lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "${k} = ${formatValue v}") attrs);
 
   # Tool-specific command generators
   mkClaudeCommand = name: let
@@ -213,8 +203,8 @@
     body = readCommand name;
     frontmatter =
       {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? allowed-tools) {allowed-tools = meta.allowed-tools;}
-      // lib.optionalAttrs (meta ? argument-hint) {argument-hint = meta.argument-hint;};
+      // lib.optionalAttrs (meta ? allowed-tools) {inherit (meta) allowed-tools;}
+      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;};
   in
     mkYamlFrontmatter frontmatter + body;
 
@@ -223,7 +213,7 @@
     body = readCommand name;
     frontmatter =
       {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? argument-hint) {argument-hint = meta.argument-hint;};
+      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;};
   in
     mkYamlFrontmatter frontmatter + body;
 
@@ -232,7 +222,7 @@
     body = readCommand name;
     frontmatter =
       {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? argument-hint) {argument-hint = meta.argument-hint;}
+      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;}
       // lib.optionalAttrs (meta ? tools) {inherit (meta) tools;};
   in
     mkYamlFrontmatter frontmatter + body;
@@ -283,7 +273,7 @@
     body = readAgent name;
     frontmatter = {
       inherit (meta) name description model;
-      tools = meta.tools;
+      inherit (meta) tools;
     };
   in
     mkYamlFrontmatter frontmatter + body;
@@ -306,11 +296,13 @@
       if tools == {}
       then ""
       else
-        "\ntools:" + lib.concatStrings (lib.mapAttrsToList (k: v: "\n  ${k}: ${
-          if v
-          then "true"
-          else "false"
-        }") tools);
+        "\ntools:"
+        + lib.concatStrings (lib.mapAttrsToList (k: v: "\n  ${k}: ${
+            if v
+            then "true"
+            else "false"
+          }")
+          tools);
     frontmatter = ''
       ---
       description: ${meta.description}

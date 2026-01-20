@@ -3,6 +3,6 @@
 in {
   programs.claude-code = {
     memory.text = common.memory;
-    rules = common.claude.rules;
+    inherit (common.claude) rules;
   };
 }
