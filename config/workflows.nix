@@ -21,6 +21,11 @@ in {
       exec ${pkgs.pnpm}/bin/pnpm dlx ralph-tui "$@"
     '';
 
+    ## Indexing
+    llm-tltdr = pkgs.writeShellScriptBin "llm-tltdr" ''
+      exec ${pkgs.uv}/bin/uv tool run --from llm-tldr tldr "$@"
+    '';
+
     ## Memory System (Issue Tracker)
     ## Bead
     bead = customPkgs.beads;
