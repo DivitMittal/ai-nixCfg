@@ -40,7 +40,9 @@ This repository provides reusable Nix home-manager modules and personal configur
 | **ccstatusline** | Statusline integration for Claude Code |
 | **ccusage-codex** | Usage tracking for Codex |
 | **ccusage-opencode** | Usage tracking for OpenCode |
-| **ocx** | oh-my-opencode wrapper |
+| **ocx** | OpenCode profiles and extensions manager |
+
+Powered by **oh-my-opencode** for OpenCode profile and extension management.
 
 ### LLM CLI Tools
 
@@ -64,7 +66,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 | Tool | Description |
 |------|-------------|
 | **geminicommit** | AI-generated git commit messages using Gemini |
-| **aicommit2** | Multi-provider AI commit message generator |
+| **lumen** | AI-assisted git review, diff, and commit helper |
 
 ### AI Cloud Platforms
 
@@ -166,7 +168,7 @@ This imports the complete personal setup including:
 - **Agentic REPLs**: Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush
 - **Companion Tools**: ccs, ccusage, ccstatusline, ccusage-codex, ccusage-opencode, ocx
 - **LLM CLI Tools**: aichat, mods, fabric-ai
-- **VCS Tools**: geminicommit, aicommit2
+- **VCS Tools**: geminicommit, lumen
 - **Workflow Tools**: openspec, ralph-tui, bead, bv
 - **Cloud Platforms**: Kaggle, Hugging Face CLI
 - **Shared MCP Servers**: deepwiki, octocode, exa, gowa
