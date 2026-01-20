@@ -166,7 +166,7 @@
   ohMyOpencodeBase = {
     "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json";
     google_auth = false; ## Using Antigravity auth instead
-    disabled_hooks = ["session-notification"];
+    disabled_hooks = ["session-notification" "ralph-loop"];
     ralph_loop = {
       enabled = false;
     };
