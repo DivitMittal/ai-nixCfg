@@ -27,6 +27,7 @@
           type = "openai-compatible";
           name = "openrouter";
           api_base = "https://openrouter.ai/api/v1";
+          # api_key = ""; # Using environment variables instead
         }
         {
           type = "gemini";

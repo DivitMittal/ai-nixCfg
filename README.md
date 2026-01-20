@@ -24,56 +24,56 @@ This repository provides reusable Nix home-manager modules and personal configur
 
 | Tool | Description |
 |------|-------------|
-| **Claude Code** | Anthropic's AI coding assistant with MCP support |
-| **OpenAI Codex** | OpenAI's code generation CLI |
-| **GitHub Copilot CLI** | GitHub's AI pair programmer CLI |
-| **Gemini CLI** | Google's Gemini AI coding assistant |
-| **OpenCode** | Multi-provider AI coding assistant |
-| **Crush** | AI coding assistant with LSP integration |
+| **[Claude Code](https://github.com/anthropics/claude-code)** | Anthropic's AI coding assistant with MCP support |
+| **[OpenAI Codex](https://github.com/oortwagen/codex)** | OpenAI's code generation CLI |
+| **[GitHub Copilot CLI](https://github.com/github/copilot-cli)** | GitHub's AI pair programmer CLI |
+| **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** | Google's Gemini AI coding assistant |
+| **[OpenCode](https://github.com/oortwagen/opencode)** | Multi-provider AI coding assistant |
+| **[Crush](https://github.com/frommeltly/crush)** | AI coding assistant with LSP integration |
 
 ### Companion Tools
 
 | Tool | Description |
 |------|-------------|
-| **ccs** | Claude Code Switcher - profile management |
-| **ccusage** | Usage tracking for Claude Code |
-| **ccstatusline** | Statusline integration for Claude Code |
-| **ccusage-codex** | Usage tracking for Codex |
-| **ccusage-opencode** | Usage tracking for OpenCode |
-| **ocx** | OpenCode profiles and extensions manager |
+| **[ccs](https://github.com/oortwagen/ccs)** | Claude Code Switcher - profile management |
+| **[ccusage](https://github.com/oortwagen/ccusage)** | Usage tracking for Claude Code |
+| **[ccstatusline](https://github.com/oortwagen/ccstatusline)** | Statusline integration for Claude Code |
+| **ccusage-codex** | Usage tracking for Codex (via ccusage) |
+| **ccusage-opencode** | Usage tracking for OpenCode (via ccusage) |
+| **[ocx](https://github.com/oortwagen/ocx)** | OpenCode profiles and extensions manager |
 
-Powered by **oh-my-opencode** for OpenCode profile and extension management.
+Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for OpenCode profile and extension management.
 
 ### LLM CLI Tools
 
 | Tool | Description |
 |------|-------------|
-| **aichat** | Multi-provider LLM client with REPL |
-| **mods** | GPT-powered shell assistant |
-| **fabric-ai** | Pattern-based AI workflows |
+| **[aichat](https://github.com/sigoden/aichat)** | Multi-provider LLM client with REPL |
+| **[mods](https://github.com/charmbracelet/mods)** | GPT-powered shell assistant |
+| **[fabric-ai](https://github.com/danielmiessler/fabric)** | Pattern-based AI workflows |
 
 ### AI Workflow Tools
 
 | Tool | Description |
 |------|-------------|
-| **openspec** | Spec-driven development tool |
-| **ralph-tui** | Ralph Wiggum TUI |
-| **bead (bd)** | Memory system / issue tracker |
-| **bv** | Beads Viewer - graph-aware task management TUI |
+| **[openspec](https://github.com/oortwagen/openspec)** | Spec-driven development tool |
+| **[ralph-tui](https://github.com/subsy/ralph-tui)** | AI Agent Loop Orchestrator TUI |
+| **[bead (bd)](https://github.com/divramod/bd)** | Memory system / issue tracker |
+| **[bv](https://github.com/divramod/bv)** | Beads Viewer - graph-aware task management TUI |
 
 ### AI-Powered VCS Tools
 
 | Tool | Description |
 |------|-------------|
-| **geminicommit** | AI-generated git commit messages using Gemini |
-| **lumen** | AI-assisted git review, diff, and commit helper |
+| **[geminicommit](https://github.com/divramod/geminicommit)** | AI-generated git commit messages using Gemini |
+| **[lumen](https://github.com/oortwagen/lumen)** | AI-assisted git review, diff, and commit helper |
 
 ### AI Cloud Platforms
 
 | Platform | Description |
 |----------|-------------|
-| **Kaggle** | Data science competition platform CLI |
-| **Hugging Face** | ML model hub CLI |
+| **[Kaggle](https://github.com/Kaggle/kaggle-api)** | Data science competition platform CLI |
+| **[Hugging Face](https://github.com/huggingface/huggingface_hub)** | ML model hub CLI |
 
 ## Project Structure
 
