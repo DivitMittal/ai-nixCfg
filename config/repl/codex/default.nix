@@ -21,7 +21,7 @@ in {
   });
 
   programs.codex = {
-    enable = true;
+    enable = false;
     package = customPkgs.codex;
   };
 }
