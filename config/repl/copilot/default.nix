@@ -17,7 +17,7 @@ in {
       exec ${customPkgs.copilot-cli}/bin/copilot --enable-all-github-mcp-tools --banner "$@"
     '';
   in {
-    enable = true;
+    enable = false;
     inherit package;
   };
 }

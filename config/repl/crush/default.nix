@@ -14,7 +14,7 @@ in {
   ];
 
   programs.crush = {
-    enable = true;
+    enable = false;
     package = customPkgs.crush;
   };
 }
