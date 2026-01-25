@@ -151,14 +151,14 @@
     ## Zen profile (OpenCode free models)
     zen = {
       Sisyphus = "opencode/big-pickle";
-      Sisyphus-Junior = "opencode/glm-4.7-free";
+      Sisyphus-Junior = "opencode/gpt-5-nano";
       Planner-Sisyphus = "opencode/big-pickle";
       oracle = "opencode/big-pickle";
-      frontend-ui-ux-engineer = "opencode/minimax-m2.1-free";
-      document-writer = "opencode/glm-4.7-free";
-      multimodal-looker = "opencode/minimax-m2.1-free";
-      explore = "opencode/glm-4.7-free";
-      librarian = "opencode/glm-4.7-free";
+      frontend-ui-ux-engineer = "opencode/gpt-5-nano";
+      document-writer = "opencode/gpt-5-nano";
+      multimodal-looker = "opencode/gpt-5-nano";
+      explore = "opencode/gpt-5-nano";
+      librarian = "opencode/gpt-5-nano";
     };
   };
 

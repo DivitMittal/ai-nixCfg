@@ -40,6 +40,7 @@ in {
       plugin = [
         "oh-my-opencode"
         "opencode-antigravity-auth@beta"
+        "opencode-beads"
       ];
     };
   };
