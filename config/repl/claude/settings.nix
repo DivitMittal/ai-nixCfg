@@ -13,6 +13,7 @@ in {
   });
 
   programs.claude-code.settings = {
+    autoUpdate = false;
     includeCoAuthoredBy = false;
     statusLine = {
       command = "${customPkgs.ccstatusline}/bin/ccstatusline";
