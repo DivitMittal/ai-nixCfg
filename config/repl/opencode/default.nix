@@ -41,6 +41,7 @@ in {
         "oh-my-opencode"
         "opencode-antigravity-auth@beta"
         "opencode-beads"
+        "opencode-pty"
       ];
     };
   };
