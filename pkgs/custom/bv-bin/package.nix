@@ -4,25 +4,25 @@
   fetchurl,
   ...
 }: let
-  version = "0.13.0";
+  version = "0.14.4";
   pname = "bv";
 
   sources = {
     "x86_64-linux" = {
       url = "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v${version}/bv_${version}_linux_amd64.tar.gz";
-      hash = "sha256-8Ux9Brf2u78ljmTB49EBXCAn41WssOl8c+dZ1DZDjkw=";
+      hash = "sha256-mRUbElaR+cuMLH6Hcc+W4HNJGMv/aXHWV4VUGBuAcTw=";
     };
     "aarch64-linux" = {
       url = "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v${version}/bv_${version}_linux_arm64.tar.gz";
-      hash = "sha256-dxkewC884pA0exBZFixC2A+VgTw5ZyirnD8Zj9ncAwg=";
+      hash = "sha256-qoKInYG0pzCr5XGmHVOLUXNWAcWK69piMf+R0aKVG1g=";
     };
     "x86_64-darwin" = {
       url = "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v${version}/bv_${version}_darwin_amd64.tar.gz";
-      hash = "sha256-n7+K0grNaNKDvrJurt25Ow3/2wuWVvrjp38fFWcPYfA=";
+      hash = "sha256-CpOMVjuq170fUMC0RQXIY6/WaV7vq1A89VSmUjOknDk=";
     };
     "aarch64-darwin" = {
       url = "https://github.com/Dicklesworthstone/beads_viewer/releases/download/v${version}/bv_${version}_darwin_arm64.tar.gz";
-      hash = "sha256-eCA/NKQ7QT9KEEOtBiwOb9ksxj2k202ENK1tWKOdCEY=";
+      hash = "sha256-C3CZCxo4/+anDpqyzOPDU2N9wTfYvd/6gh+oT3em+jE=";
     };
   };
 
