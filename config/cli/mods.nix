@@ -30,11 +30,12 @@
           models = {
             "openai/gpt-oss-120b" = {
               aliases = ["gpt-oss"];
-              max-input-chars = 24500;
+            };
+            "moonshotai/kimi-k2-instruct-0905" = {
+              aliases = ["kimi"];
             };
             "qwen/qwen3-32b" = {
               aliases = ["qwen3"];
-              max-input-chars = 24500;
             };
           };
         };
@@ -42,26 +43,28 @@
           base-url = "https://openrouter.ai/api/v1";
           api-key-env = "OPENROUTER_API_KEY";
           models = {
-            "deepseek/deepseek-chat-v3.1:free" = {
-              aliases = ["deepseek"];
-              max-input-chars = 24500;
-            };
             "z-ai/glm-4.5-air:free" = {
               aliases = ["glm"];
-              max-input-chars = 24500;
+            };
+            "stepfun/step-3.5-flash:free" = {
+              aliases = ["stepfun"];
+            };
+            "deepseek/deepseek-chat-v3.1:free" = {
+              aliases = ["deepseek"];
             };
           };
         };
         google = {
           api-key-env = "GEMINI_API_KEY";
           models = {
+            "gemini-3.1-flash-lite-preview" = {
+              aliases = ["gemini-flash-lite"];
+            };
             "gemini-3-flash-preview" = {
               aliases = ["gemini-flash"];
-              max-input-chars = 392000;
             };
-            "gemini-3-pro-preview" = {
+            "gemini-3.1-pro-preview" = {
               aliases = ["gemini-pro"];
-              max-input-chars = 392000;
             };
           };
         };
