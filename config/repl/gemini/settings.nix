@@ -4,8 +4,13 @@
       preferredEditor = "${config.home.sessionVariables.EDITOR}";
       vimMode = true;
       previewFeatures = true;
-      disableAutoUpdate = true;
+      enableAutoUpdate = false;
       enablePromptCompletion = true;
+      sessionRetention = {
+        enabled = true;
+        maxAge = "30d";
+        warningAcknowledged = true;
+      };
     };
     security = {
       auth = {
