@@ -4,5 +4,6 @@ _: {
     ./fabric.nix
     ./mods.nix
     ./vcs.nix
+    ./misc.nix
   ];
 }
