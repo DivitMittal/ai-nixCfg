@@ -12,9 +12,16 @@ in {
     inherit (customPkgs) ccstatusline;
   });
 
+  # Disable auto-updater - the settings.json `autoUpdate` flag is buggy
+  # https://github.com/anthropics/claude-code/issues/9327
+  home.sessionVariables.DISABLE_AUTOUPDATER = "1";
+
   programs.claude-code.settings = {
-    autoUpdate = false;
-    includeCoAuthoredBy = false;
+    enableAllProjectMcpServers = true;
+    attribution = {
+      commit = "";
+      pr = "";
+    };
     statusLine = {
       command = "${customPkgs.ccstatusline}/bin/ccstatusline";
       padding = 0;
