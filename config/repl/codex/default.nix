@@ -9,11 +9,9 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
-    ./commands.nix
+    ./common.nix
     ./mcp.nix
-    ./rules.nix
     ./settings.nix
-    ./skills.nix
   ];
 
   home.packages = mkIf config.programs.codex.enable (lib.attrsets.attrValues {

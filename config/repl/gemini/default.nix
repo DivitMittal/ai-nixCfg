@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./commands.nix
+    ./common.nix
     ./mcp.nix
-    ./rules.nix
     ./settings.nix
   ];
 

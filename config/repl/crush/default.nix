@@ -6,11 +6,10 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
-    ./commands.nix
+    ./common.nix
     ./lsp.nix
     ./mcp.nix
     ./permissions.nix
-    ./rules.nix
   ];
 
   programs.crush = {
