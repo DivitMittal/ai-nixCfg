@@ -9,10 +9,10 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
+    ./common.nix
     ./formatters.nix
     ./lsp.nix
     ./mcp.nix
-    ./memory.nix
     ./oh-my-opencode.nix
     ./providers.nix
     ./themes

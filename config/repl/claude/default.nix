@@ -9,16 +9,13 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
-    ./agents.nix
-    ./commands.nix
+    ./common.nix
     ./hooks.nix
     ./mcp.nix
     ./output-styles
     ./permissions.nix
     ./plugins.nix
-    ./rules.nix
     ./settings.nix
-    ./skills.nix
   ];
 
   home.packages = mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
