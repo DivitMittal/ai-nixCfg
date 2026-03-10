@@ -6,7 +6,7 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
-    ./commands.nix
+    ./common.nix
     ./mcp.nix
     ./permissions.nix
     ./settings.nix
