@@ -1,5 +1,5 @@
 {lib}: let
-  inherit (import ../lib.nix {inherit lib;}) readSkill mkYamlFrontmatter;
+  readSkill = (import ../lib.nix {inherit lib;}).readSkill;
 
   ## Skill metadata definitions
   skillMeta = {
@@ -34,36 +34,6 @@
   };
 
   skillNames = builtins.attrNames skillMeta;
-
-  ## Tool-specific skill generators
-  mkClaudeSkill = name: let
-    meta = skillMeta.${name};
-    body = readSkill name;
-    frontmatter = {inherit (meta) name description;};
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkCodexSkill = name: let
-    meta = skillMeta.${name};
-    body = readSkill name;
-    frontmatter = {inherit (meta) name description;};
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkOpenCodeSkill = name: let
-    meta = skillMeta.${name};
-    body = readSkill name;
-    frontmatter =
-      {inherit (meta) name description;}
-      // lib.optionalAttrs (meta ? compatibility) {inherit (meta) compatibility;}
-      // lib.optionalAttrs (meta ? metadata) {inherit (meta) metadata;};
-  in
-    mkYamlFrontmatter frontmatter + body;
 in {
-  inherit skillMeta mkClaudeSkill mkCodexSkill mkOpenCodeSkill;
-
-  ## Pre-generated skill sets
-  claude.skills = lib.genAttrs skillNames mkClaudeSkill;
-  codex.skills = lib.genAttrs skillNames mkCodexSkill;
-  opencode.skills = lib.genAttrs skillNames mkOpenCodeSkill;
+  inherit skillMeta skillNames readSkill;
 }
