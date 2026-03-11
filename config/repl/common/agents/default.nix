@@ -1,5 +1,5 @@
 {lib}: let
-  inherit (import ../lib.nix {inherit lib;}) readAgent mkYamlFrontmatter;
+  readAgent = (import ../lib.nix {inherit lib;}).readAgent;
 
   ## Agent metadata definitions
   agentMeta = {
@@ -52,56 +52,6 @@
   };
 
   agentNames = builtins.attrNames agentMeta;
-
-  ## Tool-specific agent generators
-  mkClaudeAgent = name: let
-    meta = agentMeta.${name};
-    body = readAgent name;
-    frontmatter = {
-      inherit (meta) name description model;
-      inherit (meta) tools;
-    };
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkCopilotAgent = name: let
-    meta = agentMeta.${name};
-    body = readAgent name;
-    frontmatter = {
-      inherit (meta) name description;
-      tools = meta.copilot-tools;
-    };
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkOpenCodeAgent = name: let
-    meta = agentMeta.${name};
-    body = readAgent name;
-    # OpenCode uses different frontmatter format
-    formatTools = tools:
-      if tools == {}
-      then ""
-      else
-        "\ntools:"
-        + lib.concatStrings (lib.mapAttrsToList (k: v: "\n  ${k}: ${
-            if v
-            then "true"
-            else "false"
-          }")
-          tools);
-    frontmatter = ''
-      ---
-      description: ${meta.description}
-      mode: ${meta.opencode-mode}${formatTools meta.opencode-tools}
-      ---
-    '';
-  in
-    frontmatter + body;
 in {
-  inherit agentMeta mkClaudeAgent mkCopilotAgent mkOpenCodeAgent;
-
-  ## Pre-generated agent sets
-  claude.agents = lib.genAttrs agentNames mkClaudeAgent;
-  copilot.agents = lib.genAttrs agentNames mkCopilotAgent;
-  opencode.agents = lib.genAttrs agentNames mkOpenCodeAgent;
+  inherit agentMeta agentNames readAgent;
 }

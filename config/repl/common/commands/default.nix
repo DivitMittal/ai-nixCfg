@@ -1,5 +1,5 @@
 {lib}: let
-  inherit (import ../lib.nix {inherit lib;}) readCommand mkYamlFrontmatter;
+  readCommand = (import ../lib.nix {inherit lib;}).readCommand;
 
   ## Command metadata definitions
   commandMeta = {
@@ -77,59 +77,6 @@
   };
 
   commandNames = builtins.attrNames commandMeta;
-
-  ## Tool-specific command generators
-  mkClaudeCommand = name: let
-    meta = commandMeta.${name};
-    body = readCommand name;
-    frontmatter =
-      {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? allowed-tools) {inherit (meta) allowed-tools;}
-      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;};
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkCodexPrompt = name: let
-    meta = commandMeta.${name};
-    body = readCommand name;
-    frontmatter =
-      {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;};
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkCopilotCommand = name: let
-    meta = commandMeta.${name};
-    body = readCommand name;
-    frontmatter =
-      {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;}
-      // lib.optionalAttrs (meta ? tools) {inherit (meta) tools;};
-  in
-    mkYamlFrontmatter frontmatter + body;
-
-  mkGeminiCommand = name: let
-    meta = commandMeta.${name};
-    body = readCommand name;
-  in {
-    inherit (meta) description;
-    prompt = body;
-  };
-
-  mkOpenCodeCommand = name: let
-    meta = commandMeta.${name};
-    body = readCommand name;
-    frontmatter = {inherit (meta) description;};
-  in
-    mkYamlFrontmatter frontmatter + body;
 in {
-  inherit commandMeta mkClaudeCommand mkCodexPrompt mkCopilotCommand mkGeminiCommand mkOpenCodeCommand;
-
-  ## Pre-generated command sets
-  claude.commands = lib.genAttrs commandNames mkClaudeCommand;
-  codex.prompts = lib.genAttrs commandNames mkCodexPrompt;
-  copilot.commands = lib.genAttrs commandNames mkCopilotCommand;
-  gemini.commands = lib.genAttrs commandNames mkGeminiCommand;
-  opencode.commands = lib.genAttrs commandNames mkOpenCodeCommand;
-  crush.commands = lib.genAttrs commandNames mkClaudeCommand; # Same format as Claude
+  inherit commandMeta commandNames readCommand;
 }
