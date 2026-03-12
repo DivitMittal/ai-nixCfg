@@ -15,7 +15,9 @@ in {
     ./mcp.nix
     ./oh-my-opencode.nix
     ./providers.nix
+    ./settings.nix
     ./themes
+    ./tui.nix
   ];
 
   home.packages = mkIf config.programs.opencode.enable (lib.attrsets.attrValues {
@@ -30,19 +32,5 @@ in {
   in {
     enable = true;
     inherit package;
-
-    enableMcpIntegration = false;
-
-    settings = {
-      autoupdate = false;
-      autoshare = false;
-
-      plugin = [
-        "oh-my-opencode"
-        "opencode-antigravity-auth@beta"
-        "opencode-beads"
-        "opencode-pty"
-      ];
-    };
   };
 }
