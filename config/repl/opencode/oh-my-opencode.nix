@@ -155,7 +155,7 @@
     };
   };
 
-  ## ghost.jsonc base config
+  ## ocx.jsonc base config
   ghostConfig = {
     registries = {};
     componentPath = ".opencode";
@@ -178,7 +178,7 @@
       inherit (cfg) enable;
       text = builtins.toJSON ohMyConfig;
     };
-    "opencode/profiles/${profileName}/ghost.jsonc" = {
+    "opencode/profiles/${profileName}/ocx.jsonc" = {
       inherit (cfg) enable;
       text = builtins.toJSON ghostConfig;
     };
