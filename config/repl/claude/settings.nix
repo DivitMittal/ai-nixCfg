@@ -3,6 +3,7 @@ _: {
 
   programs.claude-code.settings = {
     voiceEnabled = true;
+    skipDangerousModePermissionPrompt = true;
     attribution = {
       commit = "";
       pr = "";
