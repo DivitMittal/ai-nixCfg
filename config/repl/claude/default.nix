@@ -16,6 +16,7 @@ in {
     ./permissions.nix
     ./plugins.nix
     ./settings.nix
+    ./tui.nix
   ];
 
   home.packages = mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
