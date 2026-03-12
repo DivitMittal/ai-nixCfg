@@ -18,6 +18,8 @@ in {
     inherit (customPkgs) ccusage-codex;
   });
 
+  home.sessionVariables.CODEX_HOME = "${config.xdg.configHome}/codex";
+
   programs.codex = {
     enable = false;
     package = customPkgs.codex;
