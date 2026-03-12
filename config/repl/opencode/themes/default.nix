@@ -3,6 +3,4 @@
     inherit (config.programs.opencode) enable;
     source = ./ultraviolet.json;
   };
-
-  programs.opencode.settings.theme = "ultraviolet";
 }
