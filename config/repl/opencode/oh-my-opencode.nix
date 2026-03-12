@@ -7,15 +7,6 @@
   inherit (lib) mkIf;
   cfg = config.programs.opencode;
 
-  ## oh-my-opencode inherits from claude-code:
-  ## home-manager implementation doesn't create a config file for claude-code mcp but rather pass configuration as an argument, so oh-my-opencode can't inherit
-  ## - mcp
-  ## - commands
-  ## - skills
-  ## - agents
-  ## - hooks
-  ## - plugins
-
   ## Agents in oh-my-openagent
   agentNames = [
     "sisyphus"
@@ -153,6 +144,14 @@
     ralph_loop = {
       enabled = false;
     };
+    claude_code = {
+      mcp = false;
+      commands = true;
+      skills = true;
+      agents = true;
+      hooks = true;
+      plugins = true;
+    };
   };
 
   ## ocx.jsonc base config
@@ -189,13 +188,6 @@
     lib.foldl' (acc: profileName:
       acc // (mkProfileFiles profileName profiles.${profileName})) {} (lib.attrNames profiles);
 in {
-  ## Symlink oh-my-opencode.jsonc to current profile (managed by ocx)
-  home.activation.opencodeProfileSymlink = mkIf config.programs.opencode.enable (
-    lib.hm.dag.entryAfter ["writeBoundary"] ''
-      $DRY_RUN_CMD ln -sfn "profiles/current/oh-my-opencode.jsonc" \
-        "''${XDG_CONFIG_HOME:-$HOME/.config}/opencode/oh-my-opencode.jsonc"
-    ''
-  );
   ## Profile switching is handled by ocx (pnpm dlx ocx)
   xdg.configFile = mkIf cfg.enable allProfileFiles;
   home.packages = lib.mkIf cfg.enable (lib.attrsets.attrValues {
