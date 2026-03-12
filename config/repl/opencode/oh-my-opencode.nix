@@ -16,160 +16,140 @@
   ## - hooks
   ## - plugins
 
-  ## Base agents used across all profiles
+  ## Agents in oh-my-openagent
   agentNames = [
-    "Sisyphus"
-    "Sisyphus-Junior"
-    "Planner-Sisyphus"
+    "sisyphus"
+    "hephaestus"
+    "prometheus"
+    "atlas"
     "oracle"
-    "frontend-ui-ux-engineer"
-    "document-writer"
-    "multimodal-looker"
-    "explore"
     "librarian"
+    "explore"
+    "metis"
+    "momus"
+    "multimodal-looker"
   ];
 
   ## Agent role -> model mapping per profile
   profiles = {
     ## Pure Claude via Anthropic API
     claude = {
-      Sisyphus = "anthropic/claude-opus-4-5";
-      Sisyphus-Junior = "anthropic/claude-sonnet-4-5";
-      Planner-Sisyphus = "anthropic/claude-sonnet-4-5";
-      oracle = "anthropic/claude-opus-4-5";
-      frontend-ui-ux-engineer = "anthropic/claude-sonnet-4-5";
-      document-writer = "anthropic/claude-haiku-4-5";
-      multimodal-looker = "anthropic/claude-sonnet-4-5";
-      explore = "anthropic/claude-sonnet-4-5";
+      sisyphus = "anthropic/claude-opus-4-6";
+      hephaestus = "anthropic/claude-opus-4-6";
+      prometheus = "anthropic/claude-opus-4-6";
+      atlas = "anthropic/claude-sonnet-4-6";
+      oracle = "anthropic/claude-opus-4-6";
       librarian = "anthropic/claude-haiku-4-5";
+      explore = "anthropic/claude-haiku-4-5";
+      metis = "anthropic/claude-opus-4-6";
+      momus = "anthropic/claude-opus-4-6";
+      multimodal-looker = "anthropic/claude-sonnet-4-6";
     };
 
     ## OpenAI Codex models
     codex = {
-      Sisyphus = "openai/gpt-5.1-codex-max";
-      Sisyphus-Junior = "openai/gpt-5.1-codex-max";
-      Planner-Sisyphus = "openai/gpt-5.1-codex-max";
+      sisyphus = "openai/gpt-5.1-codex-max";
+      hephaestus = "openai/gpt-5.1-codex-max";
+      prometheus = "openai/gpt-5.1-codex-max";
+      atlas = "openai/gpt-5.1-codex-max";
       oracle = "openai/gpt-5.1-codex-max-high";
-      frontend-ui-ux-engineer = "openai/gpt-5.1-codex-max";
-      document-writer = "openai/gpt-5.1-codex-mini-high";
-      multimodal-looker = "openai/gpt-5.1-codex-max";
-      explore = "openai/gpt-5.1-codex-max";
       librarian = "openai/gpt-5.1-codex-mini-high";
-    };
-
-    ## Codex + GLM hybrid
-    codexglm = {
-      Sisyphus = "openai/gpt-5.1-codex-max";
-      Sisyphus-Junior = "zai-coding-plan/glm-4.7";
-      Planner-Sisyphus = "zai-coding-plan/glm-4.7";
-      oracle = "openai/gpt-5.1-codex-max-high";
-      frontend-ui-ux-engineer = "zai-coding-plan/glm-4.7";
-      document-writer = "zai-coding-plan/glm-4.7";
+      explore = "openai/gpt-5.1-codex-mini-high";
+      metis = "openai/gpt-5.1-codex-max";
+      momus = "openai/gpt-5.1-codex-max-high";
       multimodal-looker = "openai/gpt-5.1-codex-max";
-      explore = "zai-coding-plan/glm-4.7";
-      librarian = "openai/gpt-5.1-codex-mini-high";
     };
 
     ## Google Gemini models
     gemini = {
-      Sisyphus = "google/gemini-3-pro-preview";
-      Sisyphus-Junior = "google/gemini-3-flash-preview";
-      Planner-Sisyphus = "google/gemini-3-flash-preview";
-      oracle = "google/gemini-3-pro-preview";
-      frontend-ui-ux-engineer = "google/gemini-3-flash-preview";
-      document-writer = "google/gemini-3-flash-preview";
-      multimodal-looker = "google/gemini-3-flash-preview";
-      explore = "google/gemini-3-flash-preview";
+      sisyphus = "google/gemini-3.1-pro-preview";
+      hephaestus = "google/gemini-3.1-pro-preview";
+      prometheus = "google/gemini-3.1-pro-preview";
+      atlas = "google/gemini-3.1-pro-preview";
+      oracle = "google/gemini-3.1-pro-preview";
       librarian = "google/gemini-3-flash-preview";
+      explore = "google/gemini-3-flash-preview";
+      metis = "google/gemini-3.1-pro-preview";
+      momus = "google/gemini-3.1-pro-preview";
+      multimodal-looker = "google/gemini-3.1-pro-preview";
     };
 
-    ## Antigravity models (Google routed Claude/Gemini)
+    ## Antigravity models (Google-routed Claude/Gemini)
     agy = {
-      Sisyphus = "google/antigravity-claude-opus-4-5-thinking";
-      Sisyphus-Junior = "google/antigravity-claude-sonnet-4-5-thinking";
-      Planner-Sisyphus = "google/antigravity-claude-sonnet-4-5-thinking";
-      oracle = "google/antigravity-claude-opus-4-5-thinking";
-      frontend-ui-ux-engineer = "google/antigravity-gemini-3-pro";
-      document-writer = "google/antigravity-gemini-3-flash";
-      multimodal-looker = "google/antigravity-gemini-3-pro";
-      explore = "google/antigravity-claude-sonnet-4-5-thinking";
+      sisyphus = "google/antigravity-claude-opus-4-6-thinking";
+      hephaestus = "google/antigravity-claude-opus-4-6-thinking";
+      prometheus = "google/antigravity-claude-opus-4-6-thinking";
+      atlas = "google/antigravity-claude-sonnet-4-6";
+      oracle = "google/antigravity-claude-opus-4-6-thinking";
       librarian = "google/antigravity-gemini-3-flash";
-    };
-
-    ## Antigravity + native Claude hybrid
-    agyclaude = {
-      Sisyphus = "google/antigravity-claude-opus-4-5-thinking";
-      Sisyphus-Junior = "anthropic/claude-sonnet-4-5";
-      Planner-Sisyphus = "anthropic/claude-sonnet-4-5";
-      oracle = "google/antigravity-claude-opus-4-5-thinking";
-      frontend-ui-ux-engineer = "anthropic/claude-sonnet-4-5";
-      document-writer = "anthropic/claude-haiku-4-5";
-      multimodal-looker = "google/antigravity-gemini-3-pro";
-      explore = "anthropic/claude-sonnet-4-5";
-      librarian = "anthropic/claude-haiku-4-5";
+      explore = "google/antigravity-gemini-3-flash";
+      metis = "google/antigravity-claude-opus-4-6-thinking";
+      momus = "google/antigravity-claude-opus-4-6-thinking";
+      multimodal-looker = "google/antigravity-gemini-3.1-pro";
     };
 
     ## GitHub Copilot models
     ghcp = {
-      Sisyphus = "github-copilot/claude-opus-4.5";
-      Sisyphus-Junior = "github-copilot/claude-sonnet-4.5";
-      Planner-Sisyphus = "github-copilot/claude-sonnet-4.5";
-      oracle = "github-copilot/claude-opus-4.5";
-      frontend-ui-ux-engineer = "github-copilot/claude-sonnet-4.5";
-      document-writer = "github-copilot/claude-haiku-4.5";
-      multimodal-looker = "github-copilot/claude-sonnet-4.5";
-      explore = "github-copilot/claude-sonnet-4.5";
+      sisyphus = "github-copilot/claude-opus-4.6";
+      hephaestus = "github-copilot/claude-opus-4.6";
+      prometheus = "github-copilot/claude-opus-4.6";
+      atlas = "github-copilot/claude-sonnet-4.6";
+      oracle = "github-copilot/claude-opus-4.6";
       librarian = "github-copilot/claude-haiku-4.5";
+      explore = "github-copilot/claude-haiku-4.5";
+      metis = "github-copilot/claude-opus-4.6";
+      momus = "github-copilot/claude-opus-4.6";
+      multimodal-looker = "github-copilot/claude-sonnet-4.6";
     };
 
     ## Pure GLM models
     glm = {
-      Sisyphus = "zai-coding-plan/glm-4.7";
-      Sisyphus-Junior = "zai-coding-plan/glm-4.7";
-      Planner-Sisyphus = "zai-coding-plan/glm-4.7";
+      sisyphus = "zai-coding-plan/glm-4.7";
+      hephaestus = "zai-coding-plan/glm-4.7";
+      prometheus = "zai-coding-plan/glm-4.7";
+      atlas = "zai-coding-plan/glm-4.7";
       oracle = "zai-coding-plan/glm-4.7";
-      frontend-ui-ux-engineer = "zai-coding-plan/glm-4.7";
-      document-writer = "zai-coding-plan/glm-4.7";
-      multimodal-looker = "zai-coding-plan/glm-4.7";
-      explore = "zai-coding-plan/glm-4.7";
       librarian = "zai-coding-plan/glm-4.7";
+      explore = "zai-coding-plan/glm-4.7";
+      metis = "zai-coding-plan/glm-4.7";
+      momus = "zai-coding-plan/glm-4.7";
+      multimodal-looker = "zai-coding-plan/glm-4.7";
     };
 
     ## OpenRouter free models
     openrouter = {
-      Sisyphus = "openrouter/moonshotai/kimi-k2:free";
-      Sisyphus-Junior = "openrouter/moonshotai/kimi-k2:free";
-      Planner-Sisyphus = "openrouter/moonshotai/kimi-k2:free";
+      sisyphus = "openrouter/moonshotai/kimi-k2:free";
+      hephaestus = "openrouter/moonshotai/kimi-k2:free";
+      prometheus = "openrouter/moonshotai/kimi-k2:free";
+      atlas = "openrouter/moonshotai/kimi-k2:free";
       oracle = "openrouter/moonshotai/kimi-k2:free";
-      frontend-ui-ux-engineer = "openrouter/moonshotai/kimi-k2:free";
-      document-writer = "openrouter/moonshotai/kimi-k2:free";
-      multimodal-looker = "openrouter/moonshotai/kimi-k2:free";
-      explore = "openrouter/moonshotai/kimi-k2:free";
       librarian = "openrouter/moonshotai/kimi-k2:free";
+      explore = "openrouter/moonshotai/kimi-k2:free";
+      metis = "openrouter/moonshotai/kimi-k2:free";
+      momus = "openrouter/moonshotai/kimi-k2:free";
+      multimodal-looker = "openrouter/moonshotai/kimi-k2:free";
     };
 
     ## Zen profile (OpenCode free models)
     zen = {
-      Sisyphus = "opencode/big-pickle";
-      Sisyphus-Junior = "opencode/gpt-5-nano";
-      Planner-Sisyphus = "opencode/big-pickle";
+      sisyphus = "opencode/big-pickle";
+      hephaestus = "opencode/big-pickle";
+      prometheus = "opencode/big-pickle";
+      atlas = "opencode/gpt-5-nano";
       oracle = "opencode/big-pickle";
-      frontend-ui-ux-engineer = "opencode/gpt-5-nano";
-      document-writer = "opencode/gpt-5-nano";
-      multimodal-looker = "opencode/gpt-5-nano";
-      explore = "opencode/gpt-5-nano";
       librarian = "opencode/gpt-5-nano";
+      explore = "opencode/gpt-5-nano";
+      metis = "opencode/big-pickle";
+      momus = "opencode/big-pickle";
+      multimodal-looker = "opencode/gpt-5-nano";
     };
   };
 
   ## oh-my-opencode base config (shared across profiles)
   ohMyOpencodeBase = {
-    "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json";
+    "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
     google_auth = false; ## Using Antigravity auth instead
-    disabled_hooks = ["session-notification" "ralph-loop"];
-    ralph_loop = {
-      enabled = false;
-    };
+    disabled_hooks = ["session-notification"];
   };
 
   ## ghost.jsonc base config
