@@ -48,16 +48,16 @@
 
     ## OpenAI Codex models
     codex = {
-      sisyphus = "openai/gpt-5.1-codex-max";
-      hephaestus = "openai/gpt-5.1-codex-max";
-      prometheus = "openai/gpt-5.1-codex-max";
-      atlas = "openai/gpt-5.1-codex-max";
-      oracle = "openai/gpt-5.1-codex-max-high";
-      librarian = "openai/gpt-5.1-codex-mini-high";
-      explore = "openai/gpt-5.1-codex-mini-high";
-      metis = "openai/gpt-5.1-codex-max";
-      momus = "openai/gpt-5.1-codex-max-high";
-      multimodal-looker = "openai/gpt-5.1-codex-max";
+      sisyphus = "openai/gpt-5.2-codex";
+      hephaestus = "openai/gpt-5.2-codex";
+      prometheus = "openai/gpt-5.2-codex";
+      atlas = "openai/gpt-5.2-codex";
+      oracle = "openai/gpt-5.2-codex";
+      librarian = "openai/gpt-5.2-codex-mini";
+      explore = "openai/gpt-5.2-codex-mini";
+      metis = "openai/gpt-5.2-codex";
+      momus = "openai/gpt-5.2-codex";
+      multimodal-looker = "openai/gpt-5.2-codex";
     };
 
     ## Google Gemini models
@@ -104,15 +104,15 @@
 
     ## Pure GLM models
     glm = {
-      sisyphus = "zai-coding-plan/glm-4.7";
-      hephaestus = "zai-coding-plan/glm-4.7";
-      prometheus = "zai-coding-plan/glm-4.7";
+      sisyphus = "zai-coding-plan/glm-5";
+      hephaestus = "zai-coding-plan/glm-5";
+      prometheus = "zai-coding-plan/glm-5";
       atlas = "zai-coding-plan/glm-4.7";
-      oracle = "zai-coding-plan/glm-4.7";
-      librarian = "zai-coding-plan/glm-4.7";
-      explore = "zai-coding-plan/glm-4.7";
-      metis = "zai-coding-plan/glm-4.7";
-      momus = "zai-coding-plan/glm-4.7";
+      oracle = "zai-coding-plan/glm-5";
+      librarian = "zai-coding-plan/glm-4.7-flash";
+      explore = "zai-coding-plan/glm-4.7-flash";
+      metis = "zai-coding-plan/glm-5";
+      momus = "zai-coding-plan/glm-5";
       multimodal-looker = "zai-coding-plan/glm-4.7";
     };
 
