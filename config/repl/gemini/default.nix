@@ -13,6 +13,6 @@
   in {
     enable = true; # Currently using for web-search capabilities in CCS
     inherit package;
-    defaultModel = "gemini-3-pro-preview";
+    defaultModel = "gemini-3.1-pro-preview";
   };
 }
