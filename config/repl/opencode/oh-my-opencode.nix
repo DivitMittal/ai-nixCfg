@@ -149,7 +149,10 @@
   ohMyOpencodeBase = {
     "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
     google_auth = false; ## Using Antigravity auth instead
-    disabled_hooks = ["session-notification"];
+    disabled_hooks = ["session-notification" "ralph-loop"];
+    ralph_loop = {
+      enabled = false;
+    };
   };
 
   ## ghost.jsonc base config
