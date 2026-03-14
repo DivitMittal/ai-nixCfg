@@ -79,18 +79,18 @@
       multimodal-looker = "google/antigravity-gemini-3.1-pro";
     };
 
-    ## GitHub Copilot models
+    ## GitHub Copilot models (Student plan: opus/sonnet/gpt-5.4 removed from direct selection as of 2026-03-12)
     ghcp = {
-      sisyphus = "github-copilot/claude-opus-4.6";
-      hephaestus = "github-copilot/claude-opus-4.6";
-      prometheus = "github-copilot/claude-opus-4.6";
-      atlas = "github-copilot/claude-sonnet-4.6";
-      oracle = "github-copilot/claude-opus-4.6";
+      sisyphus = "github-copilot/gpt-5.3-codex";
+      hephaestus = "github-copilot/gpt-5.3-codex";
+      prometheus = "github-copilot/gemini-3.1-pro";
+      atlas = "github-copilot/gemini-3.1-pro";
+      oracle = "github-copilot/gemini-3.1-pro";
       librarian = "github-copilot/claude-haiku-4.5";
       explore = "github-copilot/claude-haiku-4.5";
-      metis = "github-copilot/claude-opus-4.6";
-      momus = "github-copilot/claude-opus-4.6";
-      multimodal-looker = "github-copilot/claude-sonnet-4.6";
+      metis = "github-copilot/gemini-3.1-pro";
+      momus = "github-copilot/gpt-5.3-codex";
+      multimodal-looker = "github-copilot/gemini-3.1-pro";
     };
 
     ## Pure GLM models
