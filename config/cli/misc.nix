@@ -1,8 +1,11 @@
 {
   pkgs,
   lib,
+  ai-nixCfg,
   ...
-}: {
+}: let
+  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+in {
   home.packages = lib.attrsets.attrValues {
     ### ClawdBot
     ## OpenClaw
@@ -14,8 +17,6 @@
     #   exec ${pkgs.pnpm}/bin/pnpm dlx picoclaw "$@"
     # '';
     ## ZeroClaw
-    # zeroclaw = pkgs.writeShellScriptBin "zeroclaw" ''
-    #   exec ${pkgs.pnpm}/bin/pnpm dlx zeroclaw "$@"
-    # '';
+    inherit(customPkgs) zeroclaw;
   };
 }
