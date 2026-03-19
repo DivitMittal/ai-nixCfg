@@ -21,7 +21,7 @@ in {
   home.sessionVariables.CODEX_HOME = "${config.xdg.configHome}/codex";
 
   programs.codex = {
-    enable = false;
+    enable = true;
     package = customPkgs.codex;
   };
 }
