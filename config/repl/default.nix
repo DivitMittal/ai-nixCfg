@@ -6,6 +6,7 @@ _: {
     ./crush
     ./gemini
     ./opencode
+    ./openclaw
     ./misc.nix
   ];
 }
