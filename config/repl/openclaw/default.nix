@@ -20,11 +20,11 @@ in {
       goplaces.enable = true;
       sag.enable = true;
       sonoscli.enable = true;
-      # macOS-only plugins
-      peekaboo.enable = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-      poltergeist.enable = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-      bird.enable = pkgs.stdenvNoCC.hostPlatform.isDarwin;
-      imsg.enable = pkgs.stdenvNoCC.hostPlatform.isDarwin;
+      # macOS-only plugins (aarch64-darwin only; steipete tools don't support x86_64-darwin)
+      peekaboo.enable = pkgs.stdenvNoCC.hostPlatform.isAarch64 && pkgs.stdenvNoCC.hostPlatform.isDarwin;
+      poltergeist.enable = pkgs.stdenvNoCC.hostPlatform.isAarch64 && pkgs.stdenvNoCC.hostPlatform.isDarwin;
+      bird.enable = pkgs.stdenvNoCC.hostPlatform.isAarch64 && pkgs.stdenvNoCC.hostPlatform.isDarwin;
+      imsg.enable = pkgs.stdenvNoCC.hostPlatform.isAarch64 && pkgs.stdenvNoCC.hostPlatform.isDarwin;
     };
   };
 }
