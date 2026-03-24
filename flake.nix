@@ -67,6 +67,18 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    nix-steipete-tools = {
+      url = "github:openclaw/nix-steipete-tools";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-openclaw = {
+      url = "github:openclaw/nix-openclaw";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        nix-steipete-tools.follows = "nix-steipete-tools";
+      };
+    };
   };
 
   nixConfig = {

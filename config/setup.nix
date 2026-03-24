@@ -6,6 +6,7 @@ self: {
     ./mcp.nix
     ./workflows.nix
     self.homeManagerModules.default
+    self.inputs.nix-openclaw.homeManagerModules.openclaw
   ];
 
   _module.args = {
