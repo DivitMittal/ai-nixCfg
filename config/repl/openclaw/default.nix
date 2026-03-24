@@ -1,31 +1,32 @@
 {
   pkgs,
   ai-nixCfg,
+  lib,
   ...
 }: let
   system = pkgs.stdenvNoCC.hostPlatform.system;
-  customPkgs = ai-nixCfg.packages.${system};
-  gatewayPkg = ai-nixCfg.inputs.nix-openclaw.packages.${system}.openclaw-gateway;
   isAarch64Darwin = pkgs.stdenvNoCC.hostPlatform.isAarch64 && pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in {
-  home.packages = [ customPkgs.openclaw ];
+  # nix-openclaw and all steipete plugins only support aarch64-darwin
+  home.packages = lib.mkIf isAarch64Darwin [
+    ai-nixCfg.packages.${system}.openclaw
+  ];
 
-  programs.openclaw = {
+  programs.openclaw = lib.mkIf isAarch64Darwin {
     enable = true;
-    package = gatewayPkg;
+    package = ai-nixCfg.inputs.nix-openclaw.packages.${system}.openclaw-gateway;
 
-    # nix-steipete-tools only provides packages for aarch64-darwin; disable on x86_64-darwin
     bundledPlugins = {
-      summarize.enable = isAarch64Darwin;
-      camsnap.enable = isAarch64Darwin;
-      gogcli.enable = isAarch64Darwin;
-      goplaces.enable = isAarch64Darwin;
-      sag.enable = isAarch64Darwin;
-      sonoscli.enable = isAarch64Darwin;
-      peekaboo.enable = isAarch64Darwin;
-      poltergeist.enable = isAarch64Darwin;
-      bird.enable = isAarch64Darwin;
-      imsg.enable = isAarch64Darwin;
+      summarize.enable = true;
+      camsnap.enable = true;
+      gogcli.enable = true;
+      goplaces.enable = true;
+      sag.enable = true;
+      sonoscli.enable = true;
+      peekaboo.enable = true;
+      poltergeist.enable = true;
+      bird.enable = true;
+      imsg.enable = true;
     };
   };
 }
