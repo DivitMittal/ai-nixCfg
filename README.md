@@ -30,6 +30,9 @@ This repository provides reusable Nix home-manager modules and personal configur
 | **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** | Google's Gemini AI coding assistant |
 | **[OpenCode](https://github.com/oortwagen/opencode)** | Multi-provider AI coding assistant |
 | **[Crush](https://github.com/frommeltly/crush)** | AI coding assistant with LSP integration |
+| **[Openclaw](https://github.com/openclaw/nix-openclaw)** | macOS-native AI assistant with plugins (aarch64-darwin only) |
+| **[Qwen Code](https://github.com/QwenLM/qwen-code)** | Qwen AI coding assistant CLI |
+| **[KiloCode](https://github.com/Kilocode-AI/kilocode)** | KiloCode AI coding assistant CLI |
 
 ### Companion Tools
 
@@ -60,6 +63,7 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 | **[ralph-tui](https://github.com/subsy/ralph-tui)** | AI Agent Loop Orchestrator TUI |
 | **[bead (bd)](https://github.com/divramod/bd)** | Memory system / issue tracker |
 | **[bv](https://github.com/divramod/bv)** | Beads Viewer - graph-aware task management TUI |
+| **[n8n](https://github.com/n8n-io/n8n)** | AI workflow automation platform |
 
 ### AI-Powered VCS Tools
 
@@ -90,24 +94,28 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 │       ├── bv-bin/             # Beads Viewer TUI binary
 │       └── gowa/               # WhatsApp REST API with MCP support
 ├── modules/                    # Home-manager modules (reusable)
-│   ├── default.nix             # Exports: claude-code, codex, github-copilot, Cfg
+│   ├── default.nix             # Exports: claude-code, codex, crush, github-copilot
 │   └── home/
 │       ├── claude-code.nix     # Claude Code output styles
 │       ├── codex.nix           # Codex skills and prompts
+│       ├── crush.nix           # Crush MCP servers, LSP, permissions, commands
 │       └── github-copilot.nix  # Copilot MCP servers, permissions, commands
 ├── config/                     # Personal configurations
 │   ├── cli/                    # LLM CLI tools
 │   │   ├── aichat.nix          # Multi-provider LLM client
 │   │   ├── mods.nix            # GPT shell assistant
 │   │   ├── fabric.nix          # Pattern-based AI workflows
-│   │   └── vcs.nix             # AI-powered VCS tools
+│   │   ├── vcs.nix             # AI-powered VCS tools
+│   │   └── misc.nix            # Misc CLI tools (n8n)
 │   ├── repl/                   # Agentic coding assistants
 │   │   ├── claude/             # Settings, MCP, plugins, hooks, commands, skills, agents, rules
 │   │   ├── codex/              # Settings, MCP, commands, skills, rules
 │   │   ├── copilot/            # Settings, MCP, commands, permissions
 │   │   ├── crush/              # Settings, MCP, LSP, permissions, rules, commands
 │   │   ├── gemini/             # Settings, MCP, rules, commands
-│   │   └── opencode/           # Settings, MCP, LSP, memory, providers, themes, plugins
+│   │   ├── opencode/           # Settings, MCP, LSP, memory, providers, themes, plugins
+│   │   ├── openclaw/           # Settings, plugins (aarch64-darwin only)
+│   │   └── misc.nix            # Misc REPL tools (Qwen Code, KiloCode)
 │   ├── cloud.nix               # Kaggle and Hugging Face CLI
 │   ├── mcp.nix                 # Shared MCP servers (deepwiki, octocode, exa)
 │   └── workflows.nix           # AI workflow tools
@@ -149,6 +157,7 @@ Import the home-manager modules in your configuration:
 Available modules:
 - `claude-code` - Output styles management
 - `codex` - Skills and prompts management
+- `crush` - MCP servers, LSP, permissions, commands
 - `github-copilot` - MCP servers, settings, permissions, commands
 - `Cfg` - All personal configurations (see below)
 
@@ -165,9 +174,9 @@ To import all personal configurations from the `config/` directory, use the `Cfg
 ```
 
 This imports the complete personal setup including:
-- **Agentic REPLs**: Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush
+- **Agentic REPLs**: Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush, Openclaw (macOS), Qwen Code, KiloCode
 - **Companion Tools**: ccs, ccusage, ccstatusline, ccusage-codex, ccusage-opencode, ocx
-- **LLM CLI Tools**: aichat, mods, fabric-ai
+- **LLM CLI Tools**: aichat, mods, fabric-ai, n8n
 - **VCS Tools**: geminicommit, lumen
 - **Workflow Tools**: openspec, ralph-tui, bead, bv
 - **Cloud Platforms**: Kaggle, Hugging Face CLI
@@ -307,7 +316,7 @@ This flake exports custom packages via `packages.<system>`:
 }
 ```
 
-Additionally, packages from [llm-agents.nix](https://github.com/numtide/llm-agents.nix) are re-exported.
+Additionally, packages from [llm-agents.nix](https://github.com/numtide/llm-agents.nix) and [nix-steipete-tools](https://github.com/openclaw/nix-steipete-tools) are re-exported.
 
 ## Related Repositories
 
