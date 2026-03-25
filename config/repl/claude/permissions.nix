@@ -13,10 +13,6 @@ _: {
       ## Octocode MCP
       "mcp__octocode__*"
     ];
-    ask = [
-      "Bash(git push:*)"
-      "Bash(git commit:*)"
-    ];
     defaultMode = "acceptEdits";
     deny = [
       "WebFetch"
