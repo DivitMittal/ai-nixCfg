@@ -39,6 +39,6 @@ in {
     #   exec ${pkgs.pnpm}/bin/pnpm dlx @beads/bd "$@"
     # '';
     ## Beads-Viewer
-    Beads-Viewer = customPkgs.bv-bin;
+    Beads-Viewer = customPkgs.beads-viewer;
   };
 }
