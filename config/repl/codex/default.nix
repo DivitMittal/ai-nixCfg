@@ -22,7 +22,6 @@ in {
   # home.sessionVariables.CODEX_HOME = "${config.xdg.configHome}/codex";
   programs.codex = let
     package = pkgs.writeShellScriptBin "codex" ''
-      #!${pkgs.stdenvNoCC.shell}
       export CODEX_HOME="${config.xdg.configHome}/codex"
       exec ${pkgs.pnpm}/bin/pnpm dlx @openai/codex "$@"
     '';
