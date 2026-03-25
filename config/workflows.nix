@@ -26,7 +26,13 @@ in {
       exec ${pkgs.uv}/bin/uv tool run --from llm-tldr tldr "$@"
     '';
 
-    ## Memory System (Issue Tracker)
+    ### Automation
+    ## n8n
+    n8n = pkgs.writeShellScriptBin "n8n" ''
+      exec ${pkgs.pnpm}/bin/pnpm dlx n8n "$@"
+    '';
+
+    ### Memory System (Issue Tracker)
     ## Bead
     bead = customPkgs.beads;
     # bead = pkgs.writeShellScriptBin "bd" ''
