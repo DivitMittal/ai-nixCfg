@@ -5,7 +5,7 @@
   ai-nixCfg,
   ...
 }: let
-  inherit (lib) mkIf optionalString;
+  inherit (lib) mkIf optionalAttrs optionalString;
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   imports = [
@@ -25,7 +25,7 @@ in {
         ${optionalString config.home.preferXdgDirectories ''export CODEX_HOME="${config.xdg.configHome}/codex"''}
         exec ${pkgs.pnpm}/bin/pnpm dlx @openai/codex "$@"
       '')
-      // {version = "0.94.0";};
+      // (optionalAttrs config.home.preferXdgDirectories {version = "0.94.0";});
   in {
     enable = true;
     inherit package;
