@@ -1,15 +1,9 @@
 {lib}: let
-  ## Directory paths
-  commandsDir = ./commands;
-  skillsDir = ./skills;
-  agentsDir = ./agents;
-  rulesDir = ./rules;
-
   ## Content readers
-  readCommand = name: builtins.readFile "${commandsDir}/${name}.md";
-  readSkill = name: builtins.readFile "${skillsDir}/${name}.md";
-  readAgent = name: builtins.readFile "${agentsDir}/${name}.md";
-  readRule = name: builtins.readFile "${rulesDir}/${name}.md";
+  readCommand = name: builtins.readFile (./commands + "/${name}.md");
+  readSkill = name: builtins.readFile (./skills + "/${name}.md");
+  readAgent = name: builtins.readFile (./agents + "/${name}.md");
+  readRule = name: builtins.readFile (./rules + "/${name}.md");
 
   ## Memory/rule loading instruction (shared across tools)
   memoryInstruction = ''
