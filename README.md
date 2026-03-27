@@ -125,6 +125,18 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 
 ## Usage
 
+### Quick Start
+
+Drop into a pre-built AI shell environment without cloning or installing anything:
+
+```sh
+nix run github:DivitMittal/ai-nixCfg#ai
+```
+
+Drops you into `$SHELL` with the full AI toolchain (all agentic assistants, LLM CLIs, workflow tools, and MCP integrations) prepended to `PATH`. Ephemeral — nothing is activated or written to your home directory.
+
+---
+
 ### As a Flake Input
 
 Add this repository to your flake inputs:
