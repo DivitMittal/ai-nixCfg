@@ -1,6 +1,6 @@
-{customLib, ...}: {
+{inputs, ...}: {
   flake.homeManagerModules = {
-    default = import ./home {inherit customLib;};
+    default = inputs.import-tree ./home;
     claude-code = import ./home/claude-code.nix;
     codex = import ./home/codex.nix;
     crush = import ./home/crush.nix;
