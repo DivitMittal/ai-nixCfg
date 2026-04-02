@@ -8,9 +8,9 @@
       systems = import inputs.systems;
       imports = [
         (inputs.import-tree ./flake)
-        ./modules/homeManagerModules.nix
-        ./pkgs/packages.nix
-        ./config/configurations.nix
+        ./modules
+        ./pkgs
+        ./config
       ];
     });
 
