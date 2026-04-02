@@ -1,5 +1,7 @@
 {inputs, ...}: {
-  imports = [inputs.actions-nix.flakeModules.default];
+  imports = [
+    inputs.actions-nix.flakeModules.default
+  ];
 
   _module.args = {
     common-on = rec {
