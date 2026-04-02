@@ -1,10 +1,6 @@
 self: {
   imports = [
-    ./cli
-    ./repl
-    ./cloud.nix
-    ./mcp.nix
-    ./workflows.nix
+    (self.inputs."import-tree".matchNot ".*(setup|default)\\.nix" ./.)
     self.homeManagerModules.default
     self.inputs.nix-openclaw.homeManagerModules.openclaw
   ];
