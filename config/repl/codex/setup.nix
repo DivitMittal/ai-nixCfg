@@ -8,12 +8,6 @@
   inherit (lib) mkIf optionalAttrs optionalString;
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = [
-    ./common.nix
-    ./mcp.nix
-    ./settings.nix
-  ];
-
   home.packages = mkIf config.programs.codex.enable (lib.attrsets.attrValues {
     inherit (customPkgs) ccusage-codex;
   });

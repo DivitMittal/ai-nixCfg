@@ -1,10 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./common.nix
-    ./mcp.nix
-    ./settings.nix
-  ];
-
   programs.gemini-cli = let
     package = pkgs.writeShellScriptBin "gemini" ''
       exec ${pkgs.pnpm}/bin/pnpm dlx @google/gemini-cli "$@"
