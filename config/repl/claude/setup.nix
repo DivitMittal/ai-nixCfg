@@ -8,17 +8,6 @@
   inherit (lib) mkIf;
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
-  imports = [
-    ./common.nix
-    ./hooks.nix
-    ./mcp.nix
-    ./output-styles
-    ./permissions.nix
-    ./plugins.nix
-    ./settings.nix
-    ./tui.nix
-  ];
-
   home.packages = mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
     inherit (customPkgs) ccusage;
     claude-code-switcher = pkgs.writeShellScriptBin "ccs" ''
