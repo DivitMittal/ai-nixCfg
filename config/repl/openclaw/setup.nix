@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  system = pkgs.stdenvNoCC.hostPlatform.system;
+  inherit (pkgs.stdenvNoCC.hostPlatform) system;
   isAarch64Darwin = pkgs.stdenvNoCC.hostPlatform.isAarch64 && pkgs.stdenvNoCC.hostPlatform.isDarwin;
 in {
   # nix-openclaw and all steipete plugins only support aarch64-darwin

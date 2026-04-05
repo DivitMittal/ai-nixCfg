@@ -1,6 +1,6 @@
 self: {
   imports = [
-    (self.inputs."import-tree".matchNot ".*(setup|default)\\.nix" ./.)
+    (self.inputs."import-tree".matchNot "setup\\.nix|.*(default|lib)\\.nix" ./.)
     self.homeManagerModules.default
     self.inputs.nix-openclaw.homeManagerModules.openclaw
   ];
