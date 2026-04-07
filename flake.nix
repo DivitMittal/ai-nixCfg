@@ -44,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ## AI packages
+    ### AI packages
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +63,7 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
       inputs.nixpkgs.follows = "nixpkgs";
