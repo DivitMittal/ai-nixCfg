@@ -1,15 +1,15 @@
 # PROJECT KNOWLEDGE BASE
 
 ## OVERVIEW
-Nix flake with home-manager modules and personal configs for AI coding assistants (Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush), LLM CLI/workflow tools, and custom packages (bv-bin, gowa). Uses flake-parts, home-manager, treefmt-nix, git-hooks, actions-nix, nix-direnv; imports customLib from OS-nixCfg for scanPaths.
+Nix flake with home-manager modules and personal configs for AI coding assistants (Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, OpenClaw, Crush), LLM CLI/workflow tools, and custom packages (gowa). Uses flake-parts, home-manager, treefmt-nix, git-hooks, actions-nix, nix-direnv; imports customLib from OS-nixCfg for scanPaths.
 
 ## STRUCTURE
 ```
 ./
-├── flake/                 # flake-parts modules: actions/, checks.nix, devshells.nix, formatters.nix
-├── modules/               # reusable home-manager modules (claude-code, codex, github-copilot, crush)
-├── config/                # personal configs: repl/ per tool, cli/, cloud.nix, mcp.nix, workflows.nix, setup.nix
-├── pkgs/                  # custom packages (bv-bin, gowa) + default export
+├── flake/                 # flake-parts modules: actions/, apps.nix, checks.nix, devshells.nix, formatters.nix
+├── modules/home/          # reusable home-manager modules (claude-code, codex, github-copilot, crush)
+├── config/home/           # personal configs: repl/ per tool, cli/, cloud.nix, mcp.nix, workflows.nix
+├── pkgs/                  # custom packages (pkgs/custom/gowa) + default export
 ├── .github/workflows/     # autogen from flake/actions (do not hand-edit)
 └── AGENTS.md              # this file
 ```
@@ -18,18 +18,20 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 | Task | Location | Notes |
 |------|----------|-------|
 | Add/understand modules | modules/home/*.nix | Follow standard header; typed options; mkIf cfg.enable |
-| AI REPL generators | config/repl/common/default.nix | Shared commands/skills/agents/rules factory (380 lines) |
-| OpenCode profiles | config/repl/opencode/oh-my-opencode.nix | Profile/model mappings; symlink logic |
-| Tool configs | config/repl/{claude,codex,copilot,crush,gemini,opencode}/ | Each imports common outputs |
-| CLI tools | config/cli/*.nix | aichat, mods, fabric, vcs |
+| AI REPL generators | config/home/repl/_common/default.nix | Shared commands/skills/agents/rules library (pure data) |
+| Tool-specific generators | config/home/repl/{claude,codex,copilot,crush,gemini,opencode}/common.nix | Each owns its mk* generators |
+| OpenCode profiles | config/home/repl/opencode/oh-my-opencode.nix | Profile/model mappings; symlink logic |
+| Tool configs | config/home/repl/{claude,codex,copilot,crush,gemini,opencode,openclaw}/ | Per-tool setup/settings/mcp/permissions |
+| CLI tools | config/home/cli/*.nix | aichat, mods, fabric, vcs |
 | CI/formatting/hooks | flake/actions/*, flake/formatters.nix, flake/checks.nix | Render workflows via nix run .#render-workflows |
 
 ## CODE MAP
 | Symbol | Type | Location | Role |
 |--------|------|----------|------|
-| mkClaudeCommand/mkCodexPrompt/... | functions | config/repl/common/default.nix | Generate tool-specific frontmatter + files |
+| mkClaudeCommand/mkCodexPrompt/... | functions | config/home/repl/{tool}/common.nix | Generate tool-specific frontmatter + files |
 | mcpServerType/permissionsType | submodules | modules/home/{github-copilot,crush}.nix | Typed MCP/LSP/permission configs |
-| mkProfileFiles | function | config/repl/opencode/oh-my-opencode.nix | Emit profile files + activation symlinks |
+| mkProfileFiles | function | config/home/repl/opencode/oh-my-opencode.nix | Emit profile files + activation symlinks |
+| commandMeta/skillMeta/agentMeta | attrsets | config/home/repl/_common/{commands,skills,agents}/default.nix | Shared metadata consumed by all tool generators |
 
 ## CONVENTIONS
 - Module header: `{ config, lib, pkgs, ... }: let inherit (lib) mkIf mkOption types; cfg = config.programs.<name>; in { options = {...}; config = mkIf cfg.enable {...}; }`
@@ -46,7 +48,7 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 
 ## UNIQUE STYLES
 - `customLib.scanPaths` auto-import pattern in flake/, modules/home/, flake/actions/.
-- Shared content factory in `config/repl/common/default.nix` emits commands/skills/agents/rules for multiple tools.
+- `config/home/repl/_common/` exports pure data (metadata + content readers); tool-specific generation lives in each tool's `common.nix`.
 - OpenCode profile system generates per-profile JSONC and manages symlinked current profile.
 
 ## COMMANDS
@@ -63,3 +65,5 @@ nix run .#pre-commit
 - Primary validation via flake check; no traditional unit tests.
 - Direnv enabled (.envrc) for nix-direnv; allow before working.
 - If modifying flake/actions, rerun `nix run .#render-workflows` and commit YAML outputs.
+- OpenClaw (`config/home/repl/openclaw/`) is a minimal tool with only `setup.nix`.
+- Custom packages live under `pkgs/custom/` (e.g. `pkgs/custom/gowa`); `pkgs/default.nix` re-exports them.
