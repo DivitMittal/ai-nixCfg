@@ -1,5 +1,5 @@
 {lib, ...}: let
-  common = import ../common {inherit lib;};
+  common = import ../_common {inherit lib;};
   inherit (common.lib) mkYamlFrontmatter;
   inherit (common.commands) commandMeta commandNames readCommand;
 
