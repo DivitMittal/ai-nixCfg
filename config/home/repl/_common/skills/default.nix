@@ -1,5 +1,5 @@
 {lib}: let
-  readSkill = (import ../lib.nix {inherit lib;}).readSkill;
+  inherit ((import ../lib.nix {inherit lib;})) readSkill;
 
   ## Skill metadata definitions
   skillMeta = {

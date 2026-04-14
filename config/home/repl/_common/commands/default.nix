@@ -1,5 +1,5 @@
 {lib}: let
-  readCommand = (import ../lib.nix {inherit lib;}).readCommand;
+  inherit ((import ../lib.nix {inherit lib;})) readCommand;
 
   ## Command metadata definitions
   commandMeta = {
