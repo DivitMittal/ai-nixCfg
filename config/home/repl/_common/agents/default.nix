@@ -1,5 +1,5 @@
 {lib}: let
-  readAgent = (import ../lib.nix {inherit lib;}).readAgent;
+  inherit ((import ../lib.nix {inherit lib;})) readAgent;
 
   ## Agent metadata definitions
   agentMeta = {
