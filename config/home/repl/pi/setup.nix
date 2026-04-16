@@ -4,7 +4,6 @@
   ai-nixCfg,
   ...
 }: let
-  inherit (pkgs.stdenvNoCC.hostPlatform) system;
   isSupported =
     pkgs.stdenvNoCC.hostPlatform.isAarch64
     && pkgs.stdenvNoCC.hostPlatform.isDarwin
