@@ -4,6 +4,6 @@
   inherit (common.rules) combinedRules;
 in {
   programs.opencode = {
-    rules = memoryInstruction + "\n\n" + combinedRules;
+    context = memoryInstruction + "\n\n" + combinedRules;
   };
 }

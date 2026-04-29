@@ -24,6 +24,6 @@ in {
   programs.codex = {
     prompts = lib.genAttrs commandNames mkPrompt;
     skills = lib.genAttrs skillNames mkSkill;
-    custom-instructions = memoryInstruction + "\n\n" + combinedRules;
+    context = memoryInstruction + "\n\n" + combinedRules;
   };
 }
