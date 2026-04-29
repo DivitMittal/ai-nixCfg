@@ -38,6 +38,6 @@ in {
     skills = lib.genAttrs skillNames mkSkill;
     agents = lib.genAttrs agentNames mkAgent;
     rules = lib.genAttrs ruleNames readRule;
-    memory.text = memoryInstruction;
+    context = memoryInstruction;
   };
 }
