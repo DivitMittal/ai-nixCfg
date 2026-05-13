@@ -8,7 +8,7 @@
       settings = {
         enable = true;
         package = pkgs.prek;
-        gitPackage = pkgs.gitFull;
+        gitPackage = pkgs.git;
         src = ../.;
         excludes = ["flake.lock"];
         default_stages = ["pre-commit"];
