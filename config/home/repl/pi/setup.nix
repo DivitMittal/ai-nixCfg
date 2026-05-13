@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  ai-nixCfg,
+  ...
+}: let
+  coding-agents-overlay = ai-nixCfg.inputs.coding-agents.overlays.default;
+  coding-agents-pkgs = coding-agents-overlay pkgs pkgs;
+in {
   home.packages = [
-    (pkgs.writeShellScriptBin "pi" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @mariozechner/pi-coding-agent "$@"
-    '')
+    coding-agents-pkgs.pi-coding-agent
   ];
 }

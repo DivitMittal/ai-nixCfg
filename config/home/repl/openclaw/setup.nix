@@ -25,7 +25,6 @@ in {
       sonoscli.enable = true;
       peekaboo.enable = true;
       poltergeist.enable = true;
-      bird.enable = true;
       imsg.enable = true;
     };
   };
