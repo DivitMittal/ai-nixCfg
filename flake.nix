@@ -15,7 +15,7 @@
     });
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     devshell = {
@@ -47,7 +47,8 @@
     ### AI packages
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Don't follow our nixpkgs: nixos-25.11 lacks buildPythonApplication finalAttrs
+      # support required by some llm-agents packages (e.g. apm).
     };
     # aicommit2 = {
     #   #url = "github:DivitMittal/aicommit2";
@@ -75,6 +76,11 @@
         home-manager.follows = "home-manager";
         nix-steipete-tools.follows = "nix-steipete-tools";
       };
+    };
+    ## Pi (coding-agents)
+    coding-agents = {
+      url = "github:kissgyorgy/coding-agents";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
