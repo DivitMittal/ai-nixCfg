@@ -74,7 +74,6 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
-        nix-steipete-tools.follows = "nix-steipete-tools";
       };
     };
     ## Pi (coding-agents)
