@@ -26,9 +26,18 @@
             ## Nix
             nixd
             alejandra
+            ## Package management
+            nvfetcher
             ;
         };
       };
+      commands = [
+        {
+          name = "pkgs-update";
+          help = "Update package sources via nvfetcher";
+          command = "nvfetcher -c $PRJ_ROOT/pkgs/nvfetcher.toml -o $PRJ_ROOT/pkgs/_sources";
+        }
+      ];
     };
   };
 }
