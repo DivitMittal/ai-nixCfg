@@ -1,6 +1,6 @@
-{...}: {
+{lib, ...}: {
   programs.opencode.tui = {
-    theme = "ultraviolet";
+    theme = lib.mkForce "ultraviolet";
     keybinds = {
       leader = "ctrl+x";
     };
