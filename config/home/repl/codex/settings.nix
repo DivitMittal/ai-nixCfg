@@ -27,8 +27,6 @@ _: {
     };
 
     # ===== Profiles =====
-    profile = "default";
-
     profiles = {
       default = {
         model = "gpt-5.2-codex";
