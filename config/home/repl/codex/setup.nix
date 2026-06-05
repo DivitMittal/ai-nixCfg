@@ -9,7 +9,7 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   home.packages = mkIf config.programs.codex.enable (lib.attrsets.attrValues {
-    inherit (customPkgs) ccusage-codex;
+    inherit (customPkgs) ccusage;
   });
 
   # package = customPkgs.codex;

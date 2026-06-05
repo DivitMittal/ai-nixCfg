@@ -9,7 +9,7 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   home.packages = mkIf config.programs.opencode.enable (lib.attrsets.attrValues {
-    inherit (customPkgs) ccusage-opencode;
+    inherit (customPkgs) ccusage;
   });
 
   programs.opencode = let
