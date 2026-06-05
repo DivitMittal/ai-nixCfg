@@ -2,17 +2,10 @@
   pkgs,
   lib,
   config,
-  ai-nixCfg,
   ...
 }: let
-  inherit (lib) mkIf optionalAttrs optionalString;
-  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+  inherit (lib) optionalAttrs optionalString;
 in {
-  home.packages = mkIf config.programs.codex.enable (lib.attrsets.attrValues {
-    inherit (customPkgs) ccusage;
-  });
-
-  # package = customPkgs.codex;
   programs.codex = let
     package =
       (pkgs.writeShellScriptBin "codex" ''
