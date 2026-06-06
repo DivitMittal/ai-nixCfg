@@ -4,11 +4,9 @@
     default = inputs.import-tree ./home;
 
     ## Individual imports (for selective usage)
-    claude-code = import ./home/claude-code.nix;
     codex = import ./home/codex.nix;
     crush = import ./home/crush.nix;
-    github-copilot = import ./home/github-copilot.nix;
-    github-copilot-cli = import ./home/github-copilot-cli.nix;
-    t3-code = import ./home/t3-code.nix;
+    hermes-agent = import ./home/hermes-agent.nix;
+    openclaw = import ./home/openclaw.nix;
   };
 }
