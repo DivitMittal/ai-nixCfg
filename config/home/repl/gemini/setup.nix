@@ -1,8 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  customLib,
+  ...
+}: {
   programs.gemini-cli = let
-    package = pkgs.writeShellScriptBin "gemini" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @google/gemini-cli "$@"
-    '';
+    package = customLib.mkPnpmDlxBin pkgs "gemini" "@google/gemini-cli";
     # package = pkgs.gemini-cli;
   in {
     enable = true; # Currently using for web-search capabilities in CCS

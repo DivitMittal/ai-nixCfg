@@ -2,19 +2,24 @@
   pkgs,
   lib,
   config,
+  customLib,
   ...
 }: let
   inherit (lib) optionalAttrs optionalString;
+  codexDlx = customLib.mkPnpmDlxBin pkgs "codex-dlx" "@openai/codex";
+  codexPackage =
+    (pkgs.writeShellScriptBin "codex" ''
+      ${optionalString config.home.preferXdgDirectories ''export CODEX_HOME="${config.xdg.configHome}/codex"''}
+      exec ${codexDlx}/bin/codex-dlx "$@"
+    '')
+    // (optionalAttrs config.home.preferXdgDirectories {version = "0.94.0";});
+  lazycodexPackage = customLib.mkPnpmDlxBin pkgs "lazycodex" "lazycodex-ai";
 in {
-  programs.codex = let
-    package =
-      (pkgs.writeShellScriptBin "codex" ''
-        ${optionalString config.home.preferXdgDirectories ''export CODEX_HOME="${config.xdg.configHome}/codex"''}
-        exec ${pkgs.pnpm}/bin/pnpm dlx @openai/codex "$@"
-      '')
-      // (optionalAttrs config.home.preferXdgDirectories {version = "0.94.0";});
-  in {
+  programs.codex = {
     enable = true;
-    inherit package;
+    mutableUserSettings = true;
+    package = codexPackage;
   };
+
+  home.packages = [lazycodexPackage];
 }

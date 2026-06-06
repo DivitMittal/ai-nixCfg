@@ -1,6 +1,9 @@
-{pkgs, ...}: let
-  pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
-  # uvCommand = "${pkgs.uv}/bin/uvx";
+{
+  pkgs,
+  customLib,
+  ...
+}: let
+  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
   # Integrate global MCP servers from programs.mcp.servers (when programs.mcp.enable = true)
   programs.gemini-cli.enableMcpIntegration = true;
@@ -8,16 +11,16 @@ in {
   # Gemini-specific MCP servers (take precedence over programs.mcp.servers)
   programs.gemini-cli.settings.mcpServers = {
     sequential-thinking = {
-      command = pnpmCommand;
-      args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
+      command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
+      args = [];
     };
     deepwiki = {
       trust = true;
       httpUrl = "https://mcp.deepwiki.com/mcp";
     };
     octocode = {
-      command = pnpmCommand;
-      args = ["dlx" "octocode-mcp@latest"];
+      command = pnpmDlxCommand "octocode-mcp" "octocode-mcp@latest";
+      args = [];
     };
   };
 }

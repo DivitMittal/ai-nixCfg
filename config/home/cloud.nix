@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  customLib,
   ...
 }: {
   home.sessionVariables = {
@@ -13,8 +14,6 @@
       (pkgs)
       kaggle
       ;
-    hf = pkgs.writeShellScriptBin "hf" ''
-      exec ${pkgs.uv}/bin/uv tool run --from huggingface-hub[cli] hf "$@"
-    '';
+    hf = customLib.mkUvxBin pkgs "hf" "--from huggingface-hub[cli] hf";
   };
 }

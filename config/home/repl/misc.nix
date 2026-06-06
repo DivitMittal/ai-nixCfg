@@ -1,16 +1,13 @@
 {
   lib,
   pkgs,
+  customLib,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
     ## Qwen Code
-    qwen-code = pkgs.writeShellScriptBin "qwen" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @qwen-code/qwen-code@latest "$@"
-    '';
+    qwen-code = customLib.mkPnpmDlxBin pkgs "qwen" "@qwen-code/qwen-code@latest";
     ## KiloCode
-    kilocode-cli = pkgs.writeShellScriptBin "kilo" ''
-      exec ${pkgs.pnpm}/bin/pnpm --package=@kilocode/cli dlx kilocode "$@"
-    '';
+    kilocode-cli = customLib.mkPnpmDlxBin pkgs "kilo" "--package=@kilocode/cli kilocode";
   };
 }

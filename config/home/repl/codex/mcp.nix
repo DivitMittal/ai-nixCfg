@@ -1,11 +1,15 @@
-{pkgs, ...}: let
-  pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+{
+  pkgs,
+  customLib,
+  ...
+}: let
+  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
   programs.codex.settings.mcp_servers = {
     sequential-thinking = {
       type = "stdio";
-      command = pnpmCommand;
-      args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
+      command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
+      args = [];
     };
     deepwiki = {
       type = "http";
@@ -13,13 +17,13 @@ in {
     };
     octocode = {
       type = "stdio";
-      command = pnpmCommand;
-      args = ["dlx" "octocode-mcp@latest"];
+      command = pnpmDlxCommand "octocode-mcp" "octocode-mcp@latest";
+      args = [];
     };
     exa = {
       type = "stdio";
-      command = pnpmCommand;
-      args = ["dlx" "exa-mcp-server"];
+      command = pnpmDlxCommand "exa-mcp-server" "exa-mcp-server";
+      args = [];
     };
   };
 }

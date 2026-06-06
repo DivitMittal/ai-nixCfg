@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  customLib,
   ...
 }: let
   inherit (lib) mkIf;
@@ -191,8 +192,6 @@ in {
   ## Profile switching is handled by ocx (pnpm dlx ocx)
   xdg.configFile = mkIf cfg.enable allProfileFiles;
   home.packages = lib.mkIf cfg.enable (lib.attrsets.attrValues {
-    ocx = pkgs.writeShellScriptBin "ocx" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx ocx "$@"
-    '';
+    ocx = customLib.mkPnpmDlxBin pkgs "ocx" "ocx";
   });
 }
