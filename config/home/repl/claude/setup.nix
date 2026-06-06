@@ -3,6 +3,7 @@
   lib,
   config,
   ai-nixCfg,
+  customLib,
   ...
 }: let
   inherit (lib) mkIf;
@@ -10,9 +11,7 @@
 in {
   home.packages = mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
     inherit (customPkgs) ccusage;
-    claude-code-switcher = pkgs.writeShellScriptBin "ccs" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @kaitranntt/ccs "$@"
-    '';
+    claude-code-switcher = customLib.mkPnpmDlxBin pkgs "ccs" "@kaitranntt/ccs";
   });
 
   programs.claude-code = {

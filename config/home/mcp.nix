@@ -2,9 +2,11 @@
   lib,
   pkgs,
   ai-nixCfg,
+  customLib,
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
   home.packages = lib.attrsets.attrValues {
     ## WhatsApp MCP Server
@@ -18,36 +20,36 @@ in {
         url = "https://mcp.deepwiki.com/mcp";
       };
       octocode = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "octocode-mcp@latest"];
+        command = pnpmDlxCommand "octocode-mcp" "octocode-mcp@latest";
+        args = [];
       };
       exa = {
-        command = "${pkgs.pnpm}/bin/pnpm";
-        args = ["dlx" "exa-mcp-server"];
+        command = pnpmDlxCommand "exa-mcp-server" "exa-mcp-server";
+        args = [];
       };
       ### Capabilities already enabled in modern repl environments
       # filesystem = {
-      #   command = "${pkgs.pnpm}/bin/pnpm";
-      #   args = ["dlx" "@modelcontextprotocol/server-filesystem"];
+      #   command = pnpmDlxCommand "filesystem" "@modelcontextprotocol/server-filesystem";
+      #   args = [];
       # };
       ## ultrathink
       # sequential-thinking = {
-      #   command = "${pkgs.pnpm}/bin/pnpm";
-      #   args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
+      #   command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
+      #   args = [];
       # };
       ## beads
       # memory = {
-      #   command = "${pkgs.pnpm}/bin/pnpm";
-      #   args = ["dlx" "@modelcontextprotocol/server-memory"];
+      #   command = pnpmDlxCommand "memory" "@modelcontextprotocol/server-memory";
+      #   args = [];
       # };
       ## Capabilities that require domain-specific setup to save context
       # playwright = {
-      #   command = "${pkgs.pnpm}/bin/pnpm";
-      #   args = ["dlx" "@playwright/mcp"];
+      #   command = pnpmDlxCommand "playwright-mcp" "@playwright/mcp";
+      #   args = [];
       # };
       # markitdown = {
-      #   command = "${pkgs.uv}/bin/uvx";
-      #   args = ["markitdown-mcp"];
+      #   command = "${customLib.mkUvxBin pkgs "markitdown-mcp" "markitdown-mcp"}/bin/markitdown-mcp";
+      #   args = [];
       # };
     };
   };

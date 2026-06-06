@@ -1,11 +1,15 @@
-{pkgs, ...}: let
-  pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+{
+  pkgs,
+  customLib,
+  ...
+}: let
+  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
   programs.opencode.enableMcpIntegration = false;
   programs.opencode.settings.mcp = {
     octocode = {
       type = "local";
-      command = [pnpmCommand "dlx" "octocode-mcp@latest"];
+      command = [(pnpmDlxCommand "octocode-mcp" "octocode-mcp@latest")];
     };
   };
 }

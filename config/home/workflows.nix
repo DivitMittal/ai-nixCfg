@@ -2,6 +2,7 @@
   pkgs,
   lib,
   ai-nixCfg,
+  customLib,
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
@@ -11,33 +12,23 @@ in {
     ## Spec Kit
     # spec-kit = customPkgs.spec-kit;
     ## OpenSpec CLI
-    openspec = pkgs.writeShellScriptBin "openspec" ''
-      exec ${pkgs.uv}/bin/uv tool run @fission-ai/openspec@latest "$@"
-    '';
+    openspec = customLib.mkUvxBin pkgs "openspec" "@fission-ai/openspec@latest";
     # openspec = customPkgs.openspec;
 
     ## Ralph Wiggum
-    ralph-tui = pkgs.writeShellScriptBin "ralph-tui" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx ralph-tui "$@"
-    '';
+    ralph-tui = customLib.mkPnpmDlxBin pkgs "ralph-tui" "ralph-tui";
 
     ## Indexing
-    llm-tltdr = pkgs.writeShellScriptBin "llm-tltdr" ''
-      exec ${pkgs.uv}/bin/uv tool run --from llm-tldr tldr "$@"
-    '';
+    llm-tltdr = customLib.mkUvxBin pkgs "llm-tltdr" "--from llm-tldr tldr";
 
     ### Automation
     ## n8n
-    n8n = pkgs.writeShellScriptBin "n8n" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx n8n "$@"
-    '';
+    n8n = customLib.mkPnpmDlxBin pkgs "n8n" "n8n";
 
     ### Memory System (Issue Tracker)
     ## Bead
     bead = customPkgs.beads;
-    # bead = pkgs.writeShellScriptBin "bd" ''
-    #   exec ${pkgs.pnpm}/bin/pnpm dlx @beads/bd "$@"
-    # '';
+    # bead = customLib.mkPnpmDlxBin pkgs "bd" "@beads/bd";
     ## Beads-Viewer
     Beads-Viewer = customPkgs.beads-viewer;
   };

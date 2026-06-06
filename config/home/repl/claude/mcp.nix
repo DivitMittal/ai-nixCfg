@@ -1,5 +1,9 @@
-{pkgs, ...}: let
-  pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+{
+  pkgs,
+  customLib,
+  ...
+}: let
+  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
   programs.claude-code.settings = {
     enableAllProjectMcpServers = true;
@@ -12,8 +16,8 @@ in {
     };
     octocode = {
       type = "stdio";
-      command = pnpmCommand;
-      args = ["dlx" "octocode-mcp@latest"];
+      command = pnpmDlxCommand "octocode-mcp" "octocode-mcp@latest";
+      args = [];
     };
   };
 }

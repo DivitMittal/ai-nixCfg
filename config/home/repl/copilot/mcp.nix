@@ -1,11 +1,15 @@
-{pkgs, ...}: let
-  pnpmCommand = "${pkgs.pnpm}/bin/pnpm";
+{
+  pkgs,
+  customLib,
+  ...
+}: let
+  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
   programs.github-copilot.mcpServers = {
     sequential-thinking = {
       type = "local";
-      command = pnpmCommand;
-      args = ["dlx" "@modelcontextprotocol/server-sequential-thinking"];
+      command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
+      args = [];
     };
     deepwiki = {
       type = "http";
@@ -13,8 +17,8 @@ in {
     };
     exa = {
       type = "local";
-      command = pnpmCommand;
-      args = ["dlx" "exa-mcp-server"];
+      command = pnpmDlxCommand "exa-mcp-server" "exa-mcp-server";
+      args = [];
     };
   };
 }
