@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "OS-nixCfg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780728214,
+        "narHash": "sha256-NwQZyAwnt9q6gXdC8w7qYXlqkDPiRoXb118Cn2P/ubQ=",
+        "owner": "DivitMittal",
+        "repo": "OS-nixCfg",
+        "rev": "2440c707e441da425ff18868119c9fed548bf097",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DivitMittal",
+        "repo": "OS-nixCfg",
+        "type": "github"
+      }
+    },
     "actions-nix": {
       "inputs": {
         "flake-parts": [
@@ -559,22 +575,6 @@
         "type": "github"
       }
     },
-    "os-nixCfg": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780728214,
-        "narHash": "sha256-NwQZyAwnt9q6gXdC8w7qYXlqkDPiRoXb118Cn2P/ubQ=",
-        "owner": "DivitMittal",
-        "repo": "OS-nixCfg",
-        "rev": "2440c707e441da425ff18868119c9fed548bf097",
-        "type": "github"
-      },
-      "original": {
-        "owner": "DivitMittal",
-        "repo": "OS-nixCfg",
-        "type": "github"
-      }
-    },
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
@@ -695,6 +695,7 @@
     },
     "root": {
       "inputs": {
+        "OS-nixCfg": "OS-nixCfg",
         "actions-nix": "actions-nix",
         "coding-agents": "coding-agents",
         "devshell": "devshell",
@@ -707,7 +708,6 @@
         "nix-openclaw": "nix-openclaw",
         "nix-steipete-tools": "nix-steipete-tools",
         "nixpkgs": "nixpkgs_3",
-        "os-nixCfg": "os-nixCfg",
         "systems": "systems_4",
         "treefmt-nix": "treefmt-nix_2"
       }
