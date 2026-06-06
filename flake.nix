@@ -43,6 +43,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    OS-nixCfg = {
+      url = "github:DivitMittal/OS-nixCfg";
+      flake = false;
+    };
 
     ### AI packages
     llm-agents = {
