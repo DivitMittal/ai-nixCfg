@@ -2,7 +2,8 @@ _: {
   programs.claude-code = {
     settings.outputStyle = "Default";
 
-    output-styles = {
+    # Upstream home-manager now provides programs.claude-code.outputStyles.
+    outputStyles = {
       bullet-points = builtins.readFile ./bullet-points.md;
       genui = builtins.readFile ./genui.md;
       html-structured = builtins.readFile ./html-structured.md;
