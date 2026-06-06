@@ -7,22 +7,22 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in
   lib.mkIf pkgs.stdenv.isDarwin {
-    home.packages = lib.attrsets.attrValues (
-      {
-        inherit (customPkgs) Perplexity-bin;
+    home.packages = lib.attrsets.attrValues {
+      inherit (customPkgs) Perplexity-bin;
 
-        handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
+      handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
 
-        codex-app = pkgs.brewCasks."codex-app";
+      codex-app = pkgs.brewCasks."codex-app";
 
-        ## Clean bin to avoid collision with claude-code CLI
-        claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
-          installPhase =
-            oldAttrs.installPhase
-            + ''
-              rm -rf $out/bin
-            '';
-        });
-      }
-    );
+      inherit (pkgs.brewCasks) antigravity;
+
+      ## Clean bin to avoid collision with claude-code CLI
+      claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
+        installPhase =
+          oldAttrs.installPhase
+          + ''
+            rm -rf $out/bin
+          '';
+      });
+    };
   }
