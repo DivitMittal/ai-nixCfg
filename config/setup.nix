@@ -1,5 +1,5 @@
 self: let
-  customLib = import (self.inputs.os-nixCfg + "/lib/custom.nix") {inherit (self.inputs.nixpkgs) lib;};
+  customLib = import (self.inputs.OS-nixCfg + "/lib/custom.nix") {inherit (self.inputs.nixpkgs) lib;};
 in {
   imports = [
     (self.inputs.import-tree ./home)

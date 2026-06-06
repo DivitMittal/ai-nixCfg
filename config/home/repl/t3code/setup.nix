@@ -1,6 +1,7 @@
 _: {
-  programs.t3-code = {
+  # Upstream home-manager provides programs.t3code (package defaults to
+  # `pkgs.t3code or null`, so enabling without the package is safe).
+  programs.t3code = {
     enable = true;
-    # package = null; -- install T3 Code via system package manager or set to a derivation
   };
 }
