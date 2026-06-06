@@ -1,4 +1,6 @@
-self: {
+self: let
+  customLib = import (self.inputs.os-nixCfg + "/lib/custom.nix") {inherit (self.inputs.nixpkgs) lib;};
+in {
   imports = [
     (self.inputs.import-tree ./home)
     self.homeManagerModules.default
@@ -7,5 +9,6 @@ self: {
 
   _module.args = {
     ai-nixCfg = self;
+    inherit customLib;
   };
 }
