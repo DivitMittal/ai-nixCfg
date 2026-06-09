@@ -31,15 +31,5 @@ in {
 
     ## Microsoft Agent Prompting Manager
     inherit (customPkgs) apm;
-
-    ## Indexing
-    llm-tltdr = customLib.mkUvxBin pkgs "llm-tltdr" "--from llm-tldr tldr";
-
-    ### Memory System (Issue Tracker)
-    ## Bead
-    bead = customPkgs.beads;
-    # bead = customLib.mkPnpmDlxBin pkgs "bd" "@beads/bd";
-    ## Beads-Viewer
-    Beads-Viewer = customPkgs.beads-viewer;
   };
 }
