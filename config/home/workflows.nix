@@ -3,7 +3,6 @@
   pkgs,
   lib,
   ai-nixCfg,
-  customLib,
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
@@ -19,16 +18,6 @@ in {
   };
 
   home.packages = lib.attrsets.attrValues {
-    ### Spec-driven Development
-    ## Spec Kit
-    # spec-kit = customPkgs.spec-kit;
-    ## OpenSpec CLI
-    openspec = customLib.mkUvxBin pkgs "openspec" "@fission-ai/openspec@latest";
-    # openspec = customPkgs.openspec;
-
-    ## Ralph Wiggum
-    ralph-tui = customLib.mkPnpmDlxBin pkgs "ralph-tui" "ralph-tui";
-
     ## Microsoft Agent Prompting Manager
     inherit (customPkgs) apm;
   };
