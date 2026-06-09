@@ -153,6 +153,9 @@
       hooks = true;
       plugins = true;
     };
+    git_master = {
+      commit_footer = false;
+    };
   };
 
   ## ocx.jsonc base config
