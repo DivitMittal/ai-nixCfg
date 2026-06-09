@@ -34,5 +34,5 @@ Reusable home-manager modules: claude-code, codex, crush, hermes-agent, openclaw
 - Crush/hermes-agent are the most type-heavy; follow existing submodule shapes when adding MCP server types.
 - openclaw.nix is an *extension* module — it adds options to the `programs.openclaw` namespace from the
   upstream nix-openclaw module without re-declaring options that upstream already owns.
-- There is no module for Gemini, OpenCode, or Pi — those are config-only (in config/home/repl/).
+- There is no module for Gemini, OpenCode, or Pi — those are config-only (in config/home/coding/).
 - Do NOT re-add `github-copilot-cli` to modules/default.nix individual exports; that file does not exist.
