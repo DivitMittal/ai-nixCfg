@@ -1,0 +1,23 @@
+{
+    "gowa": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "gowa",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "aldinokemal",
+            "repo": "go-whatsapp-web-multidevice",
+            "rev": "v8.7.0",
+            "sha256": "sha256-hldmieD92DwV/L0C7VFv4YjG8xG0EXVmmpQ+xLFByew=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v8.7.0"
+    }
+}
