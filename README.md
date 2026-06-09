@@ -3,7 +3,7 @@
     <strong>Nix home-manager modules and personal configurations for AI coding assistants and LLM tools.</strong>
 </div>
 
----
+______________________________________________________________________
 
 <div align="center">
     <a href="https://github.com/DivitMittal/ai-nixCfg/actions/workflows/flake-check.yml">
@@ -14,7 +14,7 @@
     </a>
 </div>
 
----
+______________________________________________________________________
 
 ## Overview
 
@@ -107,15 +107,17 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 │   │   ├── fabric.nix          # Pattern-based AI workflows
 │   │   ├── vcs.nix             # AI-powered VCS tools
 │   │   └── misc.nix            # Misc CLI tools (n8n)
-│   ├── repl/                   # Agentic coding assistants
+│   ├── coding/                 # Agentic coding assistants
 │   │   ├── claude/             # Settings, MCP, plugins, hooks, commands, skills, agents, rules
 │   │   ├── codex/              # Settings, MCP, commands, skills, rules
 │   │   ├── copilot/            # Settings, MCP, commands, permissions
 │   │   ├── crush/              # Settings, MCP, LSP, permissions, rules, commands
 │   │   ├── gemini/             # Settings, MCP, rules, commands
 │   │   ├── opencode/           # Settings, MCP, LSP, memory, providers, themes, plugins
-│   │   ├── openclaw/           # Settings, plugins (aarch64-darwin only)
-│   │   └── misc.nix            # Misc REPL tools (Qwen Code, KiloCode)
+│   │   ├── assistants/         # Standalone assistants
+│   │   │   ├── hermes-agent/   # Hermes Agent setup
+│   │   │   └── openclaw/       # Settings, plugins (aarch64-darwin only)
+│   │   └── misc.nix            # Misc coding tools (Qwen Code, KiloCode)
 │   ├── cloud.nix               # Kaggle and Hugging Face CLI
 │   ├── mcp.nix                 # Shared MCP servers (deepwiki, octocode, exa)
 │   └── workflows.nix           # AI workflow tools
@@ -135,7 +137,7 @@ nix run github:DivitMittal/ai-nixCfg#ai
 
 Drops you into `$SHELL` with the full AI toolchain (all agentic assistants, LLM CLIs, workflow tools, and MCP integrations) prepended to `PATH`. Ephemeral — nothing is activated or written to your home directory.
 
----
+______________________________________________________________________
 
 ### As a Flake Input
 
@@ -167,6 +169,7 @@ Import the home-manager modules in your configuration:
 ```
 
 Available modules:
+
 - `claude-code` - Output styles management
 - `codex` - Skills and prompts management
 - `crush` - MCP servers, LSP, permissions, commands
@@ -186,7 +189,8 @@ To import all personal configurations from the `config/` directory, use the `Cfg
 ```
 
 This imports the complete personal setup including:
-- **Agentic REPLs**: Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush, Openclaw (macOS), Qwen Code, KiloCode
+
+- **Agentic coding assistants**: Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush, Openclaw (macOS), Qwen Code, KiloCode
 - **Companion Tools**: ccs, ccusage, ccstatusline, ccusage-codex, ccusage-opencode, ocx
 - **LLM CLI Tools**: aichat, mods, fabric-ai, n8n
 - **VCS Tools**: geminicommit, lumen
@@ -199,7 +203,7 @@ You can also import specific subsets via path:
 ```nix
 { inputs, ... }: {
   imports = [
-    (inputs.ai-nixCfg + "/config/repl")      # Agentic coding assistants only
+    (inputs.ai-nixCfg + "/config/coding")    # Agentic coding assistants only
     (inputs.ai-nixCfg + "/config/cli")       # LLM CLI tools only
     (inputs.ai-nixCfg + "/config/cloud.nix") # Cloud platform CLIs only
     (inputs.ai-nixCfg + "/config/mcp.nix")   # Shared MCP servers only
