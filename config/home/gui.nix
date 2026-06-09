@@ -1,12 +1,21 @@
 {
   lib,
   pkgs,
+  config,
   ai-nixCfg,
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
-in
-  lib.mkIf pkgs.stdenv.isDarwin {
+in {
+  ## GUI app casks (installed via brew-nix). They depend on the consuming host's
+  ## brew-nix overlay (pkgs.brewCasks); the standalone `#ai` CLI shell disables
+  ## this so it stays lean and needs no brew-nix input. Defaults on for normal
+  ## (OS-nixCfg) consumption.
+  options.aiNixCfg.guiApps.enable =
+    lib.mkEnableOption "GUI application casks (Antigravity, Perplexity, …)"
+    // {default = true;};
+
+  config = lib.mkIf (config.aiNixCfg.guiApps.enable && pkgs.stdenv.isDarwin) {
     home.packages = lib.attrsets.attrValues {
       inherit (customPkgs) Perplexity-bin;
 
@@ -25,4 +34,5 @@ in
           '';
       });
     };
-  }
+  };
+}
