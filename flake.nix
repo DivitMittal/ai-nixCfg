@@ -68,6 +68,12 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    ## Hermes Agent (home-manager module from upstream PR #9087)
+    hermes-agent-hm = {
+      url = "github:yzx9/hermes-agent/feat/home-manager";
+      # Don't follow nixpkgs — mirrors the llm-agents pattern; avoids
+      # Python finalAttrs compat issues with our pinned nixpkgs.
+    };
     ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
