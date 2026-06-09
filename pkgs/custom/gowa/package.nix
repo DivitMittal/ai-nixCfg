@@ -2,8 +2,7 @@
   lib,
   buildGoModule,
   sources,
-}:
-let
+}: let
   inherit (sources.gowa) version src;
 in
   buildGoModule {
