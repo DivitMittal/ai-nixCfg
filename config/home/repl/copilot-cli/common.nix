@@ -5,13 +5,16 @@
   inherit (common.agents) agentMeta agentNames readAgent;
   inherit (common.rules) combinedRules;
 
-  mkCommand = name: let
+  ## Upstream Copilot CLI dropped `commands` in favour of `skills`
+  ## (each rendered to skills/<name>/SKILL.md). Slash commands become skills,
+  ## whose frontmatter expects `name` + `description`.
+  mkSkill = name: let
     meta = commandMeta.${name};
     body = readCommand name;
-    frontmatter =
-      {inherit (meta) description;}
-      // lib.optionalAttrs (meta ? argument-hint) {inherit (meta) argument-hint;}
-      // lib.optionalAttrs (meta ? tools) {inherit (meta) tools;};
+    frontmatter = {
+      inherit name;
+      inherit (meta) description;
+    };
   in
     mkYamlFrontmatter frontmatter + body;
 
@@ -26,7 +29,7 @@
     mkYamlFrontmatter frontmatter + body;
 in {
   programs.github-copilot-cli = {
-    commands = lib.genAttrs commandNames mkCommand;
+    skills = lib.genAttrs commandNames mkSkill;
     agents = lib.genAttrs agentNames mkAgent;
     context = memoryInstruction + "\n\n" + combinedRules;
   };
