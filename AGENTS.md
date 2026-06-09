@@ -26,7 +26,7 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 | OpenCode profiles | config/home/coding/opencode/oh-my-opencode.nix | Profile/model mappings; symlink logic |
 | Tool configs | config/home/coding/{claude,codex,copilot,crush,gemini,opencode}/ | Per-tool setup/settings/mcp/permissions |
 | Assistant configs | config/home/coding/assistants/{hermes-agent,openclaw}/ | Standalone assistant setup |
-| CLI tools | config/home/cli/*.nix | aichat, mods, fabric, vcs |
+| CLI tools | config/home/cli/*.nix | aichat, fabric, vcs |
 | CI/formatting/hooks | flake/actions/*, flake/formatters.nix, flake/checks.nix | Render workflows via nix run .#render-workflows |
 
 ## CODE MAP

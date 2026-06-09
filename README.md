@@ -52,7 +52,6 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 | Tool | Description |
 |------|-------------|
 | **[aichat](https://github.com/sigoden/aichat)** | Multi-provider LLM client with REPL |
-| **[mods](https://github.com/charmbracelet/mods)** | GPT-powered shell assistant |
 | **[fabric-ai](https://github.com/danielmiessler/fabric)** | Pattern-based AI workflows |
 
 ### AI Workflow Tools
@@ -103,7 +102,6 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 ├── config/                     # Personal configurations
 │   ├── cli/                    # LLM CLI tools
 │   │   ├── aichat.nix          # Multi-provider LLM client
-│   │   ├── mods.nix            # GPT shell assistant
 │   │   ├── fabric.nix          # Pattern-based AI workflows
 │   │   ├── vcs.nix             # AI-powered VCS tools
 │   │   └── misc.nix            # Misc CLI tools (n8n)
@@ -192,7 +190,7 @@ This imports the complete personal setup including:
 
 - **Agentic coding assistants**: Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, Crush, Openclaw (macOS), Qwen Code, KiloCode
 - **Companion Tools**: ccs, ccusage, ccstatusline, ccusage-codex, ccusage-opencode, ocx
-- **LLM CLI Tools**: aichat, mods, fabric-ai, n8n
+- **LLM CLI Tools**: aichat, fabric-ai, n8n
 - **VCS Tools**: geminicommit, lumen
 - **Workflow Tools**: openspec, ralph-tui, bead, bv
 - **Cloud Platforms**: Kaggle, Hugging Face CLI
