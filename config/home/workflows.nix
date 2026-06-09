@@ -29,6 +29,9 @@ in {
     ## Ralph Wiggum
     ralph-tui = customLib.mkPnpmDlxBin pkgs "ralph-tui" "ralph-tui";
 
+    ## Microsoft Agent Prompting Manager
+    inherit (customPkgs) apm;
+
     ## Indexing
     llm-tltdr = customLib.mkUvxBin pkgs "llm-tltdr" "--from llm-tldr tldr";
 
