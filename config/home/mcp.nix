@@ -27,7 +27,7 @@ in {
         command = pnpmDlxCommand "exa-mcp-server" "exa-mcp-server";
         args = [];
       };
-      ### Capabilities already enabled in modern repl environments
+      ### Capabilities already enabled in modern coding environments
       # filesystem = {
       #   command = pnpmDlxCommand "filesystem" "@modelcontextprotocol/server-filesystem";
       #   args = [];
