@@ -7,7 +7,7 @@
     package = customLib.mkPnpmDlxBin pkgs "gemini" "@google/gemini-cli";
     # package = pkgs.gemini-cli;
   in {
-    enable = true; # Currently using for web-search capabilities in CCS
+    enable = false;
     inherit package;
     defaultModel = "gemini-3.1-pro-preview";
   };
