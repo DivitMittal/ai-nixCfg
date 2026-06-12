@@ -122,6 +122,20 @@
       multimodal-looker = "openrouter/moonshotai/kimi-k2:free";
     };
 
+    ## Codex Everywhere (custom OpenAI-compatible endpoint)
+    codex-everywhere = {
+      sisyphus          = "codex-everywhere/gpt-5.5";
+      hephaestus        = "codex-everywhere/gpt-5.5";
+      prometheus        = "codex-everywhere/gpt-5.5";
+      atlas             = "codex-everywhere/gpt-5.5";
+      oracle            = "codex-everywhere/gpt-5.5";
+      librarian         = "codex-everywhere/gpt-5.5";
+      explore           = "codex-everywhere/gpt-5.5";
+      metis             = "codex-everywhere/gpt-5.5";
+      momus             = "codex-everywhere/gpt-5.5";
+      multimodal-looker = "codex-everywhere/gpt-5.5";
+    };
+
     ## Zen profile (OpenCode free models)
     zen = {
       sisyphus = "opencode/big-pickle";
