@@ -1,5 +1,15 @@
 _: {
   programs.opencode.settings.provider = {
+    codex-everywhere = {
+      baseURL = "https://codex-everywhere.com/";
+      apiKey = "$CODEX_EVERYWHERE_API_KEY";
+      name = "Codex Everywhere";
+      models = {
+        "gpt-5.5" = {
+          name = "GPT-5.5 (Codex Everywhere)";
+        };
+      };
+    };
     google = {
       models = {
         antigravity-gemini-3-pro = {
