@@ -6,6 +6,7 @@ in {
     self.homeManagerModules.default
     self.inputs.nix-openclaw.homeManagerModules.openclaw
     self.inputs.hermes-agent-hm.homeManagerModules.default
+    self.inputs.kolu.homeManagerModules.default
   ];
 
   _module.args = {
