@@ -1,3 +1,8 @@
+---
+description: Project knowledge for AI coding assistant Nix configurations (Claude Code, Codex, Copilot, Gemini, OpenCode)
+applyTo: "**"
+---
+
 # PROJECT KNOWLEDGE BASE
 
 ## OVERVIEW

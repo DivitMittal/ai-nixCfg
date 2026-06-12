@@ -17,7 +17,10 @@
           treefmt.enable = false;
           trim-trailing-whitespace.enable = true;
           mixed-line-endings.enable = false;
-          mdformat.enable = true;
+          mdformat = {
+            enable = true;
+            excludes = ["^\\.apm/"];
+          };
 
           check-added-large-files = {
             enable = true;
