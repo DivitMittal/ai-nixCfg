@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  ai-nixCfg,
   ...
 }: {
   home.packages = lib.attrsets.attrValues {
@@ -8,6 +9,6 @@
       (pkgs)
       geminicommit
       ;
-    # aicommit2 = ai-nixCfg.inputs.aicommit2.packages.${pkgs.stdenvNoCC.hostPlatform.system}.default;
+    aicommit2 = ai-nixCfg.inputs.aicommit2.packages.${pkgs.stdenvNoCC.hostPlatform.system}.default;
   };
 }
