@@ -14,9 +14,9 @@
     exec ${ccsDlx}/bin/ccs-dlx "$@"
   '';
 in {
-  home.packages = lib.mkIf config.programs.claude-code.enable (lib.attrsets.attrValues {
+  home.packages = lib.attrsets.attrValues {
     inherit (customPkgs) ccusage agentsview entire;
-  });
+  };
 
   programs.ccs = {
     enable = true;
