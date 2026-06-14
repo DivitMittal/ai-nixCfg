@@ -69,8 +69,9 @@
       };
     };
     ## Hermes Agent (home-manager module from upstream PR #9087)
+    ## Pinned to 9f3eea62 — tip (7b385468) has a missing '' in checks.nix that breaks eval
     hermes-agent-hm = {
-      url = "github:yzx9/hermes-agent/feat/home-manager";
+      url = "github:yzx9/hermes-agent/9f3eea62eba92ea2b0c9ff96aaabf31d510da2ee";
       # Don't follow nixpkgs — mirrors the llm-agents pattern; avoids
       # Python finalAttrs compat issues with our pinned nixpkgs.
     };

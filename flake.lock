@@ -401,16 +401,16 @@
       },
       "locked": {
         "lastModified": 1780742072,
-        "narHash": "sha256-gx/Eu8Jxkm+9xyF7o9WuyL0kJD+7HYsCPohMNtRBYWE=",
+        "narHash": "sha256-kg48U5sqQygj/jlyW4Ecw1y9P20oSxJ7LJQS9E0DY60=",
         "owner": "yzx9",
         "repo": "hermes-agent",
-        "rev": "7b3854683cf7e7e088263b0b5595ae761a8fbaec",
+        "rev": "9f3eea62eba92ea2b0c9ff96aaabf31d510da2ee",
         "type": "github"
       },
       "original": {
         "owner": "yzx9",
-        "ref": "feat/home-manager",
         "repo": "hermes-agent",
+        "rev": "9f3eea62eba92ea2b0c9ff96aaabf31d510da2ee",
         "type": "github"
       }
     },
