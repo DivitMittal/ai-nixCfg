@@ -3,7 +3,7 @@
     ## Default Import for all modules
     default = {
       _module.args.llm-agents = inputs.llm-agents;
-      imports = [inputs.import-tree ./home];
+      imports = [(inputs.import-tree ./home)];
     };
 
     ## Individual imports (for selective usage)
