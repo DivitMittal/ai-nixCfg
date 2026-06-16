@@ -1,0 +1,32 @@
+lockfile_version: '1'
+generated_at: '2026-06-12T19:01:36.996929+00:00'
+dependencies: []
+mcp_servers:
+- nixos
+- serena
+mcp_configs:
+  nixos:
+    name: nixos
+    transport: stdio
+    args:
+    - mcp-nixos
+    registry: false
+    command: uvx
+  serena:
+    name: serena
+    transport: stdio
+    args:
+    - --from
+    - git+https://github.com/oraios/serena
+    - serena
+    - start-mcp-server
+    - --context
+    - claude-code
+    - --project
+    - ~/Projects/Cfgs/ai-nixCfg/
+    registry: false
+    command: uvx
+local_deployed_files:
+- .claude/rules/project-knowledge.md
+local_deployed_file_hashes:
+  .claude/rules/project-knowledge.md: sha256:f2d8d5e5d5cb6a3169725e309cc562c309c1d348483d899effc2b519c2da652f
