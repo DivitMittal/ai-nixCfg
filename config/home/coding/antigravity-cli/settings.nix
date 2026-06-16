@@ -1,5 +1,5 @@
 {config, ...}: {
-  programs.gemini-cli.settings = {
+  programs.antigravity-cli.settings = {
     general = {
       preferredEditor = "${config.home.sessionVariables.EDITOR}";
       vimMode = true;
@@ -12,28 +12,18 @@
         warningAcknowledged = true;
       };
     };
-    security = {
-      auth = {
-        selectedType = "oauth-personal";
-      };
-    };
     ui = {
       theme = "ANSI";
       showStatusInTitle = true;
-      footer = {
-        hideContextPercentage = false;
-      };
+      footer.hideContextPercentage = false;
       showModelInfoInChat = true;
       showCitations = true;
       showMemoryUsage = true;
     };
     context = {
       loadMemoryFromIncludeDirectories = true;
+      fileName = ["AGENTS.md"];
     };
-    tools = {
-      shell = {
-        showColor = true;
-      };
-    };
+    tools.shell.showColor = true;
   };
 }
