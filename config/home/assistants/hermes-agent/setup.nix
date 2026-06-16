@@ -1,12 +1,14 @@
 {
   pkgs,
   ai-nixCfg,
+  lib,
   ...
 }: let
   inherit (pkgs.stdenvNoCC.hostPlatform) system;
+  llmPkgs = ai-nixCfg.inputs.llm-agents.packages.${system} or {};
 in {
-  programs.hermes-agent = {
+  programs.hermes-agent = lib.mkIf (llmPkgs ? hermes-agent) {
     enable = true;
-    package = ai-nixCfg.inputs.llm-agents.packages.${system}.hermes-agent;
+    package = llmPkgs.hermes-agent;
   };
 }
