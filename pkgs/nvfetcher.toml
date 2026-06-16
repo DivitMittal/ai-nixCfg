@@ -1,3 +1,4 @@
 [gowa]
 src.github = "aldinokemal/go-whatsapp-web-multidevice"
 fetch.github = "aldinokemal/go-whatsapp-web-multidevice"
+fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"

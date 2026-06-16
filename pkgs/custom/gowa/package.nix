@@ -11,7 +11,7 @@ in
 
     sourceRoot = "${src.name}/src";
 
-    vendorHash = "sha256-nsDaiRCQhhdxzVE0ciHI4wMeTjMqyYEVS/5k/rujZlY=";
+    vendorHash = "sha256-CHcVetvMDSzKM2I/jX4+kL2Q7h5E/BOGWl8wJV1dzcg=";
 
     ldflags = ["-s" "-w" "-X github.com/aldinokemal/go-whatsapp-web-multidevice/config.AppVersion=${version}"];
 
