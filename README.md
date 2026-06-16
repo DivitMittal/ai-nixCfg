@@ -130,10 +130,18 @@ Powered by **[oh-my-opencode](https://github.com/oortwagen/oh-my-opencode)** for
 Drop into a pre-built AI shell environment without cloning or installing anything:
 
 ```sh
-nix run github:DivitMittal/ai-nixCfg#ai
+nix run github:DivitMittal/ai-nixCfg#ai --impure
 ```
 
 Drops you into `$SHELL` with the full AI toolchain (all agentic assistants, LLM CLIs, workflow tools, and MCP integrations) prepended to `PATH`. Ephemeral — nothing is activated or written to your home directory.
+
+Or augment your current shell's `PATH` directly:
+
+```sh
+nix shell github:DivitMittal/ai-nixCfg --impure
+```
+
+Both forms use `--impure` to read `$USER` and `$HOME` from your environment so the configuration adapts to whoever runs it.
 
 ______________________________________________________________________
 
