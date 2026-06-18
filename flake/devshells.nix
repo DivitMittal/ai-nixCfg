@@ -28,6 +28,8 @@
             alejandra
             ## Package management
             nvfetcher
+            ## AI context
+            apm-cli
             ;
         };
       };
