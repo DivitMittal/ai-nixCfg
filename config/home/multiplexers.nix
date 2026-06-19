@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ai-nixCfg, ... }: {
   programs.workmux = {
     enable = true;
     settings = {
@@ -16,5 +16,8 @@ _: {
 
   programs.agent-deck.enable = true;
 
-  services.kolu.enable = true;
+  services.kolu = {
+    enable = true;
+    package = ai-nixCfg.inputs.kolu.packages.${pkgs.stdenv.hostPlatform.system}.koluBin;
+  };
 }
