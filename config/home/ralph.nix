@@ -10,6 +10,7 @@ in {
   home.packages = lib.attrsets.attrValues {
     ## Ralph Wiggum
     ralph-tui = customLib.mkPnpmDlxBin pkgs "ralph-tui" "ralph-tui";
+    zeroshot = customLib.mkPnpmDlxBin pkgs "zeroshot" "@the-open-engine/zeroshot";
     ## GNHF
     inherit (customPkgs) gnhf;
   };
