@@ -18,7 +18,6 @@ in {
   };
 
   home.packages = lib.attrsets.attrValues {
-    ## Microsoft Agent Prompting Manager
     inherit (customPkgs) apm;
   };
 }

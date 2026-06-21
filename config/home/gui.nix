@@ -2,11 +2,8 @@
   lib,
   pkgs,
   config,
-  ai-nixCfg,
   ...
-}: let
-  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
-in {
+}: {
   ## GUI app casks (installed via brew-nix). They depend on the consuming host's
   ## brew-nix overlay (pkgs.brewCasks); the standalone `#ai` CLI shell disables
   ## this so it stays lean and needs no brew-nix input.
@@ -24,7 +21,7 @@ in {
     };
 
     programs.antigravity = {
-      enable = true;
+      enable = false;
       package = pkgs.brewCasks.antigravity;
       mutableExtensionsDir = true;
       profiles.default = {
@@ -37,7 +34,7 @@ in {
 
       handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
 
-      #codex-app = pkgs.brewCasks."codex-app";
+      codex-app = pkgs.brewCasks."codex-app";
 
       ## Clean bin to avoid collision with claude-code CLI
       claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
