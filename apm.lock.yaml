@@ -27,6 +27,16 @@ mcp_configs:
     registry: false
     command: uvx
 local_deployed_files:
+- .claude/rules/config-coding-common-context.md
+- .claude/rules/config-coding-opencode-context.md
+- .claude/rules/flake-context.md
+- .claude/rules/modules-home-context.md
+- .claude/rules/pkgs-context.md
 - .claude/rules/project-knowledge.md
 local_deployed_file_hashes:
-  .claude/rules/project-knowledge.md: sha256:f2d8d5e5d5cb6a3169725e309cc562c309c1d348483d899effc2b519c2da652f
+  .claude/rules/config-coding-common-context.md: sha256:13011dc0b48927ff34a238efd78ddf7d67c9f1eeafbbc3be598e6dc4c3f0dc65
+  .claude/rules/config-coding-opencode-context.md: sha256:06feb3c4871868a24db884803c2f8525bfb0d050bcdb7ea1fd9c8a896ff873b0
+  .claude/rules/flake-context.md: sha256:742341ffb7c8e213e398a796339ccb3bebf7e4cebbe43ab3833a6080912da796
+  .claude/rules/modules-home-context.md: sha256:823508b742cc4d68cff0d83eab2394c02771f8485b30efa8ebc7f5cfc5f32bd6
+  .claude/rules/pkgs-context.md: sha256:7b32fafc62044662c5c9def21cebe83dcbe9be3bbadcc985ead0b6398f1464be
+  .claude/rules/project-knowledge.md: sha256:2da6d66a5cb98169a732bc2ca7632ea2ca31bd084dc68ebbbe85ac41e5cbf9cc
