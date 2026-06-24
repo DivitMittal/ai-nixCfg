@@ -1,11 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  jsonFormat = pkgs.formats.json {};
-in {
-  home.file.".pi/agent/settings.json".source = jsonFormat.generate "pi-settings.json" {
+{config, ...}: {
+  programs.pi.coding-agent.settings = {
     general = {
       preferredEditor = "${config.home.sessionVariables.EDITOR}";
       vimMode = true;
