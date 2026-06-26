@@ -1,4 +1,8 @@
-{ pkgs, ai-nixCfg, ... }: {
+{
+  pkgs,
+  ai-nixCfg,
+  ...
+}: {
   programs.workmux = {
     enable = true;
     settings = {

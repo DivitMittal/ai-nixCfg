@@ -14,6 +14,6 @@ in {
     openspec = customLib.mkUvxBin pkgs "openspec" "@fission-ai/openspec@latest";
     # openspec = customPkgs.openspec;
     ## OpenSpec UI
-    openspecui = customPkgs.openspecui;
+    inherit (customPkgs) openspecui;
   };
 }
