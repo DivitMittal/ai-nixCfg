@@ -28,7 +28,6 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 | Add/understand modules | modules/home/*.nix | Follow standard header; typed options; mkIf cfg.enable |
 | AI coding generators | config/home/coding/\_common/default.nix | Shared commands/skills/agents/rules library (pure data) |
 | Tool-specific generators | config/home/coding/{claude,codex,copilot,crush,gemini,opencode}/common.nix | Each owns its mk* generators |
-| OpenCode profiles | config/home/coding/opencode/oh-my-opencode.nix | Profile/model mappings; symlink logic |
 | Tool configs | config/home/coding/{claude,codex,copilot,crush,gemini,opencode}/ | Per-tool setup/settings/mcp/permissions |
 | Assistant configs | config/home/coding/assistants/{hermes-agent,openclaw}/ | Standalone assistant setup |
 | CLI tools | config/home/cli/*.nix | aichat, fabric, vcs |
@@ -40,7 +39,6 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 |--------|------|----------|------|
 | mkClaudeCommand/mkCodexPrompt/... | functions | config/home/coding/{tool}/common.nix | Generate tool-specific frontmatter + files |
 | mcpServerType/permissionsType | submodules | modules/home/{github-copilot,crush}.nix | Typed MCP/LSP/permission configs |
-| mkProfileFiles | function | config/home/coding/opencode/oh-my-opencode.nix | Emit profile files + activation symlinks |
 | commandMeta/skillMeta/agentMeta | attrsets | config/home/coding/\_common/{commands,skills,agents}/default.nix | Shared metadata consumed by all tool generators |
 
 ## CONVENTIONS
@@ -62,7 +60,6 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 
 - `customLib.scanPaths` auto-import pattern in flake/, modules/home/, flake/actions/.
 - `config/home/coding/_common/` exports pure data (metadata + content readers); tool-specific generation lives in each tool's `common.nix`.
-- OpenCode profile system generates per-profile JSONC and manages symlinked current profile.
 
 ## COMMANDS
 
