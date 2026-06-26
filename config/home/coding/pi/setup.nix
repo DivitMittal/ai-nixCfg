@@ -5,8 +5,7 @@
   ...
 }: let
   isSupported =
-    pkgs.stdenvNoCC.hostPlatform.isAarch64
-    && pkgs.stdenvNoCC.hostPlatform.isDarwin
+    pkgs.stdenvNoCC.hostPlatform.isDarwin
     || pkgs.stdenvNoCC.hostPlatform.isLinux;
   piExtensions = ai-nixCfg.inputs.coding-agents + "/home-manager/pi-coding-agent/extensions";
 in {
