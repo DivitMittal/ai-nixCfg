@@ -1,9 +1,4 @@
-{
-  lib,
-  pkgs,
-  customLib,
-  ...
-}: {
+{lib, ...}: {
   home.packages = lib.attrsets.attrValues {
     ## Qwen Code
     #qwen-code = customLib.mkPnpmDlxBin pkgs "qwen" "@qwen-code/qwen-code@latest";
