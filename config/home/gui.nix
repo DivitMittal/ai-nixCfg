@@ -34,7 +34,14 @@
 
       handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
 
-      codex-app = pkgs.brewCasks."codex-app";
+      ## Clean bin to avoid collision with codex CLI
+      codex-app = pkgs.brewCasks."codex-app".overrideAttrs (oldAttrs: {
+        installPhase =
+          oldAttrs.installPhase
+          + ''
+            rm -rf $out/bin
+          '';
+      });
 
       ## Clean bin to avoid collision with claude-code CLI
       claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
