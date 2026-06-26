@@ -9,6 +9,12 @@
 in {
   programs.n8n = {
     enable = true;
+    # n8n pnpm-deps aborts with SIGABRT / file-descriptor exhaustion on Darwin;
+    # skip the package there (env vars still apply via home.sessionVariables).
+    package =
+      if pkgs.stdenv.isDarwin
+      then null
+      else pkgs.n8n;
     environment = {
       DB_TYPE = "sqlite";
       DB_SQLITE_DATABASE = "${config.xdg.stateHome}/n8n/.n8n/database.sqlite";

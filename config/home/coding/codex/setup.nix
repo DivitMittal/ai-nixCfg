@@ -12,7 +12,7 @@
       ${optionalString config.home.preferXdgDirectories ''export CODEX_HOME="${config.xdg.configHome}/codex"''}
       exec ${codexDlx}/bin/codex-dlx "$@"
     '')
-    // (optionalAttrs config.home.preferXdgDirectories {version = "0.94.0";});
+    // (optionalAttrs config.home.preferXdgDirectories {version = "0.134.0";});
   lazycodexPackage = customLib.mkPnpmDlxBin pkgs "lazycodex" "lazycodex-ai";
 in {
   programs.codex = {

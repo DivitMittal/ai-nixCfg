@@ -89,15 +89,31 @@
     };
     ## Kolu (terminal multiplexer for coding agents)
     kolu.url = "github:juspay/kolu";
-    ## Pi (coding-agents)
+    ## Pi (coding-agents) — extensions source
     coding-agents = {
       url = "github:kissgyorgy/coding-agents";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ## Pi — home-manager module (lukasl-dev/pi.nix)
+    pi-nix = {
+      url = "github:lukasl-dev/pi.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
   };
 
   nixConfig = {
-    extra-substituters = ["https://cache.numtide.com"];
-    extra-trusted-public-keys = ["niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="];
+    extra-substituters = [
+      "https://cache.numtide.com"
+      "https://pi.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "pi.cachix.org-1:lGeoGJaZ5ZDabuRzkcD5EBTNnDM4HJ1vqeOxlWk1Flk="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 }
