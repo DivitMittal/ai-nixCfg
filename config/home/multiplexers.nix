@@ -14,6 +14,7 @@
   programs.herdr = {
     enable = true;
     settings = {
+      theme.name = "terminal";
       terminal.shell_mode = "auto";
     };
   };
