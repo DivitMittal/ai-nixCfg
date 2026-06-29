@@ -18,7 +18,17 @@
     };
   };
 
-  programs.agent-deck.enable = true;
+  programs.agent-deck = {
+    enable = true;
+    settings = {
+      default_tool = "claude";
+      # The binary is pinned by Nix, so disable the in-app updater entirely —
+      # it must never install a build that diverges from the flake.
+      updates.auto_update = false;
+      updates.check_enabled = false;
+      ui.footer = "compact";
+    };
+  };
 
   services.kolu = {
     enable = true;
