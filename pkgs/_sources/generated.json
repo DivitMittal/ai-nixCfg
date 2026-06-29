@@ -19,5 +19,65 @@
             "type": "github"
         },
         "version": "v8.7.0"
+    },
+    "lightpanda-aarch64-darwin": {
+        "cargoLock": null,
+        "date": "2026-06-29",
+        "extract": null,
+        "name": "lightpanda-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=",
+            "type": "url",
+            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
+        },
+        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+    },
+    "lightpanda-aarch64-linux": {
+        "cargoLock": null,
+        "date": "2026-06-29",
+        "extract": null,
+        "name": "lightpanda-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=",
+            "type": "url",
+            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
+        },
+        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+    },
+    "lightpanda-x86_64-darwin": {
+        "cargoLock": null,
+        "date": "2026-06-29",
+        "extract": null,
+        "name": "lightpanda-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=",
+            "type": "url",
+            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
+        },
+        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+    },
+    "lightpanda-x86_64-linux": {
+        "cargoLock": null,
+        "date": "2026-06-29",
+        "extract": null,
+        "name": "lightpanda-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=",
+            "type": "url",
+            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
+        },
+        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
     }
 }
