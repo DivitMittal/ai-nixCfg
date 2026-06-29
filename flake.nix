@@ -89,11 +89,8 @@
     };
     ## Kolu (terminal multiplexer for coding agents)
     kolu.url = "github:juspay/kolu";
-    ## Pi (coding-agents) — extensions source
-    coding-agents = {
-      url = "github:kissgyorgy/coding-agents";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ## Sandnix — flake-parts sandbox module (macOS: sandbox-exec, Linux: landrun)
+    sandnix.url = "github:srid/sandnix";
     ## Pi — home-manager module (lukasl-dev/pi.nix)
     pi-nix = {
       url = "github:lukasl-dev/pi.nix";
