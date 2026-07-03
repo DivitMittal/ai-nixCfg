@@ -27,6 +27,7 @@ in {
     ## ruflo — agent meta-harness for Claude Code & Codex (binary: ruflo).
     ## Published on npm as `ruflo`; run `ruflo init` / `ruflo mcp start`.
     ruflo = customLib.mkPnpmDlxBin pkgs "ruflo" "ruflo";
-    zeroshot = customLib.mkPnpmDlxBin pkgs "zeroshot" "@the-open-engine/zeroshot";
+    ## Zeroshot 6.2.0 is CLI-only; the upstream TUI commands are placeholders in this release.
+    zeroshot = customLib.mkPnpmDlxBin pkgs "zeroshot" "@the-open-engine/zeroshot@6.2.0";
   };
 }
