@@ -43,10 +43,6 @@ in {
       #   args = [];
       # };
       ## Capabilities that require domain-specific setup to save context
-      # playwright = {
-      #   command = pnpmDlxCommand "playwright-mcp" "@playwright/mcp";
-      #   args = [];
-      # };
       # markitdown = {
       #   command = "${customLib.mkUvxBin pkgs "markitdown-mcp" "markitdown-mcp"}/bin/markitdown-mcp";
       #   args = [];
