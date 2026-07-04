@@ -11,7 +11,7 @@
       terminal.shell_mode = "auto";
       ui.show_agent_labels_on_pane_borders = true;
       ui.sound.enabled = true;
-      ui.toast.delivery = "herdr";
+      ui.toast.delivery = "system";
     };
   };
 
