@@ -7,7 +7,6 @@
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
   pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
-  uvxCommand = name: args: "${customLib.mkUvxBin pkgs name args}/bin/${name}";
 in {
   home.packages = lib.attrsets.attrValues {
     ## WhatsApp MCP Server
@@ -31,33 +30,32 @@ in {
         command = pnpmDlxCommand "exa-mcp-server" "exa-mcp-server";
         args = [];
       };
-      sequential-thinking = {
-        type = "stdio";
-        command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
-        args = [];
-      };
       # Headroom: exposes headroom_compress / headroom_retrieve / headroom_stats.
       # Requires the headroom proxy to be running (hr-proxy alias starts it).
-      headroom = {
-        type = "stdio";
-        command = uvxCommand "headroom" "--from headroom-ai[all] headroom";
-        args = ["mcp" "serve"];
-        env = {
-          HEADROOM_PROXY_URL = "http://127.0.0.1:8787";
-        };
-      };
+      # headroom = {
+      #   type = "stdio";
+      #   command = uvxCommand "headroom" "--from headroom-ai[all] headroom";
+      #   args = ["mcp" "serve"];
+      #   env = {
+      #     HEADROOM_PROXY_URL = "http://127.0.0.1:8787";
+      #   };
+      # };
       # Cognee: persistent cross-session knowledge graph memory (remember / recall / forget).
-      cognee = {
-        type = "stdio";
-        command = uvxCommand "cognee-mcp" "--from cognee-mcp cognee-mcp";
-        args = [];
-      };
-      ### Capabilities already enabled in modern coding environments
+      # cognee = {
+      #   type = "stdio";
+      #   command = uvxCommand "cognee-mcp" "--from cognee-mcp cognee-mcp";
+      #   args = [];
+      # };
+      ### Capabilities somewhat already enabled in modern coding harnesses
+      # sequential-thinking = {
+      #   type = "stdio";
+      #   command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
+      #   args = [];
+      # };
       # filesystem = {
       #   command = pnpmDlxCommand "filesystem" "@modelcontextprotocol/server-filesystem";
       #   args = [];
       # };
-      ## beads
       # memory = {
       #   command = pnpmDlxCommand "memory" "@modelcontextprotocol/server-memory";
       #   args = [];
