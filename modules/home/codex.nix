@@ -53,7 +53,11 @@
     then {}
     else cfg.settings;
   settingMcpServers = lib.attrByPath ["mcp_servers"] {} settings;
-  mergedMcpServers = transformedMcpServers // settingMcpServers;
+  mergedMcpServers = lib.filterAttrs (_: server: server != null) (
+    lib.mapAttrs (_: server: lib.filterAttrsRecursive (_: value: value != null) server) (
+      transformedMcpServers // settingMcpServers
+    )
+  );
   mergedSettings =
     settings // lib.optionalAttrs (mergedMcpServers != {}) {mcp_servers = mergedMcpServers;};
 
