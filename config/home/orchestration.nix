@@ -35,6 +35,8 @@ in {
     ## ruflo — agent meta-harness for Claude Code & Codex (binary: ruflo).
     ## Published on npm as `ruflo`; run `ruflo init` / `ruflo mcp start`.
     ruflo = customLib.mkPnpmDlxBin pkgs "ruflo" "ruflo";
+    ## caveman — token-compression skill/plugin installer for Claude Code and other agents.
+    caveman = customLib.mkPnpmDlxBin pkgs "caveman" "github:JuliusBrussee/caveman";
     ## gastown — Gas Town multi-agent workspace manager (binary: gt)
     inherit (customPkgs) gastown;
     ## mardi-gras — terminal UI for Beads issue tracking, parade-style (binary: mg)
