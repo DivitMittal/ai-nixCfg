@@ -7,6 +7,6 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
 in {
   home.packages = lib.attrsets.attrValues {
-    inherit (customPkgs) ccusage agentsview entire;
+    inherit (customPkgs) ccusage;
   };
 }
