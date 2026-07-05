@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ai-nixCfg,
   customLib,
   ...
@@ -8,18 +7,19 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
   pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
 in {
-  home.packages = lib.attrsets.attrValues (
-    {
-      ## Lightpanda — headless browser for AI agents & automation (prebuilt nightly)
-      inherit (customPkgs) lightpanda;
-    }
+  home.packages = [
+    customPkgs.lightpanda
+
     ## agent-browser — headless browser automation CLI for AI agents.
-    ## Excluded on Darwin where its dashboard fetchPnpmDeps OOMs (see
-    ## pkgs/default.nix); installs only on Linux where it builds from source.
-    // (lib.optionalAttrs (customPkgs ? agent-browser) {
-      inherit (customPkgs) agent-browser;
-    })
-  );
+    ## On Linux, install the upstream Nix-built derivation. On Darwin, where
+    ## its dashboard fetchPnpmDeps OOMs, wrap the upstream npm package via
+    ## `pnpm dlx` instead — same upstream package, no source build required.
+    (
+      if pkgs.stdenv.isDarwin
+      then customLib.mkPnpmDlxBin pkgs "agent-browser" "agent-browser"
+      else customPkgs.agent-browser
+    )
+  ];
 
   # Lightpanda sends usage telemetry by default; opt out.
   home.sessionVariables.LIGHTPANDA_DISABLE_TELEMETRY = "false";
