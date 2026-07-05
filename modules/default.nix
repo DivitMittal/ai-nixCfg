@@ -18,17 +18,9 @@
       _module.args.talon-community = inputs.talon-community;
       imports = [./home/talon.nix];
     };
-    workmux = {
-      _module.args.llm-agents = inputs.llm-agents;
-      imports = [./home/workmux.nix];
-    };
     herdr = {
       _module.args.llm-agents = inputs.llm-agents;
       imports = [./home/herdr.nix];
-    };
-    agent-deck = {
-      _module.args.llm-agents = inputs.llm-agents;
-      imports = [./home/agent-deck.nix];
     };
   };
 }

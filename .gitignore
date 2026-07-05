@@ -16,6 +16,7 @@ result-*
 ## Agent Tools
 .serena/
 .omo/
+.ralph-tui/
 
 ## APM — generated; do not edit directly
 apm_modules/
