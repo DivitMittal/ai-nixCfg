@@ -13,5 +13,7 @@ in {
     #kilocode-cli = customLib.mkPnpmDlxBin pkgs "kilo" "--package=@kilocode/cli kilocode";
     ## happy-coder — mobile/web client for Codex & Claude Code (binaries: happy, happy-mcp)
     inherit (customPkgs) happy-coder;
+    ## zai — CLI for Z.AI GLM models
+    inherit (customPkgs) zai;
   };
 }

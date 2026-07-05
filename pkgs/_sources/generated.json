@@ -13,16 +13,16 @@
             "name": null,
             "owner": "aldinokemal",
             "repo": "go-whatsapp-web-multidevice",
-            "rev": "v8.7.0",
-            "sha256": "sha256-hldmieD92DwV/L0C7VFv4YjG8xG0EXVmmpQ+xLFByew=",
+            "rev": "v8.10.0",
+            "sha256": "sha256-LBHcNyw7z/Y7Zx17jCzvJFOE5NZrFopu0mJWGsv4Oqs=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v8.7.0"
+        "version": "v8.10.0"
     },
     "lightpanda-aarch64-darwin": {
         "cargoLock": null,
-        "date": "2026-06-29",
+        "date": "2026-07-05",
         "extract": null,
         "name": "lightpanda-aarch64-darwin",
         "passthru": null,
@@ -33,11 +33,11 @@
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
         },
-        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
     },
     "lightpanda-aarch64-linux": {
         "cargoLock": null,
-        "date": "2026-06-29",
+        "date": "2026-07-05",
         "extract": null,
         "name": "lightpanda-aarch64-linux",
         "passthru": null,
@@ -48,26 +48,26 @@
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
         },
-        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
     },
     "lightpanda-x86_64-darwin": {
         "cargoLock": null,
-        "date": "2026-06-29",
+        "date": "2026-07-05",
         "extract": null,
         "name": "lightpanda-x86_64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=",
+            "sha256": "sha256-auy0KJBLd/zE8cuJMrSBMMwBm4M/x2sEAJed7bdDuLw=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
         },
-        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
     },
     "lightpanda-x86_64-linux": {
         "cargoLock": null,
-        "date": "2026-06-29",
+        "date": "2026-07-05",
         "extract": null,
         "name": "lightpanda-x86_64-linux",
         "passthru": null,
@@ -78,6 +78,27 @@
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
         },
-        "version": "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d"
+        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
+    },
+    "zai": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zai",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "dotcommander",
+            "repo": "zai",
+            "rev": "v0.1.8",
+            "sha256": "sha256-nruE/9tmeEuEO/x4NPyb9cUkDe3MapSuBePPTRosHrw=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.1.8"
     }
 }

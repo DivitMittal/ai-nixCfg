@@ -5,49 +5,60 @@
 }: {
   gowa = {
     pname = "gowa";
-    version = "v8.7.0";
+    version = "v8.10.0";
     src = fetchFromGitHub {
       owner = "aldinokemal";
       repo = "go-whatsapp-web-multidevice";
-      rev = "v8.7.0";
+      rev = "v8.10.0";
       fetchSubmodules = false;
-      sha256 = "sha256-hldmieD92DwV/L0C7VFv4YjG8xG0EXVmmpQ+xLFByew=";
+      sha256 = "sha256-LBHcNyw7z/Y7Zx17jCzvJFOE5NZrFopu0mJWGsv4Oqs=";
     };
   };
   lightpanda-aarch64-darwin = {
     pname = "lightpanda-aarch64-darwin";
-    version = "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d";
+    version = "e71cd94582c963fff80ae19eb97c9254ffbf1705";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos";
       sha256 = "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=";
     };
-    date = "2026-06-29";
+    date = "2026-07-05";
   };
   lightpanda-aarch64-linux = {
     pname = "lightpanda-aarch64-linux";
-    version = "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d";
+    version = "e71cd94582c963fff80ae19eb97c9254ffbf1705";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux";
       sha256 = "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=";
     };
-    date = "2026-06-29";
+    date = "2026-07-05";
   };
   lightpanda-x86_64-darwin = {
     pname = "lightpanda-x86_64-darwin";
-    version = "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d";
+    version = "e71cd94582c963fff80ae19eb97c9254ffbf1705";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos";
-      sha256 = "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=";
+      sha256 = "sha256-auy0KJBLd/zE8cuJMrSBMMwBm4M/x2sEAJed7bdDuLw=";
     };
-    date = "2026-06-29";
+    date = "2026-07-05";
   };
   lightpanda-x86_64-linux = {
     pname = "lightpanda-x86_64-linux";
-    version = "fe3e53c34afacc449f5a5a2e69c466d31bc8b88d";
+    version = "e71cd94582c963fff80ae19eb97c9254ffbf1705";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux";
       sha256 = "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=";
     };
-    date = "2026-06-29";
+    date = "2026-07-05";
+  };
+  zai = {
+    pname = "zai";
+    version = "v0.1.8";
+    src = fetchFromGitHub {
+      owner = "dotcommander";
+      repo = "zai";
+      rev = "v0.1.8";
+      fetchSubmodules = false;
+      sha256 = "sha256-nruE/9tmeEuEO/x4NPyb9cUkDe3MapSuBePPTRosHrw=";
+    };
   };
 }

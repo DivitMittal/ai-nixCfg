@@ -3,6 +3,10 @@ src.github = "aldinokemal/go-whatsapp-web-multidevice"
 fetch.github = "aldinokemal/go-whatsapp-web-multidevice"
 fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"
 
+[zai]
+src.github = "dotcommander/zai"
+fetch.github = "dotcommander/zai"
+
 # Lightpanda — prebuilt nightly binaries, one entry per target platform.
 # Run `pkgs-update` to re-hash when the nightly binary changes.
 # Version tracks the latest HEAD commit of the upstream repo.
