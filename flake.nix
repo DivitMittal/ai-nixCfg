@@ -43,6 +43,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    talon-nix = {
+      url = "github:nix-community/talon-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    talon-community = {
+      url = "github:talonhub/community";
+      flake = false;
+    };
     OS-nixCfg = {
       url = "github:DivitMittal/OS-nixCfg";
       flake = false;

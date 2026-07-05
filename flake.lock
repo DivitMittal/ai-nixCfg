@@ -467,6 +467,27 @@
         "type": "github"
       }
     },
+    "nix-github-actions": {
+      "inputs": {
+        "nixpkgs": [
+          "talon-nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737420293,
+        "narHash": "sha256-F1G5ifvqTpJq7fdkT34e/Jy9VCyzd5XfJ9TO8fHhJWE=",
+        "owner": "nix-community",
+        "repo": "nix-github-actions",
+        "rev": "f4158fa080ef4503c8f4c820967d946c2af31ec9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-github-actions",
+        "type": "github"
+      }
+    },
     "nix-openclaw": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -789,6 +810,8 @@
         "pi-nix": "pi-nix",
         "sandnix": "sandnix",
         "systems": "systems_4",
+        "talon-community": "talon-community",
+        "talon-nix": "talon-nix",
         "treefmt-nix": "treefmt-nix_3"
       }
     },
@@ -881,6 +904,43 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "talon-community": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782950279,
+        "narHash": "sha256-7B3LtQt1IwZ1IVT/4UgXfeUJhvBh02mTzSuknw6MoR0=",
+        "owner": "talonhub",
+        "repo": "community",
+        "rev": "40542d0547278639d099adcf80855d16a2c13011",
+        "type": "github"
+      },
+      "original": {
+        "owner": "talonhub",
+        "repo": "community",
+        "type": "github"
+      }
+    },
+    "talon-nix": {
+      "inputs": {
+        "nix-github-actions": "nix-github-actions",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776244716,
+        "narHash": "sha256-+qZasmBp556iAiIx5ZdiTS1yI4aiPZ7XHaCRk6UopME=",
+        "owner": "nix-community",
+        "repo": "talon-nix",
+        "rev": "a13f95e0d7b87d0127079245236bcd8705c6b4dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "talon-nix",
         "type": "github"
       }
     },
