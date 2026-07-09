@@ -22,22 +22,22 @@
     },
     "lightpanda-aarch64-darwin": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-08",
         "extract": null,
         "name": "lightpanda-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=",
+            "sha256": "sha256-vMHGstHRGpuwalZcQO9otfSoVS5y4NVDLiu81q8ztSE=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
         },
-        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
+        "version": "cc7d319ea580248442718c6852219f6daf248421"
     },
     "lightpanda-aarch64-linux": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-08",
         "extract": null,
         "name": "lightpanda-aarch64-linux",
         "passthru": null,
@@ -48,26 +48,26 @@
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
         },
-        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
+        "version": "cc7d319ea580248442718c6852219f6daf248421"
     },
     "lightpanda-x86_64-darwin": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-08",
         "extract": null,
         "name": "lightpanda-x86_64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-auy0KJBLd/zE8cuJMrSBMMwBm4M/x2sEAJed7bdDuLw=",
+            "sha256": "sha256-i6hcgtn//uqMGxw53GniaoeSd02/IW3GLiTTN93SNkk=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
         },
-        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
+        "version": "cc7d319ea580248442718c6852219f6daf248421"
     },
     "lightpanda-x86_64-linux": {
         "cargoLock": null,
-        "date": "2026-07-05",
+        "date": "2026-07-08",
         "extract": null,
         "name": "lightpanda-x86_64-linux",
         "passthru": null,
@@ -78,7 +78,7 @@
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
         },
-        "version": "e71cd94582c963fff80ae19eb97c9254ffbf1705"
+        "version": "cc7d319ea580248442718c6852219f6daf248421"
     },
     "zai": {
         "cargoLock": null,
