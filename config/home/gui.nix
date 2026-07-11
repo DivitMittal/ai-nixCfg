@@ -34,14 +34,10 @@
 
       handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
 
-      ## Clean bin to avoid collision with codex CLI
-      codex-app = pkgs.brewCasks."codex-app".overrideAttrs (oldAttrs: {
-        installPhase =
-          oldAttrs.installPhase
-          + ''
-            rm -rf $out/bin
-          '';
-      });
+      ## ChatGPT desktop app — replaces the old codex-app, ChatGPT Atlas, and
+      ## Operator casks, and adds ChatGPT Work, since they're all ChatGPT
+      ## wrappers now.
+      chatgpt = pkgs.brewCasks.chatgpt;
 
       ## Clean bin to avoid collision with claude-code CLI
       claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
