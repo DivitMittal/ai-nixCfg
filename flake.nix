@@ -95,8 +95,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    ## Kolu (terminal multiplexer for coding agents)
-    kolu.url = "github:juspay/kolu";
     ## Sandnix — flake-parts sandbox module (macOS: sandbox-exec, Linux: landrun)
     sandnix.url = "github:srid/sandnix";
     ## Pi — home-manager module (lukasl-dev/pi.nix)
