@@ -49,11 +49,11 @@
     import-tree.url = "github:vic/import-tree";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     talon-nix = {
       url = "github:nix-community/talon-nix";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     talon-community = {
       url = "github:talonhub/community";
@@ -74,14 +74,14 @@
       #url = "github:DivitMittal/aicommit2";
       url = "github:tak-bro/aicommit2";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
     lumen = {
       url = "github:jnsahaj/lumen";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
       };
     };
     ## Hermes Agent (home-manager module from upstream PR #9087)
@@ -94,12 +94,12 @@
     ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
-      inputs.nixpkgs.follows = "nixpkgs-2605";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-openclaw = {
       url = "github:openclaw/nix-openclaw";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
     };
@@ -109,7 +109,7 @@
     pi-nix = {
       url = "github:lukasl-dev/pi.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs-2605";
+        nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
     };

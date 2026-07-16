@@ -48,7 +48,7 @@
           "flake-parts"
         ],
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -375,7 +375,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -435,7 +435,7 @@
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -481,7 +481,7 @@
         ],
         "nix-openclaw-tools": "nix-openclaw-tools",
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ],
         "qmd": "qmd"
       },
@@ -520,7 +520,7 @@
     "nix-steipete-tools": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -657,7 +657,7 @@
       "inputs": {
         "bun2nix": "bun2nix_2",
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ],
         "systems": [
           "systems"
@@ -928,7 +928,7 @@
       "inputs": {
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
-          "nixpkgs-2605"
+          "nixpkgs"
         ]
       },
       "locked": {
