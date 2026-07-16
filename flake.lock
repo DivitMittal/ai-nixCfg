@@ -25,7 +25,7 @@
           "git-hooks"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -48,7 +48,7 @@
           "flake-parts"
         ],
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -154,7 +154,7 @@
     "devshell": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -331,7 +331,7 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -375,7 +375,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -450,7 +450,7 @@
         "fenix": "fenix",
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -496,7 +496,7 @@
         ],
         "nix-openclaw-tools": "nix-openclaw-tools",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "qmd": "qmd"
       },
@@ -535,7 +535,7 @@
     "nix-steipete-tools": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -564,6 +564,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-2605": {
+      "locked": {
+        "lastModified": 1784182977,
+        "narHash": "sha256-Hy8zg2HEcsk4WqowQK3UKRXz1fdQM7Z2un3nSyLbJaQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "29c22b7761070f37c4c2b0dd6a8777f0bd43e268",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-26.05-darwin",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -656,7 +672,7 @@
       "inputs": {
         "bun2nix": "bun2nix_2",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ],
         "systems": [
           "systems"
@@ -807,6 +823,7 @@
         "nix-openclaw": "nix-openclaw",
         "nix-steipete-tools": "nix-steipete-tools",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-2605": "nixpkgs-2605",
         "pi-nix": "pi-nix",
         "sandnix": "sandnix",
         "systems": "systems_4",
@@ -927,7 +944,7 @@
       "inputs": {
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {
@@ -990,7 +1007,7 @@
     "treefmt-nix_3": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-2605"
         ]
       },
       "locked": {

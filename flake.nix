@@ -3,6 +3,7 @@
 
   outputs = inputs: let
     inherit (inputs.flake-parts.lib) mkFlake;
+    isX86Darwin = system: system == "x86_64-darwin";
   in
     mkFlake {inherit inputs;} ({inputs, ...}: {
       systems = import inputs.systems;
@@ -12,28 +13,35 @@
         ./pkgs
         ./config
       ];
+      perSystem = {system, ...}: {
+        _module.args.pkgs =
+          if isX86Darwin system
+          then import inputs."nixpkgs-2605" {inherit system;}
+          else import inputs.nixpkgs {inherit system;};
+      };
     });
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    "nixpkgs-2605".url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     devshell = {
       url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     actions-nix = {
       url = "github:nialov/actions.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
       };
@@ -41,11 +49,11 @@
     import-tree.url = "github:vic/import-tree";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     talon-nix = {
       url = "github:nix-community/talon-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     talon-community = {
       url = "github:talonhub/community";
@@ -66,14 +74,14 @@
       #url = "github:DivitMittal/aicommit2";
       url = "github:tak-bro/aicommit2";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         flake-parts.follows = "flake-parts";
       };
     };
     lumen = {
       url = "github:jnsahaj/lumen";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
       };
     };
     ## Hermes Agent (home-manager module from upstream PR #9087)
@@ -86,12 +94,12 @@
     ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-2605";
     };
     nix-openclaw = {
       url = "github:openclaw/nix-openclaw";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         home-manager.follows = "home-manager";
       };
     };
@@ -101,7 +109,7 @@
     pi-nix = {
       url = "github:lukasl-dev/pi.nix";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-2605";
         systems.follows = "systems";
       };
     };

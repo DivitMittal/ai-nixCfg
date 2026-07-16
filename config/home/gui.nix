@@ -13,7 +13,7 @@
 
   config = lib.mkIf (config.aiNixCfg.guiApps.enable && pkgs.stdenv.isDarwin) {
     programs.t3code = {
-      enable = true;
+      enable = false;
       package = pkgs.brewCasks.t3-code;
       mutableUserSettings = true;
       mutableKeybindings = true;
