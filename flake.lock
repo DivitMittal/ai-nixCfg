@@ -407,21 +407,6 @@
         "type": "github"
       }
     },
-    "kolu": {
-      "locked": {
-        "lastModified": 1783818371,
-        "narHash": "sha256-fa8BZ+9dGIOkDHKqD6Z4pZ2fWiGMO6qOZsTfibj5jCM=",
-        "owner": "juspay",
-        "repo": "kolu",
-        "rev": "10070a6629c089f0f7dbe6bcc606808bad22cd9e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "juspay",
-        "repo": "kolu",
-        "type": "github"
-      }
-    },
     "llm-agents": {
       "inputs": {
         "blueprint": "blueprint",
@@ -817,7 +802,6 @@
         "hermes-agent-hm": "hermes-agent-hm",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
-        "kolu": "kolu",
         "llm-agents": "llm-agents",
         "lumen": "lumen",
         "nix-openclaw": "nix-openclaw",
