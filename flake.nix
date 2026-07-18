@@ -91,6 +91,8 @@
       # Don't follow nixpkgs — mirrors the llm-agents pattern; avoids
       # Python finalAttrs compat issues with our pinned nixpkgs.
     };
+    ## Hermes Agent package fallback for systems missing llm-agents.hermes-agent
+    nix-hermes-agent.url = "github:0xrsydn/nix-hermes-agent";
     ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
