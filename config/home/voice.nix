@@ -48,7 +48,14 @@ in {
     (mkIf (cfg.installDarwinApps && pkgs.stdenv.isDarwin && hasVoiceCasks) {
       home.packages = lib.attrsets.attrValues {
         wispr-flow = pkgs.brewCasks.wispr-flow;
-        talon = pkgs.brewCasks.talon;
+
+        ## Talon
+        talon = pkgs.brewCasks.talon.overrideAttrs (_: {
+          src = pkgs.fetchurl {
+            url = "https://talonvoice.com/dl/latest/talon-mac.dmg";
+            sha256 = "sha256-QC+LSsFy2XNg47YMN1PmUr2sxAj5K3lUf5bDThrLZ70=";
+          };
+        });
       };
     })
   ]);
