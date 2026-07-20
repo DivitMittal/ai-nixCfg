@@ -10,5 +10,9 @@ in {
   ## Wired in as headroom's context tool (HEADROOM_CONTEXT_TOOL = "rtk" in
   ## optimization/headroom.nix); run `rtk init -g` per agent to install the
   ## auto-rewrite hook.
-  home.packages = [customPkgs.rtk];
+  ## toon — token-oriented object notation CLI for compact agent data exchange.
+  home.packages = [
+    customPkgs.rtk
+    customPkgs.toon
+  ];
 }
