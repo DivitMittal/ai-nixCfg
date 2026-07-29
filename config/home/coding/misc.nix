@@ -16,6 +16,10 @@ in {
     inherit (customPkgs) happy-coder;
     ## zai — CLI for Z.AI GLM models
     inherit (customPkgs) zai;
+    ## ax — yusukebe/ax AI-agent HTTP/context tool ("AI-era curl", binary: ax)
+    inherit (customPkgs) ax;
+    ## terminal-use — flipbit03/terminal-use headless PTY for agents (binary: tu)
+    inherit (customPkgs) terminal-use;
     ## mmx-cli — MiniMax CLI (binary: mmx)
     mmx-cli = customLib.mkPnpmDlxBin pkgs "mmx" "mmx-cli";
   };
