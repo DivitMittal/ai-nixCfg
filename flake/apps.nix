@@ -8,7 +8,14 @@
     ## The config sets unfree packages (e.g. n8n), so the standalone app needs an
     ## allowUnfree pkgs — flake-parts' default perSystem pkgs has neither config
     ## nor overlays.
-    pkgs = import inputs.nixpkgs {
+    ##
+    ## nixpkgs (unstable) dropped x86_64-darwin support; mirror flake.nix's
+    ## perSystem swap to nixpkgs-2605 so the app still evaluates there.
+    nixpkgsInput =
+      if system == "x86_64-darwin"
+      then inputs."nixpkgs-2605"
+      else inputs.nixpkgs;
+    pkgs = import nixpkgsInput {
       inherit system;
       config.allowUnfree = true;
     };
