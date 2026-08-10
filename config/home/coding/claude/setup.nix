@@ -7,6 +7,8 @@
 in {
   programs.claude-code = {
     enable = true;
-    package = customPkgs.claude-code;
+    # llm-agents.nix (customPkgs' source) doesn't build claude-code for
+    # x86_64-darwin; fall back to nixpkgs' own package there.
+    package = customPkgs.claude-code or pkgs.claude-code;
   };
 }
