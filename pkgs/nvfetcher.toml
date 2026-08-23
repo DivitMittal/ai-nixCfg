@@ -7,6 +7,13 @@ fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"
 src.github = "dotcommander/zai"
 fetch.github = "dotcommander/zai"
 
+[zehn]
+# `nightly` is a rolling tag (force-pushed to master's HEAD) that otherwise
+# outranks tagged releases under plain `src.github`; track version tags only.
+src.github_tag = "al3rez/zehn"
+src.exclude_regex = "nightly"
+fetch.github = "al3rez/zehn"
+
 # Lightpanda — prebuilt nightly binaries, one entry per target platform.
 # Run `pkgs-update` to re-hash when the nightly binary changes.
 # Version tracks the latest HEAD commit of the upstream repo.

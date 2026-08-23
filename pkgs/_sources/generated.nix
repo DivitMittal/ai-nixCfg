@@ -61,4 +61,15 @@
       sha256 = "sha256-nruE/9tmeEuEO/x4NPyb9cUkDe3MapSuBePPTRosHrw=";
     };
   };
+  zehn = {
+    pname = "zehn";
+    version = "v0.3.0";
+    src = fetchFromGitHub {
+      owner = "al3rez";
+      repo = "zehn";
+      rev = "v0.3.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=";
+    };
+  };
 }
