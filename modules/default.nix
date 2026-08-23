@@ -12,7 +12,7 @@
     ccs = import ./home/ccs.nix;
     codex = import ./home/codex.nix;
     crush = import ./home/crush.nix;
-    n8n = import ./home/n8n.nix;
+    kestra = import ./home/kestra.nix;
     talon = {
       _module.args.talon-nix = inputs.talon-nix;
       _module.args.talon-community = inputs.talon-community;
