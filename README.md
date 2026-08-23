@@ -122,7 +122,7 @@ graph TD
     CCoding --> CAnti[antigravity-cli/]
     CCoding --> CPi[pi/]
 
-    PKG --> PCust[custom/<br/>gowa, lightpanda, zai]
+    PKG --> PCust[custom/<br/>gowa, lightpanda, zai, zoetrope]
     PKG --> PDarw[darwin/<br/>Perplexity-bin]
     PKG --> PSrc[_sources/<br/>nvfetcher]
 
@@ -896,7 +896,7 @@ ______________________________________________________________________
 │       │   ├── crush/          # Crush settings, MCP, LSP, permissions
 │       │   ├── antigravity-cli/# Antigravity CLI settings + global skills
 │       │   ├── pi/             # Pi coding agent + 14 extensions
-│       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli)
+│       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli, zoetrope)
 │       ├── assistants/         # Standalone assistants
 │       │   ├── hermes-agent/   # Hermes Agent setup
 │       │   └── openclaw/       # OpenClaw setup (aarch64-darwin)

@@ -22,5 +22,8 @@ in {
     inherit (customPkgs) terminal-use;
     ## mmx-cli — MiniMax CLI (binary: mmx)
     mmx-cli = customLib.mkPnpmDlxBin pkgs "mmx" "mmx-cli";
+    ## zoetrope — watch a Claude Code session as a live flow graph, in the
+    ## terminal or the browser (binary: zoe)
+    inherit (customPkgs) zoetrope;
   };
 }
