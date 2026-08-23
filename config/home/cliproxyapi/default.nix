@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (lib) mkOption types literalExpression;
-
   # Reads an API key from a runtime-managed env var. We intentionally do NOT
   # commit provider secrets to the repo; populate these at activation time via
   # shell env or your secret manager. The first activation leaves these blank

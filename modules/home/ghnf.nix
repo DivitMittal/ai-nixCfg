@@ -9,8 +9,8 @@
   fmt = pkgs.formats.yaml {};
   # gnhf is darwin-broken upstream (fetchPnpmDeps OOMs on macOS — see the
   # `darwinBroken` list in pkgs/default.nix), so install it ephemerally via
-  # `pnpm dlx`, the same approach config/home/orchestration/ralph.nix used.
-  gnhf-bin = customLib.mkPnpmDlxBin pkgs "gnhf" "gnhf";
+  # `bun x`, the same approach config/home/orchestration/ralph.nix used.
+  gnhf-bin = customLib.mkBunxBin pkgs "gnhf" "gnhf";
 in {
   options.programs.gnhf = {
     enable = lib.mkEnableOption "gnhf — “good night, have fun” agent orchestrator";
