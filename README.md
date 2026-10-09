@@ -56,7 +56,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 | **LLM CLI tools** | `aichat`, `fabric-ai` |
 | **VCS tools** | `geminicommit`, `aicommit2`, `lumen` |
 | **Workflow / SDD** | `ralph-tui`, `openspec`, `openspecui`, `n8n`, `bead` (bd), `Beads-Viewer` (bv), `mardi-gras` |
-| **Orchestration** | `ruflo`, `caveman`, `gastown` (gt), `zeroshot` |
+| **Orchestration** | `ruflo`, `caveman`, `gastown` (gt), `zeroshot`, `dsh` |
 | **Multiplexers** | `kolu`, `herdr`, `gnhf` |
 | **Browser automation** | `lightpanda`, `agent-browser`, `playwright-mcp` |
 | **Cloud platforms** | `kaggle`, `huggingface_hub` (`hf`) |
@@ -322,7 +322,7 @@ Or import specific subsets by path:
 | **LLM CLI tools** | `aichat` (OpenRouter model zoo), `fabric-ai` |
 | **VCS tools** | `geminicommit`, `aicommit2`, `lumen` |
 | **Workflow / SDD** | `ralph-tui`, `openspec` + `openspecui`, `n8n`, `bead` (bd), `Beads-Viewer` (bv), `mardi-gras` |
-| **Orchestration** | `ruflo`, `caveman`, `gastown` (gt), `zeroshot` |
+| **Orchestration** | `ruflo`, `caveman`, `gastown` (gt), `zeroshot`, `dsh` |
 | **Multiplexers** | `kolu`, `herdr`, `gnhf` |
 | **Browser** | `lightpanda`, `agent-browser`, `playwright-mcp` |
 | **Cloud** | `kaggle`, `hf` (huggingface_hub CLI) |
@@ -666,6 +666,7 @@ Herdr keybindings:
 | `ruflo` | `pnpm dlx ruflo` | Agent meta-harness for Claude Code & Codex (`ruflo init` / `ruflo mcp start`) |
 | `caveman` | `pnpm dlx github:JuliusBrussee/caveman` | Token-compression skill/plugin installer |
 | `gastown` | `customPkgs.gastown` (binary `gt`) | Gas Town multi-agent workspace manager |
+| `dsh` | `pnpm dlx @deepseek-ai/dsh` | DeepSeek Harness — "everything is a plugin" agent harness (`dsh web` for the local Web UI) |
 | `zeroshot` | `pnpm dlx @the-open-engine/zeroshot` | Zero-shot orchestration |
 | `mardi-gras` | `customPkgs.mardi-gras` (binary `mg`) | Beads issue-tracker TUI, parade-style |
 | `ralph-tui` | `programs.ralph-tui` | AI Agent Loop Orchestrator TUI (high-contrast theme) |

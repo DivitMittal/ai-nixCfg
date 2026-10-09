@@ -41,5 +41,9 @@ in {
     inherit (customPkgs) gastown;
     ## mardi-gras — terminal UI for Beads issue tracking, parade-style (binary: mg)
     inherit (customPkgs) mardi-gras;
+    ## deepseek-harness — DeepSeek's "everything is a plugin" agent harness
+    ## (binary: dsh). Published on npm as `@deepseek-ai/dsh`; run `dsh web` to
+    ## start the local Web UI (http://127.0.0.1:3080).
+    dsh = customLib.mkPnpmDlxBin pkgs "dsh" "@deepseek-ai/dsh";
   };
 }
