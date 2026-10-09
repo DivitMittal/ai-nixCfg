@@ -58,7 +58,7 @@
     installPhase = ''
       runHook preInstall
       mkdir -p "$out"
-      cp index.ts "$out/"
+      cp *.ts "$out/"
       cp -r node_modules "$out/"
       runHook postInstall
     '';

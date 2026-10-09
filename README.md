@@ -102,7 +102,7 @@ graph TD
     CHome --> CCld[cloud.nix]
     CHome --> CMcp[mcp.nix]
     CHome --> CAsst[assistants/]
-    CHome --> CVoic[voice.nix]
+    CHome --> CVoic[voice/]
     CHome --> CBrws[browser.nix]
     CHome --> CGui[gui.nix]
     CHome --> CMult[multiplexers.nix]
@@ -292,7 +292,7 @@ graph LR
     IT --> R[review.nix]
     IT --> T[tasks.nix]
     IT --> U[usage.nix]
-    IT --> V[voice.nix]
+    IT --> V[voice/]
     IT --> W[workflows.nix]
 
     style Cfg fill:#1f6feb,stroke:#fff,color:#fff
@@ -552,7 +552,7 @@ ______________________________________________________________________
 
 ## Voice & Browser
 
-### Voice (`config/home/voice.nix`)
+### Voice (`config/home/voice/default.nix`)
 
 Voice input via Talon — declarative, cross-platform (Linux + Darwin), with optional macOS app installation.
 
@@ -919,8 +919,8 @@ ______________________________________________________________________
 │       ├── cloud.nix           # kaggle, hf
 │       ├── mcp.nix             # Shared MCP servers (deepwiki, octocode, exa, gowa)
 │       ├── browser.nix         # lightpanda, agent-browser, playwright-mcp
-│       ├── gui.nix             # GUI casks (Antigravity, Perplexity, t3-code, handy)
-│       └── voice.nix           # Talon + Wispr Flow (Darwin)
+│       ├── gui.nix             # GUI apps (Antigravity, handy, Claude Desktop)
+│       └── voice/              # Talon config and module
 │
 ├── pkgs/                       # Custom package definitions
 │   ├── default.nix             # Re-exports all packages per system
