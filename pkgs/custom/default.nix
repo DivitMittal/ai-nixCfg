@@ -4,4 +4,5 @@ in {
   gowa = pkgs.callPackage ./gowa/package.nix {inherit sources;};
   lightpanda = pkgs.callPackage ./lightpanda/package.nix {inherit sources;};
   zai = pkgs.callPackage ./zai/package.nix {inherit sources;};
+  zehn = pkgs.callPackage ./zehn/package.nix {inherit sources;};
 }

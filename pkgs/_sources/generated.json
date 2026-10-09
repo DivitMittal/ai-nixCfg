@@ -100,5 +100,26 @@
             "type": "github"
         },
         "version": "v0.1.8"
+    },
+    "zehn": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zehn",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "al3rez",
+            "repo": "zehn",
+            "rev": "v0.3.0",
+            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.3.0"
     }
 }

@@ -16,6 +16,8 @@ in {
     inherit (customPkgs) happy-coder;
     ## zai — CLI for Z.AI GLM models
     inherit (customPkgs) zai;
+    ## zehn — al3rez/zehn fuzzy-find prompts across claude, codex, pi & opencode histories and resume sessions
+    inherit (customPkgs) zehn;
     ## ax — yusukebe/ax AI-agent HTTP/context tool ("AI-era curl", binary: ax)
     inherit (customPkgs) ax;
     ## terminal-use — flipbit03/terminal-use headless PTY for agents (binary: tu)

@@ -5,7 +5,7 @@
   ...
 }: {
   perSystem = {system, ...}: let
-    ## The config sets unfree packages (e.g. n8n), so the standalone app needs an
+    ## The config sets unfree packages (e.g. zehn), so the standalone app needs an
     ## allowUnfree pkgs — flake-parts' default perSystem pkgs has neither config
     ## nor overlays.
     ##
