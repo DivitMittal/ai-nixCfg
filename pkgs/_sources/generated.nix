@@ -48,34 +48,34 @@
   };
   jcode-aarch64-darwin = {
     pname = "jcode-aarch64-darwin";
-    version = "v0.77.1";
+    version = "v0.91.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.77.1/jcode-macos-aarch64.tar.gz";
-      sha256 = "sha256-7oruM9d13qFO8QlcC+1qBG9SJ5vKTSTKLeT24FmK2xU=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.91.0/jcode-macos-aarch64.tar.gz";
+      sha256 = "sha256-W7dwItl3HnE1jLaj5JX0IBcMslnyGR9glf2bfZzTA3w=";
     };
   };
   jcode-aarch64-linux = {
     pname = "jcode-aarch64-linux";
-    version = "v0.77.1";
+    version = "v0.91.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.77.1/jcode-linux-aarch64.tar.gz";
-      sha256 = "sha256-NdPag8hDbFL5ZcLk7gQWyy/z7l8CWG7spRUSsnYOvVc=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.91.0/jcode-linux-aarch64.tar.gz";
+      sha256 = "sha256-tzt29/yP2NTTsRhRUlRS6NQb7IiwGkDqqoxMgVUeUIE=";
     };
   };
   jcode-x86_64-darwin = {
     pname = "jcode-x86_64-darwin";
-    version = "v0.77.1";
+    version = "v0.91.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.77.1/jcode-macos-x86_64.tar.gz";
-      sha256 = "sha256-S2hKofk7720ChadEddr1dmmAgntexMhtogO6hRhVZy8=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.91.0/jcode-macos-x86_64.tar.gz";
+      sha256 = "sha256-+oS1TIXvDd5mgOlDmbCPPnOTjUdhmAgzL2yrBZZYdUg=";
     };
   };
   jcode-x86_64-linux = {
     pname = "jcode-x86_64-linux";
-    version = "v0.77.1";
+    version = "v0.91.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.77.1/jcode-linux-x86_64.tar.gz";
-      sha256 = "sha256-DEJsZDparDE0W9oBZiqnPR81nUWppG6c/VbbpDrw8nk=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.91.0/jcode-linux-x86_64.tar.gz";
+      sha256 = "sha256-dOlCawqOJsX8/3gD1qVxb4KU0RWPpj/rG0KUUKw/cF4=";
     };
   };
   lightpanda-aarch64-darwin = {
