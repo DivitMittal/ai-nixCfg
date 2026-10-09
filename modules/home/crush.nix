@@ -51,6 +51,11 @@
     };
   };
 in {
+  # home-manager now ships its own programs.crush module upstream; this
+  # module supersedes it (typed LSP/MCP/permissions options), so disable
+  # the upstream one to avoid a duplicate `programs.crush.enable` declaration.
+  disabledModules = ["programs/crush.nix"];
+
   options.programs.crush = {
     enable = lib.mkEnableOption "crush coding assistant";
     package = lib.mkPackageOption pkgs "crush" {nullable = true;};
