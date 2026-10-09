@@ -13,11 +13,8 @@
 }: let
   system = stdenvNoCC.hostPlatform.system;
   source = sources.${"pi-agent-rust-${system}"} or null;
-  archiveEntries = {
-    aarch64-darwin = "pi-darwin-arm64";
-    x86_64-linux = "pi-linux-amd64";
-  };
-  archiveEntry = archiveEntries.${system} or null;
+  ## Release tarballs (v0.7+) hold a single `pi` binary on every platform
+  archiveEntry = "pi";
   isLinux = stdenvNoCC.hostPlatform.isLinux;
   isDarwinX86 = system == "x86_64-darwin";
 
