@@ -5,7 +5,7 @@
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
-  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
+  bunxCommand = name: pkg: "${customLib.mkBunxBin pkgs name pkg}/bin/${name}";
 in {
   home.packages = [
     customPkgs.lightpanda
@@ -13,10 +13,10 @@ in {
     ## agent-browser — headless browser automation CLI for AI agents.
     ## On Linux, install the upstream Nix-built derivation. On Darwin, where
     ## its dashboard fetchPnpmDeps OOMs, wrap the upstream npm package via
-    ## `pnpm dlx` instead — same upstream package, no source build required.
+    ## `bun x` instead — same upstream package, no source build required.
     (
       if pkgs.stdenv.isDarwin
-      then customLib.mkPnpmDlxBin pkgs "agent-browser" "agent-browser"
+      then customLib.mkBunxBin pkgs "agent-browser" "agent-browser"
       else customPkgs.agent-browser
     )
   ];
@@ -26,7 +26,7 @@ in {
 
   programs.mcp.servers.playwright = {
     type = "stdio";
-    command = pnpmDlxCommand "playwright-mcp" "@playwright/mcp";
+    command = bunxCommand "playwright-mcp" "@playwright/mcp";
     args = [];
   };
 }

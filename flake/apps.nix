@@ -41,7 +41,13 @@
     ## homeManagerConfigurations.default is a raw module (not evaluated),
     ## so accessing it here carries no withSystem cycle risk.
     cfg = inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs lib;
+      inherit pkgs;
+      ## Use pkgs.lib (matches the per-system nixpkgs above), not the outer
+      ## flake-parts `lib` (unstable nixpkgs' lib) — unstable dropped
+      ## x86_64-darwin from lib.platforms.darwin, which broke home-manager's
+      ## own assertPlatform checks (e.g. targets.darwin.linkApps) on that
+      ## system even though pkgs itself is correctly pinned to nixpkgs-2605.
+      inherit (pkgs) lib;
       extraSpecialArgs = {inherit inputs;};
       modules = [
         {

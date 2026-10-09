@@ -11,9 +11,9 @@
   # Source: subsy/ralph-tui -> src/tui/theme.ts, BUNDLED_THEMES.
   bundledThemes = ["bright" "catppuccin" "dracula" "high-contrast" "solarized-light"];
 
-  # Unwrapped `pnpm dlx` shim. Owned here so the themed wrapper below is the
+  # Unwrapped `bun x` shim. Owned here so the themed wrapper below is the
   # single installed `ralph-tui` command.
-  ralph-tui-bin = customLib.mkPnpmDlxBin pkgs "ralph-tui" "ralph-tui";
+  ralph-tui-bin = customLib.mkBunxBin pkgs "ralph-tui" "ralph-tui";
 
   # `--theme` value: a bundled name or a custom JSON path. `null` means no flag
   # is passed, falling back to ralph-tui's built-in Tokyo Night palette.

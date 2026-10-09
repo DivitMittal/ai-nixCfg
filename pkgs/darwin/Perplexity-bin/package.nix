@@ -18,14 +18,15 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     # Get the hash manually:
     #   curl -L -A "Mozilla/5.0" https://macos-download.perplexity.ai/Perplexity.dmg -o /tmp/Perplexity.dmg
     #   nix hash file --type sha256 /tmp/Perplexity.dmg
-    hash = "sha256-IPhnhMFwxNcz6ri4DfJGqn9RkPh//aFSQbjGQCKyvp8=";
+    hash = "sha256-3GFuspJqTS9R+qHutGpORKGuhPs9ihsNmI7iJLQmSHc=";
   };
 
   nativeBuildInputs = [_7zz makeWrapper];
 
   unpackPhase = ''7zz x -snld $src'';
 
-  sourceRoot = "${finalAttrs.pname}.app";
+  # The dmg's HFS volume nests the .app under a top-level "Perplexity/" dir.
+  sourceRoot = "${finalAttrs.pname}/${finalAttrs.pname}.app";
 
   installPhase = ''
     runHook preInstall
