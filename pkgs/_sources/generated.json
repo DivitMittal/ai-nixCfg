@@ -100,5 +100,65 @@
             "type": "github"
         },
         "version": "v0.1.8"
+    },
+    "zoetrope-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-54Vurb8IYWS4yxNzzCfYgAtbMyQ8oV6JD24J+ZX+AM0=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-aarch64-apple-darwin.tar.gz"
+        },
+        "version": "v0.1.0"
+    },
+    "zoetrope-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-lg/rajzPfzyocnbTXp5swntLoSBuNnXsCFAhz54yZdA=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-aarch64-unknown-linux-musl.tar.gz"
+        },
+        "version": "v0.1.0"
+    },
+    "zoetrope-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-46qFgMcNrSlBxNgNWEl0mNO6mMWdUwkHpyjGA73ByS4=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-apple-darwin.tar.gz"
+        },
+        "version": "v0.1.0"
+    },
+    "zoetrope-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-wLOEHyZ5xQl+MIOUHOGRAlPgJzmwtIBxP3tbs+qt714=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-unknown-linux-musl.tar.gz"
+        },
+        "version": "v0.1.0"
     }
 }

@@ -25,3 +25,24 @@ fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/
 [lightpanda-aarch64-darwin]
 src.git = "https://github.com/lightpanda-io/browser"
 fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
+
+# zoetrope — prebuilt release binaries, one entry per target platform.
+# Release asset filenames drop the "v" prefix that the git tag itself has
+# (cargo-dist convention), so $ver can't be reused verbatim between the tag
+# path and the filename; pin the URL and bump both the tag and filename by
+# hand via `pkgs-update` when a new release ships.
+[zoetrope-x86_64-linux]
+src.github_tag = "furkankly/zoetrope"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-unknown-linux-musl.tar.gz"
+
+[zoetrope-aarch64-linux]
+src.github_tag = "furkankly/zoetrope"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-aarch64-unknown-linux-musl.tar.gz"
+
+[zoetrope-x86_64-darwin]
+src.github_tag = "furkankly/zoetrope"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-apple-darwin.tar.gz"
+
+[zoetrope-aarch64-darwin]
+src.github_tag = "furkankly/zoetrope"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-aarch64-apple-darwin.tar.gz"
