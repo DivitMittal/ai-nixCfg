@@ -16,8 +16,16 @@
       perSystem = {system, ...}: {
         _module.args.pkgs =
           if isX86Darwin system
-          then import inputs."nixpkgs-2605" {inherit system;}
-          else import inputs.nixpkgs {inherit system;};
+          then
+            import inputs."nixpkgs-2605" {
+              inherit system;
+              config.allowUnfree = true;
+            }
+          else
+            import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
       };
     });
 
