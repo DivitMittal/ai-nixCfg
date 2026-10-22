@@ -118,10 +118,7 @@
     ## Pi — home-manager module (lukasl-dev/pi.nix)
     pi-nix = {
       url = "github:lukasl-dev/pi.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
