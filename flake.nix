@@ -92,6 +92,7 @@
       url = "github:jnsahaj/lumen";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-utils.inputs.systems.follows = "systems";
       };
     };
     ## Hermes Agent (home-manager module from upstream PR #9087)
@@ -102,7 +103,10 @@
       # Python finalAttrs compat issues with our pinned nixpkgs.
     };
     ## Hermes Agent package fallback for systems missing llm-agents.hermes-agent
-    nix-hermes-agent.url = "github:0xrsydn/nix-hermes-agent";
+    nix-hermes-agent = {
+      url = "github:0xrsydn/nix-hermes-agent";
+      inputs.flake-utils.inputs.systems.follows = "systems";
+    };
     ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
@@ -113,6 +117,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
+        flake-utils.inputs.systems.follows = "systems";
       };
     };
     ## Sandnix — flake-parts sandbox module (macOS: sandbox-exec, Linux: landrun)
@@ -120,7 +125,10 @@
     ## Pi — home-manager module (lukasl-dev/pi.nix)
     pi-nix = {
       url = "github:lukasl-dev/pi.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        bun2nix.inputs.systems.follows = "systems";
+      };
     };
   };
 
