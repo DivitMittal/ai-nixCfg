@@ -1,13 +1,15 @@
-{
-  lib,
-  config,
-  ...
-}: {
+{config, ...}: {
   config = {
     programs.cliproxyapi = {
       enable = true;
       inheritLegacyAuth = true;
       mutableUserSettings = true;
+
+      # Codex/opencode/jcode/forgecode reach every provider through the proxy.
+      # Claude Code keeps its own Anthropic login: no claude account is wired
+      # into the proxy, so routing it there would serve Claude models from
+      # other providers' accounts.
+      clients.openai = true;
 
       settings = {
         port = 8317;
@@ -35,17 +37,16 @@
         # five harnesses (claude-code, codex, opencode, forgecode, jcode) can
         # reach these providers without per-harness provider config.
         #
-        # `api-key-entries` are intentionally empty by default so secrets stay
-        # out of the Nix store; the first activation leaves them blank (the
-        # proxy still serves OAuth-backed routes) and you fill them in via the
-        # dashboard at http://localhost:8317 once running. Add keys at runtime via:
+        # `api-key-entries` are deliberately left out so secrets stay out of the
+        # Nix store; the activation merge keys providers by `name`, so entries
+        # added at runtime survive re-activation. Fill them in via the
+        # dashboard at http://localhost:8317 once running, or at runtime via:
         #   curl -X PATCH http://localhost:8317/v0/management/...
         # or by editing the mutable config.yaml directly after first activation.
         openai-compatibility = [
           {
             name = "z-ai";
             base-url = "https://api.z.ai/v1";
-            api-key-entries = [];
             models = [
               {
                 name = "glm-4.5";
@@ -60,7 +61,6 @@
           {
             name = "minimax";
             base-url = "https://api.minimax.io/v1";
-            api-key-entries = [];
             models = [
               {
                 name = "MiniMax-M3";
@@ -71,20 +71,10 @@
           {
             name = "openrouter";
             base-url = "https://openrouter.ai/api/v1";
-            api-key-entries = [];
             models = [];
           }
         ];
       };
-    };
-
-    # Export OpenAI-compatible env vars so any client that honors them
-    # (codex, opencode, jcode, forgecode, etc.) routes through the local
-    # proxy by default. Anthropic-format clients (claude-code) use
-    # programs.claude-code.settings.env instead.
-    home.sessionVariables = lib.mkIf config.programs.cliproxyapi.enable {
-      OPENAI_BASE_URL = "http://127.0.0.1:8317/v1";
-      OPENAI_API_KEY = "ccs-internal-managed";
     };
   };
 }
