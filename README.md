@@ -689,22 +689,31 @@ Herdr keybindings:
 ### CLIProxyAPI(Plus) (`config/home/cliproxyapi/`, `modules/home/cliproxyapi.nix`)
 
 Replaces the previous `ccs` (Claude Code Switcher)-managed proxy. Runs
-`cli-proxy-api-plus` locally on port 8317, fronting both OAuth-backed
+`cli-proxy-api-plus` as a background user service (launchd agent on Darwin,
+systemd user unit on Linux) on `127.0.0.1:8317`, fronting both OAuth-backed
 providers (gemini, codex, agy, qwen, kiro, ghcp, kimi, cursor, etc.) and
 custom OpenAI-compatible providers (z-ai, minimax, openrouter) behind one
-Anthropic- and OpenAI-compatible endpoint. `claude-code` gets
-`ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN` pointed at it
-(`config/home/coding/claude/proxy.nix`); every other harness that honors
-`OPENAI_BASE_URL`/`OPENAI_API_KEY` (codex, opencode, jcode, forgecode, …)
-routes through it too.
+Anthropic- and OpenAI-compatible endpoint. Logs go to
+`~/Library/Logs/cliproxyapi.log` on Darwin and the journal on Linux.
+
+Clients are opt-in under `programs.cliproxyapi.clients`:
+
+| Option | Effect | Default here |
+|--------|--------|--------------|
+| `clients.openai` | exports `OPENAI_BASE_URL`/`OPENAI_API_KEY` (codex, opencode, jcode, forgecode, …) | on |
+| `clients.claudeCode` | sets `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN` in Claude Code's settings, replacing its own login | off |
+
+Only turn on `clients.claudeCode` once the proxy has an account serving the
+models you use (e.g. `cli-proxy-api-plus -claude-login`).
 
 On first activation, an existing `~/.ccs/cliproxy/auth` directory (if
 present) is symlinked into the new config location so already-logged-in
 OAuth accounts carry over without re-authentication
-(`programs.cliproxyapi.inheritLegacyAuth`). Provider API keys are left
-empty in the repo by design — populate them via the dashboard at
+(`programs.cliproxyapi.inheritLegacyAuth`). Provider API keys are left out
+of the repo by design — populate them via the dashboard at
 `http://localhost:8317` or inject them from a secret manager by overriding
-`programs.cliproxyapi.settings.openai-compatibility` downstream.
+`programs.cliproxyapi.settings.openai-compatibility` downstream. The
+activation merge keys providers by `name`, so runtime-added keys survive.
 
 ### Usage (`config/home/usage.nix`)
 
