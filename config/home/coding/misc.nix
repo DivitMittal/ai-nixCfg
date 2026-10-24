@@ -22,6 +22,8 @@ in {
         else customPkgs.happy-coder;
       ## zai — CLI for Z.AI GLM models
       inherit (customPkgs) zai;
+      ## zehn — al3rez/zehn fuzzy-find prompts across claude, codex, pi & opencode histories and resume sessions
+      inherit (customPkgs) zehn;
       ## ax — yusukebe/ax AI-agent HTTP/context tool ("AI-era curl", binary:
       ## ax). llm-agents.nix has no x86_64-darwin packages; ax isn't
       ## published to npm (package.json is private), so run it via bun x
