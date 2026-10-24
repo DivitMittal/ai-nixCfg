@@ -235,7 +235,7 @@ Import individual home-manager modules into your configuration:
 | `herdr` | Terminal multiplexer for AI agents — panes, tabs, agent labels (alias `herdr`) |
 | `n8n` | Workflow automation with SQLite backend, pnpm-dlx fallback on Darwin |
 | `ralph-tui` | AI agent loop orchestrator TUI — high-contrast theme by default |
-| `talon` | Talon voice programming — `~/.talon` user dir, talon-community clone |
+| `talon` | Talon voice programming — `~/.talon` user dir, talon-community store link |
 | `ghnf` | (re-export from upstream) |
 
 ### Example: `ccs` Module
@@ -562,9 +562,9 @@ graph LR
     E -->|true| Talon[programs.talon]
     E -->|true| Darwin{Darwin?}
     Darwin -->|yes + installDarwinApps| WF[brewCasks.wispr-flow]
-    Darwin -->|yes + installTalonDarwinApp| TA[talonPackage cask]
+    Darwin -->|yes + installDarwinApps| TA[brewCasks.talon → programs.talon.package]
     Talon --> TC{enableTalonCommunity?}
-    TC -->|true| TL[talon-community clone]
+    TC -->|true| TL[talon-community store link]
 
     style V fill:#1f6feb,stroke:#fff,color:#fff
 ```
@@ -572,9 +572,10 @@ graph LR
 | Option | Default | Purpose |
 |--------|---------|---------|
 | `aiNixCfg.voice.enable` | `true` | Master switch |
-| `aiNixCfg.voice.installDarwinApps` | `pkgs.stdenv.isDarwin` | Install Wispr Flow via Homebrew cask |
-| `aiNixCfg.voice.installTalonDarwinApp` | `false` | Install Talon.app via cask |
-| `aiNixCfg.voice.enableTalonCommunity` | `false` | Clone `talonhub/community` into `~/.talon/user/` |
+| `aiNixCfg.voice.installDarwinApps` | `pkgs.stdenv.isDarwin` | Install Wispr Flow and Talon.app via brew-nix casks (needs the host's `pkgs.brewCasks` overlay) |
+| `aiNixCfg.voice.enableTalonCommunity` | `true` | Link `talonhub/community` (read-only, from the Nix store) into `~/.talon/user/community` |
+
+The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its hash. When upstream ships a new release the build fails on a hash mismatch; refresh it with `nix store prefetch-file https://talonvoice.com/dl/latest/talon-mac.dmg`.
 
 `programs.talon.files."custom/ai-nixCfg.talon"` carries a personal `.talon` script in `voice/talon/`.
 
