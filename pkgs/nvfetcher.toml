@@ -72,7 +72,7 @@ src.github = "Dicklesworthstone/pi_agent_rust"
 fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-amd64.tar.xz"
 
 # CLIProxyAPIPlus — prebuilt release archives per target platform.
-# Tracks the CCS fork (kaitranntt/CLIProxyAPIPlus) which mirrors upstream
+# Tracks the kaitranntt/CLIProxyAPIPlus fork, which mirrors upstream
 # router-for-me/CLIProxyAPI daily and adds extra providers (kiro, ghcp,
 # cursor, etc.). The `no-plugin` archives contain just the binary.
 # Run `pkgs-update` to refresh hashes and pick up new releases.
