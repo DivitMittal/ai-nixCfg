@@ -2,7 +2,6 @@
   config = {
     programs.cliproxyapi = {
       enable = true;
-      inheritLegacyAuth = true;
       mutableUserSettings = true;
 
       # Codex/opencode/jcode/forgecode reach every provider through the proxy.
@@ -18,10 +17,10 @@
         request-log = false;
         usage-statistics-enabled = true;
         auth-dir = "${config.xdg.configHome}/cliproxyapi/auth";
-        api-keys = ["ccs-internal-managed"];
+        api-keys = ["cliproxyapi-local"];
 
-        # Mirror OAuth routing behavior from the previous CCS-managed config so
-        # multi-account rotation works without intervention.
+        # Rotate across OAuth accounts and fall back to other projects/preview
+        # models on quota errors, so multi-account setups need no intervention.
         quota-exceeded = {
           switch-project = true;
           switch-preview-model = true;
@@ -46,7 +45,7 @@
         openai-compatibility = [
           {
             name = "z-ai";
-            base-url = "https://api.z.ai/v1";
+            base-url = "https://api.z.ai/api/paas/v4";
             models = [
               {
                 name = "glm-4.5";

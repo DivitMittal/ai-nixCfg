@@ -28,22 +28,6 @@
   port = cfg.settings.port or 8317;
   apiKey = lib.head (cfg.settings.api-keys or [""]);
 
-  # Preserve an existing CCS-style auth dir on first activation so that all
-  # currently logged-in OAuth accounts carry over without re-authentication.
-  # An empty real dir at the target is left over from earlier activations that
-  # ran the mkdir before this step; replace it rather than skip the link.
-  legacySymlinkActivation = ''
-    target=${lib.escapeShellArg defaultAuthDir}
-    legacy=${lib.escapeShellArg "${config.home.homeDirectory}/.ccs/cliproxy/auth"}
-    if [ -d "$target" ] && [ ! -L "$target" ] && [ -z "$(ls -A "$target")" ]; then
-      rmdir "$target"
-    fi
-    if [ -d "$legacy" ] && [ ! -e "$target" ]; then
-      mkdir -p "$(dirname "$target")"
-      ln -s "$legacy" "$target"
-    fi
-  '';
-
   mutableConfigMerger = ''
     ${configMerger}/bin/python - ${lib.escapeShellArg configPath} ${lib.escapeShellArg staticSettings} <<'PY'
     import pathlib
@@ -129,17 +113,6 @@ in {
 
         When disabled, the entire config file is replaced by a Nix-store
         symlink, so any runtime edits are wiped on activation.
-      '';
-    };
-
-    inheritLegacyAuth = mkOption {
-      type = types.bool;
-      default = true;
-      description = ''
-        On first activation, if a legacy {file}`~/.ccs/cliproxy/auth` directory
-        exists and no {file}`auth` directory exists at the new location,
-        symlink the new path to the legacy one so existing OAuth credentials
-        carry over without re-authentication.
       '';
     };
 
@@ -255,26 +228,15 @@ in {
     };
 
     home.activation = lib.mkMerge [
-      (mkIf cfg.inheritLegacyAuth {
-        cliproxyapiInheritLegacyAuth = lib.hm.dag.entryBetween beforeService ["linkGeneration"] legacySymlinkActivation;
-      })
       (mkIf (cfg.mutableUserSettings && hasSettings) {
         cliproxyapiSettingsActivation =
-          lib.hm.dag.entryBetween beforeService (
-            ["linkGeneration"]
-            ++ lib.optional cfg.inheritLegacyAuth "cliproxyapiInheritLegacyAuth"
-          )
-          mutableConfigMerger;
+          lib.hm.dag.entryBetween beforeService ["linkGeneration"] mutableConfigMerger;
       })
       ## Make sure the auth dir exists so the binary can write to it on first run.
       {
-        cliproxyapiDataDirs =
-          lib.hm.dag.entryBetween beforeService (
-            ["linkGeneration"]
-            ++ lib.optional cfg.inheritLegacyAuth "cliproxyapiInheritLegacyAuth"
-          ) ''
-            ${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg defaultAuthDir} ${lib.escapeShellArg defaultDataDir}
-          '';
+        cliproxyapiDataDirs = lib.hm.dag.entryBetween beforeService ["linkGeneration"] ''
+          ${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg defaultAuthDir} ${lib.escapeShellArg defaultDataDir}
+        '';
       }
     ];
 
