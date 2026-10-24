@@ -9,10 +9,10 @@
 in {
   home.packages = lib.attrsets.attrValues {
     # llm-agents.nix doesn't publish packages for x86_64-darwin; ccusage is
-    # npm-published, so run it ephemerally via pnpm dlx there instead.
+    # npm-published, so run it ephemerally via bun x there instead.
     ccusage =
       if pkgs.stdenvNoCC.hostPlatform.system == "x86_64-darwin"
-      then customLib.mkPnpmDlxBin pkgs "ccusage" "ccusage"
+      then customLib.mkBunxBin pkgs "ccusage" "ccusage"
       else customPkgs.ccusage;
   };
 }

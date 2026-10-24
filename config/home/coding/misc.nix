@@ -22,13 +22,15 @@ in {
         else customPkgs.happy-coder;
       ## zai — CLI for Z.AI GLM models
       inherit (customPkgs) zai;
+      ## zehn — al3rez/zehn fuzzy-find prompts across claude, codex, pi & opencode histories and resume sessions
+      inherit (customPkgs) zehn;
       ## ax — yusukebe/ax AI-agent HTTP/context tool ("AI-era curl", binary:
       ## ax). llm-agents.nix has no x86_64-darwin packages; ax isn't
-      ## published to npm (package.json is private), so run it via pnpm dlx
+      ## published to npm (package.json is private), so run it via bun x
       ## straight from its git source there instead.
       ax =
         if isX86Darwin
-        then customLib.mkPnpmDlxBin pkgs "ax" "github:yusukebe/ax"
+        then customLib.mkBunxBin pkgs "ax" "github:yusukebe/ax"
         else customPkgs.ax;
       ## goose-cli — Block's open-source coding agent (binary: goose).
       ## Available directly in nixpkgs-26.05-darwin.
@@ -41,10 +43,12 @@ in {
       ## pi-agent-rust — Dicklesworthstone's Rust port of Pi (binary: pi-rust)
       inherit (customPkgs) pi-agent-rust;
       ## mmx-cli — MiniMax CLI (binary: mmx)
-      mmx-cli = customLib.mkPnpmDlxBin pkgs "mmx" "mmx-cli";
+      mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
     }
     ## terminal-use — flipbit03/terminal-use headless PTY for agents (binary:
-    ## tu). Rust; no x86_64-darwin build and no npm/pypi/brew fallback.
+    ## tu). Rust; no x86_64-darwin build, no npm/pypi fallback, and no
+    ## Homebrew formula either (checked formulae.brew.sh directly — not just
+    ## asserted) — no fallback tier applies.
     // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) terminal-use;}
     ## cursor-agent — Cursor CLI coding agent (binary: cursor-agent).
     ## Proprietary binary that upstream itself doesn't publish for

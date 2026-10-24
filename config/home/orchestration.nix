@@ -21,37 +21,44 @@ in {
   };
 
   home.packages = lib.attrValues ({
-    zeroshot = customLib.mkPnpmDlxBin pkgs "zeroshot" "@the-open-engine/zeroshot";
+      ## zeroshot — npm-published; bun x is tier 1 of the bunx>pnpmx>uvx>zbx>brew
+      ## fallback cascade (faster than pnpm dlx, same effect).
+      zeroshot = customLib.mkBunxBin pkgs "zeroshot" "@the-open-engine/zeroshot";
 
-    ### SDD
-    ## Spec Kit
-    # spec-kit = customPkgs.spec-kit;
-    ## OpenSpec CLI
-    openspec = customLib.mkUvxBin pkgs "openspec" "@fission-ai/openspec@latest";
-    # openspec = customPkgs.openspec;
-    ## OpenSpec UI — npm-published; llm-agents.nix has no x86_64-darwin
-    ## packages at all, so run it via pnpm dlx there instead.
-    openspecui =
-      if isX86Darwin
-      then customLib.mkPnpmDlxBin pkgs "openspecui" "openspecui"
-      else customPkgs.openspecui;
+      ### SDD
+      ## Spec Kit
+      # spec-kit = customPkgs.spec-kit;
+      ## OpenSpec CLI
+      openspec = customLib.mkUvxBin pkgs "openspec" "@fission-ai/openspec@latest";
+      # openspec = customPkgs.openspec;
+      ## OpenSpec UI — npm-published; llm-agents.nix has no x86_64-darwin
+      ## packages at all, so run it via bun x there instead.
+      openspecui =
+        if isX86Darwin
+        then customLib.mkBunxBin pkgs "openspecui" "openspecui"
+        else customPkgs.openspecui;
 
-    ### Complete Orchestration
-    ## ruflo — agent meta-harness for Claude Code & Codex (binary: ruflo).
-    ## Published on npm as `ruflo`; run `ruflo init` / `ruflo mcp start`.
-    ruflo = customLib.mkPnpmDlxBin pkgs "ruflo" "ruflo";
-    ## caveman — token-compression skill/plugin installer for Claude Code and other agents.
-    caveman = customLib.mkPnpmDlxBin pkgs "caveman" "github:JuliusBrussee/caveman";
-  }
-  ## gastown — Gas Town multi-agent workspace manager (binary: gt). Go binary
-  ## with native runtime deps (dolt, sqlite, tmux, icu); llm-agents.nix has no
-  ## x86_64-darwin build and there's no npm/pypi fallback. A Homebrew formula
-  ## exists (`brew install gastown`) but this repo has no formula-passthrough
-  ## mechanism (only `pkgs.brewCasks` for GUI casks) — install manually via
-  ## brew on x86_64-darwin for now.
-  // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) gastown;}
-  ## mardi-gras — terminal UI for Beads issue tracking, parade-style (binary:
-  ## mg). Same story as gastown: Go binary, no x86_64-darwin build, no npm/
-  ## pypi/brew fallback.
-  // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) mardi-gras;});
+      ### Complete Orchestration
+      ## ruflo — agent meta-harness for Claude Code & Codex (binary: ruflo).
+      ## Published on npm as `ruflo`; run `ruflo init` / `ruflo mcp start`.
+      ruflo = customLib.mkBunxBin pkgs "ruflo" "ruflo";
+      ## caveman — token-compression skill/plugin installer for Claude Code and other agents.
+      caveman = customLib.mkBunxBin pkgs "caveman" "github:JuliusBrussee/caveman";
+      ## gastown — Gas Town multi-agent workspace manager. Go binary with native
+      ## runtime deps (dolt, sqlite, tmux, icu); llm-agents.nix has no
+      ## x86_64-darwin build and there's no npm/pypi fallback. Has a Homebrew
+      ## formula (`gastown`, installing binary `gt`; verified against
+      ## formulae.brew.sh), so run it ephemerally via zerobrew's zbx there
+      ## instead of a full brew install — the zbx tier of the
+      ## bunx>pnpmx>uvx>zbx>brew fallback cascade.
+      gastown =
+        if isX86Darwin
+        then customLib.mkZbxBin pkgs customPkgs.zerobrew-bin "gastown" "gt"
+        else customPkgs.gastown;
+    }
+    ## mardi-gras — terminal UI for Beads issue tracking, parade-style (binary:
+    ## mg). Go binary, no x86_64-darwin build, no npm/pypi fallback, and no
+    ## Homebrew formula either (checked formulae.brew.sh directly — not just
+    ## asserted) — no fallback tier applies.
+    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) mardi-gras;});
 }

@@ -16,8 +16,16 @@
       perSystem = {system, ...}: {
         _module.args.pkgs =
           if isX86Darwin system
-          then import inputs."nixpkgs-2605" {inherit system;}
-          else import inputs.nixpkgs {inherit system;};
+          then
+            import inputs."nixpkgs-2605" {
+              inherit system;
+              config.allowUnfree = true;
+            }
+          else
+            import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
       };
     });
 
@@ -25,7 +33,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     "nixpkgs-2605".url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
+    # nix-systems/default dropped x86_64-darwin in c29398b5; pin the last
+    # revision that still lists it so lock bumps keep x86_64-darwin outputs.
+    systems.url = "github:nix-systems/default/da67096a3b9bf56a91d16901293e51ba5b49a27e";
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,6 +92,7 @@
       url = "github:jnsahaj/lumen";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-utils.inputs.systems.follows = "systems";
       };
     };
     ## Hermes Agent (home-manager module from upstream PR #9087)
@@ -92,7 +103,10 @@
       # Python finalAttrs compat issues with our pinned nixpkgs.
     };
     ## Hermes Agent package fallback for systems missing llm-agents.hermes-agent
-    nix-hermes-agent.url = "github:0xrsydn/nix-hermes-agent";
+    nix-hermes-agent = {
+      url = "github:0xrsydn/nix-hermes-agent";
+      inputs.flake-utils.inputs.systems.follows = "systems";
+    };
     ## Openclaw
     nix-steipete-tools = {
       url = "github:openclaw/nix-steipete-tools";
@@ -103,6 +117,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
+        flake-utils.inputs.systems.follows = "systems";
       };
     };
     ## Sandnix — flake-parts sandbox module (macOS: sandbox-exec, Linux: landrun)
@@ -112,7 +127,7 @@
       url = "github:lukasl-dev/pi.nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
+        bun2nix.inputs.systems.follows = "systems";
       };
     };
   };

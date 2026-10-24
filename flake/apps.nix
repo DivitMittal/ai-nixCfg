@@ -5,7 +5,7 @@
   ...
 }: {
   perSystem = {system, ...}: let
-    ## The config sets unfree packages (e.g. n8n), so the standalone app needs an
+    ## The config sets unfree packages (e.g. zehn), so the standalone app needs an
     ## allowUnfree pkgs — flake-parts' default perSystem pkgs has neither config
     ## nor overlays.
     ##
@@ -47,7 +47,7 @@
       ## x86_64-darwin from lib.platforms.darwin, which broke home-manager's
       ## own assertPlatform checks (e.g. targets.darwin.linkApps) on that
       ## system even though pkgs itself is correctly pinned to nixpkgs-2605.
-      lib = pkgs.lib;
+      inherit (pkgs) lib;
       extraSpecialArgs = {inherit inputs;};
       modules = [
         {

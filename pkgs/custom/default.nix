@@ -8,4 +8,6 @@ in {
   lumen = pkgs.callPackage ./lumen/package.nix {inherit sources;};
   pi-agent-rust = pkgs.callPackage ./pi-agent-rust/package.nix {inherit sources;};
   zai = pkgs.callPackage ./zai/package.nix {inherit sources;};
+  zehn = pkgs.callPackage ./zehn/package.nix {inherit sources;};
+  zerobrew-bin = pkgs.callPackage ./zerobrew-bin/package.nix {inherit sources;};
 }

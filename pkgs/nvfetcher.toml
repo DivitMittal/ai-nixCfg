@@ -16,6 +16,13 @@ fetch.github = "dotcommander/zai"
 src.github = "jnsahaj/lumen"
 fetch.url = "https://github.com/jnsahaj/lumen/releases/download/$ver/lumen-x86_64-apple-darwin.tar.gz"
 
+[zehn]
+# `nightly` is a rolling tag (force-pushed to master's HEAD) that otherwise
+# outranks tagged releases under plain `src.github`; track version tags only.
+src.github_tag = "al3rez/zehn"
+src.exclude_regex = "nightly"
+fetch.github = "al3rez/zehn"
+
 # Lightpanda — prebuilt nightly binaries, one entry per target platform.
 # Run `pkgs-update` to re-hash when the nightly binary changes.
 # Version tracks the latest HEAD commit of the upstream repo.
@@ -91,3 +98,23 @@ fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$v
 src.github = "kaitranntt/CLIProxyAPIPlus"
 src.prefix = "v"
 fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$ver/CLIProxyAPIPlus_$ver_darwin_aarch64_no-plugin.tar.gz"
+
+# zerobrew — ephemeral Homebrew formula runner (zb/zbx binaries), used as the
+# zbx tier in the bunx>pnpmx>uvx>zbx>brew x86_64-darwin fallback cascade.
+# Darwin-only (matches OS-nixCfg's own zerobrew-bin package). Run
+# `pkgs-update` to refresh hashes and pick up new releases.
+[zerobrew-zb-aarch64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zb-darwin-arm64"
+
+[zerobrew-zb-x86_64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zb-darwin-x64"
+
+[zerobrew-zbx-aarch64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx-darwin-arm64"
+
+[zerobrew-zbx-x86_64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx-darwin-x64"

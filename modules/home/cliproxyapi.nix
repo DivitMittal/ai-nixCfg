@@ -152,10 +152,12 @@ in {
         cliproxyapiInheritLegacyAuth = lib.hm.dag.entryAfter ["linkGeneration"] legacySymlinkActivation;
       })
       (mkIf (cfg.mutableUserSettings && hasSettings) {
-        cliproxyapiSettingsActivation = lib.hm.dag.entryAfter (
-          ["linkGeneration"]
-          ++ lib.optional cfg.inheritLegacyAuth "cliproxyapiInheritLegacyAuth"
-        ) mutableConfigMerger;
+        cliproxyapiSettingsActivation =
+          lib.hm.dag.entryAfter (
+            ["linkGeneration"]
+            ++ lib.optional cfg.inheritLegacyAuth "cliproxyapiInheritLegacyAuth"
+          )
+          mutableConfigMerger;
       })
       ## Make sure the auth dir exists so the binary can write to it on first run.
       {

@@ -8,114 +8,114 @@
 {
   cliproxyapi-plus-aarch64-darwin = {
     pname = "cliproxyapi-plus-aarch64-darwin";
-    version = "7.2.127-3";
+    version = "7.3.12-1";
     src = fetchurl {
-      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.2.127-3/CLIProxyAPIPlus_7.2.127-3_darwin_aarch64_no-plugin.tar.gz";
-      sha256 = "sha256-adMCztpormucVluz+dIpKhSyiXi4d2NMDjhqy4bNIzw=";
+      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_darwin_aarch64_no-plugin.tar.gz";
+      sha256 = "sha256-sg6qxivS8/bI/3Ceb+RSu99qlZDIz8e38Og8Qr4mhqM=";
     };
   };
   cliproxyapi-plus-aarch64-linux = {
     pname = "cliproxyapi-plus-aarch64-linux";
-    version = "7.2.127-3";
+    version = "7.3.12-1";
     src = fetchurl {
-      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.2.127-3/CLIProxyAPIPlus_7.2.127-3_linux_aarch64_no-plugin.tar.gz";
-      sha256 = "sha256-VmVLzwuxcNyJwdYz98r1Q+6CNL+/TQvVnXrsqxOWcP8=";
+      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_linux_aarch64_no-plugin.tar.gz";
+      sha256 = "sha256-L+uhdfEjGXU6uR8CxJW9hjgoOE5dqZIcnV7/L4ItNA0=";
     };
   };
   cliproxyapi-plus-x86_64-darwin = {
     pname = "cliproxyapi-plus-x86_64-darwin";
-    version = "7.2.127-3";
+    version = "7.3.12-1";
     src = fetchurl {
-      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.2.127-3/CLIProxyAPIPlus_7.2.127-3_darwin_amd64_no-plugin.tar.gz";
-      sha256 = "sha256-TxZLbFJLRpOfPK2khcdAfJ58tulPnrz2sX0ijGnPmuw=";
+      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_darwin_amd64_no-plugin.tar.gz";
+      sha256 = "sha256-w5utGH7P/jHm+KnbSQQ+2dZXJfp7aWmbWoDJcthl1TI=";
     };
   };
   cliproxyapi-plus-x86_64-linux = {
     pname = "cliproxyapi-plus-x86_64-linux";
-    version = "7.2.127-3";
+    version = "7.3.12-1";
     src = fetchurl {
-      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.2.127-3/CLIProxyAPIPlus_7.2.127-3_linux_amd64_no-plugin.tar.gz";
-      sha256 = "sha256-54d9jWi2dUcdtRHEXtMlYGrM2Pj/Twsbwxs5KntktOI=";
+      url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_linux_amd64_no-plugin.tar.gz";
+      sha256 = "sha256-92hmTC2OH6KugBxpZrkRWSfTjgbETzMhZsh9mjWJLzg=";
     };
   };
   gowa = {
     pname = "gowa";
-    version = "v9.0.1";
+    version = "v9.6.0";
     src = fetchFromGitHub {
       owner = "aldinokemal";
       repo = "go-whatsapp-web-multidevice";
-      rev = "v9.0.1";
+      rev = "v9.6.0";
       fetchSubmodules = false;
-      sha256 = "sha256-w9wVP9LIuSFBiYh1eLiQbpI8jHgnCGDAOoA9WJ1yZU4=";
+      sha256 = "sha256-FGrcg+FkdmTgJsNOrGTEGRxluKo2NqPjbdC9hTXeZUA=";
     };
   };
   jcode-aarch64-darwin = {
     pname = "jcode-aarch64-darwin";
-    version = "v0.76.0";
+    version = "v0.93.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.76.0/jcode-macos-aarch64.tar.gz";
-      sha256 = "sha256-YNkeZWiXGuxHqWFLS7fKwGsxGSKjp3Prvb1p0qwvNDg=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-macos-aarch64.tar.gz";
+      sha256 = "sha256-FTUCTHOIqL1i4UKjE9wvZzqTUqNqaF0GGceexAvdI1Q=";
     };
   };
   jcode-aarch64-linux = {
     pname = "jcode-aarch64-linux";
-    version = "v0.76.0";
+    version = "v0.93.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.76.0/jcode-linux-aarch64.tar.gz";
-      sha256 = "sha256-YFvCNhrq2ssvF1TFEYERGBzxTosuyhpC1qX+XstBGn4=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-aarch64.tar.gz";
+      sha256 = "sha256-WTrcRRY0iWp+NS1UVbKy5HjqIuIWXMKgaGWloUxUOIo=";
     };
   };
   jcode-x86_64-darwin = {
     pname = "jcode-x86_64-darwin";
-    version = "v0.76.0";
+    version = "v0.93.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.76.0/jcode-macos-x86_64.tar.gz";
-      sha256 = "sha256-rUqI/BKQmaxuj4vvJgrkv9wPXawypg6f8JxxTpw75E8=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-macos-x86_64.tar.gz";
+      sha256 = "sha256-Aaz46+UHnBjULBzX6JWLKSWCVL7IhfER/r/aru3+XM8=";
     };
   };
   jcode-x86_64-linux = {
     pname = "jcode-x86_64-linux";
-    version = "v0.76.0";
+    version = "v0.93.0";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v0.76.0/jcode-linux-x86_64.tar.gz";
-      sha256 = "sha256-sVI8fPnL33QN6T8kTe9/qE4KGO+Cm+NL3y73MUt7FDk=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-x86_64.tar.gz";
+      sha256 = "sha256-6e0YP/BnvBf1MObt/d2X7/iP2Be8IoESMHM3fw91Z6Q=";
     };
   };
   lightpanda-aarch64-darwin = {
     pname = "lightpanda-aarch64-darwin";
-    version = "a61ad53690ca0095ad112e5302bb81778080c90f";
+    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos";
-      sha256 = "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=";
+      sha256 = "sha256-DIcnFzZ33LBURvnS1xLlVSqnN2E7fJ/02tFZ5V121pc=";
     };
-    date = "2026-08-14";
+    date = "2026-10-09";
   };
   lightpanda-aarch64-linux = {
     pname = "lightpanda-aarch64-linux";
-    version = "a61ad53690ca0095ad112e5302bb81778080c90f";
+    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux";
-      sha256 = "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=";
+      sha256 = "sha256-gxVtwI0Meh3o5t8pt5VXaRQDxawW1K1xfAo8l/+WuTU=";
     };
-    date = "2026-08-14";
+    date = "2026-10-09";
   };
   lightpanda-x86_64-darwin = {
     pname = "lightpanda-x86_64-darwin";
-    version = "a61ad53690ca0095ad112e5302bb81778080c90f";
+    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos";
-      sha256 = "sha256-pRVedQXycDRMZvLzsgGC7gcDZ83svCkIjDN8r5NPOds=";
+      sha256 = "sha256-GBgemj+y9KTbxY/4tIyQ3+KPzeHLXMxRoDPvSJenrCw=";
     };
-    date = "2026-08-14";
+    date = "2026-10-09";
   };
   lightpanda-x86_64-linux = {
     pname = "lightpanda-x86_64-linux";
-    version = "a61ad53690ca0095ad112e5302bb81778080c90f";
+    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux";
-      sha256 = "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=";
+      sha256 = "sha256-xexvs/+VXS6QZoKWKK2FURhC1JgaHQivLRaDiHxoUwk=";
     };
-    date = "2026-08-14";
+    date = "2026-10-09";
   };
   lumen-x86_64-darwin = {
     pname = "lumen-x86_64-darwin";
@@ -127,18 +127,18 @@
   };
   pi-agent-rust-aarch64-darwin = {
     pname = "pi-agent-rust-aarch64-darwin";
-    version = "v0.1.23";
+    version = "v0.7.1";
     src = fetchurl {
-      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.1.23/pi-darwin-arm64.tar.xz";
-      sha256 = "sha256-y2TimGx791dp/drwY8I8wYO13gSi79QtULUaLAnUXWA=";
+      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.7.1/pi-darwin-arm64.tar.xz";
+      sha256 = "sha256-4NegGK+V/x/9FXK8MsDPSNvVJcsQW4s++YBiZjW/tYk=";
     };
   };
   pi-agent-rust-x86_64-linux = {
     pname = "pi-agent-rust-x86_64-linux";
-    version = "v0.1.23";
+    version = "v0.7.1";
     src = fetchurl {
-      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.1.23/pi-linux-amd64.tar.xz";
-      sha256 = "sha256-OG2xlf5mLtUkNmtW5ZC0VEnwLZGHWFIXGT12OCKhmvs=";
+      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.7.1/pi-linux-amd64.tar.xz";
+      sha256 = "sha256-NXwjuv9dPv135HRHlZGxuOdSL9tp67eqBF5No1Oxiyc=";
     };
   };
   zai = {
@@ -150,6 +150,49 @@
       rev = "v0.1.8";
       fetchSubmodules = false;
       sha256 = "sha256-nruE/9tmeEuEO/x4NPyb9cUkDe3MapSuBePPTRosHrw=";
+    };
+  };
+  zehn = {
+    pname = "zehn";
+    version = "v0.3.0";
+    src = fetchFromGitHub {
+      owner = "al3rez";
+      repo = "zehn";
+      rev = "v0.3.0";
+      fetchSubmodules = false;
+      sha256 = "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=";
+    };
+  };
+  zerobrew-zb-aarch64 = {
+    pname = "zerobrew-zb-aarch64";
+    version = "v0.4.0";
+    src = fetchurl {
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zb-darwin-arm64";
+      sha256 = "sha256-M828ABO6uCtUDH32GdjcFR/nLJQiXmVyMaF6xagf3KQ=";
+    };
+  };
+  zerobrew-zb-x86_64 = {
+    pname = "zerobrew-zb-x86_64";
+    version = "v0.4.0";
+    src = fetchurl {
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zb-darwin-x64";
+      sha256 = "sha256-CDicChVQHPv5Rx4Uu/40sopURDwWnWjcQiaVQAn4wfs=";
+    };
+  };
+  zerobrew-zbx-aarch64 = {
+    pname = "zerobrew-zbx-aarch64";
+    version = "v0.4.0";
+    src = fetchurl {
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zbx-darwin-arm64";
+      sha256 = "sha256-JMRRiDqKKdQUaIQ3ak6zbXxGaThdGsSicTIVjfn9gSM=";
+    };
+  };
+  zerobrew-zbx-x86_64 = {
+    pname = "zerobrew-zbx-x86_64";
+    version = "v0.4.0";
+    src = fetchurl {
+      url = "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zbx-darwin-x64";
+      sha256 = "sha256-GEGGHL9bwsNUmcEdosWfYTZCgeC2HNuFfDHk0FJRVQw=";
     };
   };
 }

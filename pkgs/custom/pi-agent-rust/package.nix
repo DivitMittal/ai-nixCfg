@@ -13,11 +13,8 @@
 }: let
   system = stdenvNoCC.hostPlatform.system;
   source = sources.${"pi-agent-rust-${system}"} or null;
-  archiveEntries = {
-    aarch64-darwin = "pi-darwin-arm64";
-    x86_64-linux = "pi-linux-amd64";
-  };
-  archiveEntry = archiveEntries.${system} or null;
+  ## Release tarballs (v0.7+) hold a single `pi` binary on every platform
+  archiveEntry = "pi";
   isLinux = stdenvNoCC.hostPlatform.isLinux;
   isDarwinX86 = system == "x86_64-darwin";
 
@@ -31,8 +28,6 @@
   };
 
   # Short-circuit with a helpful error on systems we don't support.
-  _ = lib.throwIfNot (source != null && archiveEntry != null || isDarwinX86)
-    "pi-agent-rust: unsupported system ${system}";
 
   # The x86_64-darwin branch builds from source via rustPlatform, then
   # rewraps the resulting `pi` binary to `pi-rust` so it can coexist with
@@ -125,4 +120,6 @@
     };
   });
 in
-  if isDarwinX86 then rewrittenSourceBuild else prebuiltDerivation
+  if isDarwinX86
+  then rewrittenSourceBuild
+  else prebuiltDerivation

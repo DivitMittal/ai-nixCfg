@@ -16,7 +16,7 @@ in {
   ## auto-rewrite hook.
   ## toon — token-oriented object notation CLI for compact agent data
   ## exchange. Not in nixpkgs; npm-published as `@toon-format/cli` (bin:
-  ## toon), so run it via pnpm dlx on x86_64-darwin instead.
+  ## toon), so run it via bun x on x86_64-darwin instead.
   home.packages = [
     (
       if isX86Darwin
@@ -25,7 +25,7 @@ in {
     )
     (
       if isX86Darwin
-      then customLib.mkPnpmDlxBin pkgs "toon" "@toon-format/cli"
+      then customLib.mkBunxBin pkgs "toon" "@toon-format/cli"
       else customPkgs.toon
     )
   ];
