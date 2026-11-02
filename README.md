@@ -683,6 +683,11 @@ Clients are opt-in under `programs.cliproxyapi.clients`:
 | `clients.openai` | exports `OPENAI_BASE_URL`/`OPENAI_API_KEY` (codex, opencode, jcode, forgecode, …) | on |
 | `clients.claudeCode` | sets `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN` in Claude Code's settings, replacing its own login | off |
 
+goose, jcode, Pi, pi-rust, zerostack and Hermes ignore `OPENAI_BASE_URL`, so
+`config/home/cliproxyapi/harnesses.nix` wires each one up, and pins Claude
+Code's model tiers for when `clients.claudeCode` is on. Cursor and Antigravity
+CLI have no base-URL override.
+
 Only turn on `clients.claudeCode` once the proxy has an account serving the
 models you use (e.g. `cli-proxy-api-plus -claude-login`).
 
