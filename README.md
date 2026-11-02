@@ -51,7 +51,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 
 | Category | Tools |
 |----------|-------|
-| **Agentic coding assistants** | Claude Code, Codex, GitHub Copilot CLI, OpenCode, Crush, Antigravity CLI, Pi, Hermes Agent, OpenClaw (aarch64-darwin) |
+| **Agentic coding assistants** | Claude Code, Codex, GitHub Copilot CLI, OpenCode, Crush, Antigravity CLI, Pi, pi-rust, goose, jcode, Cursor agent, zerostack, Hermes Agent |
 | **Companion tools** | `cliproxyapi-plus`, `ccusage`, `ccstatusline`, `gnhf` |
 | **LLM CLI tools** | `aichat`, `fabric-ai` |
 | **VCS tools** | `geminicommit`, `aicommit2`, `lumen` |
@@ -201,7 +201,7 @@ Pre-configured in `flake.nix` (`nixConfig.extra-substituters`):
 
 ### Supported Systems
 
-Pulled from `nix-systems/default` — Linux (`x86_64`, `aarch64`) + macOS (`x86_64`, `aarch64`). Note: OpenClaw and Hermes Agent bundles are **aarch64-darwin only**; other tools work cross-platform.
+Pulled from `nix-systems/default` — Linux (`x86_64`, `aarch64`) + macOS (`x86_64`, `aarch64`). OpenClaw is declared but disabled; its bundles are aarch64-darwin only. Hermes Agent runs via `uvx` everywhere.
 
 ______________________________________________________________________
 
@@ -603,7 +603,7 @@ graph LR
         Proxy --> Compress[Compress tool output<br/>HEADROOM_MODE=token]
         Proxy --> Context[Inject context<br/>HEADROOM_CONTEXT_TOOL=rtk]
         Context --> Rtk[rtk — Rust Token Killer]
-        Proxy --> Agent[Claude / Codex /<br/>OpenCode / Copilot / OpenClaw]
+        Proxy --> Agent[Claude / Codex /<br/>OpenCode / Copilot]
     end
 
     style Proxy fill:#bf8700,stroke:#fff,color:#fff
@@ -623,7 +623,6 @@ hr-claude    # headroom wrap claude
 hr-codex     # headroom wrap codex
 hr-opencode  # headroom wrap opencode
 hr-copilot   # headroom wrap copilot
-hr-openclaw  # headroom wrap openclaw
 hr-proxy     # run proxy standalone on :8787
 hr-learn     # headroom learn --apply
 hr-stats     # headroom perf
@@ -722,7 +721,7 @@ graph TD
     P["packages per system"] --> Cust["customPkgs<br/>(cross-platform)"]
     P --> Darw["darwinPkgs<br/>aarch64-darwin only"]
     P --> Llm["llm-agents.nix<br/>apm, beads, beads-viewer,<br/>beads-cli, ck, codegraph,<br/>crush, dolt, gastown,<br/>happy-coder, mardi-gras,<br/>openspecui, rtk, …"]
-    P --> Stp["nix-steipete-tools<br/>aarch64-darwin:<br/>summarize, gogcli, openclaw"]
+    P --> Stp["nix-steipete-tools<br/>aarch64-darwin:<br/>summarize, gogcli"]
 
     Cust --> Gowa["gowa<br/>(WhatsApp MCP, Go)"]
     Cust --> Panda["lightpanda<br/>(headless browser, Rust)"]
@@ -769,7 +768,7 @@ graph TD
 | `ccstatusline` | Claude Code status line |
 | `ccusage` | Claude Code usage tracker |
 | `hermes-agent` | Hermes Agent (Python) |
-| `openclaw`, `summarize`, `gogcli` | (aarch64-darwin only) |
+| `summarize`, `gogcli` | (aarch64-darwin only) |
 
 ### Updating Sources
 
@@ -916,7 +915,7 @@ ______________________________________________________________________
 │       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli)
 │       ├── assistants/         # Standalone assistants
 │       │   ├── hermes-agent/   # Hermes Agent setup
-│       │   └── openclaw/       # OpenClaw setup (aarch64-darwin)
+│       │   └── openclaw/       # OpenClaw (disabled)
 │       ├── cli/                # LLM CLI tools
 │       │   ├── aichat.nix      # Multi-provider LLM client (OpenRouter zoo)
 │       │   ├── fabric.nix      # Pattern-based AI workflows
