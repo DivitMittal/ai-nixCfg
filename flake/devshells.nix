@@ -30,6 +30,9 @@ in {
             alejandra
             ## Package management
             nvfetcher
+            ## nvfetcher src.cmd version feeds
+            curl
+            jq
             ;
           ## AI context
           apm = customLib.mkUvxBin pkgs "apm" "--from apm-cli apm";

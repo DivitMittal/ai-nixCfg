@@ -1,4 +1,19 @@
 {
+    "antigravity-cli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "antigravity-cli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Yk0BNp31hB9kVVdB3QnTq0ptF0aZpN7YlqUYDIHywt4=",
+            "type": "url",
+            "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.4.12-4768735748292608/darwin-x64/cli_mac_x64.tar.gz"
+        },
+        "version": "1.4.12-4768735748292608"
+    },
     "cliproxyapi-plus-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
@@ -59,6 +74,21 @@
         },
         "version": "7.3.12-1"
     },
+    "cursor-agent-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "cursor-agent-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-ejz78Pz7l5tiE/61+f0Q+8fNTlGrKMO1cruTXgsRSWE=",
+            "type": "url",
+            "url": "https://downloads.cursor.com/lab/2026.10.22-27dcf5f/darwin/x64/agent-cli-package.tar.gz"
+        },
+        "version": "2026.10.22-27dcf5f"
+    },
     "gowa": {
         "cargoLock": null,
         "date": null,
@@ -89,11 +119,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-FTUCTHOIqL1i4UKjE9wvZzqTUqNqaF0GGceexAvdI1Q=",
+            "sha256": "sha256-NiMWTVGLDJ1EOrBwUghCRLN56KM3cDfbZ9I4IiD07RQ=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-macos-aarch64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v0.99.1/jcode-macos-aarch64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v0.99.1"
     },
     "jcode-aarch64-linux": {
         "cargoLock": null,
@@ -104,11 +134,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-WTrcRRY0iWp+NS1UVbKy5HjqIuIWXMKgaGWloUxUOIo=",
+            "sha256": "sha256-9m/7r3xMAST0XWyGFlcRRt64UJuL7vLowNdsw13am5E=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-aarch64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v0.99.1/jcode-linux-aarch64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v0.99.1"
     },
     "jcode-x86_64-darwin": {
         "cargoLock": null,
@@ -119,11 +149,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Aaz46+UHnBjULBzX6JWLKSWCVL7IhfER/r/aru3+XM8=",
+            "sha256": "sha256-19U8QLHhBZJuBt9aoCwPCCYW1gK70g4MMYJIzj/a1Mk=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-macos-x86_64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v0.99.1/jcode-macos-x86_64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v0.99.1"
     },
     "jcode-x86_64-linux": {
         "cargoLock": null,
@@ -134,71 +164,101 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-6e0YP/BnvBf1MObt/d2X7/iP2Be8IoESMHM3fw91Z6Q=",
+            "sha256": "sha256-CyphLel8bgGubeHAz/VVs0YM+DZNGhHS+GSfwMnXoeY=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-x86_64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v0.99.1/jcode-linux-x86_64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v0.99.1"
     },
     "lightpanda-aarch64-darwin": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": "2026-11-02",
         "extract": null,
         "name": "lightpanda-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-DIcnFzZ33LBURvnS1xLlVSqnN2E7fJ/02tFZ5V121pc=",
+            "sha256": "sha256-YPbzaWDVv4GPi4kZGTQu7rYxH5I1Cdbulgh0BuvcqOc=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "d05526c2f57b903ea7e51988a44a49cded5e951e"
     },
     "lightpanda-aarch64-linux": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": "2026-11-02",
         "extract": null,
         "name": "lightpanda-aarch64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-gxVtwI0Meh3o5t8pt5VXaRQDxawW1K1xfAo8l/+WuTU=",
+            "sha256": "sha256-QCHiZzCylVFUskdwgS1QR2syWdmwhQ9NqI44UZkX91Y=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "d05526c2f57b903ea7e51988a44a49cded5e951e"
     },
     "lightpanda-x86_64-darwin": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": "2026-11-02",
         "extract": null,
         "name": "lightpanda-x86_64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-GBgemj+y9KTbxY/4tIyQ3+KPzeHLXMxRoDPvSJenrCw=",
+            "sha256": "sha256-BwuXsnt8C8Y6C0nDJN1lnDISwMc4vBx2Hll0DjheEWU=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "d05526c2f57b903ea7e51988a44a49cded5e951e"
     },
     "lightpanda-x86_64-linux": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": "2026-11-02",
         "extract": null,
         "name": "lightpanda-x86_64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-xexvs/+VXS6QZoKWKK2FURhC1JgaHQivLRaDiHxoUwk=",
+            "sha256": "sha256-52IaFkO1c8UZQKqCYTYjAEEHszDqDJGngv5ZHplFYXg=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "d05526c2f57b903ea7e51988a44a49cded5e951e"
+    },
+    "lumen-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "lumen-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-RTd+yW8o+bnBgxy1L9XSHj+LxYwvHdirt5ukTT7zNTc=",
+            "type": "url",
+            "url": "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-aarch64-apple-darwin.tar.gz"
+        },
+        "version": "v2.32.0"
+    },
+    "lumen-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "lumen-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-zX1MRiSehRkrdiH5J7aDEbDh7I6dQKf77hjCh/Q48EU=",
+            "type": "url",
+            "url": "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-aarch64-unknown-linux-musl.tar.gz"
+        },
+        "version": "v2.32.0"
     },
     "lumen-x86_64-darwin": {
         "cargoLock": null,
@@ -215,6 +275,21 @@
         },
         "version": "v2.32.0"
     },
+    "lumen-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "lumen-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-YMruSCeHYtAXtmJktrAVxwbJVuBiMKdLaBBjyc+lb9Q=",
+            "type": "url",
+            "url": "https://github.com/jnsahaj/lumen/releases/download/v2.32.0/lumen-x86_64-unknown-linux-musl.tar.gz"
+        },
+        "version": "v2.32.0"
+    },
     "pi-agent-rust-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
@@ -224,11 +299,41 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-4NegGK+V/x/9FXK8MsDPSNvVJcsQW4s++YBiZjW/tYk=",
+            "sha256": "sha256-mZnuWwUoOnmydxYvc535/zay/w+Nymzx1sxOGq5dBdk=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.7.1/pi-darwin-arm64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-arm64.tar.xz"
         },
-        "version": "v0.7.1"
+        "version": "v0.8.0"
+    },
+    "pi-agent-rust-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pi-agent-rust-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-MnZQTRlVTXqoryJwNnQYa5iHxIz/wc0SOLe/UjEAq/k=",
+            "type": "url",
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-arm64.tar.xz"
+        },
+        "version": "v0.8.0"
+    },
+    "pi-agent-rust-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pi-agent-rust-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-dY40rGP0uhxw0HYJWBkThh99XR778enDvkud7rtfz70=",
+            "type": "url",
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-amd64.tar.xz"
+        },
+        "version": "v0.8.0"
     },
     "pi-agent-rust-x86_64-linux": {
         "cargoLock": null,
@@ -239,11 +344,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-NXwjuv9dPv135HRHlZGxuOdSL9tp67eqBF5No1Oxiyc=",
+            "sha256": "sha256-wE5/hzkb7LF8sex1RND9dnIx37WoNhZE6ohwuj05BW0=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.7.1/pi-linux-amd64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-amd64.tar.xz"
         },
-        "version": "v0.7.1"
+        "version": "v0.8.0"
     },
     "zai": {
         "cargoLock": null,
@@ -265,6 +370,27 @@
             "type": "github"
         },
         "version": "v0.1.8"
+    },
+    "zehn": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zehn",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "al3rez",
+            "repo": "zehn",
+            "rev": "v0.3.0",
+            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.3.0"
     },
     "zerobrew-zb-aarch64": {
         "cargoLock": null,
@@ -326,25 +452,64 @@
         },
         "version": "v0.4.0"
     },
-    "zehn": {
+    "zerostack-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "zehn",
+        "name": "zerostack-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
             "name": null,
-            "owner": "al3rez",
-            "repo": "zehn",
-            "rev": "v0.3.0",
-            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
-            "sparseCheckout": [],
-            "type": "github"
+            "sha256": "sha256-wyfEAVu3Rpq5ZRmhN3om9QUpwuw9an0RqlEsQHcNKbA=",
+            "type": "url",
+            "url": "https://github.com/gi-dellav/zerostack/releases/download/v1.8.5/zerostack-aarch64-apple-darwin.tar.gz"
         },
-        "version": "v0.3.0"
+        "version": "v1.8.5"
+    },
+    "zerostack-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zerostack-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-qE6vz1oqyllqa7Ep1hO0DHHmkAKSACH3V3k1lBo0MN0=",
+            "type": "url",
+            "url": "https://github.com/gi-dellav/zerostack/releases/download/v1.8.5/zerostack-aarch64-unknown-linux-musl.tar.gz"
+        },
+        "version": "v1.8.5"
+    },
+    "zerostack-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zerostack-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-CUk/9vHydP6J8jcegPaHiuTYf9wZ03s6t5eKnCYRusc=",
+            "type": "url",
+            "url": "https://github.com/gi-dellav/zerostack/releases/download/v1.8.5/zerostack-x86_64-apple-darwin.tar.gz"
+        },
+        "version": "v1.8.5"
+    },
+    "zerostack-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zerostack-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-t9cb3KhUm/AO8jB9+D5mhFqVY5+mC8k7FV+Fg+e1Jvg=",
+            "type": "url",
+            "url": "https://github.com/gi-dellav/zerostack/releases/download/v1.8.5/zerostack-x86_64-unknown-linux-musl.tar.gz"
+        },
+        "version": "v1.8.5"
     }
 }

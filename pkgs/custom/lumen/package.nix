@@ -27,7 +27,7 @@ in
       homepage = "https://github.com/jnsahaj/lumen";
       license = lib.licenses.mit;
       maintainers = with lib.maintainers; [DivitMittal];
-      platforms = ["x86_64-darwin"];
+      platforms = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
       mainProgram = "lumen";
       sourceProvenance = [lib.sourceTypes.binaryNativeCode];
     };
