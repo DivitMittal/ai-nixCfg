@@ -1,18 +1,10 @@
 {
-  lib,
   pkgs,
-  ai-nixCfg,
   customLib,
   ...
 }: let
-  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
   bunxCommand = name: pkg: "${customLib.mkBunxBin pkgs name pkg}/bin/${name}";
 in {
-  home.packages = lib.attrsets.attrValues {
-    ## WhatsApp MCP Server
-    inherit (customPkgs) gowa;
-  };
-
   programs.mcp = {
     enable = true;
     servers = {
