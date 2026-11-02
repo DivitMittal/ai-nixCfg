@@ -13,13 +13,10 @@
       exec ${codexDlx}/bin/codex-dlx "$@"
     '')
     // (optionalAttrs config.home.preferXdgDirectories {version = "0.134.0";});
-  lazycodexPackage = customLib.mkBunxBin pkgs "lazycodex" "lazycodex-ai";
 in {
   programs.codex = {
     enable = true;
     mutableUserSettings = true;
     package = codexPackage;
   };
-
-  home.packages = [lazycodexPackage];
 }

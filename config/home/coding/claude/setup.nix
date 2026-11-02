@@ -1,14 +1,10 @@
 {
   pkgs,
-  ai-nixCfg,
+  customLib,
   ...
-}: let
-  customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
-in {
+}: {
   programs.claude-code = {
     enable = true;
-    # llm-agents.nix (customPkgs' source) doesn't build claude-code for
-    # x86_64-darwin; fall back to nixpkgs' own package there.
-    package = customPkgs.claude-code or pkgs.claude-code;
+    package = customLib.mkBunxBin pkgs "claude" "@anthropic-ai/claude-code@latest";
   };
 }

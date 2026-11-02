@@ -27,7 +27,6 @@ in {
     hr-codex = "headroom wrap codex";
     hr-opencode = "headroom wrap opencode";
     hr-copilot = "headroom wrap copilot";
-    hr-openclaw = "headroom wrap openclaw";
     # Run just the proxy (useful as a background service substitute)
     hr-proxy = "headroom proxy --port 8787";
     hr-learn = "headroom learn --apply";

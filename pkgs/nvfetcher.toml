@@ -7,14 +7,24 @@ fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"
 src.github = "dotcommander/zai"
 fetch.github = "dotcommander/zai"
 
-# lumen — prebuilt release archive, x86_64-darwin only. ai-nixCfg.inputs.lumen
-# (jnsahaj/lumen's own flake) instantiates unstable nixpkgs internally, which
-# now hard-throws on x86_64-darwin; this sidesteps that by fetching the
-# upstream release binary directly instead of building via that flake.
-# Run `pkgs-update` to refresh hashes and pick up new releases.
+# lumen — prebuilt release archives; the Linux assets are musl-static so they
+# need no autoPatchelf. Run `pkgs-update` to refresh hashes and pick up new
+# releases.
+[lumen-x86_64-linux]
+src.github = "jnsahaj/lumen"
+fetch.url = "https://github.com/jnsahaj/lumen/releases/download/$ver/lumen-x86_64-unknown-linux-musl.tar.gz"
+
+[lumen-aarch64-linux]
+src.github = "jnsahaj/lumen"
+fetch.url = "https://github.com/jnsahaj/lumen/releases/download/$ver/lumen-aarch64-unknown-linux-musl.tar.gz"
+
 [lumen-x86_64-darwin]
 src.github = "jnsahaj/lumen"
 fetch.url = "https://github.com/jnsahaj/lumen/releases/download/$ver/lumen-x86_64-apple-darwin.tar.gz"
+
+[lumen-aarch64-darwin]
+src.github = "jnsahaj/lumen"
+fetch.url = "https://github.com/jnsahaj/lumen/releases/download/$ver/lumen-aarch64-apple-darwin.tar.gz"
 
 [zehn]
 # `nightly` is a rolling tag (force-pushed to master's HEAD) that otherwise
@@ -61,15 +71,51 @@ src.github = "1jehuang/jcode"
 fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-macos-aarch64.tar.gz"
 
 # pi-agent-rust — prebuilt release archives. Run `pkgs-update` to refresh
-# hashes and pick up new releases. Upstream only publishes aarch64-darwin and
-# x86_64-linux; the package below guards the unsupported systems.
+# hashes and pick up new releases.
+[pi-agent-rust-x86_64-darwin]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-darwin-amd64.tar.xz"
+
 [pi-agent-rust-aarch64-darwin]
 src.github = "Dicklesworthstone/pi_agent_rust"
 fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-darwin-arm64.tar.xz"
 
+[pi-agent-rust-aarch64-linux]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-arm64.tar.xz"
+
 [pi-agent-rust-x86_64-linux]
 src.github = "Dicklesworthstone/pi_agent_rust"
 fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-amd64.tar.xz"
+
+# zerostack — prebuilt release archives; the Linux assets are musl-static so
+# they need no autoPatchelf.
+[zerostack-x86_64-linux]
+src.github = "gi-dellav/zerostack"
+fetch.url = "https://github.com/gi-dellav/zerostack/releases/download/$ver/zerostack-x86_64-unknown-linux-musl.tar.gz"
+
+[zerostack-aarch64-linux]
+src.github = "gi-dellav/zerostack"
+fetch.url = "https://github.com/gi-dellav/zerostack/releases/download/$ver/zerostack-aarch64-unknown-linux-musl.tar.gz"
+
+[zerostack-x86_64-darwin]
+src.github = "gi-dellav/zerostack"
+fetch.url = "https://github.com/gi-dellav/zerostack/releases/download/$ver/zerostack-x86_64-apple-darwin.tar.gz"
+
+[zerostack-aarch64-darwin]
+src.github = "gi-dellav/zerostack"
+fetch.url = "https://github.com/gi-dellav/zerostack/releases/download/$ver/zerostack-aarch64-apple-darwin.tar.gz"
+
+# llm-agents.nix has no x86_64-darwin packages, so these two pull the vendor
+# tarball there. Neither vendor has GitHub releases; the Homebrew cask API is
+# the only machine-readable version feed, hence src.cmd (needs curl + jq).
+[cursor-agent-x86_64-darwin]
+src.cmd = "curl -fsSL https://formulae.brew.sh/api/cask/cursor-cli.json | jq -r .version"
+fetch.url = "https://downloads.cursor.com/lab/$ver/darwin/x64/agent-cli-package.tar.gz"
+
+[antigravity-cli-x86_64-darwin]
+src.cmd = "curl -fsSL https://formulae.brew.sh/api/cask/antigravity-cli.json | jq -r '.version | sub(\",\"; \"-\")'"
+fetch.url = "https://storage.googleapis.com/antigravity-public/antigravity-cli/$ver/darwin-x64/cli_mac_x64.tar.gz"
 
 # CLIProxyAPIPlus — prebuilt release archives per target platform.
 # Tracks the CCS fork (kaitranntt/CLIProxyAPIPlus) which mirrors upstream

@@ -80,32 +80,12 @@
       # Don't follow our nixpkgs: nixos-25.11 lacks buildPythonApplication finalAttrs
       # support required by some llm-agents packages (e.g. apm).
     };
-    aicommit2 = {
-      #url = "github:DivitMittal/aicommit2";
-      url = "github:tak-bro/aicommit2";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-    lumen = {
-      url = "github:jnsahaj/lumen";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.inputs.systems.follows = "systems";
-      };
-    };
     ## Hermes Agent (home-manager module from upstream PR #9087)
     ## Pinned to 9f3eea62 — tip (7b385468) has a missing '' in checks.nix that breaks eval
     hermes-agent-hm = {
       url = "github:yzx9/hermes-agent/9f3eea62eba92ea2b0c9ff96aaabf31d510da2ee";
       # Don't follow nixpkgs — mirrors the llm-agents pattern; avoids
       # Python finalAttrs compat issues with our pinned nixpkgs.
-    };
-    ## Hermes Agent package fallback for systems missing llm-agents.hermes-agent
-    nix-hermes-agent = {
-      url = "github:0xrsydn/nix-hermes-agent";
-      inputs.flake-utils.inputs.systems.follows = "systems";
     };
     ## Openclaw
     nix-steipete-tools = {
