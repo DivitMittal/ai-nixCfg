@@ -42,6 +42,10 @@ in {
       inherit (customPkgs) jcode;
       ## pi-agent-rust — Dicklesworthstone's Rust port of Pi (binary: pi-rust)
       inherit (customPkgs) pi-agent-rust;
+      ## zerostack — minimal Rust coding agent, here for temporary testing
+      inherit (customPkgs) zerostack;
+      ## cursor-agent — Cursor CLI coding agent (binary: cursor-agent)
+      inherit (customPkgs) cursor-agent;
       ## mmx-cli — MiniMax CLI (binary: mmx)
       mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
     }
@@ -49,10 +53,9 @@ in {
     ## tu). Rust; no x86_64-darwin build, no npm/pypi fallback, and no
     ## Homebrew formula either (checked formulae.brew.sh directly — not just
     ## asserted) — no fallback tier applies.
-    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) terminal-use;}
-    ## cursor-agent — Cursor CLI coding agent (binary: cursor-agent).
-    ## Proprietary binary that upstream itself doesn't publish for
-    ## x86_64-darwin (only aarch64-darwin/aarch64-linux/x86_64-linux), so no
-    ## fallback tier applies.
-    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) cursor-agent;});
+    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) terminal-use;});
+
+  ## Nix owns jcode; its self-updater would otherwise repopulate ~/.jcode/builds
+  ## and ~/.local/bin/jcode, which shadow the profile on PATH.
+  home.sessionVariables.JCODE_NO_AUTO_UPDATE = "1";
 }

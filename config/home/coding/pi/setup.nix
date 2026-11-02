@@ -1,18 +1,9 @@
 {
   pkgs,
   lib,
+  customLib,
   ...
 }: let
-  # ai-nixCfg.inputs.pi-nix instantiates unstable nixpkgs internally to build
-  # its TS coding-agent (native canvas/cairo/pango deps, not cleanly
-  # npm-installable standalone), which now hard-throws for x86_64-darwin.
-  # `pi-agent-rust` (binary: pi-rust, wired in coding/misc.nix) remains
-  # available there as an alternative.
-  isSupported =
-    (pkgs.stdenvNoCC.hostPlatform.isDarwin
-      || pkgs.stdenvNoCC.hostPlatform.isLinux)
-    && pkgs.stdenvNoCC.hostPlatform.system != "x86_64-darwin";
-
   # Pinned to the same rev that was tracked as the coding-agents flake input.
   # Update by bumping rev + running `nix build` to get the new hash from the
   # mismatch error, then copying it here.
@@ -64,20 +55,23 @@
     installPhase = ''
       runHook preInstall
       mkdir -p "$out"
-      cp index.ts "$out/"
+      cp ./*.ts "$out/"
       cp -r node_modules "$out/"
       runHook postInstall
     '';
   };
 in {
-  programs.pi.coding-agent = lib.mkIf isSupported {
+  programs.pi.coding-agent = {
     enable = true;
+    # bunx rather than pi.nix's default build, which needs native canvas/cairo
+    # deps and throws on x86_64-darwin. `pi` isn't the npm package's name.
+    package = customLib.mkBunxBin pkgs "pi" "--package @earendil-works/pi-coding-agent pi";
     extensions =
       ["${piFetchExt}/index.ts"]
       ++ map (n: "${piExtensionsDir}/${n}") otherExtNames;
   };
 
-  home.packages = lib.optionals isSupported (
+  home.packages =
     [
       pkgs.nil
       pkgs.basedpyright
@@ -88,6 +82,5 @@ in {
     ]
     ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       pkgs.wl-clipboard
-    ]
-  );
+    ];
 }
