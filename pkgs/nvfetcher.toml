@@ -1,11 +1,54 @@
-[gowa]
-src.github = "aldinokemal/go-whatsapp-web-multidevice"
-fetch.github = "aldinokemal/go-whatsapp-web-multidevice"
-fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"
-
 [zai]
 src.github = "dotcommander/zai"
 fetch.github = "dotcommander/zai"
+
+# No tags or releases upstream, so this tracks the default branch.
+[spotify-library-mcp]
+src.git = "https://github.com/QuinnFrederick/spotify-library-mcp"
+fetch.github = "QuinnFrederick/spotify-library-mcp"
+
+# wacli and discrawl — prebuilt release archives, one entry per target platform.
+# Both require Go 1.27, which is newer than the Go in this flake's nixpkgs.
+# Run `pkgs-update` to refresh hashes and pick up new releases.
+[wacli-x86_64-linux]
+src.github = "openclaw/wacli"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_linux_amd64.tar.gz"
+
+[wacli-aarch64-linux]
+src.github = "openclaw/wacli"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_linux_arm64.tar.gz"
+
+[wacli-x86_64-darwin]
+src.github = "openclaw/wacli"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_amd64.tar.gz"
+
+[wacli-aarch64-darwin]
+src.github = "openclaw/wacli"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_arm64.tar.gz"
+
+[discrawl-x86_64-linux]
+src.github = "openclaw/discrawl"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_linux_amd64.tar.gz"
+
+[discrawl-aarch64-linux]
+src.github = "openclaw/discrawl"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_linux_arm64.tar.gz"
+
+[discrawl-x86_64-darwin]
+src.github = "openclaw/discrawl"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_darwin_amd64.tar.gz"
+
+[discrawl-aarch64-darwin]
+src.github = "openclaw/discrawl"
+src.prefix = "v"
+fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_darwin_arm64.tar.gz"
 
 # lumen — prebuilt release archive, x86_64-darwin only. ai-nixCfg.inputs.lumen
 # (jnsahaj/lumen's own flake) instantiates unstable nixpkgs internally, which

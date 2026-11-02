@@ -59,26 +59,65 @@
         },
         "version": "7.3.12-1"
     },
-    "gowa": {
+    "discrawl-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa",
+        "name": "discrawl-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
             "name": null,
-            "owner": "aldinokemal",
-            "repo": "go-whatsapp-web-multidevice",
-            "rev": "v9.6.0",
-            "sha256": "sha256-FGrcg+FkdmTgJsNOrGTEGRxluKo2NqPjbdC9hTXeZUA=",
-            "sparseCheckout": [],
-            "type": "github"
+            "sha256": "sha256-B5HacsAOScAPuVzxexqh1k0NPVua8wJpIHuhIdUvvcQ=",
+            "type": "url",
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.19.0/discrawl_0.19.0_darwin_arm64.tar.gz"
         },
-        "version": "v9.6.0"
+        "version": "0.19.0"
+    },
+    "discrawl-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "discrawl-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-+xtGJtQbw26MRH8nXXg8dWJK3M2UGBnQRBZmmpWX0uc=",
+            "type": "url",
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.19.0/discrawl_0.19.0_linux_arm64.tar.gz"
+        },
+        "version": "0.19.0"
+    },
+    "discrawl-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "discrawl-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-8Ofr78RWw8teOdowe8QYHyoU9EpA/B71eg6sg4eFvfU=",
+            "type": "url",
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.19.0/discrawl_0.19.0_darwin_amd64.tar.gz"
+        },
+        "version": "0.19.0"
+    },
+    "discrawl-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "discrawl-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-IKM5yRzmNFou8N2N4XlT0cUpZNPfyqrV6oaswX8EwqU=",
+            "type": "url",
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.19.0/discrawl_0.19.0_linux_amd64.tar.gz"
+        },
+        "version": "0.19.0"
     },
     "jcode-aarch64-darwin": {
         "cargoLock": null,
@@ -149,7 +188,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-DIcnFzZ33LBURvnS1xLlVSqnN2E7fJ/02tFZ5V121pc=",
+            "sha256": "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
         },
@@ -164,7 +203,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-gxVtwI0Meh3o5t8pt5VXaRQDxawW1K1xfAo8l/+WuTU=",
+            "sha256": "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
         },
@@ -179,7 +218,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-GBgemj+y9KTbxY/4tIyQ3+KPzeHLXMxRoDPvSJenrCw=",
+            "sha256": "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
         },
@@ -194,7 +233,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-xexvs/+VXS6QZoKWKK2FURhC1JgaHQivLRaDiHxoUwk=",
+            "sha256": "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
         },
@@ -245,6 +284,87 @@
         },
         "version": "v0.7.1"
     },
+    "spotify-library-mcp": {
+        "cargoLock": null,
+        "date": "2026-10-14",
+        "extract": null,
+        "name": "spotify-library-mcp",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "QuinnFrederick",
+            "repo": "spotify-library-mcp",
+            "rev": "4fde6122b8231965f21d741a4caf0adac655fc56",
+            "sha256": "sha256-fMdzBCkhyftowGEL4+tVmfAg5zBFXv1cOfDR6SYqCyM=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "4fde6122b8231965f21d741a4caf0adac655fc56"
+    },
+    "wacli-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-/LJQUuKkxttvtQ7uXujBPd9SQRHkcTDdIuEB6HmZXmc=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.25.1/wacli_0.25.1_darwin_arm64.tar.gz"
+        },
+        "version": "0.25.1"
+    },
+    "wacli-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-eY6mIibFAX/i18dkLWFK+ufqGzA3YIG1KZEL+PmrLOI=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.25.1/wacli_0.25.1_linux_arm64.tar.gz"
+        },
+        "version": "0.25.1"
+    },
+    "wacli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-KrMyEgwOX9c1bI8b2eU29n29YgWEyznojUXfebMmfOo=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.25.1/wacli_0.25.1_darwin_amd64.tar.gz"
+        },
+        "version": "0.25.1"
+    },
+    "wacli-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-U7u0UPCkfjsIAXPWH9bOxyJB2AZb7hflkidZg7er0oE=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.25.1/wacli_0.25.1_linux_amd64.tar.gz"
+        },
+        "version": "0.25.1"
+    },
     "zai": {
         "cargoLock": null,
         "date": null,
@@ -265,6 +385,27 @@
             "type": "github"
         },
         "version": "v0.1.8"
+    },
+    "zehn": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zehn",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "al3rez",
+            "repo": "zehn",
+            "rev": "v0.3.0",
+            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.3.0"
     },
     "zerobrew-zb-aarch64": {
         "cargoLock": null,
@@ -325,26 +466,5 @@
             "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zbx-darwin-x64"
         },
         "version": "v0.4.0"
-    },
-    "zehn": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "zehn",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "al3rez",
-            "repo": "zehn",
-            "rev": "v0.3.0",
-            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.3.0"
     }
 }
