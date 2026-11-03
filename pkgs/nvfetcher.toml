@@ -1,7 +1,35 @@
-[gowa]
+# gowa — prebuilt release archives, one entry per target platform.
+# `src.prefix` strips the tag's `v` because asset names use the bare version.
+# Run `pkgs-update` to refresh hashes and pick up new releases.
+[gowa-x86_64-linux]
 src.github = "aldinokemal/go-whatsapp-web-multidevice"
-fetch.github = "aldinokemal/go-whatsapp-web-multidevice"
-fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_amd64.zip"
+
+[gowa-aarch64-linux]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_arm64.zip"
+
+[gowa-armv7l-linux]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_armv7.zip"
+
+[gowa-i686-linux]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_386.zip"
+
+[gowa-x86_64-darwin]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_darwin_amd64.zip"
+
+[gowa-aarch64-darwin]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_darwin_arm64.zip"
 
 [zai]
 src.github = "dotcommander/zai"

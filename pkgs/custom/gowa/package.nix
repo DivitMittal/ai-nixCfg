@@ -1,34 +1,51 @@
 {
   lib,
-  buildGoModule,
+  stdenvNoCC,
+  autoPatchelfHook,
+  glibc,
+  unzip,
   sources,
 }: let
-  inherit (sources.gowa) version src;
+  inherit (stdenvNoCC.hostPlatform) system;
+  # nvfetcher tracks one entry per platform archive; select by current system.
+  # To bump the release, run `pkgs-update` from the devshell.
+  source = sources.${"gowa-${system}"} or null;
+  # Each archive names its binary after the upstream platform, not the program.
+  binaries = {
+    x86_64-linux = "linux-amd64";
+    aarch64-linux = "linux-arm64";
+    armv7l-linux = "linux-armv7";
+    i686-linux = "linux-386";
+    x86_64-darwin = "darwin-amd64";
+    aarch64-darwin = "darwin-arm64";
+  };
+  binary = binaries.${system} or null;
 in
-  buildGoModule {
-    pname = "go-whatsapp-web-multidevice";
-    inherit version src;
+  lib.throwIfNot (source != null && binary != null) "gowa: unsupported system ${system}"
+  stdenvNoCC.mkDerivation (_finalAttrs: {
+    pname = "gowa";
+    inherit (source) version src;
 
-    sourceRoot = "${src.name}/src";
+    sourceRoot = ".";
+    dontConfigure = true;
+    dontBuild = true;
 
-    vendorHash = "sha256-HO/GM+9bhky2GUZ9G8cHvNC7XzYqsGSfGy4luq993II=";
+    nativeBuildInputs = [unzip] ++ lib.optional stdenvNoCC.hostPlatform.isLinux autoPatchelfHook;
+    buildInputs = lib.optional stdenvNoCC.hostPlatform.isLinux glibc;
 
-    ldflags = ["-s" "-w" "-X github.com/aldinokemal/go-whatsapp-web-multidevice/config.AppVersion=${version}"];
-
-    preBuild = ''
-      ls -la views/ || echo "Views directory check"
-    '';
-
-    postInstall = ''
-      mv $out/bin/go-whatsapp-web-multidevice $out/bin/gowa
+    installPhase = ''
+      runHook preInstall
+      install -Dm755 ${binary} $out/bin/gowa
+      runHook postInstall
     '';
 
     meta = {
-      description = "WhatsApp REST API with support for UI, Webhooks, and MCP. Built with Golang for efficient memory use";
+      description = "WhatsApp REST API with support for UI, Webhooks, and MCP";
       homepage = "https://github.com/aldinokemal/go-whatsapp-web-multidevice";
       license = lib.licenses.mit;
       maintainers = with lib.maintainers; [DivitMittal];
-      platforms = lib.platforms.unix;
+      platforms = ["x86_64-linux" "aarch64-linux" "armv7l-linux" "i686-linux" "x86_64-darwin" "aarch64-darwin"];
       mainProgram = "gowa";
+      sourceProvenance = [lib.sourceTypes.binaryNativeCode];
     };
-  }
+  })

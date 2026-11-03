@@ -38,15 +38,52 @@
       sha256 = "sha256-92hmTC2OH6KugBxpZrkRWSfTjgbETzMhZsh9mjWJLzg=";
     };
   };
-  gowa = {
-    pname = "gowa";
-    version = "v9.6.0";
-    src = fetchFromGitHub {
-      owner = "aldinokemal";
-      repo = "go-whatsapp-web-multidevice";
-      rev = "v9.6.0";
-      fetchSubmodules = false;
-      sha256 = "sha256-FGrcg+FkdmTgJsNOrGTEGRxluKo2NqPjbdC9hTXeZUA=";
+  gowa-aarch64-darwin = {
+    pname = "gowa-aarch64-darwin";
+    version = "9.8.0";
+    src = fetchurl {
+      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_darwin_arm64.zip";
+      sha256 = "sha256-aaG/7r8g824b8dB+dsawItpQiQN1FsKfdEb8tV13bl8=";
+    };
+  };
+  gowa-aarch64-linux = {
+    pname = "gowa-aarch64-linux";
+    version = "9.8.0";
+    src = fetchurl {
+      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_arm64.zip";
+      sha256 = "sha256-mHzs251Jgmo2Npse/JOD1NU9jnEAmCSV3S0woXcjkR0=";
+    };
+  };
+  gowa-armv7l-linux = {
+    pname = "gowa-armv7l-linux";
+    version = "9.8.0";
+    src = fetchurl {
+      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_armv7.zip";
+      sha256 = "sha256-PAUp2i6I47Qn7D/6uvEy3VWGyRobG57w3P+/tfBe15o=";
+    };
+  };
+  gowa-i686-linux = {
+    pname = "gowa-i686-linux";
+    version = "9.8.0";
+    src = fetchurl {
+      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_386.zip";
+      sha256 = "sha256-st+NDkt9HrBZHE0U2aW7+8Baj7+LpBlpZB7Vwl+P1Ug=";
+    };
+  };
+  gowa-x86_64-darwin = {
+    pname = "gowa-x86_64-darwin";
+    version = "9.8.0";
+    src = fetchurl {
+      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_darwin_amd64.zip";
+      sha256 = "sha256-oK5NKCN0eGLRRe6aqi8NJ6M1OL7bxM3VFBjzVUD8cfs=";
+    };
+  };
+  gowa-x86_64-linux = {
+    pname = "gowa-x86_64-linux";
+    version = "9.8.0";
+    src = fetchurl {
+      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_amd64.zip";
+      sha256 = "sha256-hzspbo7rA+svJymR6+wV2TefBzU0vENq2p0fxNsEIjA=";
     };
   };
   jcode-aarch64-darwin = {
@@ -86,7 +123,7 @@
     version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos";
-      sha256 = "sha256-DIcnFzZ33LBURvnS1xLlVSqnN2E7fJ/02tFZ5V121pc=";
+      sha256 = "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=";
     };
     date = "2026-10-09";
   };
@@ -95,7 +132,7 @@
     version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux";
-      sha256 = "sha256-gxVtwI0Meh3o5t8pt5VXaRQDxawW1K1xfAo8l/+WuTU=";
+      sha256 = "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=";
     };
     date = "2026-10-09";
   };
@@ -104,7 +141,7 @@
     version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos";
-      sha256 = "sha256-GBgemj+y9KTbxY/4tIyQ3+KPzeHLXMxRoDPvSJenrCw=";
+      sha256 = "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=";
     };
     date = "2026-10-09";
   };
@@ -113,7 +150,7 @@
     version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
     src = fetchurl {
       url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux";
-      sha256 = "sha256-xexvs/+VXS6QZoKWKK2FURhC1JgaHQivLRaDiHxoUwk=";
+      sha256 = "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=";
     };
     date = "2026-10-09";
   };

@@ -59,26 +59,95 @@
         },
         "version": "7.3.12-1"
     },
-    "gowa": {
+    "gowa-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa",
+        "name": "gowa-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
             "name": null,
-            "owner": "aldinokemal",
-            "repo": "go-whatsapp-web-multidevice",
-            "rev": "v9.6.0",
-            "sha256": "sha256-FGrcg+FkdmTgJsNOrGTEGRxluKo2NqPjbdC9hTXeZUA=",
-            "sparseCheckout": [],
-            "type": "github"
+            "sha256": "sha256-aaG/7r8g824b8dB+dsawItpQiQN1FsKfdEb8tV13bl8=",
+            "type": "url",
+            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_darwin_arm64.zip"
         },
-        "version": "v9.6.0"
+        "version": "9.8.0"
+    },
+    "gowa-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "gowa-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-mHzs251Jgmo2Npse/JOD1NU9jnEAmCSV3S0woXcjkR0=",
+            "type": "url",
+            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_arm64.zip"
+        },
+        "version": "9.8.0"
+    },
+    "gowa-armv7l-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "gowa-armv7l-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-PAUp2i6I47Qn7D/6uvEy3VWGyRobG57w3P+/tfBe15o=",
+            "type": "url",
+            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_armv7.zip"
+        },
+        "version": "9.8.0"
+    },
+    "gowa-i686-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "gowa-i686-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-st+NDkt9HrBZHE0U2aW7+8Baj7+LpBlpZB7Vwl+P1Ug=",
+            "type": "url",
+            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_386.zip"
+        },
+        "version": "9.8.0"
+    },
+    "gowa-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "gowa-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-oK5NKCN0eGLRRe6aqi8NJ6M1OL7bxM3VFBjzVUD8cfs=",
+            "type": "url",
+            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_darwin_amd64.zip"
+        },
+        "version": "9.8.0"
+    },
+    "gowa-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "gowa-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-hzspbo7rA+svJymR6+wV2TefBzU0vENq2p0fxNsEIjA=",
+            "type": "url",
+            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_amd64.zip"
+        },
+        "version": "9.8.0"
     },
     "jcode-aarch64-darwin": {
         "cargoLock": null,
@@ -149,7 +218,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-DIcnFzZ33LBURvnS1xLlVSqnN2E7fJ/02tFZ5V121pc=",
+            "sha256": "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
         },
@@ -164,7 +233,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-gxVtwI0Meh3o5t8pt5VXaRQDxawW1K1xfAo8l/+WuTU=",
+            "sha256": "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
         },
@@ -179,7 +248,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-GBgemj+y9KTbxY/4tIyQ3+KPzeHLXMxRoDPvSJenrCw=",
+            "sha256": "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
         },
@@ -194,7 +263,7 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-xexvs/+VXS6QZoKWKK2FURhC1JgaHQivLRaDiHxoUwk=",
+            "sha256": "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=",
             "type": "url",
             "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
         },
@@ -266,6 +335,27 @@
         },
         "version": "v0.1.8"
     },
+    "zehn": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zehn",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "al3rez",
+            "repo": "zehn",
+            "rev": "v0.3.0",
+            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "v0.3.0"
+    },
     "zerobrew-zb-aarch64": {
         "cargoLock": null,
         "date": null,
@@ -325,26 +415,5 @@
             "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zbx-darwin-x64"
         },
         "version": "v0.4.0"
-    },
-    "zehn": {
-        "cargoLock": null,
-        "date": null,
-        "extract": null,
-        "name": "zehn",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "al3rez",
-            "repo": "zehn",
-            "rev": "v0.3.0",
-            "sha256": "sha256-9upGSbTXgHMtMn2TojBm+Lp8W6gZ5Mz5LM67/VX3CP8=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "v0.3.0"
     }
 }
