@@ -14,6 +14,14 @@ in {
   home.packages = lib.attrsets.attrValues {
     inherit (customPkgs) wacli discrawl spotify-library-mcp;
 
+    ## Scriptable chat CLIs for agents; the human TUIs (iamb, weechat) live in
+    ## infra-nixCfg's home/comms.
+    inherit
+      (pkgs)
+      matrix-commander-rs # Matrix: one-shot send/listen with JSON output
+      ii # IRC: filesystem-based (write to `in`, read `out` per channel)
+      ;
+
     ## Must come from git: `telegram-mcp` on PyPI is an unrelated project, and it
     ## would receive the Telegram session credentials.
     telegram-mcp = customLib.mkUvxBin pkgs "telegram-mcp" "--from git+https://github.com/chigwell/telegram-mcp telegram-mcp";
