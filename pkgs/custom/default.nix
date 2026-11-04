@@ -8,6 +8,7 @@ in {
   lumen = pkgs.callPackage ./lumen/package.nix {inherit sources;};
   pi-agent-rust = pkgs.callPackage ./pi-agent-rust/package.nix {inherit sources;};
   spotify-library-mcp = pkgs.callPackage ./spotify-library-mcp/package.nix {inherit sources;};
+  spotify-mcp-server = pkgs.callPackage ./spotify-mcp-server/package.nix {inherit sources;};
   wacli = pkgs.callPackage ./wacli/package.nix {inherit sources;};
   zai = pkgs.callPackage ./zai/package.nix {inherit sources;};
   zehn = pkgs.callPackage ./zehn/package.nix {inherit sources;};

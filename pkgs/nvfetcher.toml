@@ -7,6 +7,11 @@ fetch.github = "dotcommander/zai"
 src.git = "https://github.com/QuinnFrederick/spotify-library-mcp"
 fetch.github = "QuinnFrederick/spotify-library-mcp"
 
+# No tags or releases upstream, so this tracks the default branch.
+[spotify-mcp-server]
+src.git = "https://github.com/marcelmarais/spotify-mcp-server"
+fetch.github = "marcelmarais/spotify-mcp-server"
+
 # wacli and discrawl — prebuilt release archives, one entry per target platform.
 # Both require Go 1.27, which is newer than the Go in this flake's nixpkgs.
 # Run `pkgs-update` to refresh hashes and pick up new releases.

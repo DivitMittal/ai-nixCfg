@@ -12,7 +12,7 @@ in {
   ## programs.mcp.servers: register one per tool once you've logged in, e.g.
   ## `claude mcp add telegram -- telegram-mcp`.
   home.packages = lib.attrsets.attrValues {
-    inherit (customPkgs) wacli discrawl spotify-library-mcp;
+    inherit (customPkgs) wacli discrawl spotify-library-mcp spotify-mcp-server;
 
     ## Scriptable chat CLIs for agents; the human TUIs (iamb, weechat) live in
     ## infra-nixCfg's home/comms.

@@ -62,7 +62,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 | **Cloud platforms** | `kaggle`, `huggingface_hub` (`hf`) |
 | **Voice** | Talon + `talon-community`, Wispr Flow (darwin cask) |
 | **Token optimization** | `headroom` proxy, `rtk` (Rust Token Killer), `ponytail` config |
-| **Custom packages** | `wacli` (WhatsApp CLI), `discrawl` (Discord CLI), `zai` (Z.AI CLI), `lightpanda` |
+| **Custom packages** | `wacli` (WhatsApp CLI), `discrawl` (Discord CLI), `zai` (Z.AI CLI), `lightpanda`, `spotify-mcp-server` (Spotify MCP) |
 
 ______________________________________________________________________
 

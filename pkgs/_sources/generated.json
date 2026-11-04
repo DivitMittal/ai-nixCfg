@@ -305,6 +305,27 @@
         },
         "version": "4fde6122b8231965f21d741a4caf0adac655fc56"
     },
+    "spotify-mcp-server": {
+        "cargoLock": null,
+        "date": "2026-10-28",
+        "extract": null,
+        "name": "spotify-mcp-server",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "marcelmarais",
+            "repo": "spotify-mcp-server",
+            "rev": "cb8e4029e028a335a3d34a0b5241cdbb9c2a2c4e",
+            "sha256": "sha256-BKxDUKLX2WpT2yc8rN96WK7D75zSFnb4x0BuRJyWH0w=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "cb8e4029e028a335a3d34a0b5241cdbb9c2a2c4e"
+    },
     "wacli-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
