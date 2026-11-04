@@ -9,7 +9,6 @@
     };
 
     ## Individual imports (for selective usage)
-    ccs = import ./home/ccs.nix;
     codex = import ./home/codex.nix;
     crush = import ./home/crush.nix;
     n8n = import ./home/n8n.nix;
