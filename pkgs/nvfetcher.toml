@@ -51,24 +51,28 @@ src.github_tag = "al3rez/zehn"
 src.exclude_regex = "nightly"
 fetch.github = "al3rez/zehn"
 
-# Lightpanda — prebuilt nightly binaries, one entry per target platform.
-# Run `pkgs-update` to re-hash when the nightly binary changes.
-# Version tracks the latest HEAD commit of the upstream repo.
+# Lightpanda — prebuilt release binaries, one entry per target platform.
+# Tracks stable release tags, not the `nightly` tag: that asset is replaced in
+# place, so its pinned hash goes stale on every upstream build.
 [lightpanda-x86_64-linux]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-x86_64-linux"
 
 [lightpanda-aarch64-linux]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-aarch64-linux"
 
 [lightpanda-x86_64-darwin]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-x86_64-macos"
 
 [lightpanda-aarch64-darwin]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-aarch64-macos"
 
 # jcode — prebuilt release archives, one entry per target platform.
 # Run `pkgs-update` to track and re-hash the latest GitHub release.
