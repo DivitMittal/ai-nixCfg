@@ -120,39 +120,35 @@
   };
   lightpanda-aarch64-darwin = {
     pname = "lightpanda-aarch64-darwin";
-    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
+    version = "1.0.4";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos";
-      sha256 = "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-aarch64-macos";
+      sha256 = "sha256-g7C6WuMQhrZ1+zulBkS9oHWhO+ur5G3F91Q5UrxBrkY=";
     };
-    date = "2026-10-09";
   };
   lightpanda-aarch64-linux = {
     pname = "lightpanda-aarch64-linux";
-    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
+    version = "1.0.4";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux";
-      sha256 = "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-aarch64-linux";
+      sha256 = "sha256-8CHUmgtm0HvyYz+OAIcLkHUpNRb4cmlbDKSutYSLbqg=";
     };
-    date = "2026-10-09";
   };
   lightpanda-x86_64-darwin = {
     pname = "lightpanda-x86_64-darwin";
-    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
+    version = "1.0.4";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos";
-      sha256 = "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-x86_64-macos";
+      sha256 = "sha256-jAISfG/CpxPRZjSb8bUR1HDI/NaEaBknyXjMi7WVLVU=";
     };
-    date = "2026-10-09";
   };
   lightpanda-x86_64-linux = {
     pname = "lightpanda-x86_64-linux";
-    version = "629cd1b02ae4f9965e95e063bb7c765a6a53afa6";
+    version = "1.0.4";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux";
-      sha256 = "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-x86_64-linux";
+      sha256 = "sha256-fSJlESmQEgOr25XGT0kGnEnoj1IR9NjExoKMEjxK2rQ=";
     };
-    date = "2026-10-09";
   };
   lumen-x86_64-darwin = {
     pname = "lumen-x86_64-darwin";
