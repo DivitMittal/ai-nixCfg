@@ -38,52 +38,36 @@
       sha256 = "sha256-zJ+wBL4QAVqd4pK0/M3kIqJw6nwnsgCxKUSHF4gyYf8=";
     };
   };
-  gowa-aarch64-darwin = {
-    pname = "gowa-aarch64-darwin";
-    version = "9.10.0";
+  discrawl-aarch64-darwin = {
+    pname = "discrawl-aarch64-darwin";
+    version = "0.21.0";
     src = fetchurl {
-      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.10.0/whatsapp_9.10.0_darwin_arm64.zip";
-      sha256 = "sha256-1AgRSsf1r3fYc70DLb1JqSqnHMXRqP+zRx1BkPCzB9Q=";
+      url = "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_darwin_arm64.tar.gz";
+      sha256 = "sha256-jwHlBe4MOwEZx0Cz1OGXJayiHvgiKh+em1LMPUpK9wI=";
     };
   };
-  gowa-aarch64-linux = {
-    pname = "gowa-aarch64-linux";
-    version = "9.10.0";
+  discrawl-aarch64-linux = {
+    pname = "discrawl-aarch64-linux";
+    version = "0.21.0";
     src = fetchurl {
-      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.10.0/whatsapp_9.10.0_linux_arm64.zip";
-      sha256 = "sha256-bl2ga9+ELv7CoPdBPM+IKvaTrtBN8J/ivOYDBHS9UKw=";
+      url = "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_linux_arm64.tar.gz";
+      sha256 = "sha256-eNcLQ3d49fj2Er+BzCxCf7qzgdubgKYxPoX0PlRZUhI=";
     };
   };
-  gowa-armv7l-linux = {
-    pname = "gowa-armv7l-linux";
-    version = "9.10.0";
+  discrawl-x86_64-darwin = {
+    pname = "discrawl-x86_64-darwin";
+    version = "0.21.0";
     src = fetchurl {
-      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.10.0/whatsapp_9.10.0_linux_armv7.zip";
-      sha256 = "sha256-JqSBC9OvBA3PFEUIh1xC/f803yIZnQCfRhus359LJGA=";
+      url = "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_darwin_amd64.tar.gz";
+      sha256 = "sha256-r051b21lfxiHBW7fCltg8TVApFZ9SnnamEzoA+8vGLI=";
     };
   };
-  gowa-i686-linux = {
-    pname = "gowa-i686-linux";
-    version = "9.10.0";
+  discrawl-x86_64-linux = {
+    pname = "discrawl-x86_64-linux";
+    version = "0.21.0";
     src = fetchurl {
-      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.10.0/whatsapp_9.10.0_linux_386.zip";
-      sha256 = "sha256-VD12cIAFh1ClO1IVqtgIWXHAVwZwgPpb4BEY/Jx1sr8=";
-    };
-  };
-  gowa-x86_64-darwin = {
-    pname = "gowa-x86_64-darwin";
-    version = "9.10.0";
-    src = fetchurl {
-      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.10.0/whatsapp_9.10.0_darwin_amd64.zip";
-      sha256 = "sha256-qF0Qwxdsz1AUPAH7Eal4menxf6d+Z4neheDA5AyD/Mw=";
-    };
-  };
-  gowa-x86_64-linux = {
-    pname = "gowa-x86_64-linux";
-    version = "9.10.0";
-    src = fetchurl {
-      url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.10.0/whatsapp_9.10.0_linux_amd64.zip";
-      sha256 = "sha256-6kjA9YoImvUd/CLYWJ59xJCi4/yS+BJkD/d23qXKMM0=";
+      url = "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_linux_amd64.tar.gz";
+      sha256 = "sha256-DsmESMggUZ4SMNCm6nA5oStLt4GEjYtvbkaeQSZieQI=";
     };
   };
   jcode-aarch64-darwin = {
@@ -188,6 +172,62 @@
     src = fetchurl {
       url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-amd64.tar.xz";
       sha256 = "sha256-wE5/hzkb7LF8sex1RND9dnIx37WoNhZE6ohwuj05BW0=";
+    };
+  };
+  spotify-library-mcp = {
+    pname = "spotify-library-mcp";
+    version = "4fde6122b8231965f21d741a4caf0adac655fc56";
+    src = fetchFromGitHub {
+      owner = "QuinnFrederick";
+      repo = "spotify-library-mcp";
+      rev = "4fde6122b8231965f21d741a4caf0adac655fc56";
+      fetchSubmodules = false;
+      sha256 = "sha256-fMdzBCkhyftowGEL4+tVmfAg5zBFXv1cOfDR6SYqCyM=";
+    };
+    date = "2026-10-14";
+  };
+  spotify-mcp-server = {
+    pname = "spotify-mcp-server";
+    version = "8c772fe5628bb63df41ed1358f6d84d20422e49a";
+    src = fetchFromGitHub {
+      owner = "marcelmarais";
+      repo = "spotify-mcp-server";
+      rev = "8c772fe5628bb63df41ed1358f6d84d20422e49a";
+      fetchSubmodules = false;
+      sha256 = "sha256-7x3yTI/spYF3+wg4IYrkXiMFouUe+C+3xTnZHMyFvco=";
+    };
+    date = "2026-11-14";
+  };
+  wacli-aarch64-darwin = {
+    pname = "wacli-aarch64-darwin";
+    version = "0.26.1";
+    src = fetchurl {
+      url = "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_darwin_arm64.tar.gz";
+      sha256 = "sha256-IImFI6cPs62ZL4og14b3BIS7UyId8BfNr9y39/yILY8=";
+    };
+  };
+  wacli-aarch64-linux = {
+    pname = "wacli-aarch64-linux";
+    version = "0.26.1";
+    src = fetchurl {
+      url = "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_linux_arm64.tar.gz";
+      sha256 = "sha256-nv54mwHhJGIUAIl0nYtc4K0pJSGJP0Fm4T7KgfCsrEw=";
+    };
+  };
+  wacli-x86_64-darwin = {
+    pname = "wacli-x86_64-darwin";
+    version = "0.26.1";
+    src = fetchurl {
+      url = "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_darwin_amd64.tar.gz";
+      sha256 = "sha256-1VYaQVNOyDvovKYR0fzvErv7mWejZh3MfQMouSkiSn0=";
+    };
+  };
+  wacli-x86_64-linux = {
+    pname = "wacli-x86_64-linux";
+    version = "0.26.1";
+    src = fetchurl {
+      url = "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_linux_amd64.tar.gz";
+      sha256 = "sha256-UVQFxaM8f2UaNoSEdA22YnNvUMJ1vloFBPsKhNzkcBM=";
     };
   };
   zai = {
