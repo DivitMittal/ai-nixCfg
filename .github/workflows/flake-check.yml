@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: write
       id-token: write
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     steps:
     - name: Checkout repo
       uses: actions/checkout@main
@@ -19,22 +19,36 @@ jobs:
       uses: nixbuild/nix-quick-install-action@master
     - name: Magic Nix Cache(Use GitHub Actions Cache)
       uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: Evaluate the native app and realise its source imports
+      run: |-
+        system=$(nix eval --impure --raw --expr builtins.currentSystem)
+        nix eval --impure --show-trace --raw ".#apps.$system.ai.program"
     - name: Run nix flake check
-      run: nix -vL flake check --impure --all-systems --no-build
+      run: nix -vL flake check --impure --no-build --show-trace
+    strategy:
+      fail-fast: false
+      matrix:
+        runner:
+        - ubuntu-latest
+        - ubuntu-24.04-arm
+        - macos-latest
+        - macos-15-intel
     timeout-minutes: 30
 'on':
   pull_request:
     branches:
-    - main
+    - master
     paths:
     - flake.nix
     - flake.lock
     - flake/**
+    - pkgs/**
   push:
     branches:
-    - main
+    - master
     paths:
     - flake.nix
     - flake.lock
     - flake/**
+    - pkgs/**
   workflow_dispatch: {}

@@ -31,19 +31,23 @@
     then "${config.xdg.configHome}/codex/${configFileName}"
     else "${config.home.homeDirectory}/.codex/${configFileName}";
 
+  # Empty defaults from programs.mcp (args = [], env = {}, ...) must be dropped:
+  # Codex rejects `args`/`env` on streamable_http servers even when empty.
   transformedMcpServers = lib.optionalAttrs (cfg.enableMcpIntegration && config.programs.mcp.enable) (
     lib.mapAttrs (
       _name: server:
-        (lib.removeAttrs server [
-          "disabled"
-          "headers"
-        ])
-        // (lib.optionalAttrs (server ? headers && !(server ? http_headers)) {
-          http_headers = server.headers;
-        })
-        // {
-          enabled = !(server.disabled or false);
-        }
+        lib.filterAttrs (_: value: value != null && value != [] && value != {}) (
+          (lib.removeAttrs server [
+            "disabled"
+            "headers"
+          ])
+          // (lib.optionalAttrs (server ? headers && !(server ? http_headers)) {
+            http_headers = server.headers;
+          })
+          // {
+            enabled = !(server.disabled or false);
+          }
+        )
     )
     config.programs.mcp.servers
   );
@@ -65,6 +69,7 @@
 
   mutableConfigMerger = ''
     ${codexConfigMerger}/bin/python - ${lib.escapeShellArg configPath} ${lib.escapeShellArg staticSettings} <<'PY'
+    import json
     import pathlib
     import sys
     import tomllib
@@ -101,7 +106,26 @@
     if config_path.is_symlink():
         config_path.unlink()
 
-    config_path.write_text(tomli_w.dumps(merge(dynamic, static)))
+    merged = merge(dynamic, static)
+
+    # Declared MCP servers replace their live tables wholesale so keys removed
+    # from Nix (e.g. a stale `args = []`) don't linger, and servers declared by a
+    # previous generation but dropped since are pruned. Servers added at runtime
+    # (e.g. by the Codex app) were never recorded, so they are left alone.
+    managed_path = config_path.with_name(".hm-managed-mcp-servers.json")
+    previously_managed = set(json.loads(managed_path.read_text())) if managed_path.exists() else set()
+    declared = static.get("mcp_servers", {})
+    servers = merged.get("mcp_servers", {})
+    for name in previously_managed - declared.keys():
+        servers.pop(name, None)
+    servers.update(declared)
+    if servers:
+        merged["mcp_servers"] = servers
+    else:
+        merged.pop("mcp_servers", None)
+
+    config_path.write_text(tomli_w.dumps(merged))
+    managed_path.write_text(json.dumps(sorted(declared)))
     PY
   '';
 in {

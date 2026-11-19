@@ -8,13 +8,13 @@
   cfg = config.programs.opencode;
 in {
   programs.opencode = let
-    package = customLib.mkPnpmDlxBin pkgs "opencode" "opencode-ai";
+    package = customLib.mkBunxBin pkgs "opencode" "opencode-ai";
   in {
     enable = true;
     inherit package;
   };
 
   home.packages = lib.mkIf cfg.enable [
-    (customLib.mkPnpmDlxBin pkgs "ocx" "ocx")
+    (customLib.mkBunxBin pkgs "ocx" "ocx")
   ];
 }

@@ -52,7 +52,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 | Category | Tools |
 |----------|-------|
 | **Agentic coding assistants** | Claude Code, Codex, GitHub Copilot CLI, OpenCode, Crush, Antigravity CLI, Pi, Hermes Agent, OpenClaw (aarch64-darwin) |
-| **Companion tools** | `ccs`, `ccusage`, `ccstatusline`, `gnhf` |
+| **Companion tools** | `cliproxyapi-plus`, `ccusage`, `ccstatusline`, `gnhf` |
 | **LLM CLI tools** | `aichat`, `fabric-ai` |
 | **VCS tools** | `geminicommit`, `aicommit2`, `lumen` |
 | **Workflow / SDD** | `ralph-tui`, `openspec`, `openspecui`, `n8n`, `bead` (bd), `Beads-Viewer` (bv), `mardi-gras` |
@@ -235,7 +235,7 @@ Import individual home-manager modules into your configuration:
 | `herdr` | Terminal multiplexer for AI agents — panes, tabs, agent labels (alias `herdr`) |
 | `n8n` | Workflow automation with SQLite backend, pnpm-dlx fallback on Darwin |
 | `ralph-tui` | AI agent loop orchestrator TUI — high-contrast theme by default |
-| `talon` | Talon voice programming — `~/.talon` user dir, talon-community clone |
+| `talon` | Talon voice programming — `~/.talon` user dir, talon-community store link |
 | `ghnf` | (re-export from upstream) |
 
 ### Example: `ccs` Module
@@ -288,7 +288,7 @@ graph LR
     IT --> Mu[multiplexers.nix]
     IT --> O[orchestration.nix]
     IT --> Op[optimization/]
-    IT --> P[proxy.nix]
+    IT --> Cpx[cliproxyapi/]
     IT --> R[review.nix]
     IT --> T[tasks.nix]
     IT --> U[usage.nix]
@@ -318,7 +318,7 @@ Or import specific subsets by path:
 | Layer | Contents |
 |-------|----------|
 | **Coding assistants** | Claude Code, Codex, Copilot CLI, OpenCode, Crush, Antigravity CLI, Pi, plus commands/skills/agents/rules from `_common` |
-| **Companion tools** | `ccs`, `ccusage`, `ccstatusline`, `gnhf` |
+| **Companion tools** | `cliproxyapi-plus`, `ccusage`, `ccstatusline`, `gnhf` |
 | **LLM CLI tools** | `aichat` (OpenRouter model zoo), `fabric-ai` |
 | **VCS tools** | `geminicommit`, `aicommit2`, `lumen` |
 | **Workflow / SDD** | `ralph-tui`, `openspec` + `openspecui`, `n8n`, `bead` (bd), `Beads-Viewer` (bv), `mardi-gras` |
@@ -562,9 +562,9 @@ graph LR
     E -->|true| Talon[programs.talon]
     E -->|true| Darwin{Darwin?}
     Darwin -->|yes + installDarwinApps| WF[brewCasks.wispr-flow]
-    Darwin -->|yes + installTalonDarwinApp| TA[talonPackage cask]
+    Darwin -->|yes + installDarwinApps| TA[brewCasks.talon → programs.talon.package]
     Talon --> TC{enableTalonCommunity?}
-    TC -->|true| TL[talon-community clone]
+    TC -->|true| TL[talon-community store link]
 
     style V fill:#1f6feb,stroke:#fff,color:#fff
 ```
@@ -572,9 +572,10 @@ graph LR
 | Option | Default | Purpose |
 |--------|---------|---------|
 | `aiNixCfg.voice.enable` | `true` | Master switch |
-| `aiNixCfg.voice.installDarwinApps` | `pkgs.stdenv.isDarwin` | Install Wispr Flow via Homebrew cask |
-| `aiNixCfg.voice.installTalonDarwinApp` | `false` | Install Talon.app via cask |
-| `aiNixCfg.voice.enableTalonCommunity` | `false` | Clone `talonhub/community` into `~/.talon/user/` |
+| `aiNixCfg.voice.installDarwinApps` | `pkgs.stdenv.isDarwin` | Install Wispr Flow and Talon.app via brew-nix casks (needs the host's `pkgs.brewCasks` overlay) |
+| `aiNixCfg.voice.enableTalonCommunity` | `true` | Link `talonhub/community` (read-only, from the Nix store) into `~/.talon/user/community` |
+
+The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its hash. When upstream ships a new release the build fails on a hash mismatch; refresh it with `nix store prefetch-file https://talonvoice.com/dl/latest/talon-mac.dmg`.
 
 `programs.talon.files."custom/ai-nixCfg.talon"` carries a personal `.talon` script in `voice/talon/`.
 
@@ -686,9 +687,25 @@ Herdr keybindings:
 |------|---------|
 | `lumen` | AI-assisted git review, diff, and commit helper |
 
-### Proxy (`config/home/proxy.nix`)
+### CLIProxyAPI(Plus) (`config/home/cliproxyapi/`, `modules/home/cliproxyapi.nix`)
 
-Currently empty placeholder for shared proxy configuration.
+Replaces the previous `ccs` (Claude Code Switcher)-managed proxy. Runs
+`cli-proxy-api-plus` locally on port 8317, fronting both OAuth-backed
+providers (gemini, codex, agy, qwen, kiro, ghcp, kimi, cursor, etc.) and
+custom OpenAI-compatible providers (z-ai, minimax, openrouter) behind one
+Anthropic- and OpenAI-compatible endpoint. `claude-code` gets
+`ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN` pointed at it
+(`config/home/coding/claude/proxy.nix`); every other harness that honors
+`OPENAI_BASE_URL`/`OPENAI_API_KEY` (codex, opencode, jcode, forgecode, …)
+routes through it too.
+
+On first activation, an existing `~/.ccs/cliproxy/auth` directory (if
+present) is symlinked into the new config location so already-logged-in
+OAuth accounts carry over without re-authentication
+(`programs.cliproxyapi.inheritLegacyAuth`). Provider API keys are left
+empty in the repo by design — populate them via the dashboard at
+`http://localhost:8317` or inject them from a secret manager by overriding
+`programs.cliproxyapi.settings.openai-compatibility` downstream.
 
 ### Usage (`config/home/usage.nix`)
 
@@ -913,7 +930,7 @@ ______________________________________________________________________
 │       ├── orchestration.nix   # ruflo, caveman, gastown, zeroshot, mardi-gras
 │       ├── tasks.nix           # bead (bd), Beads-Viewer (bv)
 │       ├── review.nix          # lumen
-│       ├── proxy.nix           # Shared proxy config
+│       ├── cliproxyapi/        # CLIProxyAPI(Plus) settings (replaces ccs)
 │       ├── usage.nix           # ccusage
 │       ├── workflows.nix       # ralph-tui, gnhf, openspec, openspecui, …
 │       ├── cloud.nix           # kaggle, hf

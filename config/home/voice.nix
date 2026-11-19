@@ -9,6 +9,18 @@
   cfg = config.aiNixCfg.voice;
   hasBrewCasks = pkgs ? brewCasks;
   hasVoiceCasks = hasBrewCasks && pkgs.brewCasks ? wispr-flow && pkgs.brewCasks ? talon;
+  installCasks = cfg.installDarwinApps && pkgs.stdenv.isDarwin && hasVoiceCasks;
+
+  ## The talon cask is `sha256 = no_check` against an unversioned "latest" URL,
+  ## so brew-nix can't fetch it purely; pin the hash here (talon-nix does the
+  ## same for Linux). Bump with:
+  ##   nix store prefetch-file https://talonvoice.com/dl/latest/talon-mac.dmg
+  talonCask = pkgs.brewCasks.talon.overrideAttrs (_: {
+    src = pkgs.fetchurl {
+      url = "https://talonvoice.com/dl/latest/talon-mac.dmg";
+      sha256 = "sha256-QC+LSsFy2XNg47YMN1PmUr2sxAj5K3lUf5bDThrLZ70=";
+    };
+  });
 in {
   options.aiNixCfg.voice = {
     enable =
@@ -45,18 +57,12 @@ in {
       };
     }
 
-    (mkIf (cfg.installDarwinApps && pkgs.stdenv.isDarwin && hasVoiceCasks) {
-      home.packages = lib.attrsets.attrValues {
-        wispr-flow = pkgs.brewCasks.wispr-flow;
+    (mkIf installCasks {
+      ## Wispr Flow dictation
+      home.packages = [pkgs.brewCasks.wispr-flow];
 
-        ## Talon
-        talon = pkgs.brewCasks.talon.overrideAttrs (_: {
-          src = pkgs.fetchurl {
-            url = "https://talonvoice.com/dl/latest/talon-mac.dmg";
-            sha256 = "sha256-QC+LSsFy2XNg47YMN1PmUr2sxAj5K3lUf5bDThrLZ70=";
-          };
-        });
-      };
+      ## programs.talon installs its package; on Darwin talon-nix has none
+      programs.talon.package = talonCask;
     })
   ]);
 }

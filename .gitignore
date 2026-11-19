@@ -10,6 +10,9 @@ todo.txt
 result
 result-*
 
+## git worktrees kept inside the project directory
+.worktrees/
+
 ## git pre-commit hooks (handled via cachix/git-hooks)
 .pre-commit-config.yaml
 

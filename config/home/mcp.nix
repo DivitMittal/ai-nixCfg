@@ -6,7 +6,7 @@
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
-  pnpmDlxCommand = name: pkg: "${customLib.mkPnpmDlxBin pkgs name pkg}/bin/${name}";
+  bunxCommand = name: pkg: "${customLib.mkBunxBin pkgs name pkg}/bin/${name}";
 in {
   home.packages = lib.attrsets.attrValues {
     ## WhatsApp MCP Server
@@ -22,12 +22,12 @@ in {
       };
       octocode = {
         type = "stdio";
-        command = pnpmDlxCommand "octocode-mcp" "octocode-mcp@latest";
+        command = bunxCommand "octocode-mcp" "octocode-mcp@latest";
         args = [];
       };
       exa = {
         type = "stdio";
-        command = pnpmDlxCommand "exa-mcp-server" "exa-mcp-server";
+        command = bunxCommand "exa-mcp-server" "exa-mcp-server";
         args = [];
       };
       # Headroom: exposes headroom_compress / headroom_retrieve / headroom_stats.
@@ -49,15 +49,15 @@ in {
       ### Capabilities somewhat already enabled in modern coding harnesses
       # sequential-thinking = {
       #   type = "stdio";
-      #   command = pnpmDlxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
+      #   command = bunxCommand "sequential-thinking" "@modelcontextprotocol/server-sequential-thinking";
       #   args = [];
       # };
       # filesystem = {
-      #   command = pnpmDlxCommand "filesystem" "@modelcontextprotocol/server-filesystem";
+      #   command = bunxCommand "filesystem" "@modelcontextprotocol/server-filesystem";
       #   args = [];
       # };
       # memory = {
-      #   command = pnpmDlxCommand "memory" "@modelcontextprotocol/server-memory";
+      #   command = bunxCommand "memory" "@modelcontextprotocol/server-memory";
       #   args = [];
       # };
       ## Capabilities that require domain-specific setup to save context

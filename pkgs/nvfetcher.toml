@@ -1,48 +1,180 @@
-[gowa]
+# gowa — prebuilt release archives, one entry per target platform.
+# `src.prefix` strips the tag's `v` because asset names use the bare version.
+# Run `pkgs-update` to refresh hashes and pick up new releases.
+[gowa-x86_64-linux]
 src.github = "aldinokemal/go-whatsapp-web-multidevice"
-fetch.github = "aldinokemal/go-whatsapp-web-multidevice"
-fetch.go = "github.com/aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_amd64.zip"
+
+[gowa-aarch64-linux]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_arm64.zip"
+
+[gowa-armv7l-linux]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_armv7.zip"
+
+[gowa-i686-linux]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_linux_386.zip"
+
+[gowa-x86_64-darwin]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_darwin_amd64.zip"
+
+[gowa-aarch64-darwin]
+src.github = "aldinokemal/go-whatsapp-web-multidevice"
+src.prefix = "v"
+fetch.url = "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v$ver/whatsapp_$ver_darwin_arm64.zip"
 
 [zai]
 src.github = "dotcommander/zai"
 fetch.github = "dotcommander/zai"
 
-# Lightpanda — prebuilt nightly binaries, one entry per target platform.
-# Run `pkgs-update` to re-hash when the nightly binary changes.
-# Version tracks the latest HEAD commit of the upstream repo.
+# lumen — prebuilt release archive, x86_64-darwin only. ai-nixCfg.inputs.lumen
+# (jnsahaj/lumen's own flake) instantiates unstable nixpkgs internally, which
+# now hard-throws on x86_64-darwin; this sidesteps that by fetching the
+# upstream release binary directly instead of building via that flake.
+# Run `pkgs-update` to refresh hashes and pick up new releases.
+[lumen-x86_64-darwin]
+src.github = "jnsahaj/lumen"
+fetch.url = "https://github.com/jnsahaj/lumen/releases/download/$ver/lumen-x86_64-apple-darwin.tar.gz"
+
+[zehn]
+# `nightly` is a rolling tag (force-pushed to master's HEAD) that otherwise
+# outranks tagged releases under plain `src.github`; track version tags only.
+src.github_tag = "al3rez/zehn"
+src.exclude_regex = "nightly"
+fetch.github = "al3rez/zehn"
+
+# Lightpanda — prebuilt release binaries, one entry per target platform.
+# Tracks stable release tags, not the `nightly` tag: that asset is replaced in
+# place, so its pinned hash goes stale on every upstream build.
 [lightpanda-x86_64-linux]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-x86_64-linux"
 
 [lightpanda-aarch64-linux]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-aarch64-linux"
 
 [lightpanda-x86_64-darwin]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-x86_64-macos"
 
 [lightpanda-aarch64-darwin]
-src.git = "https://github.com/lightpanda-io/browser"
-fetch.url = "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
+src.github = "lightpanda-io/browser"
+src.exclude_regex = "nightly|-rc"
+fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-aarch64-macos"
 
-# zoetrope — prebuilt release binaries, one entry per target platform.
-# Release asset filenames drop the "v" prefix that the git tag itself has
-# (cargo-dist convention), so $ver can't be reused verbatim between the tag
-# path and the filename; pin the URL and bump both the tag and filename by
-# hand via `pkgs-update` when a new release ships.
+# jcode — prebuilt release archives, one entry per target platform.
+# Run `pkgs-update` to track and re-hash the latest GitHub release.
+[jcode-x86_64-linux]
+src.github = "1jehuang/jcode"
+fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-linux-x86_64.tar.gz"
+
+[jcode-aarch64-linux]
+src.github = "1jehuang/jcode"
+fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-linux-aarch64.tar.gz"
+
+[jcode-x86_64-darwin]
+src.github = "1jehuang/jcode"
+fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-macos-x86_64.tar.gz"
+
+[jcode-aarch64-darwin]
+src.github = "1jehuang/jcode"
+fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-macos-aarch64.tar.gz"
+
+# pi-agent-rust — prebuilt release archives. Run `pkgs-update` to refresh
+# hashes and pick up new releases on all supported Linux/macOS systems.
+[pi-agent-rust-aarch64-darwin]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-darwin-arm64.tar.xz"
+
+[pi-agent-rust-x86_64-linux]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-amd64.tar.xz"
+
+[pi-agent-rust-x86_64-darwin]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-darwin-amd64.tar.xz"
+
+[pi-agent-rust-aarch64-linux]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-arm64.tar.xz"
+
+# CLIProxyAPIPlus — prebuilt release archives per target platform.
+# Tracks the CCS fork (kaitranntt/CLIProxyAPIPlus) which mirrors upstream
+# router-for-me/CLIProxyAPI daily and adds extra providers (kiro, ghcp,
+# cursor, etc.). The `no-plugin` archives contain just the binary.
+# Run `pkgs-update` to refresh hashes and pick up new releases.
+[cliproxyapi-plus-x86_64-linux]
+src.github = "kaitranntt/CLIProxyAPIPlus"
+# nvfetcher's fetch.url only does literal "$ver" substitution (no bash
+# param-expansion like ${ver#v}), so strip the "v" via src.prefix for the
+# asset filename and re-add it by hand for the release-tag path segment.
+src.prefix = "v"
+fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$ver/CLIProxyAPIPlus_$ver_linux_amd64_no-plugin.tar.gz"
+
+[cliproxyapi-plus-aarch64-linux]
+src.github = "kaitranntt/CLIProxyAPIPlus"
+src.prefix = "v"
+fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$ver/CLIProxyAPIPlus_$ver_linux_aarch64_no-plugin.tar.gz"
+
+[cliproxyapi-plus-x86_64-darwin]
+src.github = "kaitranntt/CLIProxyAPIPlus"
+src.prefix = "v"
+fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$ver/CLIProxyAPIPlus_$ver_darwin_amd64_no-plugin.tar.gz"
+
+[cliproxyapi-plus-aarch64-darwin]
+src.github = "kaitranntt/CLIProxyAPIPlus"
+src.prefix = "v"
+fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$ver/CLIProxyAPIPlus_$ver_darwin_aarch64_no-plugin.tar.gz"
+
+# zerobrew — ephemeral Homebrew formula runner (zb/zbx binaries), used as the
+# zbx tier in the bunx>pnpmx>uvx>zbx>brew x86_64-darwin fallback cascade.
+# Darwin-only (matches OS-nixCfg's own zerobrew-bin package). Run
+# `pkgs-update` to refresh hashes and pick up new releases.
+[zerobrew-zb-aarch64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zb-darwin-arm64"
+
+[zerobrew-zb-x86_64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zb-darwin-x64"
+
+[zerobrew-zbx-aarch64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx-darwin-arm64"
+
+[zerobrew-zbx-x86_64]
+src.github = "lucasgelfond/zerobrew"
+fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx-darwin-x64"
+
+# Zoetrope asset filenames omit the tag prefix; keep versions and URLs in sync.
 [zoetrope-x86_64-linux]
-src.github_tag = "furkankly/zoetrope"
-fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-unknown-linux-musl.tar.gz"
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-x86_64-unknown-linux-musl.tar.gz"
 
 [zoetrope-aarch64-linux]
-src.github_tag = "furkankly/zoetrope"
-fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-aarch64-unknown-linux-musl.tar.gz"
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-aarch64-unknown-linux-musl.tar.gz"
 
 [zoetrope-x86_64-darwin]
-src.github_tag = "furkankly/zoetrope"
-fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-apple-darwin.tar.gz"
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-x86_64-apple-darwin.tar.gz"
 
 [zoetrope-aarch64-darwin]
-src.github_tag = "furkankly/zoetrope"
-fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-aarch64-apple-darwin.tar.gz"
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-aarch64-apple-darwin.tar.gz"
