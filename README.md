@@ -583,11 +583,15 @@ The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its ha
 
 | Tool | Source | Purpose |
 |------|--------|---------|
-| `lightpanda` | `customPkgs.lightpanda` | Headless browser built for AI (Rust) |
-| `agent-browser` | nixpkgs on Linux; `pnpm dlx` on Darwin | Headless browser automation CLI |
-| `playwright-mcp` | `pnpm dlx @playwright/mcp` | Playwright-driven MCP server |
+| `lightpanda` | `customPkgs.lightpanda` | Headless browser built for AI (Zig) |
+| `agent-browser` | Upstream Nix package on Linux; `bun x` on Darwin | Browser automation CLI for agents |
+| `playwright-mcp` | `bun x @playwright/mcp` | Playwright-driven MCP server |
 
 `LIGHTPANDA_DISABLE_TELEMETRY=false` is set as a session variable.
+
+[agent-browser](https://github.com/vercel-labs/agent-browser) provides an agent-facing CLI with accessibility snapshots and element references. It uses Chrome by default for full browser fidelity. [Lightpanda](https://github.com/lightpanda-io/browser) provides a lightweight browser engine for extraction and automation. Its upstream performance figures compare it with Chrome, rather than with the agent-browser CLI.
+
+Current agent-browser releases can also [use Lightpanda as their engine](https://agent-browser.dev/engines/lightpanda): `agent-browser --engine lightpanda open example.com`. This mode lacks Chrome extensions, persistent profiles, and storage-state support; screenshot support depends on Lightpanda's CDP implementation. Availability depends on the installed agent-browser version.
 
 ### Amazon orders (`config/home/cli/amazon-orders.nix`)
 
