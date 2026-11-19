@@ -589,6 +589,12 @@ The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its ha
 
 `LIGHTPANDA_DISABLE_TELEMETRY=false` is set as a session variable.
 
+### Amazon orders (`config/home/cli/amazon-orders.nix`)
+
+[amazon-orders](https://github.com/alexdlaird/amazon-orders) provides a CLI for Amazon order history, line items, and transactions. Import this module with the repository's `customLib` argument, or use the full configuration, to install the `amazon-orders` wrapper. It runs through `uv`, downloading the Python package on first use; its dependencies are resolved at runtime rather than pinned in `flake.lock`.
+
+Run `amazon-orders --help` to inspect commands and `amazon-orders login` to establish a session interactively. Authentication and session data stay in the tool's runtime configuration.
+
 ______________________________________________________________________
 
 ## Optimization & Orchestration
