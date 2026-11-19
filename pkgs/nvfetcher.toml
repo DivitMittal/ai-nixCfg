@@ -78,7 +78,7 @@ src.github = "Dicklesworthstone/pi_agent_rust"
 fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-arm64.tar.xz"
 
 # CLIProxyAPIPlus — prebuilt release archives per target platform.
-# Tracks the CCS fork (kaitranntt/CLIProxyAPIPlus) which mirrors upstream
+# Tracks the kaitranntt/CLIProxyAPIPlus fork, which mirrors upstream
 # router-for-me/CLIProxyAPI daily and adds extra providers (kiro, ghcp,
 # cursor, etc.). The `no-plugin` archives contain just the binary.
 # Run `pkgs-update` to refresh hashes and pick up new releases.
@@ -125,69 +125,71 @@ fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx
 src.github = "lucasgelfond/zerobrew"
 fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx-darwin-x64"
 
+# Zoetrope asset filenames omit the tag prefix; keep versions and URLs in sync.
+[zoetrope-x86_64-linux]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-x86_64-unknown-linux-musl.tar.gz"
+
+[zoetrope-aarch64-linux]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-aarch64-unknown-linux-musl.tar.gz"
+
+[zoetrope-x86_64-darwin]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-x86_64-apple-darwin.tar.gz"
+
+[zoetrope-aarch64-darwin]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-aarch64-apple-darwin.tar.gz"
+
 [spotify-library-mcp]
 src.git = "https://github.com/QuinnFrederick/spotify-library-mcp"
 fetch.github = "QuinnFrederick/spotify-library-mcp"
 
-# No tags or releases upstream, so this tracks the default branch.
-
 [spotify-mcp-server]
 src.git = "https://github.com/marcelmarais/spotify-mcp-server"
 fetch.github = "marcelmarais/spotify-mcp-server"
-
-# wacli and discrawl — prebuilt release archives, one entry per target platform.
-# Both require Go 1.27, which is newer than the Go in this flake's nixpkgs.
-# Run `pkgs-update` to refresh hashes and pick up new releases.
 
 [wacli-x86_64-linux]
 src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_linux_amd64.tar.gz"
 
-
 [wacli-aarch64-linux]
 src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_linux_arm64.tar.gz"
-
 
 [wacli-x86_64-darwin]
 src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_amd64.tar.gz"
 
-
 [wacli-aarch64-darwin]
 src.github = "openclaw/wacli"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/wacli/releases/download/v$ver/wacli_$ver_darwin_arm64.tar.gz"
-
 
 [discrawl-x86_64-linux]
 src.github = "openclaw/discrawl"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_linux_amd64.tar.gz"
 
-
 [discrawl-aarch64-linux]
 src.github = "openclaw/discrawl"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_linux_arm64.tar.gz"
-
 
 [discrawl-x86_64-darwin]
 src.github = "openclaw/discrawl"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_darwin_amd64.tar.gz"
 
-
 [discrawl-aarch64-darwin]
 src.github = "openclaw/discrawl"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_darwin_arm64.tar.gz"
-
-# lumen — prebuilt release archive, x86_64-darwin only. ai-nixCfg.inputs.lumen
-# (jnsahaj/lumen's own flake) instantiates unstable nixpkgs internally, which
-# now hard-throws on x86_64-darwin; this sidesteps that by fetching the
-# upstream release binary directly instead of building via that flake.
-# Run `pkgs-update` to refresh hashes and pick up new releases.

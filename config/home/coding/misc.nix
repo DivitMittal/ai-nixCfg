@@ -20,6 +20,8 @@ in {
         if isX86Darwin
         then pkgs.happy-coder
         else customPkgs.happy-coder;
+      ## zoetrope — live Claude Code session graph (binary: zoe).
+      inherit (customPkgs) zoetrope;
       ## zai — CLI for Z.AI GLM models
       inherit (customPkgs) zai;
       ## zehn — al3rez/zehn fuzzy-find prompts across claude, codex, pi & opencode histories and resume sessions

@@ -517,5 +517,65 @@
             "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.2/zbx-darwin-x64"
         },
         "version": "v0.4.2"
+    },
+    "zoetrope-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-S0f3tECoMUoYc1qJZKUTfqPqfFO95cygMc+NGkwV5BM=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-apple-darwin.tar.gz"
+        },
+        "version": "0.2.0"
+    },
+    "zoetrope-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-NkFCgpwVvu0cgWlbhUM+OZT9i1ssSczTJrPUci6fMxs=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-unknown-linux-musl.tar.gz"
+        },
+        "version": "0.2.0"
+    },
+    "zoetrope-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-kg1QbAgd+mITJemU7EXPSQ91crNx855WqHtOi7bK69I=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-apple-darwin.tar.gz"
+        },
+        "version": "0.2.0"
+    },
+    "zoetrope-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Yuc2l5hMEijFU2eiJFmDdKJB02OIga+IlJkp6jPrW+8=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-unknown-linux-musl.tar.gz"
+        },
+        "version": "0.2.0"
     }
 }

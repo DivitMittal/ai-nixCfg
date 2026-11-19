@@ -284,4 +284,36 @@
       sha256 = "sha256-RQ8gefqL8+V9uhm1hwmm/tEvhQpi+k/deAHGrbcwBH0=";
     };
   };
+  zoetrope-aarch64-darwin = {
+    pname = "zoetrope-aarch64-darwin";
+    version = "0.2.0";
+    src = fetchurl {
+      url = "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-apple-darwin.tar.gz";
+      sha256 = "sha256-S0f3tECoMUoYc1qJZKUTfqPqfFO95cygMc+NGkwV5BM=";
+    };
+  };
+  zoetrope-aarch64-linux = {
+    pname = "zoetrope-aarch64-linux";
+    version = "0.2.0";
+    src = fetchurl {
+      url = "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-unknown-linux-musl.tar.gz";
+      sha256 = "sha256-NkFCgpwVvu0cgWlbhUM+OZT9i1ssSczTJrPUci6fMxs=";
+    };
+  };
+  zoetrope-x86_64-darwin = {
+    pname = "zoetrope-x86_64-darwin";
+    version = "0.2.0";
+    src = fetchurl {
+      url = "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-apple-darwin.tar.gz";
+      sha256 = "sha256-kg1QbAgd+mITJemU7EXPSQ91crNx855WqHtOi7bK69I=";
+    };
+  };
+  zoetrope-x86_64-linux = {
+    pname = "zoetrope-x86_64-linux";
+    version = "0.2.0";
+    src = fetchurl {
+      url = "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-unknown-linux-musl.tar.gz";
+      sha256 = "sha256-Yuc2l5hMEijFU2eiJFmDdKJB02OIga+IlJkp6jPrW+8=";
+    };
+  };
 }

@@ -6,6 +6,7 @@ in
     spotify-library-mcp = pkgs.callPackage ./spotify-library-mcp/package.nix {inherit sources;};
     spotify-mcp-server = pkgs.callPackage ./spotify-mcp-server/package.nix {inherit sources;};
     wacli = pkgs.callPackage ./wacli/package.nix {inherit sources;};
+    zoetrope = pkgs.callPackage ./zoetrope/package.nix {inherit sources;};
     cliproxyapi-plus = pkgs.callPackage ./cliproxyapi-plus/package.nix {inherit sources;};
     jcode = pkgs.callPackage ./jcode/package.nix {inherit sources;};
     lightpanda = pkgs.callPackage ./lightpanda/package.nix {inherit sources;};
