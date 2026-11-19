@@ -19,8 +19,16 @@
         common-actions
         ++ [
           {
+            # Flake check's read-only evaluation cannot realise source imports.
+            name = "Evaluate the native app and realise its source imports";
+            run = ''
+              system=$(nix eval --impure --raw --expr builtins.currentSystem)
+              nix eval --impure --show-trace --raw ".#apps.$system.ai.program"
+            '';
+          }
+          {
             name = "Run nix flake check";
-            run = "nix -vL flake check --impure --no-build";
+            run = "nix -vL flake check --impure --no-build --show-trace";
           }
         ];
     };

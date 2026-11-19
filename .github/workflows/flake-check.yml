@@ -19,8 +19,12 @@ jobs:
       uses: nixbuild/nix-quick-install-action@master
     - name: Magic Nix Cache(Use GitHub Actions Cache)
       uses: DeterminateSystems/magic-nix-cache-action@main
+    - name: Evaluate the native app and realise its source imports
+      run: |-
+        system=$(nix eval --impure --raw --expr builtins.currentSystem)
+        nix eval --impure --show-trace --raw ".#apps.$system.ai.program"
     - name: Run nix flake check
-      run: nix -vL flake check --impure --no-build
+      run: nix -vL flake check --impure --no-build --show-trace
     strategy:
       fail-fast: false
       matrix:
