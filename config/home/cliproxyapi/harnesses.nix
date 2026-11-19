@@ -7,7 +7,7 @@
   cfg = config.programs.cliproxyapi;
   baseUrl = cfg.endpoint;
   apiKeyEnv = "OPENAI_API_KEY";
-  apiKey = lib.head cfg.settings.api-keys;
+  apiKey = lib.findFirst (key: builtins.isString key && key != "") "" (cfg.settings.api-keys or []);
   defaultModel = "gpt-5.6-sol";
 
   piModels = (pkgs.formats.json {}).generate "pi-models.json" {

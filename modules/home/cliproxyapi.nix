@@ -26,12 +26,15 @@
   beforeService = lib.optional pkgs.stdenv.isDarwin "setupLaunchAgents";
 
   port = cfg.settings.port or 8317;
-  apiKey = lib.head (cfg.settings.api-keys or [""]);
+  apiKeys = cfg.settings.api-keys or [];
+  apiKey = lib.findFirst (key: builtins.isString key && key != "") "" apiKeys;
 
   mutableConfigMerger = ''
     ${configMerger}/bin/python - ${lib.escapeShellArg configPath} ${lib.escapeShellArg staticSettings} <<'PY'
+    import os
     import pathlib
     import sys
+    import tempfile
 
     import yaml
 
@@ -43,7 +46,9 @@
         if not content.strip():
             return {}
         data = yaml.safe_load(content)
-        return data if isinstance(data, dict) else {}
+        if not isinstance(data, dict):
+            raise ValueError(f"Expected a YAML mapping in {path}; refusing to overwrite it")
+        return data
 
 
     def is_named_list(value) -> bool:
@@ -80,7 +85,17 @@
     dynamic = read_yaml(config_path)
     static = read_yaml(static_path)
 
-    config_path.write_text(yaml.safe_dump(merge(dynamic, static), sort_keys=False))
+    # Replace atomically so activation cannot truncate credentials on failure.
+    # NamedTemporaryFile also gives the resulting config owner-only permissions.
+    with tempfile.NamedTemporaryFile(mode="w", dir=config_path.parent, delete=False) as output:
+        temporary_path = pathlib.Path(output.name)
+        try:
+            output.write(yaml.safe_dump(merge(dynamic, static), sort_keys=False))
+            output.flush()
+            os.fsync(output.fileno())
+            os.replace(temporary_path, config_path)
+        finally:
+            temporary_path.unlink(missing_ok=True)
     PY
   '';
 in {
@@ -182,6 +197,10 @@ in {
         assertion = cfg.service.enable || !(cfg.clients.claudeCode || cfg.clients.openai);
         message = "programs.cliproxyapi.clients.* point at the local proxy, which needs programs.cliproxyapi.service.enable.";
       }
+      {
+        assertion = !(cfg.clients.claudeCode || cfg.clients.openai) || apiKey != "";
+        message = "programs.cliproxyapi.clients requires a non-empty string in programs.cliproxyapi.settings.api-keys.";
+      }
     ];
 
     # Upstream binds every interface by default, and the api-keys shipped here
@@ -220,7 +239,7 @@ in {
         Wants = ["network-online.target"];
       };
       Service = {
-        ExecStart = "${lib.getExe cfg.package} -config ${configPath}";
+        ExecStart = "${lib.getExe cfg.package} -config ${lib.escapeShellArg configPath}";
         WorkingDirectory = defaultDataDir;
         Restart = "on-failure";
       };
@@ -235,12 +254,13 @@ in {
       ## Make sure the auth dir exists so the binary can write to it on first run.
       {
         cliproxyapiDataDirs = lib.hm.dag.entryBetween beforeService ["linkGeneration"] ''
-          ${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg defaultAuthDir} ${lib.escapeShellArg defaultDataDir}
+          ${pkgs.coreutils}/bin/mkdir -p -m 700 ${lib.escapeShellArg defaultAuthDir} ${lib.escapeShellArg defaultDataDir}
+          ${lib.optionalString pkgs.stdenv.isDarwin ''${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg "${config.home.homeDirectory}/Library/Logs"}''}
         '';
       }
     ];
 
-    home.file.".config/cliproxyapi/config.yaml" = mkIf (!cfg.mutableUserSettings && hasSettings) {
+    xdg.configFile."cliproxyapi/config.yaml" = mkIf (!cfg.mutableUserSettings && hasSettings) {
       source = staticSettings;
     };
   };
