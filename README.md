@@ -569,7 +569,7 @@ The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its ha
 | `agent-browser` | nixpkgs on Linux; `pnpm dlx` on Darwin | Headless browser automation CLI |
 | `playwright-mcp` | `pnpm dlx @playwright/mcp` | Playwright-driven MCP server |
 
-`LIGHTPANDA_DISABLE_TELEMETRY=false` is set as a session variable.
+`LIGHTPANDA_DISABLE_TELEMETRY=true` is set as a session variable to opt out of usage telemetry.
 
 ______________________________________________________________________
 
