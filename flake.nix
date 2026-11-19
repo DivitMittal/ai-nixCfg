@@ -80,11 +80,13 @@
       # Don't follow our nixpkgs: nixos-25.11 lacks buildPythonApplication finalAttrs
       # support required by some llm-agents packages (e.g. apm).
     };
+    # aicommit2's pnpm store and hook require pnpm 10.
+    aicommit2-build-nixpkgs.url = "github:NixOS/nixpkgs/7fd36ee82c0275fb545775cc5e4d30542899511d";
     aicommit2 = {
       #url = "github:DivitMittal/aicommit2";
       url = "github:tak-bro/aicommit2";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "aicommit2-build-nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
