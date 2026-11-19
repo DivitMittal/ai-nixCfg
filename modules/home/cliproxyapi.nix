@@ -22,21 +22,19 @@
   staticSettings = yamlFormat.generate "cliproxyapi-config" cfg.settings;
   hasSettings = cfg.settings != {};
 
-  # Preserve an existing CCS-style auth dir on first activation so that all
-  # currently logged-in OAuth accounts carry over without re-authentication.
-  legacySymlinkActivation = ''
-    target=${lib.escapeShellArg defaultAuthDir}
-    legacy=${lib.escapeShellArg "${config.home.homeDirectory}/.ccs/cliproxy/auth"}
-    if [ -d "$legacy" ] && [ ! -e "$target" ]; then
-      mkdir -p "$(dirname "$target")"
-      ln -s "$legacy" "$target"
-    fi
-  '';
+  # Config and dirs must exist before the launchd agent is (re)loaded.
+  beforeService = lib.optional pkgs.stdenv.isDarwin "setupLaunchAgents";
+
+  port = cfg.settings.port or 8317;
+  apiKeys = cfg.settings.api-keys or [];
+  apiKey = lib.findFirst (key: builtins.isString key && key != "") "" apiKeys;
 
   mutableConfigMerger = ''
     ${configMerger}/bin/python - ${lib.escapeShellArg configPath} ${lib.escapeShellArg staticSettings} <<'PY'
+    import os
     import pathlib
     import sys
+    import tempfile
 
     import yaml
 
@@ -48,7 +46,24 @@
         if not content.strip():
             return {}
         data = yaml.safe_load(content)
-        return data if isinstance(data, dict) else {}
+        if not isinstance(data, dict):
+            raise ValueError(f"Expected a YAML mapping in {path}; refusing to overwrite it")
+        return data
+
+
+    def is_named_list(value) -> bool:
+        return isinstance(value, list) and all(
+            isinstance(item, dict) and "name" in item for item in value
+        )
+
+
+    def merge_named(dynamic: list, static: list) -> list:
+        # Provider lists (openai-compatibility, ...) are keyed by name so that
+        # runtime-only fields like api-key-entries survive re-activation.
+        by_name = {item["name"]: item for item in dynamic}
+        return [merge(by_name.get(item["name"], {}), item) for item in static] + [
+            item for item in dynamic if item["name"] not in {i["name"] for i in static}
+        ]
 
 
     def merge(dynamic: dict, static: dict) -> dict:
@@ -56,6 +71,8 @@
         for key, value in static.items():
             if isinstance(value, dict) and isinstance(result.get(key), dict):
                 result[key] = merge(result[key], value)
+            elif is_named_list(value) and is_named_list(result.get(key)):
+                result[key] = merge_named(result[key], value)
             else:
                 result[key] = value
         return result
@@ -68,7 +85,17 @@
     dynamic = read_yaml(config_path)
     static = read_yaml(static_path)
 
-    config_path.write_text(yaml.safe_dump(merge(dynamic, static), sort_keys=False))
+    # Replace atomically so activation cannot truncate credentials on failure.
+    # NamedTemporaryFile also gives the resulting config owner-only permissions.
+    with tempfile.NamedTemporaryFile(mode="w", dir=config_path.parent, delete=False) as output:
+        temporary_path = pathlib.Path(output.name)
+        try:
+            output.write(yaml.safe_dump(merge(dynamic, static), sort_keys=False))
+            output.flush()
+            os.fsync(output.fileno())
+            os.replace(temporary_path, config_path)
+        finally:
+            temporary_path.unlink(missing_ok=True)
     PY
   '';
 in {
@@ -104,15 +131,31 @@ in {
       '';
     };
 
-    inheritLegacyAuth = mkOption {
+    service.enable = mkOption {
       type = types.bool;
       default = true;
       description = ''
-        On first activation, if a legacy {file}`~/.ccs/cliproxy/auth` directory
-        exists and no {file}`auth` directory exists at the new location,
-        symlink the new path to the legacy one so existing OAuth credentials
-        carry over without re-authentication.
+        Whether to run the proxy as a background user service (launchd agent on
+        Darwin, systemd user unit on Linux). Clients wired up through
+        {option}`programs.cliproxyapi.clients` need this running.
       '';
+    };
+
+    clients = {
+      claudeCode = mkEnableOption ''
+        pointing Claude Code at the proxy via `ANTHROPIC_BASE_URL`. This replaces
+        Claude Code's own login, so only enable it once the proxy has an account
+        that serves the models you use (e.g. `cli-proxy-api-plus -claude-login`)'';
+      openai = mkEnableOption ''
+        exporting `OPENAI_BASE_URL`/`OPENAI_API_KEY` so OpenAI-compatible
+        harnesses (codex, opencode, jcode, ...) route through the proxy'';
+    };
+
+    endpoint = mkOption {
+      type = types.str;
+      readOnly = true;
+      default = "http://127.0.0.1:${toString port}";
+      description = "Base URL of the local proxy, for wiring up further clients.";
     };
 
     settings = mkOption {
@@ -145,29 +188,79 @@ in {
   };
 
   config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.package != null || !cfg.service.enable;
+        message = "programs.cliproxyapi.service.enable requires programs.cliproxyapi.package to be non-null.";
+      }
+      {
+        assertion = cfg.service.enable || !(cfg.clients.claudeCode || cfg.clients.openai);
+        message = "programs.cliproxyapi.clients.* point at the local proxy, which needs programs.cliproxyapi.service.enable.";
+      }
+      {
+        assertion = !(cfg.clients.claudeCode || cfg.clients.openai) || apiKey != "";
+        message = "programs.cliproxyapi.clients requires a non-empty string in programs.cliproxyapi.settings.api-keys.";
+      }
+    ];
+
+    # Upstream binds every interface by default, and the api-keys shipped here
+    # are public, so anyone on the LAN could spend the OAuth accounts.
+    programs.cliproxyapi.settings.host = lib.mkDefault "127.0.0.1";
+
     home.packages = lib.optional (cfg.package != null) cfg.package;
 
+    programs.claude-code.settings.env = mkIf cfg.clients.claudeCode {
+      ANTHROPIC_BASE_URL = cfg.endpoint;
+      ANTHROPIC_AUTH_TOKEN = apiKey;
+    };
+
+    home.sessionVariables = mkIf cfg.clients.openai {
+      OPENAI_BASE_URL = "${cfg.endpoint}/v1";
+      OPENAI_API_KEY = apiKey;
+    };
+
+    launchd.agents.cliproxyapi = mkIf (cfg.service.enable && pkgs.stdenv.isDarwin) {
+      enable = true;
+      config = {
+        ProgramArguments = [(lib.getExe cfg.package) "-config" configPath];
+        WorkingDirectory = defaultDataDir;
+        RunAtLoad = true;
+        KeepAlive = true;
+        ProcessType = "Background";
+        StandardOutPath = "${config.home.homeDirectory}/Library/Logs/cliproxyapi.log";
+        StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/cliproxyapi.log";
+      };
+    };
+
+    systemd.user.services.cliproxyapi = mkIf (cfg.service.enable && pkgs.stdenv.isLinux) {
+      Unit = {
+        Description = "CLIProxyAPI(Plus) local proxy";
+        After = ["network-online.target"];
+        Wants = ["network-online.target"];
+      };
+      Service = {
+        ExecStart = "${lib.getExe cfg.package} -config ${lib.escapeShellArg configPath}";
+        WorkingDirectory = defaultDataDir;
+        Restart = "on-failure";
+      };
+      Install.WantedBy = ["default.target"];
+    };
+
     home.activation = lib.mkMerge [
-      (mkIf cfg.inheritLegacyAuth {
-        cliproxyapiInheritLegacyAuth = lib.hm.dag.entryAfter ["linkGeneration"] legacySymlinkActivation;
-      })
       (mkIf (cfg.mutableUserSettings && hasSettings) {
         cliproxyapiSettingsActivation =
-          lib.hm.dag.entryAfter (
-            ["linkGeneration"]
-            ++ lib.optional cfg.inheritLegacyAuth "cliproxyapiInheritLegacyAuth"
-          )
-          mutableConfigMerger;
+          lib.hm.dag.entryBetween beforeService ["linkGeneration"] mutableConfigMerger;
       })
       ## Make sure the auth dir exists so the binary can write to it on first run.
       {
-        cliproxyapiDataDirs = lib.hm.dag.entryAfter ["linkGeneration"] ''
-          ${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg defaultAuthDir} ${lib.escapeShellArg defaultDataDir}
+        cliproxyapiDataDirs = lib.hm.dag.entryBetween beforeService ["linkGeneration"] ''
+          ${pkgs.coreutils}/bin/mkdir -p -m 700 ${lib.escapeShellArg defaultAuthDir} ${lib.escapeShellArg defaultDataDir}
+          ${lib.optionalString pkgs.stdenv.isDarwin ''${pkgs.coreutils}/bin/mkdir -p ${lib.escapeShellArg "${config.home.homeDirectory}/Library/Logs"}''}
         '';
       }
     ];
 
-    home.file.".config/cliproxyapi/config.yaml" = mkIf (!cfg.mutableUserSettings && hasSettings) {
+    xdg.configFile."cliproxyapi/config.yaml" = mkIf (!cfg.mutableUserSettings && hasSettings) {
       source = staticSettings;
     };
   };

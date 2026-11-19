@@ -35,7 +35,7 @@ in
     '';
 
     meta = with lib; {
-      description = "Local Anthropic/OpenAI-compatible proxy for CLI OAuth accounts and custom providers (CCS fork of CLIProxyAPI)";
+      description = "Local Anthropic/OpenAI-compatible proxy for CLI OAuth accounts and custom providers (CLIProxyAPI fork)";
       homepage = "https://github.com/kaitranntt/CLIProxyAPIPlus";
       license = licenses.mit;
       maintainers = with maintainers; [DivitMittal];
