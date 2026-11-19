@@ -40,8 +40,6 @@ in {
         else customPkgs.goose-cli;
       ## jcode — resource-efficient terminal coding agent (binary: jcode)
       inherit (customPkgs) jcode;
-      ## pi-agent-rust — Dicklesworthstone's Rust port of Pi (binary: pi-rust)
-      inherit (customPkgs) pi-agent-rust;
       ## mmx-cli — MiniMax CLI (binary: mmx)
       mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
     }
@@ -54,5 +52,14 @@ in {
     ## Proprietary binary that upstream itself doesn't publish for
     ## x86_64-darwin (only aarch64-darwin/aarch64-linux/x86_64-linux), so no
     ## fallback tier applies.
-    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) cursor-agent;});
+    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) cursor-agent;}
+    ## pi-agent-rust — Dicklesworthstone's Rust port of Pi (binary: pi-rust).
+    ## Prebuilt only for aarch64-darwin/x86_64-linux, source build on
+    ## x86_64-darwin; no aarch64-linux release, and the package's prebuilt
+    ## branch reads `source.version` unconditionally, so gate it here.
+    // lib.optionalAttrs (lib.elem pkgs.stdenvNoCC.hostPlatform.system [
+      "aarch64-darwin"
+      "x86_64-linux"
+      "x86_64-darwin"
+    ]) {inherit (customPkgs) pi-agent-rust;});
 }

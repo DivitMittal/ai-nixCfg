@@ -23,10 +23,9 @@ in
     version = "1.0.0-unstable-${source.date}";
     inherit (source) src;
 
-    ## engines asks for Node >= 26.8.1, but nothing in src/ needs more than
-    ## stable Node APIs, and this nixpkgs tops out at Node 25.
+    ## Upstream requires Node >= 26.8.1.
     nodejs = nodejs_latest;
-    npmDepsHash = "sha256-E3SEQSZvrcYQcyWG9GS1N1I1EdMNiPPBFtNMKs/6PoE=";
+    npmDepsHash = "sha256-zpiJwy2hbuUFF8ij99/q75ASnwwXScYyIb0fNNFmr1E=";
 
     postPatch = ''
       substituteInPlace src/utils.ts \

@@ -28,6 +28,6 @@ in {
     telegram-mcp-generate-session = customLib.mkUvxBin pkgs "telegram-mcp-generate-session" "--from git+https://github.com/chigwell/telegram-mcp telegram-mcp-generate-session";
 
     matrix-mcp = customLib.mkUvxBin pkgs "matrix-mcp" "matrix-mcp";
-    linkedin-mcp = customLib.mkUvxBin pkgs "linkedin-mcp" "mcp-server-linkedin@latest";
+    linkedin-mcp = customLib.mkUvxBin pkgs "linkedin-mcp" "--from mcp-server-linkedin mcp-server-linkedin";
   };
 }

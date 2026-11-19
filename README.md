@@ -62,7 +62,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 | **Cloud platforms** | `kaggle`, `huggingface_hub` (`hf`) |
 | **Voice** | Talon + `talon-community`, Wispr Flow (darwin cask) |
 | **Token optimization** | `headroom` proxy, `rtk` (Rust Token Killer), `ponytail` config |
-| **Custom packages** | `wacli` (WhatsApp CLI), `discrawl` (Discord CLI), `zai` (Z.AI CLI), `lightpanda`, `spotify-mcp-server` (Spotify MCP) |
+| **Custom packages** | `wacli` (WhatsApp CLI), `discrawl` (Discord CLI), `zai` (Z.AI CLI), `lightpanda`, `spotify-library-mcp` and `spotify-mcp-server` (Spotify MCP) |
 
 ______________________________________________________________________
 
@@ -533,7 +533,8 @@ Defined in `config/home/mcp.nix` and applied via `programs.mcp.servers`. Togglea
 | `octocode` | stdio | `pnpm dlx octocode-mcp@latest` | Code research agent (local + GitHub + npm) |
 | `exa` | stdio | `pnpm dlx exa-mcp-server` | Neural web search |
 | `playwright` | stdio | `pnpm dlx @playwright/mcp` | Browser automation |
-| `wacli` | package | `customPkgs.wacli` | WhatsApp CLI with local sync and search (Go, prebuilt) |
+
+Messaging tools are installed as launchers by `config/home/messaging.nix`, without automatic MCP registration. After configuring an account, register the desired launcher with your agent. `wacli` is a WhatsApp CLI, not an MCP server.
 
 > **Optional servers** (commented in `mcp.nix`): `headroom`, `cognee` (knowledge graph memory), `sequential-thinking`, `filesystem`, `memory`, `markitdown`. Uncomment to enable.
 
