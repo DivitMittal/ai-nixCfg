@@ -1,0 +1,83 @@
+id: nixcfg-fleet-flake-update
+namespace: divitmittal.nixcfg
+description: |
+  Weekly `nix flake update` across every DivitMittal *-nixCfg / flake repo,
+  opening one PR per repo that has a diff.
+
+  Today each repo runs its own copy of `flake/actions/flake-lock-update.nix`
+  (DeterminateSystems/update-flake-lock on a Sunday cron) — N independent
+  GitHub Actions runs with no shared view of the fleet. This flow replaces
+  that fan-out with one scheduled run that iterates the repo list, so a
+  single execution page shows which repos updated cleanly and which failed,
+  instead of N separate PR-notification emails.
+
+  Starting template: validate against your deployed Kestra version
+  (`kestra flow validate`) before relying on it — task/plugin identifiers
+  drift between Kestra releases.
+
+inputs:
+  - id: repos
+    type: ARRAY
+    itemType: STRING
+    defaults:
+      - ai-nixCfg
+      - OS-nixCfg
+      - term-nixCfg
+      - firefox-nixCfg
+      - hammerspoon-nix
+      - CV-nixCfg
+      - tidalcycles-nix
+      - Emacs-Cfg
+      - Vim-Cfg
+      - actions.nix
+
+triggers:
+  - id: weekly
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 3 * * 1" # Monday 03:00, after each repo's own Sunday-midnight lock-update run
+
+tasks:
+  - id: update_fleet
+    type: io.kestra.plugin.core.flow.ForEach
+    values: "{{ inputs.repos }}"
+    concurrencyLimit: 3
+    tasks:
+      - id: update_repo
+        type: io.kestra.plugin.scripts.shell.Commands
+        taskRunner:
+          type: io.kestra.plugin.scripts.runner.docker.Docker
+          image: nixos/nix:2.24.9
+        env:
+          GH_TOKEN: "{{ secret('GITHUB_TOKEN') }}"
+          REPO: "{{ taskrun.value }}"
+        commands:
+          - |
+            nix --extra-experimental-features 'nix-command flakes' shell \
+              nixpkgs#git nixpkgs#gh --command bash -euo pipefail -c '
+                gh repo clone "DivitMittal/$REPO" repo -- --depth=1
+                cd repo
+                git config user.name "kestra-bot"
+                git config user.email "kestra-bot@users.noreply.github.com"
+
+                nix flake update
+
+                if git diff --quiet -- flake.lock; then
+                  echo "no update needed for $REPO"
+                  exit 0
+                fi
+
+                branch="kestra/flake-lock-update"
+                git checkout -b "$branch"
+                git commit -am "chore(flake): update flake.lock"
+                git push -f origin "$branch"
+                gh pr create --fill --head "$branch" \
+                  --title "chore(flake): update flake.lock" \
+                  || echo "PR already open for $REPO"
+              '
+
+  - id: notify_summary
+    type: io.kestra.plugin.core.http.Request
+    uri: "https://ntfy.sh/divitmittal-nixcfg-fleet"
+    method: POST
+    contentType: text/plain
+    body: "nixcfg fleet flake-update run finished: {{ execution.id }} — see Kestra UI for per-repo results"
