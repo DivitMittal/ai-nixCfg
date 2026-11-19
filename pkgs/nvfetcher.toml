@@ -93,8 +93,7 @@ src.github = "1jehuang/jcode"
 fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-macos-aarch64.tar.gz"
 
 # pi-agent-rust — prebuilt release archives. Run `pkgs-update` to refresh
-# hashes and pick up new releases. Upstream only publishes aarch64-darwin and
-# x86_64-linux; the package below guards the unsupported systems.
+# hashes and pick up new releases on all supported Linux/macOS systems.
 [pi-agent-rust-aarch64-darwin]
 src.github = "Dicklesworthstone/pi_agent_rust"
 fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-darwin-arm64.tar.xz"
@@ -102,6 +101,14 @@ fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/downloa
 [pi-agent-rust-x86_64-linux]
 src.github = "Dicklesworthstone/pi_agent_rust"
 fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-amd64.tar.xz"
+
+[pi-agent-rust-x86_64-darwin]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-darwin-amd64.tar.xz"
+
+[pi-agent-rust-aarch64-linux]
+src.github = "Dicklesworthstone/pi_agent_rust"
+fetch.url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/$ver/pi-linux-arm64.tar.xz"
 
 # CLIProxyAPIPlus — prebuilt release archives per target platform.
 # Tracks the CCS fork (kaitranntt/CLIProxyAPIPlus) which mirrors upstream

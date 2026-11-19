@@ -299,6 +299,36 @@
         },
         "version": "v0.8.0"
     },
+    "pi-agent-rust-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pi-agent-rust-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-MnZQTRlVTXqoryJwNnQYa5iHxIz/wc0SOLe/UjEAq/k=",
+            "type": "url",
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-arm64.tar.xz"
+        },
+        "version": "v0.8.0"
+    },
+    "pi-agent-rust-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pi-agent-rust-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-dY40rGP0uhxw0HYJWBkThh99XR778enDvkud7rtfz70=",
+            "type": "url",
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-amd64.tar.xz"
+        },
+        "version": "v0.8.0"
+    },
     "pi-agent-rust-x86_64-linux": {
         "cargoLock": null,
         "date": null,
