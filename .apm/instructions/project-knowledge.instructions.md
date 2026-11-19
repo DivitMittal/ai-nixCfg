@@ -7,7 +7,7 @@ applyTo: "**"
 
 ## OVERVIEW
 
-Nix flake with home-manager modules and personal configs for AI coding assistants (Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, OpenClaw, Crush), LLM CLI/workflow tools, and custom packages (gowa). Uses flake-parts, home-manager, treefmt-nix, git-hooks, actions-nix, nix-direnv; imports customLib from OS-nixCfg for scanPaths.
+Nix flake with home-manager modules and personal configs for AI coding assistants (Claude Code, Codex, GitHub Copilot CLI, Gemini, OpenCode, OpenClaw, Crush), LLM CLI/workflow tools, and custom packages (wacli, discrawl). Uses flake-parts, home-manager, treefmt-nix, git-hooks, actions-nix, nix-direnv; imports customLib from OS-nixCfg for scanPaths.
 
 ## STRUCTURE
 
@@ -16,7 +16,7 @@ Nix flake with home-manager modules and personal configs for AI coding assistant
 ├── flake/                 # flake-parts modules: actions/, apps.nix, checks.nix, devshells.nix, formatters.nix
 ├── modules/home/          # reusable home-manager modules (claude-code, codex, github-copilot, crush)
 ├── config/home/           # personal configs: coding/ per tool, cli/, cloud.nix, mcp.nix, workflows.nix
-├── pkgs/                  # custom packages (pkgs/custom/gowa) + default export
+├── pkgs/                  # custom packages (pkgs/custom/wacli) + default export
 ├── .github/workflows/     # autogen from flake/actions (do not hand-edit)
 └── AGENTS.md              # this file
 ```
@@ -78,4 +78,4 @@ nix run .#pre-commit
 - Direnv enabled (.envrc) for nix-direnv; allow before working.
 - If modifying flake/actions, rerun `nix run .#render-workflows` and commit YAML outputs.
 - OpenClaw (`config/home/coding/assistants/openclaw/`) is a minimal tool with only `setup.nix`.
-- Custom packages live under `pkgs/custom/` (e.g. `pkgs/custom/gowa`); `pkgs/default.nix` re-exports them.
+- Custom packages live under `pkgs/custom/` (e.g. `pkgs/custom/wacli`); `pkgs/default.nix` re-exports them.

@@ -22,7 +22,7 @@ in {
   ];
 
   # Lightpanda sends usage telemetry by default; opt out.
-  home.sessionVariables.LIGHTPANDA_DISABLE_TELEMETRY = "false";
+  home.sessionVariables.LIGHTPANDA_DISABLE_TELEMETRY = "true";
 
   programs.mcp.servers.playwright = {
     type = "stdio";
