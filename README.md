@@ -565,11 +565,21 @@ The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its ha
 
 | Tool | Source | Purpose |
 |------|--------|---------|
-| `lightpanda` | `customPkgs.lightpanda` | Headless browser built for AI (Rust) |
-| `agent-browser` | nixpkgs on Linux; `pnpm dlx` on Darwin | Headless browser automation CLI |
-| `playwright-mcp` | `pnpm dlx @playwright/mcp` | Playwright-driven MCP server |
+| `lightpanda` | `customPkgs.lightpanda` | Headless browser built for AI (Zig) |
+| `agent-browser` | Upstream Nix package on Linux; `bun x` on Darwin | Browser automation CLI for agents |
+| `playwright-mcp` | `bun x @playwright/mcp` | Playwright-driven MCP server |
 
 `LIGHTPANDA_DISABLE_TELEMETRY=true` is set as a session variable to opt out of usage telemetry.
+
+[agent-browser](https://github.com/vercel-labs/agent-browser) provides an agent-facing CLI with accessibility snapshots and element references. It uses Chrome by default for full browser fidelity. [Lightpanda](https://github.com/lightpanda-io/browser) provides a lightweight browser engine for extraction and automation. Its upstream performance figures compare it with Chrome, rather than with the agent-browser CLI.
+
+Current agent-browser releases can also [use Lightpanda as their engine](https://agent-browser.dev/engines/lightpanda): `agent-browser --engine lightpanda open example.com`. This mode lacks Chrome extensions, persistent profiles, and storage-state support; screenshot support depends on Lightpanda's CDP implementation. Availability depends on the installed agent-browser version.
+
+### Amazon orders (`config/home/cli/amazon-orders.nix`)
+
+[amazon-orders](https://github.com/alexdlaird/amazon-orders) provides a CLI for Amazon order history, line items, and transactions. Import this module with the repository's `customLib` argument, or use the full configuration, to install the `amazon-orders` wrapper. It runs through `uv`, downloading the Python package on first use; its dependencies are resolved at runtime rather than pinned in `flake.lock`.
+
+Run `amazon-orders --help` to inspect commands and `amazon-orders login` to establish a session interactively. Authentication and session data stay in the tool's runtime configuration.
 
 ______________________________________________________________________
 
