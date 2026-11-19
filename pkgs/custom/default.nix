@@ -2,6 +2,7 @@
   sources = pkgs.callPackage ../_sources/generated.nix {};
 in
   {
+    zoetrope = pkgs.callPackage ./zoetrope/package.nix {inherit sources;};
     cliproxyapi-plus = pkgs.callPackage ./cliproxyapi-plus/package.nix {inherit sources;};
     gowa = pkgs.callPackage ./gowa/package.nix {inherit sources;};
     jcode = pkgs.callPackage ./jcode/package.nix {inherit sources;};

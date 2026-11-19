@@ -157,3 +157,24 @@ fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx
 [zerobrew-zbx-x86_64]
 src.github = "lucasgelfond/zerobrew"
 fetch.url = "https://github.com/lucasgelfond/zerobrew/releases/download/$ver/zbx-darwin-x64"
+
+# Zoetrope asset filenames omit the tag prefix; keep versions and URLs in sync.
+[zoetrope-x86_64-linux]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-x86_64-unknown-linux-musl.tar.gz"
+
+[zoetrope-aarch64-linux]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-aarch64-unknown-linux-musl.tar.gz"
+
+[zoetrope-x86_64-darwin]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-x86_64-apple-darwin.tar.gz"
+
+[zoetrope-aarch64-darwin]
+src.github = "furkankly/zoetrope"
+src.prefix = "v"
+fetch.url = "https://github.com/furkankly/zoetrope/releases/download/v$ver/zoetrope-$ver-aarch64-apple-darwin.tar.gz"
