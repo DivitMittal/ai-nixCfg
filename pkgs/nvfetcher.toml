@@ -193,3 +193,31 @@ fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discra
 src.github = "openclaw/discrawl"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_darwin_arm64.tar.gz"
+
+# higgsfield-cli — official Higgsfield CLI (Go). The npm wrapper only fetches
+# these same release archives in postinstall, so track them directly.
+[higgsfield-cli-x86_64-linux]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_linux_amd64.tar.gz"
+
+[higgsfield-cli-aarch64-linux]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_linux_arm64.tar.gz"
+
+[higgsfield-cli-x86_64-darwin]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_darwin_amd64.tar.gz"
+
+[higgsfield-cli-aarch64-darwin]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_darwin_arm64.tar.gz"
+
+# higgsfield-skills — official skills repo, doubles as a Claude Code plugin
+# marketplace. Untagged, so track the default branch.
+[higgsfield-skills]
+src.git = "https://github.com/higgsfield-ai/skills"
+fetch.github = "higgsfield-ai/skills"
