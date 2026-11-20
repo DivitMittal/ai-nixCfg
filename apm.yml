@@ -2,7 +2,7 @@ name: ai-nixcfg
 version: 1.0.0
 description: Nix flake for AI coding assistant configs (Claude Code, Codex, Copilot, Gemini, OpenCode, OpenClaw, Crush)
 author: DivitMittal
-license: MIT
+license: LicenseRef-HONCL-1.0
 target:
   - claude
   - codex
