@@ -19,11 +19,5 @@
 in {
   home.packages = [customPkgs.higgsfield-cli];
 
-  # Registered via settings rather than programs.claude-code.marketplaces: with
-  # mutableSettings off, the latter takes over plugins/known_marketplaces.json
-  # wholesale and drops the marketplaces added imperatively through /plugin.
-  programs.claude-code.settings.extraKnownMarketplaces.higgsfield.source = {
-    source = "directory";
-    path = "${customPkgs.higgsfield-skills}";
-  };
+  programs.claude-code.marketplaces.higgsfield = customPkgs.higgsfield-skills;
 }
