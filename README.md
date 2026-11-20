@@ -373,6 +373,34 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 | `conservative` | `gpt-5.2-codex` | `untrusted` | `read-only` | Audit / review |
 | `power` | `gpt-5.2-codex` (xhigh reasoning) | `on-failure` | `workspace-write` + network | Unattended autonomy |
 
+### Codex pets
+
+ChatGPT desktop is disabled in favor of the web version. Custom Codex terminal
+pets are managed locally and do not require the desktop app.
+
+Custom terminal pets are declared with `programs.codex.pets`:
+
+```nix
+programs.codex = {
+  pets.pico = {
+    displayName = "Pico";
+    description = "My companion";
+    spritesheet = ./pets/pico.png;
+  };
+  settings.tui.pet = "custom:pico";
+};
+```
+
+Home Manager installs the generated manifest and image under `CODEX_HOME/pets`.
+Pico's original v2 sprite sheet is tracked in
+`config/home/coding/codex/pets/pico.png`, so rebuilding never depends on Downloads.
+The module accepts 1536×1872 v1 and 1536×2288 v2 sheets. Codex CLI 0.171.0
+requires nine rows; the build keeps those animation rows and omits v2's two
+look-direction rows from the CLI copy, preserving the original source.
+After activating Home Manager, restart Codex or select **Pico** with `/pets`.
+Terminal graphics support is required; see the
+[official pet documentation](https://learn.chatgpt.com/docs/pets).
+
 ### Pi Coding-Agent Extensions
 
 | Extension | Purpose |

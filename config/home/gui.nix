@@ -34,12 +34,12 @@
 
       handy = pkgs.brewCasks.handy.override {variation = "tahoe";};
 
-      ## Disabled: using the web versions of ChatGPT and Claude instead.
-      ## ChatGPT desktop app — replaces the old codex-app, ChatGPT Atlas, and
-      ## Operator casks, and adds ChatGPT Work, since they're all ChatGPT
-      ## wrappers now.
-      #chatgpt = pkgs.brewCasks.chatgpt;
+      ## Disabled in favor of ChatGPT on the web.
+      #chatgpt = pkgs.brewCasks.chatgpt.override (
+      #  lib.optionalAttrs pkgs.stdenv.hostPlatform.isx86_64 {variation = "tahoe";}
+      #);
 
+      ## Claude desktop remains disabled in favor of the web version.
       ## Clean bin to avoid collision with claude-code CLI
       #claude-desktop = pkgs.brewCasks.claude.overrideAttrs (oldAttrs: {
       #  installPhase =

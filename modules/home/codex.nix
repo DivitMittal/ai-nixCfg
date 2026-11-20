@@ -67,6 +67,44 @@
 
   staticSettings = tomlFormat.generate "codex-config" mergedSettings;
 
+  petType = types.submodule ({name, ...}: {
+    options = {
+      spritesheet = mkOption {
+        type = types.path;
+        description = "PNG or WebP sprite sheet in the 1536×1872 v1 or 1536×2288 v2 layout.";
+      };
+      displayName = mkOption {
+        type = types.str;
+        default = name;
+        description = "Name shown in the terminal pet picker.";
+      };
+      description = mkOption {
+        type = types.str;
+        default = "";
+        description = "Description shown in the terminal pet picker.";
+      };
+    };
+  });
+
+  mkPet = name: pet: let
+    manifest = (pkgs.formats.json {}).generate "${name}-pet.json" {
+      id = name;
+      inherit (pet) displayName description;
+      spritesheetPath = "spritesheet.png";
+    };
+  in
+    pkgs.runCommand "codex-pet-${name}" {nativeBuildInputs = [pkgs.imagemagick];} ''
+      dimensions=$(magick identify -format '%wx%h' ${lib.escapeShellArg "${pet.spritesheet}"})
+      case "$dimensions" in
+        1536x1872|1536x2288) ;;
+        *) echo "Codex pet ${name}: expected 1536x1872 or 1536x2288, got $dimensions" >&2; exit 1 ;;
+      esac
+      mkdir -p "$out"
+      # The CLI accepts nine animation rows; v2 adds two desktop look-direction rows.
+      magick ${lib.escapeShellArg "${pet.spritesheet}"} -crop 1536x1872+0+0 +repage "$out/spritesheet.png"
+      cp ${manifest} "$out/pet.json"
+    '';
+
   mutableConfigMerger = ''
     ${codexConfigMerger}/bin/python - ${lib.escapeShellArg configPath} ${lib.escapeShellArg staticSettings} <<'PY'
     import json
@@ -130,6 +168,18 @@
   '';
 in {
   options.programs.codex = {
+    pets = mkOption {
+      type = types.attrsOf petType;
+      default = {};
+      description = ''
+        Custom terminal pets installed under {file}`CODEX_HOME/pets`.
+        Select one with {command}`/pets` or declare
+        {option}`programs.codex.settings.tui.pet = "custom:<name>"`.
+        V2 sheets retain their original source and are adapted to the CLI's
+        nine-row layout at build time.
+      '';
+    };
+
     mutableUserSettings = mkOption {
       type = types.bool;
       default = false;
@@ -170,12 +220,28 @@ in {
   };
 
   config = mkIf cfg.enable {
+    assertions =
+      lib.mapAttrsToList (name: _: {
+        assertion = builtins.match "[A-Za-z0-9][A-Za-z0-9_-]*" name != null && name != "disabled";
+        message = "Codex pet names must use letters, digits, underscores or hyphens, and cannot be 'disabled'.";
+      })
+      cfg.pets;
+
+    home.file = lib.mkMerge [
+      (lib.mapAttrs' (name: pet:
+        lib.nameValuePair "${configDir}/pets/${name}" {
+          source = mkPet name pet;
+        })
+      cfg.pets)
+      {
+        "${configDir}/${configFileName}".enable =
+          lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) (lib.mkForce false);
+      }
+    ];
+
     home.activation = lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) {
       codexSettingsActivation = lib.hm.dag.entryAfter ["linkGeneration"] mutableConfigMerger;
     };
-
-    home.file."${configDir}/${configFileName}".enable =
-      lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) (lib.mkForce false);
 
     xdg.configFile = lib.mkMerge [
       # Prompts: each prompt is a markdown file (Slash Commands)

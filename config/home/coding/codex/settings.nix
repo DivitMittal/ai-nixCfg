@@ -38,6 +38,7 @@ _: {
       tui = {
         notifications = true;
         animations = true;
+        pet = "custom:pico";
       };
       check_for_update_on_startup = false;
       cli_auth_credentials_store = "file";
