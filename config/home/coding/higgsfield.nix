@@ -12,12 +12,26 @@
 ## One-time auth: `higgsfield auth login` (CLI) and `/mcp` → higgsfield (MCP).
 {
   pkgs,
+  options,
   ai-nixCfg,
   ...
 }: let
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
+  marketplace = customPkgs.higgsfield-skills;
 in {
   home.packages = [customPkgs.higgsfield-cli];
 
-  programs.claude-code.marketplaces.higgsfield = customPkgs.higgsfield-skills;
+  # The marketplaces option only merges into known_marketplaces.json when
+  # mutableSettings exists; older home-manager links that file read-only,
+  # dropping marketplaces added via /plugin. There, register through
+  # settings.json alone and let Claude Code record the marketplace itself.
+  programs.claude-code =
+    if options.programs.claude-code ? mutableSettings
+    then {marketplaces.higgsfield = marketplace;}
+    else {
+      settings.extraKnownMarketplaces.higgsfield.source = {
+        source = "directory";
+        path = "${marketplace}";
+      };
+    };
 }
