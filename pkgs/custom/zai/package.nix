@@ -9,7 +9,7 @@ in
     pname = "zai";
     inherit version src;
 
-    vendorHash = "sha256-oBTkZbL3na3NnD3z5Ba83UmFeycjCtYsE0EAE1LQOuQ=";
+    vendorHash = "sha256-xeO1/VNvezkCeeQ5EIFHQ3ZW32RIfQ2UFgDFIVww+sc=";
 
     ldflags = [
       "-s"
