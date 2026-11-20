@@ -352,7 +352,7 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 | Claude Code | ✓ | ✓ | ✓ | ✓ (PreToolUse security, PostToolUse `nix fmt`) | ✓ (caveman) | ✓ (ccstatusline) | commands + skills + agents + rules |
 | Codex | ✓ profiles (default/conservative/power) | ✓ | – | – | – | ✓ (animations) | prompts + skills |
 | Copilot CLI | ✓ | ✓ | ✓ | – | – | ✓ (theme) | skills + agents |
-| OpenCode | ✓ providers (Antigravity + Codex Everywhere + Google) | ✓ | – | – | ✓ (`antigravity-auth`, `beads`, `pty`) | – | context (memory + rules) |
+| OpenCode | ✓ providers (Antigravity + Google) | ✓ | – | – | ✓ (`antigravity-auth`, `beads`, `pty`) | – | context (memory + rules) |
 | Crush | ✓ | ✓ | ✓ | – | – | – | commands |
 | Antigravity CLI | ✓ | ✓ | – | – | – | – | commands |
 | Pi | ✓ | – | – | – | 14 extensions (bash-blacklist, codex-fast, fetch, lsp, plan-mode, …) | – | rules + skills + prompt templates |
@@ -400,7 +400,6 @@ Pinned to upstream `kissgyorgy/coding-agents` rev `4d8c448033ca332b55e79de4cbd07
 
 | Provider | Models |
 |----------|--------|
-| `codex-everywhere` | GPT-5.5 |
 | `google` | Gemini 3 Pro (Antigravity), Gemini 3 Flash, Gemini 2.5 Pro/Flash, Gemini 3 Flash/Pro Preview, Claude Sonnet 4.5/4.6 + Thinking, Claude Opus 4.5/4.6 + Thinking |
 | `opencode` (default) | Standard OpenCode model zoo |
 
