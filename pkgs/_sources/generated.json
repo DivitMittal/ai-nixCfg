@@ -119,6 +119,87 @@
         },
         "version": "0.21.0"
     },
+    "higgsfield-cli-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-YT2DuSiKvewIuF4NqYTfYvr1UOORl2x/5EaNWqNNrq4=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_darwin_arm64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-cli-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-76MC1tGJuB2Y0JiEgw9rD4nKt6jAcReCW3WNLMa0klk=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_linux_arm64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-cli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-yXxwISftdDgb0k6v3IzwuRfZxKHtHVEkg6dnbdHT/So=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_darwin_amd64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-cli-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-DtWUrkJkbUlLnq7sQ1khH2z9ZTzk95CqTKakjBpDFSk=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_linux_amd64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-skills": {
+        "cargoLock": null,
+        "date": "2026-11-05",
+        "extract": null,
+        "name": "higgsfield-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "higgsfield-ai",
+            "repo": "skills",
+            "rev": "27000402070db19d958789d05b3b52b6f4718d7c",
+            "sha256": "sha256-37pGaqLFFNcdMEz8I1PpnVsjmAPfe3jaiiKbvzlJ2P4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "27000402070db19d958789d05b3b52b6f4718d7c"
+    },
     "jcode-aarch64-darwin": {
         "cargoLock": null,
         "date": null,

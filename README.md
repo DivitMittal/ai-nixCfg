@@ -747,6 +747,8 @@ graph TD
 | `spotify-library-mcp` | Spotify playlist curation MCP server and CLI (Node) | `pkgs/custom/spotify-library-mcp/package.nix` (nvfetcher) |
 | `lightpanda` | Headless browser built for AI automation (Rust) | `pkgs/custom/lightpanda/package.nix` (nvfetcher) |
 | `zai` | Z.AI CLI for GLM models | `pkgs/custom/zai/package.nix` (nvfetcher) |
+| `higgsfield-cli` | Higgsfield AI image/video CLI as `higgsfield`/`higgs` (prebuilt; `hf` dropped to avoid clashing with Hugging Face) | `pkgs/custom/higgsfield-cli/package.nix` (nvfetcher) |
+| `higgsfield-skills` | Higgsfield skills as a Claude Code marketplace, with the hosted MCP server bundled into the plugin | `pkgs/custom/higgsfield-skills/package.nix` (nvfetcher) |
 
 ### `pkgs/darwin/`
 
@@ -917,6 +919,7 @@ ______________________________________________________________________
 │       │   ├── crush/          # Crush settings, MCP, LSP, permissions
 │       │   ├── antigravity-cli/# Antigravity CLI settings + global skills
 │       │   ├── pi/             # Pi coding agent + 14 extensions
+│       │   ├── higgsfield.nix  # Higgsfield CLI + opt-in Claude plugin (skills + MCP)
 │       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli, zoetrope)
 │       ├── assistants/         # Standalone assistants
 │       │   ├── hermes-agent/   # Hermes Agent setup
