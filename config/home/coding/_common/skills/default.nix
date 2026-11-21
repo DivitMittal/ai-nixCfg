@@ -31,6 +31,10 @@
         expertise = "commits";
       };
     };
+    dossier = {
+      name = "dossier";
+      description = "The user's global memory of people, organisations and open matters (job leads, business deals, lawyers, admin) kept in the Dossier vault. Use when the user asks to log or remember a conversation, says they just spoke with someone, pastes a chat or email to file, asks what they know about a person or company, wants a brief before a call, or asks for a dossier review. Not for project or coding context.";
+    };
     herdr = {
       name = "herdr";
       description = "Control Herdr, a terminal multiplexer for coding agents. Use only when the user explicitly mentions Herdr or asks to use Herdr to inspect or control panes, tabs, workspaces, terminals, commands, or communication with another agent. Do not use merely because a task could benefit from a background terminal, delegation, or parallel work. Requires HERDR_ENV=1.";
