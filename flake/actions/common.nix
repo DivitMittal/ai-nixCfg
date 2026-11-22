@@ -12,6 +12,8 @@
           "flake.lock"
           "flake/**"
           "pkgs/**"
+          "modules/**"
+          "config/**"
         ];
       };
       pull_request = push;

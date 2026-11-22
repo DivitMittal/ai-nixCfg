@@ -25,6 +25,8 @@ jobs:
         nix eval --impure --show-trace --raw ".#apps.$system.ai.program"
     - name: Run nix flake check
       run: nix -vL flake check --impure --no-build --show-trace
+    - name: Build checks
+      run: nix -L flake check --impure --show-trace
     strategy:
       fail-fast: false
       matrix:
@@ -43,6 +45,8 @@ jobs:
     - flake.lock
     - flake/**
     - pkgs/**
+    - modules/**
+    - config/**
   push:
     branches:
     - master
@@ -51,4 +55,6 @@ jobs:
     - flake.lock
     - flake/**
     - pkgs/**
+    - modules/**
+    - config/**
   workflow_dispatch: {}

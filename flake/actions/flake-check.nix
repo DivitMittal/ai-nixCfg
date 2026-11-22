@@ -30,6 +30,12 @@
             name = "Run nix flake check";
             run = "nix -vL flake check --impure --no-build --show-trace";
           }
+          {
+            # --no-build only evaluates; this runs module-tests, crush-config
+            # and the pre-commit hooks natively on each platform.
+            name = "Build checks";
+            run = "nix -L flake check --impure --show-trace";
+          }
         ];
     };
   };
