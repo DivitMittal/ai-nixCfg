@@ -233,10 +233,12 @@ in {
           source = mkPet name pet;
         })
       cfg.pets)
-      {
-        "${configDir}/${configFileName}".enable =
-          lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) (lib.mkForce false);
-      }
+      ## Gate the whole entry, not just `.enable`: a key with only `.enable`
+      ## set creates a source-less home.file when upstream writes no config
+      ## (e.g. the module imported standalone with no settings).
+      (lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) {
+        "${configDir}/${configFileName}".enable = lib.mkForce false;
+      })
     ];
 
     home.activation = lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) {
