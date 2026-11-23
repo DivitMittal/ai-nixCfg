@@ -42,6 +42,12 @@ in {
         else customPkgs.goose-cli;
       ## jcode — resource-efficient terminal coding agent (binary: jcode)
       inherit (customPkgs) jcode;
+      ## Official Grok Build (binary: grok). The pinned llm-agents package
+      ## omits Intel macOS; upstream's npm distribution supports it.
+      grok =
+        if isX86Darwin
+        then customLib.mkBunxBin pkgs "grok" "@xai-official/grok@1.0.89"
+        else customPkgs.grok;
       ## mmx-cli — MiniMax CLI (binary: mmx)
       mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
     }
