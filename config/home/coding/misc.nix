@@ -42,19 +42,22 @@ in {
         else customPkgs.goose-cli;
       ## jcode — resource-efficient terminal coding agent (binary: jcode)
       inherit (customPkgs) jcode;
+      ## Official Grok Build (binary: grok). The pinned llm-agents package
+      ## omits Intel macOS; upstream's npm distribution supports it.
+      grok =
+        if isX86Darwin
+        then customLib.mkBunxBin pkgs "grok" "@xai-official/grok@1.0.89"
+        else customPkgs.grok;
       ## mmx-cli — MiniMax CLI (binary: mmx)
       mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
+      ## The local Darwin package fills the Intel gap in llm-agents.
+      inherit (customPkgs) cursor-agent;
     }
     ## terminal-use — flipbit03/terminal-use headless PTY for agents (binary:
     ## tu). Rust; no x86_64-darwin build, no npm/pypi fallback, and no
     ## Homebrew formula either (checked formulae.brew.sh directly — not just
     ## asserted) — no fallback tier applies.
     // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) terminal-use;}
-    ## cursor-agent — Cursor CLI coding agent (binary: cursor-agent).
-    ## Proprietary binary that upstream itself doesn't publish for
-    ## x86_64-darwin (only aarch64-darwin/aarch64-linux/x86_64-linux), so no
-    ## fallback tier applies.
-    // lib.optionalAttrs (!isX86Darwin) {inherit (customPkgs) cursor-agent;}
     ## pi-agent-rust — Dicklesworthstone's Rust port of Pi (binary: pi-rust).
     ## Prebuilt only for aarch64-darwin/x86_64-linux, source build on
     ## x86_64-darwin; no aarch64-linux release, and the package's prebuilt
