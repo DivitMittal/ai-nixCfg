@@ -13,6 +13,17 @@
       || pkgs.stdenvNoCC.hostPlatform.isLinux)
     && pkgs.stdenvNoCC.hostPlatform.system != "x86_64-darwin";
 
+  # Where isSupported is false, run the same upstream npm package (the one
+  # pi-nix would otherwise build from source) via npx instead of going
+  # without `pi` entirely. `bunx` fails on this package with a Bun runtime
+  # bug ("webidl.util.markAsUncloneable is not a function"); npx (Node) runs
+  # it fine. Bump the version after checking:
+  #   npx -y @earendil-works/pi-coding-agent@<ver> --version
+  piNpmFallbackVersion = "1.6.0";
+  piNpmFallback = pkgs.writeShellScriptBin "pi" ''
+    exec ${pkgs.nodejs}/bin/npx -y "@earendil-works/pi-coding-agent@${piNpmFallbackVersion}" "$@"
+  '';
+
   # Pinned to the same rev that was tracked as the coding-agents flake input.
   # Update by bumping rev + running `nix build` to get the new hash from the
   # mismatch error, then copying it here.
@@ -77,17 +88,22 @@ in {
       ++ map (n: "${piExtensionsDir}/${n}") otherExtNames;
   };
 
-  home.packages = lib.optionals isSupported (
-    [
-      pkgs.nil
-      pkgs.basedpyright
-      pkgs.typescript-language-server
-      pkgs.typescript
-      pkgs.gopls
-      pkgs.go
-    ]
-    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
-      pkgs.wl-clipboard
-    ]
-  );
+  home.packages =
+    lib.optionals isSupported (
+      [
+        pkgs.nil
+        pkgs.basedpyright
+        pkgs.typescript-language-server
+        pkgs.typescript
+        pkgs.gopls
+        pkgs.go
+      ]
+      ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+        pkgs.wl-clipboard
+      ]
+    )
+    ++ lib.optionals (!isSupported) [
+      piNpmFallback
+      pkgs.nodejs
+    ];
 }
