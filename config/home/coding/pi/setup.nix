@@ -89,7 +89,7 @@ in {
   );
 
   programs.pi.coding-agent = lib.mkIf isSupported {
-    enable = true;
+    enable = config.aiCoding.installArchivedTools;
     extensions =
       ["${piFetchExt}/index.ts"]
       ++ map (n: "${piExtensionsDir}/${n}") otherExtNames;
