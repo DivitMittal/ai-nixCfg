@@ -14,7 +14,9 @@ depend on QWERTY `hjkl` positions or take over unmodified keys in the prompt:
 | Scroll transcript by a step | `Ctrl+Shift+Up/Down` |
 | Scroll transcript by a page | `PageUp/PageDown` |
 | Jump to the previous/next prompt | `Alt+Shift+Up/Down` |
-| Move workspace focus | `Ctrl+Alt+Arrow` |
+| Move workspace focus | `Ctrl+Alt+Arrow` or `Ctrl+Alt+N/E/U/I` on the base layer |
 
+`N/E/U/I` mean left/down/up/right, respectively. These are the keys under
+the corresponding arrows on TLTR's Colemak base layer, with `U` above `E`.
 Plain arrows and `Ctrl+Up/Down` still handle normal input navigation and prompt
 history. Open a new Jcode client after activating to pick up the bindings.
