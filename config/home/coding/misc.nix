@@ -27,6 +27,7 @@
         if isX86Darwin
         then customLib.mkBunxBin pkgs "ax" "github:yusukebe/ax"
         else customPkgs.ax;
+      ## mmx-cli — MiniMax CLI (binary: mmx)
       mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
       lazycodex = customLib.mkBunxBin pkgs "lazycodex" "lazycodex-ai";
     }

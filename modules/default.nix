@@ -11,6 +11,14 @@
     ## Individual imports (for selective usage)
     codex = import ./home/codex.nix;
     crush = import ./home/crush.nix;
+    jcode = {
+      lib,
+      pkgs,
+      ...
+    }: {
+      imports = [./home/jcode.nix];
+      programs.jcode.package = lib.mkDefault inputs.self.packages.${pkgs.stdenvNoCC.hostPlatform.system}.jcode;
+    };
     n8n = import ./home/n8n.nix;
     talon = {
       _module.args.talon-nix = inputs.talon-nix;
