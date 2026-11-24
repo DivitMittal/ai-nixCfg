@@ -39,24 +39,29 @@ _: {
         notifications = true;
         animations = true;
         pet = "custom:pico";
+        vim_mode_default = true;
         keymap = {
-          # TLTR's arrow positions on the Colemak base layer: N/E/U/I.
-          # Keep arrows and the stock bindings as fallbacks.
-          editor = {
-            move_left = ["left" "ctrl-b" "ctrl-alt-n"];
-            move_down = ["down" "ctrl-n" "ctrl-alt-e"];
-            move_up = ["up" "ctrl-p" "ctrl-alt-u"];
-            move_right = ["right" "ctrl-f" "ctrl-alt-i"];
+          # Match Vim-Cfg: U/R undo and redo. Move replace mode out of R's way.
+          vim_normal = {
+            undo = ["shift-u"];
+            redo = ["shift-r" "ctrl-r"];
+            enter_replace_mode = ["shift-alt-r"];
+            move_left = ["left"];
+            move_down = ["down"];
+            move_up = ["up"];
+            move_right = ["right"];
           };
-          list = {
-            move_left = ["left" "ctrl-h" "ctrl-alt-n"];
-            move_down = ["down" "ctrl-n" "ctrl-j" "j" "ctrl-alt-e"];
-            move_up = ["up" "ctrl-p" "ctrl-k" "k" "ctrl-alt-u"];
-            move_right = ["right" "ctrl-l" "ctrl-alt-i"];
+          vim_operator = {
+            motion_left = ["left"];
+            motion_down = ["down"];
+            motion_up = ["up"];
+            motion_right = ["right"];
           };
           pager = {
-            scroll_up = ["up" "k" "ctrl-alt-u" "ctrl-shift-up"];
-            scroll_down = ["down" "j" "ctrl-alt-e" "ctrl-shift-down"];
+            scroll_up = ["up" "alt-up"];
+            scroll_down = ["down" "alt-down"];
+            jump_top = ["home" "g g"];
+            jump_bottom = ["end" "shift-g"];
           };
         };
       };
