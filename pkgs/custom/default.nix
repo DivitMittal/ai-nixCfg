@@ -19,6 +19,7 @@ in
     zehn = pkgs.callPackage ./zehn/package.nix {inherit sources;};
   }
   // pkgs.lib.optionalAttrs (pkgs.stdenvNoCC.hostPlatform.system == "x86_64-darwin") {
+    antigravity-cli = pkgs.callPackage ./antigravity-cli/package.nix {};
     lumen = pkgs.callPackage ./lumen/package.nix {inherit sources;};
   }
   // pkgs.lib.optionalAttrs pkgs.stdenvNoCC.hostPlatform.isDarwin {
