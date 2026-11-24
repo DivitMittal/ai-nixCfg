@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ai-nixCfg,
@@ -8,6 +9,10 @@
   customPkgs = ai-nixCfg.packages.${pkgs.stdenvNoCC.hostPlatform.system};
   isX86Darwin = pkgs.stdenvNoCC.hostPlatform.system == "x86_64-darwin";
 in {
+  ## Keep Grok CLI state (auth.json, bin/) under XDG. jcode's grok-build
+  ## provider reads and refreshes $GROK_HOME/auth.json too.
+  home.sessionVariables.GROK_HOME = "${config.xdg.configHome}/grok";
+
   home.packages = lib.attrsets.attrValues ({
       ## Qwen Code
       #qwen-code = customLib.mkPnpmDlxBin pkgs "qwen" "@qwen-code/qwen-code@latest";
