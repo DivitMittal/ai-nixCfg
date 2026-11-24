@@ -22,7 +22,7 @@
     llmPkgs.hermes-agent or fallbackPkgs.hermes-agent or null;
 in {
   programs.hermes-agent = lib.mkIf (hermesPackage != null) {
-    enable = true;
+    enable = false; # Archived: not in active use.
     package = hermesPackage;
   };
 }

@@ -27,8 +27,9 @@ in {
         else customPkgs.happy-coder;
       ## zoetrope — live Claude Code session graph (binary: zoe).
       inherit (customPkgs) zoetrope;
+      ## Archived: only claude, codex, pi-rust and jcode are in active use.
       ## zai — CLI for Z.AI GLM models
-      inherit (customPkgs) zai;
+      # inherit (customPkgs) zai;
       ## zehn — al3rez/zehn fuzzy-find prompts across claude, codex, pi & opencode histories and resume sessions
       inherit (customPkgs) zehn;
       ## ax — yusukebe/ax AI-agent HTTP/context tool ("AI-era curl", binary:
@@ -41,10 +42,11 @@ in {
         else customPkgs.ax;
       ## goose-cli — Block's open-source coding agent (binary: goose).
       ## Available directly in nixpkgs-26.05-darwin.
-      goose-cli =
-        if isX86Darwin
-        then pkgs.goose-cli
-        else customPkgs.goose-cli;
+      ## Archived.
+      # goose-cli =
+      #   if isX86Darwin
+      #   then pkgs.goose-cli
+      #   else customPkgs.goose-cli;
       ## jcode — resource-efficient terminal coding agent (binary: jcode)
       inherit (customPkgs) jcode;
       ## Official Grok Build (binary: grok). The pinned llm-agents package
@@ -54,7 +56,8 @@ in {
         then customLib.mkBunxBin pkgs "grok" "@xai-official/grok@1.0.89"
         else customPkgs.grok;
       ## mmx-cli — MiniMax CLI (binary: mmx)
-      mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
+      ## Archived.
+      # mmx-cli = customLib.mkBunxBin pkgs "mmx" "mmx-cli";
       ## The local Darwin package fills the Intel gap in llm-agents.
       inherit (customPkgs) cursor-agent;
     }
