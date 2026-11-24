@@ -67,6 +67,50 @@
       sha256 = "sha256-DsmESMggUZ4SMNCm6nA5oStLt4GEjYtvbkaeQSZieQI=";
     };
   };
+  elevenlabs-cli-aarch64-darwin = {
+    pname = "elevenlabs-cli-aarch64-darwin";
+    version = "1.13.0";
+    src = fetchurl {
+      url = "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-aarch64-apple-darwin.tar.gz";
+      sha256 = "sha256-ltb3ibBCWKMjOTtFMiQDGK8WQM2OAgYDyUQ2kruxw0U=";
+    };
+  };
+  elevenlabs-cli-aarch64-linux = {
+    pname = "elevenlabs-cli-aarch64-linux";
+    version = "1.13.0";
+    src = fetchurl {
+      url = "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-aarch64-unknown-linux-gnu.tar.gz";
+      sha256 = "sha256-vOKVoNvblWuvqkQp+ns4PFZtz7e3sNqGREjW/di9NeA=";
+    };
+  };
+  elevenlabs-cli-x86_64-darwin = {
+    pname = "elevenlabs-cli-x86_64-darwin";
+    version = "1.13.0";
+    src = fetchurl {
+      url = "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-x86_64-apple-darwin.tar.gz";
+      sha256 = "sha256-KLp4Dq4Obq4Qy0Gxix3IefJfhNwz4FVAUHYm7+tk3CA=";
+    };
+  };
+  elevenlabs-cli-x86_64-linux = {
+    pname = "elevenlabs-cli-x86_64-linux";
+    version = "1.13.0";
+    src = fetchurl {
+      url = "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-x86_64-unknown-linux-gnu.tar.gz";
+      sha256 = "sha256-X7ZuEbLUPyoSRw9vLWnIccTHoGcEb+U7e+q2JEia42A=";
+    };
+  };
+  elevenlabs-skills = {
+    pname = "elevenlabs-skills";
+    version = "97478d1b23b9a6795f85bf8b6e33a4677fa1f869";
+    src = fetchFromGitHub {
+      owner = "elevenlabs";
+      repo = "skills";
+      rev = "97478d1b23b9a6795f85bf8b6e33a4677fa1f869";
+      fetchSubmodules = false;
+      sha256 = "sha256-XJ/QglsbswedWDu+8oOC7AseRW2Pnysi4TIIUy2QGp0=";
+    };
+    date = "2026-11-18";
+  };
   higgsfield-cli-aarch64-darwin = {
     pname = "higgsfield-cli-aarch64-darwin";
     version = "1.2.3";
@@ -113,66 +157,66 @@
   };
   jcode-aarch64-darwin = {
     pname = "jcode-aarch64-darwin";
-    version = "v1.0.1";
+    version = "v1.0.3";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-macos-aarch64.tar.gz";
-      sha256 = "sha256-exF4ilK1NBg79wlJ26tobEfe9+HfIOkSF2In8wSa9/o=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-macos-aarch64.tar.gz";
+      sha256 = "sha256-J0OWeZ0sYGAM4+SJCr54Q5wYggF+7fwnLOMLFzDFt0s=";
     };
   };
   jcode-aarch64-linux = {
     pname = "jcode-aarch64-linux";
-    version = "v1.0.1";
+    version = "v1.0.3";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-linux-aarch64.tar.gz";
-      sha256 = "sha256-SDIy0SQqXajxaMtPASjGawN1HtDRS1gbO0MMBYOTL1E=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-linux-aarch64.tar.gz";
+      sha256 = "sha256-x2zsC5uYRYrKnRoLz6ktMwRZt8/vEnAMGfEwiBEpzo8=";
     };
   };
   jcode-x86_64-darwin = {
     pname = "jcode-x86_64-darwin";
-    version = "v1.0.1";
+    version = "v1.0.3";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-macos-x86_64.tar.gz";
-      sha256 = "sha256-91KTMIrsDN305ynnJlkEy9mVJxPcd0WgUbE890dF4Kg=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-macos-x86_64.tar.gz";
+      sha256 = "sha256-HpgzAn7qxmFmLBXU181WjqOUo5lHDhMfetQN1N2lGY4=";
     };
   };
   jcode-x86_64-linux = {
     pname = "jcode-x86_64-linux";
-    version = "v1.0.1";
+    version = "v1.0.3";
     src = fetchurl {
-      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-linux-x86_64.tar.gz";
-      sha256 = "sha256-9EpUl4tQPl3Sf6h4HEPsSRbr6cSpTUKqtQ/IaL9PvoY=";
+      url = "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-linux-x86_64.tar.gz";
+      sha256 = "sha256-coOkQX/th3Ip/YkEkXOju0aTaKPew3yizDHEiV+zpq0=";
     };
   };
   lightpanda-aarch64-darwin = {
     pname = "lightpanda-aarch64-darwin";
-    version = "1.0.4";
+    version = "1.0.5";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-aarch64-macos";
-      sha256 = "sha256-g7C6WuMQhrZ1+zulBkS9oHWhO+ur5G3F91Q5UrxBrkY=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-aarch64-macos";
+      sha256 = "sha256-7sN4EIbuUSMgoEsDbwkoBqipWZROp4/I9P59/iFahLQ=";
     };
   };
   lightpanda-aarch64-linux = {
     pname = "lightpanda-aarch64-linux";
-    version = "1.0.4";
+    version = "1.0.5";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-aarch64-linux";
-      sha256 = "sha256-8CHUmgtm0HvyYz+OAIcLkHUpNRb4cmlbDKSutYSLbqg=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-aarch64-linux";
+      sha256 = "sha256-dSc5HEefMj65ERuDSwEtkaiQV1KMKO8Cd0GyFzmxIpk=";
     };
   };
   lightpanda-x86_64-darwin = {
     pname = "lightpanda-x86_64-darwin";
-    version = "1.0.4";
+    version = "1.0.5";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-x86_64-macos";
-      sha256 = "sha256-jAISfG/CpxPRZjSb8bUR1HDI/NaEaBknyXjMi7WVLVU=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-x86_64-macos";
+      sha256 = "sha256-K3XJ/uXDbV2ED3k432pTIHS+wDvwSFwxMLKFl5maZv4=";
     };
   };
   lightpanda-x86_64-linux = {
     pname = "lightpanda-x86_64-linux";
-    version = "1.0.4";
+    version = "1.0.5";
     src = fetchurl {
-      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-x86_64-linux";
-      sha256 = "sha256-fSJlESmQEgOr25XGT0kGnEnoj1IR9NjExoKMEjxK2rQ=";
+      url = "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-x86_64-linux";
+      sha256 = "sha256-DsIfpIZ6uegrNShf9KsOczbGwdifJv6ZHyfXPIpni9c=";
     };
   };
   lumen-x86_64-darwin = {
@@ -185,34 +229,34 @@
   };
   pi-agent-rust-aarch64-darwin = {
     pname = "pi-agent-rust-aarch64-darwin";
-    version = "v0.8.0";
+    version = "v0.9.0";
     src = fetchurl {
-      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-arm64.tar.xz";
-      sha256 = "sha256-mZnuWwUoOnmydxYvc535/zay/w+Nymzx1sxOGq5dBdk=";
+      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-darwin-arm64.tar.xz";
+      sha256 = "sha256-ZY05GuyC4e1bjYrvRXoyQ8K9oeLfBWfwD8LneocOv8Q=";
     };
   };
   pi-agent-rust-aarch64-linux = {
     pname = "pi-agent-rust-aarch64-linux";
-    version = "v0.8.0";
+    version = "v0.9.0";
     src = fetchurl {
-      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-arm64.tar.xz";
-      sha256 = "sha256-MnZQTRlVTXqoryJwNnQYa5iHxIz/wc0SOLe/UjEAq/k=";
+      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-linux-arm64.tar.xz";
+      sha256 = "sha256-LxK31GqA3DNtFK0osd/SER0S8f3/dJph3MngrsSv/9I=";
     };
   };
   pi-agent-rust-x86_64-darwin = {
     pname = "pi-agent-rust-x86_64-darwin";
-    version = "v0.8.0";
+    version = "v0.9.0";
     src = fetchurl {
-      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-amd64.tar.xz";
-      sha256 = "sha256-dY40rGP0uhxw0HYJWBkThh99XR778enDvkud7rtfz70=";
+      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-darwin-amd64.tar.xz";
+      sha256 = "sha256-1TQ8lksp4gIBjzSw+b+EB/nhXeUBWNits0BDLwNz6l0=";
     };
   };
   pi-agent-rust-x86_64-linux = {
     pname = "pi-agent-rust-x86_64-linux";
-    version = "v0.8.0";
+    version = "v0.9.0";
     src = fetchurl {
-      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-amd64.tar.xz";
-      sha256 = "sha256-wE5/hzkb7LF8sex1RND9dnIx37WoNhZE6ohwuj05BW0=";
+      url = "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-linux-amd64.tar.xz";
+      sha256 = "sha256-gT6FA+zqZSfO7fRTK2DZnd/aF6Q3K2OBqUSMpl2K/rw=";
     };
   };
   spotify-library-mcp = {

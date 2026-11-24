@@ -119,6 +119,87 @@
         },
         "version": "0.21.0"
     },
+    "elevenlabs-cli-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "elevenlabs-cli-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-ltb3ibBCWKMjOTtFMiQDGK8WQM2OAgYDyUQ2kruxw0U=",
+            "type": "url",
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-aarch64-apple-darwin.tar.gz"
+        },
+        "version": "1.13.0"
+    },
+    "elevenlabs-cli-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "elevenlabs-cli-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-vOKVoNvblWuvqkQp+ns4PFZtz7e3sNqGREjW/di9NeA=",
+            "type": "url",
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-aarch64-unknown-linux-gnu.tar.gz"
+        },
+        "version": "1.13.0"
+    },
+    "elevenlabs-cli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "elevenlabs-cli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-KLp4Dq4Obq4Qy0Gxix3IefJfhNwz4FVAUHYm7+tk3CA=",
+            "type": "url",
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-x86_64-apple-darwin.tar.gz"
+        },
+        "version": "1.13.0"
+    },
+    "elevenlabs-cli-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "elevenlabs-cli-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-X7ZuEbLUPyoSRw9vLWnIccTHoGcEb+U7e+q2JEia42A=",
+            "type": "url",
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-x86_64-unknown-linux-gnu.tar.gz"
+        },
+        "version": "1.13.0"
+    },
+    "elevenlabs-skills": {
+        "cargoLock": null,
+        "date": "2026-11-18",
+        "extract": null,
+        "name": "elevenlabs-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "elevenlabs",
+            "repo": "skills",
+            "rev": "97478d1b23b9a6795f85bf8b6e33a4677fa1f869",
+            "sha256": "sha256-XJ/QglsbswedWDu+8oOC7AseRW2Pnysi4TIIUy2QGp0=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "97478d1b23b9a6795f85bf8b6e33a4677fa1f869"
+    },
     "higgsfield-cli-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
@@ -209,11 +290,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-exF4ilK1NBg79wlJ26tobEfe9+HfIOkSF2In8wSa9/o=",
+            "sha256": "sha256-J0OWeZ0sYGAM4+SJCr54Q5wYggF+7fwnLOMLFzDFt0s=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-macos-aarch64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-macos-aarch64.tar.gz"
         },
-        "version": "v1.0.1"
+        "version": "v1.0.3"
     },
     "jcode-aarch64-linux": {
         "cargoLock": null,
@@ -224,11 +305,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-SDIy0SQqXajxaMtPASjGawN1HtDRS1gbO0MMBYOTL1E=",
+            "sha256": "sha256-x2zsC5uYRYrKnRoLz6ktMwRZt8/vEnAMGfEwiBEpzo8=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-linux-aarch64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-linux-aarch64.tar.gz"
         },
-        "version": "v1.0.1"
+        "version": "v1.0.3"
     },
     "jcode-x86_64-darwin": {
         "cargoLock": null,
@@ -239,11 +320,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-91KTMIrsDN305ynnJlkEy9mVJxPcd0WgUbE890dF4Kg=",
+            "sha256": "sha256-HpgzAn7qxmFmLBXU181WjqOUo5lHDhMfetQN1N2lGY4=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-macos-x86_64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-macos-x86_64.tar.gz"
         },
-        "version": "v1.0.1"
+        "version": "v1.0.3"
     },
     "jcode-x86_64-linux": {
         "cargoLock": null,
@@ -254,11 +335,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-9EpUl4tQPl3Sf6h4HEPsSRbr6cSpTUKqtQ/IaL9PvoY=",
+            "sha256": "sha256-coOkQX/th3Ip/YkEkXOju0aTaKPew3yizDHEiV+zpq0=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.1/jcode-linux-x86_64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-linux-x86_64.tar.gz"
         },
-        "version": "v1.0.1"
+        "version": "v1.0.3"
     },
     "lightpanda-aarch64-darwin": {
         "cargoLock": null,
@@ -269,11 +350,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-g7C6WuMQhrZ1+zulBkS9oHWhO+ur5G3F91Q5UrxBrkY=",
+            "sha256": "sha256-7sN4EIbuUSMgoEsDbwkoBqipWZROp4/I9P59/iFahLQ=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-aarch64-macos"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-aarch64-macos"
         },
-        "version": "1.0.4"
+        "version": "1.0.5"
     },
     "lightpanda-aarch64-linux": {
         "cargoLock": null,
@@ -284,11 +365,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-8CHUmgtm0HvyYz+OAIcLkHUpNRb4cmlbDKSutYSLbqg=",
+            "sha256": "sha256-dSc5HEefMj65ERuDSwEtkaiQV1KMKO8Cd0GyFzmxIpk=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-aarch64-linux"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-aarch64-linux"
         },
-        "version": "1.0.4"
+        "version": "1.0.5"
     },
     "lightpanda-x86_64-darwin": {
         "cargoLock": null,
@@ -299,11 +380,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-jAISfG/CpxPRZjSb8bUR1HDI/NaEaBknyXjMi7WVLVU=",
+            "sha256": "sha256-K3XJ/uXDbV2ED3k432pTIHS+wDvwSFwxMLKFl5maZv4=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-x86_64-macos"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-x86_64-macos"
         },
-        "version": "1.0.4"
+        "version": "1.0.5"
     },
     "lightpanda-x86_64-linux": {
         "cargoLock": null,
@@ -314,11 +395,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-fSJlESmQEgOr25XGT0kGnEnoj1IR9NjExoKMEjxK2rQ=",
+            "sha256": "sha256-DsIfpIZ6uegrNShf9KsOczbGwdifJv6ZHyfXPIpni9c=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.4/lightpanda-x86_64-linux"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-x86_64-linux"
         },
-        "version": "1.0.4"
+        "version": "1.0.5"
     },
     "lumen-x86_64-darwin": {
         "cargoLock": null,
@@ -344,11 +425,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-mZnuWwUoOnmydxYvc535/zay/w+Nymzx1sxOGq5dBdk=",
+            "sha256": "sha256-ZY05GuyC4e1bjYrvRXoyQ8K9oeLfBWfwD8LneocOv8Q=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-arm64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-darwin-arm64.tar.xz"
         },
-        "version": "v0.8.0"
+        "version": "v0.9.0"
     },
     "pi-agent-rust-aarch64-linux": {
         "cargoLock": null,
@@ -359,11 +440,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-MnZQTRlVTXqoryJwNnQYa5iHxIz/wc0SOLe/UjEAq/k=",
+            "sha256": "sha256-LxK31GqA3DNtFK0osd/SER0S8f3/dJph3MngrsSv/9I=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-arm64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-linux-arm64.tar.xz"
         },
-        "version": "v0.8.0"
+        "version": "v0.9.0"
     },
     "pi-agent-rust-x86_64-darwin": {
         "cargoLock": null,
@@ -374,11 +455,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-dY40rGP0uhxw0HYJWBkThh99XR778enDvkud7rtfz70=",
+            "sha256": "sha256-1TQ8lksp4gIBjzSw+b+EB/nhXeUBWNits0BDLwNz6l0=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-darwin-amd64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-darwin-amd64.tar.xz"
         },
-        "version": "v0.8.0"
+        "version": "v0.9.0"
     },
     "pi-agent-rust-x86_64-linux": {
         "cargoLock": null,
@@ -389,11 +470,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-wE5/hzkb7LF8sex1RND9dnIx37WoNhZE6ohwuj05BW0=",
+            "sha256": "sha256-gT6FA+zqZSfO7fRTK2DZnd/aF6Q3K2OBqUSMpl2K/rw=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.8.0/pi-linux-amd64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-linux-amd64.tar.xz"
         },
-        "version": "v0.8.0"
+        "version": "v0.9.0"
     },
     "spotify-library-mcp": {
         "cargoLock": null,

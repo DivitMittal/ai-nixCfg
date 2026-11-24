@@ -748,6 +748,8 @@ graph TD
 | `zai` | Z.AI CLI for GLM models | `pkgs/custom/zai/package.nix` (nvfetcher) |
 | `higgsfield-cli` | Higgsfield AI image/video CLI as `higgsfield`/`higgs` (prebuilt; `hf` dropped to avoid clashing with Hugging Face) | `pkgs/custom/higgsfield-cli/package.nix` (nvfetcher) |
 | `higgsfield-skills` | Higgsfield skills as a Claude Code marketplace, with the hosted MCP server bundled into the plugin | `pkgs/custom/higgsfield-skills/package.nix` (nvfetcher) |
+| `elevenlabs-cli` | ElevenLabs API CLI (`elevenlabs`: agents, speech, music, dubbing); telemetry off by default | `pkgs/custom/elevenlabs-cli/package.nix` (nvfetcher) |
+| `elevenlabs-skills` | ElevenLabs agent skills (not enabled globally); hosted MCP config bundled as `mcp.json` | `pkgs/custom/elevenlabs-skills/package.nix` (nvfetcher) |
 
 ### `pkgs/darwin/`
 
@@ -919,6 +921,7 @@ ______________________________________________________________________
 │       │   ├── antigravity-cli/# Antigravity CLI settings + global skills
 │       │   ├── pi/             # Pi coding agent + 14 extensions
 │       │   ├── higgsfield.nix  # Higgsfield CLI + opt-in Claude plugin (skills + MCP)
+│       │   ├── elevenlabs.nix  # ElevenLabs CLI + opt-in skills (hosted MCP not global)
 │       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli, zoetrope)
 │       ├── assistants/         # Standalone assistants
 │       │   ├── hermes-agent/   # Hermes Agent setup
