@@ -12,6 +12,12 @@
     (pkgs.stdenvNoCC.hostPlatform.isDarwin
       || pkgs.stdenvNoCC.hostPlatform.isLinux)
     && pkgs.stdenvNoCC.hostPlatform.system != "x86_64-darwin";
+  # Match the platforms on which coding/misc.nix installs pi-rust.
+  hasPiRust = lib.elem pkgs.stdenvNoCC.hostPlatform.system [
+    "aarch64-darwin"
+    "x86_64-linux"
+    "x86_64-darwin"
+  ];
 
   # Pinned to the same rev that was tracked as the coding-agents flake input.
   # Update by bumping rev + running `nix build` to get the new hash from the
@@ -70,6 +76,17 @@
     '';
   };
 in {
+  home.file.".pi/agent/keybindings.json".source = lib.mkIf hasPiRust (
+    (pkgs.formats.json {}).generate "pi-rust-keybindings.json" {
+      # In single-line input these vertical actions also navigate prompt history.
+      cursorLeft = ["left" "ctrl+b" "ctrl+alt+n"];
+      cursorDown = ["down" "ctrl+alt+e"];
+      cursorUp = ["up" "ctrl+alt+u"];
+      cursorRight = ["right" "ctrl+f" "ctrl+alt+i"];
+      # Pi Rust 0.8.0 pickers handle arrows directly, before action dispatch.
+    }
+  );
+
   programs.pi.coding-agent = lib.mkIf isSupported {
     enable = true;
     extensions =
