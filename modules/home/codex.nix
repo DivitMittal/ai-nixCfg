@@ -168,6 +168,11 @@
   '';
 in {
   options.programs.codex = {
+    syncDaemon = lib.mkEnableOption ''
+      synchronizing the Codex background server with the installed CLI during
+      activation. A version change can interrupt active or queued chats
+    '';
+
     pets = mkOption {
       type = types.attrsOf petType;
       default = {};
@@ -241,8 +246,42 @@ in {
       })
     ];
 
-    home.activation = lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {}) {
-      codexSettingsActivation = lib.hm.dag.entryAfter ["linkGeneration"] mutableConfigMerger;
+    home.activation = {
+      codexSettingsActivation =
+        lib.mkIf (cfg.mutableUserSettings && isTomlConfig && mergedSettings != {})
+        (lib.hm.dag.entryAfter ["linkGeneration"] mutableConfigMerger);
+
+      codexDaemon = lib.mkIf (cfg.syncDaemon && cfg.package != null) (lib.hm.dag.entryAfter ["linkGeneration" "codexSettingsActivation"] ''
+        if [[ ! -v DRY_RUN ]]; then
+          (
+            export CODEX_HOME=${lib.escapeShellArg (builtins.dirOf configPath)}
+            codex_bin=${lib.escapeShellArg (lib.getExe' cfg.package "codex")}
+            # A probe that is not a single JSON object must not fail activation.
+            # Codex returns nonzero for a valid notRunning report, and a broken
+            # or chatty probe can emit nothing, a warning, or extra JSON.
+            status_code=0
+            daemon_status=$("$codex_bin" app-server daemon version 2>/dev/null) || status_code=$?
+            if ! ${pkgs.jq}/bin/jq -e 'type == "object"' <<< "$daemon_status" >/dev/null 2>&1; then
+              echo "codex daemon sync: skipping, daemon version did not return JSON (status $status_code)" >&2
+              exit 0
+            fi
+            if [[ "$status_code" != 0 ]] && ! ${pkgs.jq}/bin/jq -e '.status == "notRunning"' <<< "$daemon_status" >/dev/null; then
+              echo "codex daemon sync: skipping, daemon version exited $status_code" >&2
+              exit 0
+            fi
+            # Leave stopped daemons stopped, including on first activation.
+            update_needed=$(${pkgs.jq}/bin/jq -r '
+              .cliVersion as $version
+              | .status == "running" and .managedCodexVersion != null
+                and (.managedCodexVersion != $version
+                  or (.appServerVersion != null and .appServerVersion != $version))
+            ' <<< "$daemon_status")
+            if [[ "$update_needed" == true ]]; then
+              run "$codex_bin" app-server daemon update --from-cli --yes
+            fi
+          )
+        fi
+      '');
     };
 
     xdg.configFile = lib.mkMerge [

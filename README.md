@@ -373,6 +373,22 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 | `conservative` | `gpt-5.2-codex` | `untrusted` | `read-only` | Audit / review |
 | `power` | `gpt-5.2-codex` (xhigh reasoning) | `on-failure` | `workspace-write` + network | Unattended autonomy |
 
+### Codex background server
+
+Home Manager installs the pinned Codex CLI from `config/home/coding/codex/setup.nix`.
+This configuration enables `programs.codex.syncDaemon`, which syncs the managed
+background server during activation when it is running and its version differs
+from the CLI.
+Start Codex from your profile to set up a background server on a fresh install.
+An update can interrupt active or queued Codex chats. Set
+`programs.codex.syncDaemon = lib.mkForce false;` in your host configuration
+to manage the daemon separately.
+
+To upgrade, update the version and platform archive hashes in `setup.nix`,
+then activate your Home Manager configuration and launch `codex` from your
+profile. Check the CLI and background server versions with
+`codex app-server daemon version`.
+
 ### Codex pets
 
 ChatGPT desktop is disabled in favor of the web version. Custom Codex terminal
