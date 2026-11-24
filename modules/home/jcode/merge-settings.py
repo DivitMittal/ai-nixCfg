@@ -34,6 +34,8 @@ def apply(overlay, target):
     target.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
     fd, temporary = tempfile.mkstemp(dir=target.parent, prefix=".config.toml.")
     try:
+        mode = target.stat().st_mode & 0o777 if target.exists() else 0o600
+        os.fchmod(fd, mode)
         with os.fdopen(fd, "w", encoding="utf-8", newline="") as handle:
             handle.write(rendered)
         os.replace(temporary, target)

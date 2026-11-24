@@ -14,7 +14,10 @@ focus gesture. It leaves plain arrows for text editing and list movement.
 | Scroll transcript by a step | `Alt+Up/Down` |
 | Scroll transcript by a page | `PageUp/PageDown` |
 | Jump to the previous/next prompt | `Alt+Shift+Up/Down` |
-| Move workspace focus | `Ctrl+Arrow` |
+| Move workspace focus (only after `/workspace on`) | `Ctrl+Arrow` |
 | Change speed tier | `Ctrl+Alt+Up/Down` |
 
-For prompt recall, use plain `Up/Down` or `Cmd+Up/Down` on macOS.
+`Ctrl+Arrow` does nothing for workspaces until `/workspace on`. Until then,
+`Ctrl+Left/Right` stay word motions and `Ctrl+Up/Down` stay prompt recall.
+For prompt recall while workspace mode is on, use plain `Up/Down` or
+`Cmd+Up/Down` on macOS.
