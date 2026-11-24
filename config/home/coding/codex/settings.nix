@@ -2,19 +2,16 @@ _: {
   programs.codex = {
     profiles = {
       default = {
-        model = "gpt-5.2-codex";
         approval_policy = "on-request";
         sandbox_mode = "workspace-write";
       };
 
       conservative = {
-        model = "gpt-5.2-codex";
         approval_policy = "untrusted";
         sandbox_mode = "read-only";
       };
 
       power = {
-        model = "gpt-5.2-codex";
         model_reasoning_effort = "xhigh";
         approval_policy = "on-failure";
         sandbox_mode = "workspace-write";
@@ -26,10 +23,7 @@ _: {
     };
 
     settings = {
-      # ===== Core Model Settings =====
-      model = "gpt-5.2-codex";
-
-      # GPT-5 specific settings
+      # ===== Reasoning and Output =====
       model_reasoning_effort = "medium";
       model_reasoning_summary = "detailed";
       model_verbosity = "medium";

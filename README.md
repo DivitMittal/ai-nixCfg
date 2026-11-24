@@ -369,9 +369,9 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 
 | Profile | Model | Approval | Sandbox | Notes |
 |---------|-------|----------|---------|-------|
-| `default` | `gpt-5.2-codex` | `on-request` | `workspace-write` | Standard daily use |
-| `conservative` | `gpt-5.2-codex` | `untrusted` | `read-only` | Audit / review |
-| `power` | `gpt-5.2-codex` (xhigh reasoning) | `on-failure` | `workspace-write` + network | Unattended autonomy |
+| `default` | built-in default | `on-request` | `workspace-write` | Standard daily use |
+| `conservative` | built-in default | `untrusted` | `read-only` | Audit / review |
+| `power` | built-in default (xhigh reasoning) | `on-failure` | `workspace-write` + network | Unattended autonomy |
 
 ### Codex background server
 
