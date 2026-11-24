@@ -78,12 +78,13 @@
 in {
   home.file.".pi/agent/keybindings.json".source = lib.mkIf hasPiRust (
     (pkgs.formats.json {}).generate "pi-rust-keybindings.json" {
-      # In single-line input these vertical actions also navigate prompt history.
-      cursorLeft = ["left" "ctrl+b" "ctrl+alt+n"];
-      cursorDown = ["down" "ctrl+alt+e"];
-      cursorUp = ["up" "ctrl+alt+u"];
-      cursorRight = ["right" "ctrl+f" "ctrl+alt+i"];
-      # Pi Rust 0.8.0 pickers handle arrows directly, before action dispatch.
+      # Pi Rust 0.8 has page actions, not configurable line scrolling.
+      # Preserve both built-in paging shortcuts, and move dequeue out of the way.
+      pageUp = ["pageup" "shift+up" "alt+up"];
+      pageDown = ["pagedown" "shift+down" "alt+down"];
+      dequeue = "alt+shift+up";
+      # Leave cursor and picker defaults alone. Ctrl+G uses $VISUAL/$EDITOR
+      # for modal editing (including Vim-Cfg's U/R), not bare composer keys.
     }
   );
 
