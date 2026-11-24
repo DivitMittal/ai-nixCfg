@@ -42,21 +42,23 @@ src.exclude_regex = "nightly|-rc"
 fetch.url = "https://github.com/lightpanda-io/browser/releases/download/$ver/lightpanda-aarch64-macos"
 
 # jcode — prebuilt release archives, one entry per target platform.
-# Run `pkgs-update` to track and re-hash the latest GitHub release.
+# v1.1.x releases ship Linux only, so version selection would 404 the
+# macOS archives. Pin the last release that publishes every platform
+# (v1.0.3) until upstream ships complete release sets again.
 [jcode-x86_64-linux]
-src.github = "1jehuang/jcode"
+src.manual = "v1.0.3"
 fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-linux-x86_64.tar.gz"
 
 [jcode-aarch64-linux]
-src.github = "1jehuang/jcode"
+src.manual = "v1.0.3"
 fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-linux-aarch64.tar.gz"
 
 [jcode-x86_64-darwin]
-src.github = "1jehuang/jcode"
+src.manual = "v1.0.3"
 fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-macos-x86_64.tar.gz"
 
 [jcode-aarch64-darwin]
-src.github = "1jehuang/jcode"
+src.manual = "v1.0.3"
 fetch.url = "https://github.com/1jehuang/jcode/releases/download/$ver/jcode-macos-aarch64.tar.gz"
 
 # pi-agent-rust — prebuilt release archives. Run `pkgs-update` to refresh
@@ -193,3 +195,60 @@ fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discra
 src.github = "openclaw/discrawl"
 src.prefix = "v"
 fetch.url = "https://github.com/openclaw/discrawl/releases/download/v$ver/discrawl_$ver_darwin_arm64.tar.gz"
+
+# higgsfield-cli — official Higgsfield CLI (Go). The npm wrapper only fetches
+# these same release archives in postinstall, so track them directly.
+[higgsfield-cli-x86_64-linux]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_linux_amd64.tar.gz"
+
+[higgsfield-cli-aarch64-linux]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_linux_arm64.tar.gz"
+
+[higgsfield-cli-x86_64-darwin]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_darwin_amd64.tar.gz"
+
+[higgsfield-cli-aarch64-darwin]
+src.github = "higgsfield-ai/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/higgsfield-ai/cli/releases/download/v$ver/hf_$ver_darwin_arm64.tar.gz"
+
+# higgsfield-skills — official skills repo, doubles as a Claude Code plugin
+# marketplace. Untagged, so track the default branch.
+[higgsfield-skills]
+src.git = "https://github.com/higgsfield-ai/skills"
+fetch.github = "higgsfield-ai/skills"
+
+# elevenlabs-cli — official ElevenLabs CLI (Rust, prebuilt). Covers agents,
+# speech, music, dubbing and the rest of the API. Homebrew/npm just wrap
+# these same release archives.
+[elevenlabs-cli-x86_64-linux]
+src.github = "elevenlabs/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/elevenlabs/cli/releases/download/v$ver/elevenlabs-cli-x86_64-unknown-linux-gnu.tar.gz"
+
+[elevenlabs-cli-aarch64-linux]
+src.github = "elevenlabs/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/elevenlabs/cli/releases/download/v$ver/elevenlabs-cli-aarch64-unknown-linux-gnu.tar.gz"
+
+[elevenlabs-cli-x86_64-darwin]
+src.github = "elevenlabs/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/elevenlabs/cli/releases/download/v$ver/elevenlabs-cli-x86_64-apple-darwin.tar.gz"
+
+[elevenlabs-cli-aarch64-darwin]
+src.github = "elevenlabs/cli"
+src.prefix = "v"
+fetch.url = "https://github.com/elevenlabs/cli/releases/download/v$ver/elevenlabs-cli-aarch64-apple-darwin.tar.gz"
+
+# elevenlabs-skills — official skills (agents, tts, music, ...). Not a Claude
+# marketplace; installed as skill files. Untagged, so track the default branch.
+[elevenlabs-skills]
+src.git = "https://github.com/elevenlabs/skills"
+fetch.github = "elevenlabs/skills"

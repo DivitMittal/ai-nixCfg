@@ -3,6 +3,10 @@
 in
   {
     discrawl = pkgs.callPackage ./discrawl/package.nix {inherit sources;};
+    elevenlabs-cli = pkgs.callPackage ./elevenlabs-cli/package.nix {inherit sources;};
+    elevenlabs-skills = pkgs.callPackage ./elevenlabs-skills/package.nix {inherit sources;};
+    higgsfield-cli = pkgs.callPackage ./higgsfield-cli/package.nix {inherit sources;};
+    higgsfield-skills = pkgs.callPackage ./higgsfield-skills/package.nix {inherit sources;};
     spotify-library-mcp = pkgs.callPackage ./spotify-library-mcp/package.nix {inherit sources;};
     spotify-mcp-server = pkgs.callPackage ./spotify-mcp-server/package.nix {inherit sources;};
     wacli = pkgs.callPackage ./wacli/package.nix {inherit sources;};

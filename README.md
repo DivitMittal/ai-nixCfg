@@ -352,7 +352,7 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 | Claude Code | ✓ | ✓ | ✓ | ✓ (PreToolUse security, PostToolUse `nix fmt`) | ✓ (caveman) | ✓ (ccstatusline) | commands + skills + agents + rules |
 | Codex | ✓ profiles (default/conservative/power) | ✓ | – | – | – | ✓ (animations) | prompts + skills |
 | Copilot CLI | ✓ | ✓ | ✓ | – | – | ✓ (theme) | skills + agents |
-| OpenCode | ✓ providers (Antigravity + Codex Everywhere + Google) | ✓ | – | – | ✓ (`antigravity-auth`, `beads`, `pty`) | – | context (memory + rules) |
+| OpenCode | ✓ providers (Antigravity + Google) | ✓ | – | – | ✓ (`antigravity-auth`, `beads`, `pty`) | – | context (memory + rules) |
 | Crush | ✓ | ✓ | ✓ | – | – | – | commands |
 | Antigravity CLI | ✓ | ✓ | – | – | – | – | commands |
 | Pi | ✓ | – | – | – | 14 extensions (bash-blacklist, codex-fast, fetch, lsp, plan-mode, …) | – | rules + skills + prompt templates |
@@ -428,7 +428,6 @@ Pinned to upstream `kissgyorgy/coding-agents` rev `4d8c448033ca332b55e79de4cbd07
 
 | Provider | Models |
 |----------|--------|
-| `codex-everywhere` | GPT-5.5 |
 | `google` | Gemini 3 Pro (Antigravity), Gemini 3 Flash, Gemini 2.5 Pro/Flash, Gemini 3 Flash/Pro Preview, Claude Sonnet 4.5/4.6 + Thinking, Claude Opus 4.5/4.6 + Thinking |
 | `opencode` (default) | Standard OpenCode model zoo |
 
@@ -775,6 +774,10 @@ graph TD
 | `spotify-library-mcp` | Spotify playlist curation MCP server and CLI (Node) | `pkgs/custom/spotify-library-mcp/package.nix` (nvfetcher) |
 | `lightpanda` | Headless browser built for AI automation (Rust) | `pkgs/custom/lightpanda/package.nix` (nvfetcher) |
 | `zai` | Z.AI CLI for GLM models | `pkgs/custom/zai/package.nix` (nvfetcher) |
+| `higgsfield-cli` | Higgsfield AI image/video CLI as `higgsfield`/`higgs` (prebuilt; `hf` dropped to avoid clashing with Hugging Face) | `pkgs/custom/higgsfield-cli/package.nix` (nvfetcher) |
+| `higgsfield-skills` | Higgsfield skills as a Claude Code marketplace, with the hosted MCP server bundled into the plugin | `pkgs/custom/higgsfield-skills/package.nix` (nvfetcher) |
+| `elevenlabs-cli` | ElevenLabs API CLI (`elevenlabs`: agents, speech, music, dubbing); telemetry off by default | `pkgs/custom/elevenlabs-cli/package.nix` (nvfetcher) |
+| `elevenlabs-skills` | ElevenLabs agent skills (not enabled globally); hosted MCP config bundled as `mcp.json` | `pkgs/custom/elevenlabs-skills/package.nix` (nvfetcher) |
 
 ### `pkgs/darwin/`
 
@@ -945,6 +948,8 @@ ______________________________________________________________________
 │       │   ├── crush/          # Crush settings, MCP, LSP, permissions
 │       │   ├── antigravity-cli/# Antigravity CLI settings + global skills
 │       │   ├── pi/             # Pi coding agent + 14 extensions
+│       │   ├── higgsfield.nix  # Higgsfield CLI + opt-in Claude plugin (skills + MCP)
+│       │   ├── elevenlabs.nix  # ElevenLabs CLI + opt-in skills (hosted MCP not global)
 │       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli, zoetrope)
 │       ├── assistants/         # Standalone assistants
 │       │   ├── hermes-agent/   # Hermes Agent setup
