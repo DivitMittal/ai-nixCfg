@@ -54,7 +54,8 @@ _: {
           pager = {
             scroll_up = ["up" "alt-up"];
             scroll_down = ["down" "alt-down"];
-            jump_top = ["home" "g g"];
+            # Pager chords cannot start with an unmodified character.
+            jump_top = ["home"];
             jump_bottom = ["end" "shift-g"];
           };
         };
