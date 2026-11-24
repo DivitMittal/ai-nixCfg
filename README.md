@@ -403,8 +403,15 @@ Terminal graphics support is required; see the
 
 ### Pi Coding-Agent Extensions
 
+TypeScript Pi (`pi`) is off by default. Set `programs.pi.coding-agent.enable = true;`
+in your Home Manager config to enable it without opting into the other archived
+tools. The wrapper loads `pi-grok` v0.13.1 automatically. In Pi, run `/login`,
+choose **Use a subscription → xAI (SuperGrok Subscription)**, and then run
+`/model xai-oauth/grok-4.7`. This integration does not change `pi-rust`.
+
 | Extension | Purpose |
 |-----------|---------|
+| `pi-grok` | xAI SuperGrok subscription login and model discovery |
 | `fetch` | URL → markdown extraction (Mozilla Readability, jsdom, turndown, unpdf) |
 | `bash-blacklist` | Block dangerous shell commands |
 | `codex-fast.ts` | Optimized Codex prompt construction |
@@ -422,7 +429,7 @@ Terminal graphics support is required; see the
 | `tps-tracker.ts` | Tokens-per-second tracker |
 | `web-search` | Web search fallback |
 
-Pinned to upstream `kissgyorgy/coding-agents` rev `4d8c448033ca332b55e79de4cbd0737da5c5cfda`. Update by bumping rev + re-running `nix build` to refresh hashes.
+The other extensions are pinned to upstream `kissgyorgy/coding-agents` rev `4d8c448033ca332b55e79de4cbd0737da5c5cfda`. Update by bumping rev + re-running `nix build` to refresh hashes.
 
 ### OpenCode Providers
 

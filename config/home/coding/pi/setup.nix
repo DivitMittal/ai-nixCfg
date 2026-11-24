@@ -1,14 +1,11 @@
 {
+  config,
   pkgs,
   lib,
   ...
 }: let
-  # ai-nixCfg.inputs.pi-nix instantiates unstable nixpkgs internally to build
-  # its TS coding-agent (native canvas/cairo/pango deps, not cleanly
-  # npm-installable standalone), which now hard-throws for x86_64-darwin.
-  # `pi-agent-rust` (binary: pi-rust, wired in coding/misc.nix) remains
-  # available there as an alternative.
-  isSupported =
+  # Preserve platform coverage for the existing extension and LSP bundle.
+  hasLegacyPiBundle =
     (pkgs.stdenvNoCC.hostPlatform.isDarwin
       || pkgs.stdenvNoCC.hostPlatform.isLinux)
     && pkgs.stdenvNoCC.hostPlatform.system != "x86_64-darwin";
@@ -18,6 +15,16 @@
     "x86_64-linux"
     "x86_64-darwin"
   ];
+
+  # pi-grok uses the TypeScript host's Pi SDK as peer dependencies.
+  # Keep it out of the auto-discovered agent directory shared with pi-rust.
+  piGrok = pkgs.fetchFromGitHub {
+    name = "pi-grok-0.13.1";
+    owner = "stnly";
+    repo = "pi-grok";
+    rev = "dd0121416d830a0ebd7dc19aa27cf4d754b6061a"; # v0.13.1
+    hash = "sha256-0I03wQ8HWD18KsGxw6xhauOb1JSomsLkomwOKRPYjQ4=";
+  };
 
   # Pinned to the same rev that was tracked as the coding-agents flake input.
   # Update by bumping rev + running `nix build` to get the new hash from the
@@ -88,14 +95,17 @@ in {
     }
   );
 
-  programs.pi.coding-agent = lib.mkIf isSupported {
-    enable = config.aiCoding.installArchivedTools;
+  programs.pi.coding-agent = {
+    enable = lib.mkDefault (hasLegacyPiBundle && config.aiCoding.installArchivedTools);
     extensions =
-      ["${piFetchExt}/index.ts"]
-      ++ map (n: "${piExtensionsDir}/${n}") otherExtNames;
+      ["${piGrok}/index.ts"]
+      ++ lib.optionals hasLegacyPiBundle (
+        ["${piFetchExt}/index.ts"]
+        ++ map (n: "${piExtensionsDir}/${n}") otherExtNames
+      );
   };
 
-  home.packages = lib.optionals isSupported (
+  home.packages = lib.optionals hasLegacyPiBundle (
     [
       pkgs.nil
       pkgs.basedpyright

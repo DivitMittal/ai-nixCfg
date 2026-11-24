@@ -73,19 +73,39 @@
     proxy = extra: standalone ../modules/home/cliproxyapi.nix (proxyCfg extra);
     proxyFailures = extra: failedAssertions ../modules/home/cliproxyapi.nix (proxyCfg extra);
     xdg = cfg: cfg.xdg.configHome;
+    composed = extra:
+      hm [
+        {
+          aiNixCfg.guiApps.enable = false; # needs the consumer's brew-nix overlay
+          aiNixCfg.voice.installDarwinApps = false; # ditto
+          home.sessionVariables.EDITOR = "vim";
+        }
+        self.homeManagerConfigurations.default
+        extra
+      ];
 
     tests = {
       ## ---- composed config -------------------------------------------------
       testFullConfigEvaluates = {
-        expr = evaluates (hm [
-          {
-            aiNixCfg.guiApps.enable = false; # needs the consumer's brew-nix overlay
-            aiNixCfg.voice.installDarwinApps = false; # ditto
-            home.sessionVariables.EDITOR = "vim";
-          }
-          self.homeManagerConfigurations.default
-        ]);
+        expr = evaluates (composed {});
         expected = true;
+      };
+
+      testPiGrokWithStandalonePiOptIn = {
+        expr = let
+          piEnabled = extra:
+            (composed extra).programs.pi.coding-agent;
+          cfg = piEnabled {programs.pi.coding-agent.enable = true;};
+        in {
+          defaultEnabled = (piEnabled {}).enable;
+          optedIn = cfg.enable;
+          hasGrok = lib.any (lib.hasSuffix "-pi-grok-0.13.1/index.ts") cfg.extensions;
+        };
+        expected = {
+          defaultEnabled = false;
+          optedIn = true;
+          hasGrok = true;
+        };
       };
 
       ## ---- exported standalone modules ------------------------------------
