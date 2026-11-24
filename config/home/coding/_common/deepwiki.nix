@@ -1,0 +1,4 @@
+{
+  type = "http";
+  url = "https://mcp.deepwiki.com/mcp";
+}
