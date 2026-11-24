@@ -1,5 +1,6 @@
 {
   lib,
+  stdenv,
   stdenvNoCC,
   autoPatchelfHook,
   glibc,
@@ -14,7 +15,13 @@
   ## Release tarballs (v0.7+) hold a single `pi` binary on every platform
   archiveEntry = "pi";
   isLinux = stdenvNoCC.hostPlatform.isLinux;
-  prebuiltDerivation = stdenvNoCC.mkDerivation (_finalAttrs: {
+  # stdenvNoCC has no fixup phase, so autoPatchelfHook never runs there.
+  # The Linux release is a glibc PIE binary and needs the hook on NixOS.
+  stdenv' =
+    if isLinux
+    then stdenv
+    else stdenvNoCC;
+  prebuiltDerivation = stdenv'.mkDerivation (_finalAttrs: {
     pname = "pi-agent-rust";
     version = lib.removePrefix "v" source.version;
     inherit (source) src;
