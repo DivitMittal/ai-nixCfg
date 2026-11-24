@@ -6,17 +6,15 @@ Other settings remain writable, so Jcode can still save model and display
 preferences. Credentials and session data are not managed by Nix. Don't put
 secrets in `settings`: their values would be copied into the Nix store.
 
-The personal profile uses the TLTR thumb-left navigation layer, so it does not
-depend on QWERTY `hjkl` positions or take over unmodified keys in the prompt:
+The personal profile uses Yazi's preview-scroll gesture and Vim-Cfg's split
+focus gesture. It leaves plain arrows for text editing and list movement.
 
-| Action | Binding on the TL layer |
+| Action | Binding |
 | --- | --- |
-| Scroll transcript by a step | `Ctrl+Shift+Up/Down` |
+| Scroll transcript by a step | `Alt+Up/Down` |
 | Scroll transcript by a page | `PageUp/PageDown` |
 | Jump to the previous/next prompt | `Alt+Shift+Up/Down` |
-| Move workspace focus | `Ctrl+Alt+Arrow` or `Ctrl+Alt+N/E/U/I` on the base layer |
+| Move workspace focus | `Ctrl+Arrow` |
+| Change speed tier | `Ctrl+Alt+Up/Down` |
 
-`N/E/U/I` mean left/down/up/right, respectively. These are the keys under
-the corresponding arrows on TLTR's Colemak base layer, with `U` above `E`.
-Plain arrows and `Ctrl+Up/Down` still handle normal input navigation and prompt
-history. Open a new Jcode client after activating to pick up the bindings.
+For prompt recall, use plain `Up/Down` or `Cmd+Up/Down` on macOS.
