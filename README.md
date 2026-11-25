@@ -230,7 +230,7 @@ Import individual home-manager modules into your configuration:
 | `codex` | Skills & prompts management via `xdg.configFile` |
 | `crush` | MCP servers, LSP, permissions, commands (typed submodules) |
 | `herdr` | Terminal multiplexer for AI agents — panes, tabs, agent labels (alias `herdr`) |
-| `n8n` | Workflow automation with SQLite backend, Bunx fallback on Darwin |
+| `n8n` | Workflow automation with SQLite backend via pinned Bunx launcher |
 | `ralph-tui` | AI agent loop orchestrator TUI — high-contrast theme by default |
 | `talon` | Talon voice programming — `~/.talon` user dir, talon-community store link |
 | `ghnf` | (re-export from upstream) |
