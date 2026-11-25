@@ -1,19 +1,9 @@
-{
-  lib,
-  pkgs,
-  ai-nixCfg,
-  ...
-}: let
-  inherit (pkgs.stdenvNoCC.hostPlatform) system;
-  aicommit2Packages = ai-nixCfg.inputs.aicommit2.packages.${system} or {};
+{pkgs, ...}: let
+  aicommit2 = pkgs.writeShellScriptBin "aicommit2" ''
+    export PATH="${pkgs.nodejs_24}/bin:$PATH"
+    exec ${pkgs.bun}/bin/bun x aicommit2@2.16.0 "$@"
+  '';
+  aic2 = pkgs.writeShellScriptBin "aic2" ''exec ${aicommit2}/bin/aicommit2 "$@"'';
 in {
-  home.packages = lib.attrsets.attrValues ({
-      inherit
-        (pkgs)
-        geminicommit
-        ;
-    }
-    // lib.optionalAttrs (aicommit2Packages ? default) {
-      aicommit2 = aicommit2Packages.default;
-    });
+  home.packages = [pkgs.geminicommit aicommit2 aic2];
 }

@@ -10,11 +10,15 @@
 in {
   programs.n8n = {
     enable = true;
-    # n8n pnpm-deps aborts with SIGABRT / file-descriptor exhaustion on Darwin;
-    # use pnpm dlx there so the binary is still available without a native build.
+    # The nixpkgs pnpm-deps build exhausts file descriptors on Darwin.
+    # Bun installs the published CLI, which runs on Node and uses native SQLite.
     package =
       if pkgs.stdenv.isDarwin
-      then customLib.mkPnpmDlxBin pkgs "n8n" "n8n"
+      then
+        pkgs.writeShellScriptBin "n8n" ''
+          export PATH="${pkgs.nodejs_24}/bin:$PATH"
+          exec ${pkgs.bun}/bin/bun x n8n@2.49.5 "$@"
+        ''
       else pkgs.n8n;
     environment = {
       DB_TYPE = "sqlite";

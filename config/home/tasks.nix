@@ -17,7 +17,6 @@ in {
       if isX86Darwin
       then pkgs.beads
       else customPkgs.beads;
-    # bead = customLib.mkPnpmDlxBin pkgs "bd" "@beads/bd";
     ## Beads-Viewer (binary: bv). No x86_64-darwin build from llm-agents.nix,
     ## not in nixpkgs, no npm/pypi fallback. Has a Homebrew formula
     ## (`beads_viewer`; verified against formulae.brew.sh), so run it

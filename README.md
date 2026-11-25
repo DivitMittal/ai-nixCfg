@@ -230,7 +230,7 @@ Import individual home-manager modules into your configuration:
 | `codex` | Skills & prompts management via `xdg.configFile` |
 | `crush` | MCP servers, LSP, permissions, commands (typed submodules) |
 | `herdr` | Terminal multiplexer for AI agents — panes, tabs, agent labels (alias `herdr`) |
-| `n8n` | Workflow automation with SQLite backend, pnpm-dlx fallback on Darwin |
+| `n8n` | Workflow automation with SQLite backend, Bunx fallback on Darwin |
 | `ralph-tui` | AI agent loop orchestrator TUI — high-contrast theme by default |
 | `talon` | Talon voice programming — `~/.talon` user dir, talon-community store link |
 | `ghnf` | (re-export from upstream) |
@@ -561,9 +561,9 @@ Defined in `config/home/mcp.nix` and applied via `programs.mcp.servers`. Togglea
 | Server | Type | Source | Purpose |
 |--------|------|--------|---------|
 | `deepwiki` | HTTP | `https://mcp.deepwiki.com/mcp` | AI-powered repo documentation |
-| `octocode` | stdio | `pnpm dlx octocode-mcp@latest` | Code research agent (local + GitHub + npm) |
-| `exa` | stdio | `pnpm dlx exa-mcp-server` | Neural web search |
-| `playwright` | stdio | `pnpm dlx @playwright/mcp` | Browser automation |
+| `octocode` | stdio | `bun x octocode-mcp@latest` | Code research agent (local + GitHub + npm) |
+| `exa` | stdio | `bun x exa-mcp-server` | Neural web search |
+| `playwright` | stdio | `bun x @playwright/mcp` | Browser automation |
 
 Messaging tools are installed as launchers by `config/home/messaging.nix`, without automatic MCP registration. After configuring an account, register the desired launcher with your agent. `wacli` is a WhatsApp CLI, not an MCP server.
 
@@ -706,10 +706,10 @@ Herdr keybindings:
 
 | Tool | Install | Purpose |
 |------|---------|---------|
-| `ruflo` | `pnpm dlx ruflo` | Agent meta-harness for Claude Code & Codex (`ruflo init` / `ruflo mcp start`) |
-| `caveman` | `pnpm dlx github:JuliusBrussee/caveman` | Token-compression skill/plugin installer |
+| `ruflo` | `bun x ruflo` | Agent meta-harness for Claude Code & Codex (`ruflo init` / `ruflo mcp start`) |
+| `caveman` | `bun x github:JuliusBrussee/caveman` | Token-compression skill/plugin installer |
 | `gastown` | `customPkgs.gastown` (binary `gt`) | Gas Town multi-agent workspace manager |
-| `zeroshot` | `pnpm dlx @the-open-engine/zeroshot` | Zero-shot orchestration |
+| `zeroshot` | `bun x @the-open-engine/zeroshot` | Zero-shot orchestration |
 | `mardi-gras` | `customPkgs.mardi-gras` (binary `mg`) | Beads issue-tracker TUI, parade-style |
 | `ralph-tui` | `programs.ralph-tui` | AI Agent Loop Orchestrator TUI (high-contrast theme) |
 | `gnhf` | `programs.gnhf` | Conventional-Commits-preset auto-commit helper |
@@ -1099,7 +1099,7 @@ ______________________________________________________________________
 
 ## Related Repositories
 
-- [DivitMittal/OS-nixCfg](https://github.com/DivitMittal/OS-nixCfg) — Main Nix configurations repository (provides `customLib.scanPaths`, `customLib.mkPnpmDlxBin`, `customLib.mkUvxBin`)
+- [DivitMittal/OS-nixCfg](https://github.com/DivitMittal/OS-nixCfg) — Main Nix configurations repository (provides `customLib.scanPaths` and `customLib.mkUvxBin`)
 
 ______________________________________________________________________
 
