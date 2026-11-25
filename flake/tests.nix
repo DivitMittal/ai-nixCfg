@@ -94,6 +94,18 @@
         expected = true;
       };
 
+      testVoiceManagesTalonFiles = {
+        expr = let
+          cfg = composed {};
+          userDir = cfg.programs.talon.userDir;
+          smokeTest = cfg.home.file."${userDir}/custom/ai-nixCfg.talon".source;
+        in
+          cfg.programs.talon.enable
+          && cfg.home.file ? "${userDir}/community"
+          && builtins.readFile smokeTest == builtins.readFile ../config/home/voice/talon/ai-nixCfg.talon;
+        expected = true;
+      };
+
       testPiGrokWithStandalonePiOptIn = {
         expr = let
           piEnabled = extra:

@@ -53,7 +53,7 @@ in {
       programs.talon = {
         enable = true;
         inherit (cfg) enableTalonCommunity;
-        files."custom/ai-nixCfg.talon".source = ./voice/talon/ai-nixCfg.talon;
+        files."custom/ai-nixCfg.talon".source = ./talon/ai-nixCfg.talon;
       };
     }
 

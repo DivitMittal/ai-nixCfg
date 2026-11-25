@@ -60,7 +60,7 @@
           home.sessionVariables.EDITOR = lib.mkDefault "vim";
           ## Keep the ephemeral AI shell lean and free of the brew-nix overlay:
           ## drop the darwin GUI app casks from config/home/gui.nix and
-          ## config/home/voice.nix.
+          ## config/home/voice/default.nix.
           aiNixCfg.guiApps.enable = false;
           aiNixCfg.voice.enable = false;
         }
