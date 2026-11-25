@@ -84,6 +84,9 @@
         extra
       ];
 
+    piRustSupported = lib.elem system ["aarch64-darwin" "x86_64-darwin" "x86_64-linux"];
+    piFiles = (composed {}).home.file;
+
     tests = {
       ## ---- composed config -------------------------------------------------
       testFullConfigEvaluates = {
@@ -105,6 +108,27 @@
           defaultEnabled = false;
           optedIn = true;
           hasGrok = true;
+        };
+      };
+
+      testAntigravityCliEnabled = {
+        expr = let
+          cfg = (composed {}).programs.antigravity-cli;
+        in
+          cfg.enable && cfg.package.meta.mainProgram == "agy";
+        expected = true;
+      };
+
+      testPiRustGrokInstalledSeparately = {
+        expr = {
+          adapter = piFiles ? ".pi/agent/extensions/pi-grok-rust";
+          documentation = piFiles ? ".pi/agent/pi-grok-rust.md";
+          typescriptDisabled = !(composed {}).programs.pi.coding-agent.enable;
+        };
+        expected = {
+          adapter = piRustSupported;
+          documentation = piRustSupported;
+          typescriptDisabled = true;
         };
       };
 
@@ -268,6 +292,95 @@
         ${lib.optionalString (failures != []) "exit 1"}
         touch $out
       '';
+
+    # Exercise the shipped auto-discovered adapter with the packaged Rust
+    # runtime, not doctor (which misses unsupported named SDK exports).
+    checks.pi-grok-rust = lib.mkIf piRustSupported (
+      pkgs.runCommand "ai-nixCfg-pi-grok-rust" {
+        nativeBuildInputs = [pkgs.python3];
+        __darwinAllowLocalNetworking = true;
+        pi = "${self.packages.${system}.pi-agent-rust}/bin/pi-rust";
+        adapter = piFiles.".pi/agent/extensions/pi-grok-rust".source;
+      } ''
+        export HOME="$TMPDIR/home"
+        mkdir -p "$HOME/.pi/agent/extensions"
+        ln -s "$adapter" "$HOME/.pi/agent/extensions/pi-grok-rust"
+        export PI_CODING_AGENT_DIR="$HOME/.pi/agent"
+        printf '%s\n' '{"xai-oauth":{"type":"api_key","key":"$ENV:XAI_OAUTH_TOKEN"}}' > "$PI_CODING_AGENT_DIR/auth.json"
+        chmod 600 "$PI_CODING_AGENT_DIR/auth.json"
+        export PI_XAI_CLIENT_VERSION=1.0.46
+        export PI_XAI_OAUTH_MODELS=grok-4.6
+        export PI_WORKSPACE_TRUST=untrusted
+        python3 - <<'PY'
+        import http.server
+        import json
+        import os
+        import subprocess
+        import threading
+
+        requests = []
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def log_message(self, *args):
+                pass
+
+            def do_POST(self):
+                payload = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+                requests.append((self.path, dict(self.headers), payload))
+                events = [
+                    {"type": "response.created", "response": {"id": "resp_test"}},
+                    {"type": "response.output_item.added", "output_index": 0,
+                     "item": {"type": "message", "id": "msg_1", "role": "assistant", "content": []}},
+                    {"type": "response.output_text.delta", "item_id": "msg_1",
+                     "content_index": 0, "delta": "GROK_ADAPTER_OK"},
+                    {"type": "response.completed", "response": {"id": "resp_test",
+                     "status": "completed", "incomplete_details": None,
+                     "usage": {"input_tokens": 1, "output_tokens": 1, "total_tokens": 2}}},
+                ]
+                body = "".join("data: " + json.dumps(event) + "\n\n" for event in events).encode()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+        server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        env = dict(os.environ, PI_XAI_OAUTH_BASE_URL=f"http://127.0.0.1:{server.server_port}/v1")
+        command = [env["pi"], "--no-session", "--no-migrations", "--no-skills",
+                   "--no-prompt-templates", "--provider", "xai-oauth", "--model", "grok-4.6",
+                   "--thinking", "off", "-p", "Reply with the test marker."]
+        try:
+            # No token must fail locally, not send a literal "$ENV" credential.
+            env.pop("XAI_OAUTH_TOKEN", None)
+            missing = subprocess.run(command, env=env, text=True, capture_output=True, timeout=30)
+            assert missing.returncode != 0, missing
+            assert "No API key found for provider xai-oauth" in missing.stderr, missing.stderr
+            assert not requests, requests
+
+            env["XAI_OAUTH_TOKEN"] = "pi-grok-integration-test-token"
+            result = subprocess.run(command, env=env, text=True, capture_output=True, timeout=30)
+            assert result.returncode == 0, (result.stdout, result.stderr)
+            assert "GROK_ADAPTER_OK" in result.stdout, (result.stdout, result.stderr)
+            assert len(requests) == 1, requests
+            path, headers, payload = requests[0]
+            headers = {key.lower(): value for key, value in headers.items()}
+            assert path == "/v1/responses", path
+            assert headers["authorization"] == "Bearer pi-grok-integration-test-token", headers
+            assert headers["x-xai-token-auth"] == "xai-grok-cli", headers
+            assert headers["x-grok-model-override"] == "grok-4.6", headers
+            assert headers["x-grok-client-version"] == "1.0.46", headers
+            assert payload["model"] == "grok-4.6", payload
+            # Upstream sanitizer lifts system/developer messages to instructions.
+            assert payload.get("instructions"), payload
+            assert all(item.get("role") not in ("system", "developer") for item in payload["input"]), payload
+            print("Pi Rust Grok: auto-discovery, missing token, auth/identity headers, sanitizer and SSE passed")
+        finally:
+            server.shutdown()
+        PY
+        touch "$out"
+      ''
+    );
 
     checks.crush-config =
       pkgs.runCommand "ai-nixCfg-crush-config" {
