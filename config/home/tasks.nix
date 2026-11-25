@@ -21,7 +21,7 @@ in {
     ## not in nixpkgs, no npm/pypi fallback. Has a Homebrew formula
     ## (`beads_viewer`; verified against formulae.brew.sh), so run it
     ## ephemerally via zerobrew's zbx there instead of a full brew install —
-    ## the zbx tier of the bunx>pnpmx>uvx>zbx>brew fallback cascade.
+    ## the zbx tier of the bunx>uvx>zbx>brew fallback cascade.
     Beads-Viewer =
       if isX86Darwin
       then customLib.mkZbxBin pkgs customPkgs.zerobrew-bin "beads_viewer" "bv"

@@ -30,4 +30,4 @@ OpenCode setup with provider configs, themes, formatters, MCP/LSP servers. ocx i
 
 ## Notes
 
-- ocx is installed via `customLib.mkPnpmDlxBin` in `setup.nix` alongside opencode.
+- ocx is installed via `customLib.mkBunxBin` in `setup.nix` alongside opencode.

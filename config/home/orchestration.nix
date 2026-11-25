@@ -21,8 +21,8 @@ in {
   };
 
   home.packages = lib.attrValues ({
-      ## zeroshot — npm-published; bun x is tier 1 of the bunx>pnpmx>uvx>zbx>brew
-      ## fallback cascade (faster than pnpm dlx, same effect).
+      ## zeroshot — npm-published; bun x is tier 1 of the bunx>uvx>zbx>brew
+      ## fallback cascade.
       zeroshot = customLib.mkBunxBin pkgs "zeroshot" "@the-open-engine/zeroshot";
 
       ### SDD
@@ -50,7 +50,7 @@ in {
       ## formula (`gastown`, installing binary `gt`; verified against
       ## formulae.brew.sh), so run it ephemerally via zerobrew's zbx there
       ## instead of a full brew install — the zbx tier of the
-      ## bunx>pnpmx>uvx>zbx>brew fallback cascade.
+      ## bunx>uvx>zbx>brew fallback cascade.
       gastown =
         if isX86Darwin
         then customLib.mkZbxBin pkgs customPkgs.zerobrew-bin "gastown" "gt"

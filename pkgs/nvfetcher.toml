@@ -108,7 +108,7 @@ src.prefix = "v"
 fetch.url = "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v$ver/CLIProxyAPIPlus_$ver_darwin_aarch64_no-plugin.tar.gz"
 
 # zerobrew — ephemeral Homebrew formula runner (zb/zbx binaries), used as the
-# zbx tier in the bunx>pnpmx>uvx>zbx>brew x86_64-darwin fallback cascade.
+# zbx tier in the bunx>uvx>zbx>brew x86_64-darwin fallback cascade.
 # Darwin-only (matches OS-nixCfg's own zerobrew-bin package). Run
 # `pkgs-update` to refresh hashes and pick up new releases.
 [zerobrew-zb-aarch64]
