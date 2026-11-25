@@ -80,14 +80,6 @@
       # Don't follow our nixpkgs: nixos-25.11 lacks buildPythonApplication finalAttrs
       # support required by some llm-agents packages (e.g. apm).
     };
-    aicommit2 = {
-      #url = "github:DivitMittal/aicommit2";
-      url = "github:tak-bro/aicommit2";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
     lumen = {
       url = "github:jnsahaj/lumen";
       inputs = {

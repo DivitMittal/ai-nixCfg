@@ -8,11 +8,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-sg6qxivS8/bI/3Ceb+RSu99qlZDIz8e38Og8Qr4mhqM=",
+            "sha256": "sha256-X0GBheLz5EZDPaAxdLwRStZpShzA11MJl1ut+RHXi4Q=",
             "type": "url",
-            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_darwin_aarch64_no-plugin.tar.gz"
+            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v8.0.56-0/CLIProxyAPIPlus_8.0.56-0_darwin_aarch64_no-plugin.tar.gz"
         },
-        "version": "7.3.12-1"
+        "version": "8.0.56-0"
     },
     "cliproxyapi-plus-aarch64-linux": {
         "cargoLock": null,
@@ -23,11 +23,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-L+uhdfEjGXU6uR8CxJW9hjgoOE5dqZIcnV7/L4ItNA0=",
+            "sha256": "sha256-FBjIpokf0cCgcIUOGhtx2VsHEQNsad7pmxD2mgQhG2g=",
             "type": "url",
-            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_linux_aarch64_no-plugin.tar.gz"
+            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v8.0.56-0/CLIProxyAPIPlus_8.0.56-0_linux_aarch64_no-plugin.tar.gz"
         },
-        "version": "7.3.12-1"
+        "version": "8.0.56-0"
     },
     "cliproxyapi-plus-x86_64-darwin": {
         "cargoLock": null,
@@ -38,11 +38,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-w5utGH7P/jHm+KnbSQQ+2dZXJfp7aWmbWoDJcthl1TI=",
+            "sha256": "sha256-A/YpPPKzeGj/Q9loXjPRL2kxgaIxC0fRnKj1y+GLl4w=",
             "type": "url",
-            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_darwin_amd64_no-plugin.tar.gz"
+            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v8.0.56-0/CLIProxyAPIPlus_8.0.56-0_darwin_amd64_no-plugin.tar.gz"
         },
-        "version": "7.3.12-1"
+        "version": "8.0.56-0"
     },
     "cliproxyapi-plus-x86_64-linux": {
         "cargoLock": null,
@@ -53,101 +53,233 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-92hmTC2OH6KugBxpZrkRWSfTjgbETzMhZsh9mjWJLzg=",
+            "sha256": "sha256-zJ+wBL4QAVqd4pK0/M3kIqJw6nwnsgCxKUSHF4gyYf8=",
             "type": "url",
-            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v7.3.12-1/CLIProxyAPIPlus_7.3.12-1_linux_amd64_no-plugin.tar.gz"
+            "url": "https://github.com/kaitranntt/CLIProxyAPIPlus/releases/download/v8.0.56-0/CLIProxyAPIPlus_8.0.56-0_linux_amd64_no-plugin.tar.gz"
         },
-        "version": "7.3.12-1"
+        "version": "8.0.56-0"
     },
-    "gowa-aarch64-darwin": {
+    "discrawl-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa-aarch64-darwin",
+        "name": "discrawl-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-aaG/7r8g824b8dB+dsawItpQiQN1FsKfdEb8tV13bl8=",
+            "sha256": "sha256-jwHlBe4MOwEZx0Cz1OGXJayiHvgiKh+em1LMPUpK9wI=",
             "type": "url",
-            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_darwin_arm64.zip"
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_darwin_arm64.tar.gz"
         },
-        "version": "9.8.0"
+        "version": "0.21.0"
     },
-    "gowa-aarch64-linux": {
+    "discrawl-aarch64-linux": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa-aarch64-linux",
+        "name": "discrawl-aarch64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-mHzs251Jgmo2Npse/JOD1NU9jnEAmCSV3S0woXcjkR0=",
+            "sha256": "sha256-eNcLQ3d49fj2Er+BzCxCf7qzgdubgKYxPoX0PlRZUhI=",
             "type": "url",
-            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_arm64.zip"
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_linux_arm64.tar.gz"
         },
-        "version": "9.8.0"
+        "version": "0.21.0"
     },
-    "gowa-armv7l-linux": {
+    "discrawl-x86_64-darwin": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa-armv7l-linux",
+        "name": "discrawl-x86_64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-PAUp2i6I47Qn7D/6uvEy3VWGyRobG57w3P+/tfBe15o=",
+            "sha256": "sha256-r051b21lfxiHBW7fCltg8TVApFZ9SnnamEzoA+8vGLI=",
             "type": "url",
-            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_armv7.zip"
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_darwin_amd64.tar.gz"
         },
-        "version": "9.8.0"
+        "version": "0.21.0"
     },
-    "gowa-i686-linux": {
+    "discrawl-x86_64-linux": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa-i686-linux",
+        "name": "discrawl-x86_64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-st+NDkt9HrBZHE0U2aW7+8Baj7+LpBlpZB7Vwl+P1Ug=",
+            "sha256": "sha256-DsmESMggUZ4SMNCm6nA5oStLt4GEjYtvbkaeQSZieQI=",
             "type": "url",
-            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_386.zip"
+            "url": "https://github.com/openclaw/discrawl/releases/download/v0.21.0/discrawl_0.21.0_linux_amd64.tar.gz"
         },
-        "version": "9.8.0"
+        "version": "0.21.0"
     },
-    "gowa-x86_64-darwin": {
+    "elevenlabs-cli-aarch64-darwin": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa-x86_64-darwin",
+        "name": "elevenlabs-cli-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-oK5NKCN0eGLRRe6aqi8NJ6M1OL7bxM3VFBjzVUD8cfs=",
+            "sha256": "sha256-ltb3ibBCWKMjOTtFMiQDGK8WQM2OAgYDyUQ2kruxw0U=",
             "type": "url",
-            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_darwin_amd64.zip"
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-aarch64-apple-darwin.tar.gz"
         },
-        "version": "9.8.0"
+        "version": "1.13.0"
     },
-    "gowa-x86_64-linux": {
+    "elevenlabs-cli-aarch64-linux": {
         "cargoLock": null,
         "date": null,
         "extract": null,
-        "name": "gowa-x86_64-linux",
+        "name": "elevenlabs-cli-aarch64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-hzspbo7rA+svJymR6+wV2TefBzU0vENq2p0fxNsEIjA=",
+            "sha256": "sha256-vOKVoNvblWuvqkQp+ns4PFZtz7e3sNqGREjW/di9NeA=",
             "type": "url",
-            "url": "https://github.com/aldinokemal/go-whatsapp-web-multidevice/releases/download/v9.8.0/whatsapp_9.8.0_linux_amd64.zip"
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-aarch64-unknown-linux-gnu.tar.gz"
         },
-        "version": "9.8.0"
+        "version": "1.13.0"
+    },
+    "elevenlabs-cli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "elevenlabs-cli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-KLp4Dq4Obq4Qy0Gxix3IefJfhNwz4FVAUHYm7+tk3CA=",
+            "type": "url",
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-x86_64-apple-darwin.tar.gz"
+        },
+        "version": "1.13.0"
+    },
+    "elevenlabs-cli-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "elevenlabs-cli-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-X7ZuEbLUPyoSRw9vLWnIccTHoGcEb+U7e+q2JEia42A=",
+            "type": "url",
+            "url": "https://github.com/elevenlabs/cli/releases/download/v1.13.0/elevenlabs-cli-x86_64-unknown-linux-gnu.tar.gz"
+        },
+        "version": "1.13.0"
+    },
+    "elevenlabs-skills": {
+        "cargoLock": null,
+        "date": "2026-11-18",
+        "extract": null,
+        "name": "elevenlabs-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "elevenlabs",
+            "repo": "skills",
+            "rev": "97478d1b23b9a6795f85bf8b6e33a4677fa1f869",
+            "sha256": "sha256-XJ/QglsbswedWDu+8oOC7AseRW2Pnysi4TIIUy2QGp0=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "97478d1b23b9a6795f85bf8b6e33a4677fa1f869"
+    },
+    "higgsfield-cli-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-YT2DuSiKvewIuF4NqYTfYvr1UOORl2x/5EaNWqNNrq4=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_darwin_arm64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-cli-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-76MC1tGJuB2Y0JiEgw9rD4nKt6jAcReCW3WNLMa0klk=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_linux_arm64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-cli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-yXxwISftdDgb0k6v3IzwuRfZxKHtHVEkg6dnbdHT/So=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_darwin_amd64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-cli-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "higgsfield-cli-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-DtWUrkJkbUlLnq7sQ1khH2z9ZTzk95CqTKakjBpDFSk=",
+            "type": "url",
+            "url": "https://github.com/higgsfield-ai/cli/releases/download/v1.2.3/hf_1.2.3_linux_amd64.tar.gz"
+        },
+        "version": "1.2.3"
+    },
+    "higgsfield-skills": {
+        "cargoLock": null,
+        "date": "2026-11-05",
+        "extract": null,
+        "name": "higgsfield-skills",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "higgsfield-ai",
+            "repo": "skills",
+            "rev": "27000402070db19d958789d05b3b52b6f4718d7c",
+            "sha256": "sha256-37pGaqLFFNcdMEz8I1PpnVsjmAPfe3jaiiKbvzlJ2P4=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "27000402070db19d958789d05b3b52b6f4718d7c"
     },
     "jcode-aarch64-darwin": {
         "cargoLock": null,
@@ -158,11 +290,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-FTUCTHOIqL1i4UKjE9wvZzqTUqNqaF0GGceexAvdI1Q=",
+            "sha256": "sha256-J0OWeZ0sYGAM4+SJCr54Q5wYggF+7fwnLOMLFzDFt0s=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-macos-aarch64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-macos-aarch64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v1.0.3"
     },
     "jcode-aarch64-linux": {
         "cargoLock": null,
@@ -173,11 +305,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-WTrcRRY0iWp+NS1UVbKy5HjqIuIWXMKgaGWloUxUOIo=",
+            "sha256": "sha256-x2zsC5uYRYrKnRoLz6ktMwRZt8/vEnAMGfEwiBEpzo8=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-aarch64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-linux-aarch64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v1.0.3"
     },
     "jcode-x86_64-darwin": {
         "cargoLock": null,
@@ -188,11 +320,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Aaz46+UHnBjULBzX6JWLKSWCVL7IhfER/r/aru3+XM8=",
+            "sha256": "sha256-HpgzAn7qxmFmLBXU181WjqOUo5lHDhMfetQN1N2lGY4=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-macos-x86_64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-macos-x86_64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v1.0.3"
     },
     "jcode-x86_64-linux": {
         "cargoLock": null,
@@ -203,71 +335,71 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-6e0YP/BnvBf1MObt/d2X7/iP2Be8IoESMHM3fw91Z6Q=",
+            "sha256": "sha256-coOkQX/th3Ip/YkEkXOju0aTaKPew3yizDHEiV+zpq0=",
             "type": "url",
-            "url": "https://github.com/1jehuang/jcode/releases/download/v0.93.0/jcode-linux-x86_64.tar.gz"
+            "url": "https://github.com/1jehuang/jcode/releases/download/v1.0.3/jcode-linux-x86_64.tar.gz"
         },
-        "version": "v0.93.0"
+        "version": "v1.0.3"
     },
     "lightpanda-aarch64-darwin": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": null,
         "extract": null,
         "name": "lightpanda-aarch64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-LypzUKkWgM49YI57eB3Yq9oh2EQ7nLqfz2fGg2438ns=",
+            "sha256": "sha256-7sN4EIbuUSMgoEsDbwkoBqipWZROp4/I9P59/iFahLQ=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-aarch64-macos"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "1.0.5"
     },
     "lightpanda-aarch64-linux": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": null,
         "extract": null,
         "name": "lightpanda-aarch64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-Wt9Fy3fAIgjODwBAXzYPGjcccEsYTUQbgxnVlTtBN4w=",
+            "sha256": "sha256-dSc5HEefMj65ERuDSwEtkaiQV1KMKO8Cd0GyFzmxIpk=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-aarch64-linux"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "1.0.5"
     },
     "lightpanda-x86_64-darwin": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": null,
         "extract": null,
         "name": "lightpanda-x86_64-darwin",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-6razJ9gl+Z+M0/OmMUmJ3sEoLKNwfT3du2fMPHzjURM=",
+            "sha256": "sha256-K3XJ/uXDbV2ED3k432pTIHS+wDvwSFwxMLKFl5maZv4=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-macos"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-x86_64-macos"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "1.0.5"
     },
     "lightpanda-x86_64-linux": {
         "cargoLock": null,
-        "date": "2026-10-09",
+        "date": null,
         "extract": null,
         "name": "lightpanda-x86_64-linux",
         "passthru": null,
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-s5GBxRTJEZZYxYxYB32IgsY4lSCOYVh+oKigW9iqZg8=",
+            "sha256": "sha256-DsIfpIZ6uegrNShf9KsOczbGwdifJv6ZHyfXPIpni9c=",
             "type": "url",
-            "url": "https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux"
+            "url": "https://github.com/lightpanda-io/browser/releases/download/1.0.5/lightpanda-x86_64-linux"
         },
-        "version": "629cd1b02ae4f9965e95e063bb7c765a6a53afa6"
+        "version": "1.0.5"
     },
     "lumen-x86_64-darwin": {
         "cargoLock": null,
@@ -293,11 +425,41 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-4NegGK+V/x/9FXK8MsDPSNvVJcsQW4s++YBiZjW/tYk=",
+            "sha256": "sha256-ZY05GuyC4e1bjYrvRXoyQ8K9oeLfBWfwD8LneocOv8Q=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.7.1/pi-darwin-arm64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-darwin-arm64.tar.xz"
         },
-        "version": "v0.7.1"
+        "version": "v0.9.0"
+    },
+    "pi-agent-rust-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pi-agent-rust-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-LxK31GqA3DNtFK0osd/SER0S8f3/dJph3MngrsSv/9I=",
+            "type": "url",
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-linux-arm64.tar.xz"
+        },
+        "version": "v0.9.0"
+    },
+    "pi-agent-rust-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "pi-agent-rust-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-1TQ8lksp4gIBjzSw+b+EB/nhXeUBWNits0BDLwNz6l0=",
+            "type": "url",
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-darwin-amd64.tar.xz"
+        },
+        "version": "v0.9.0"
     },
     "pi-agent-rust-x86_64-linux": {
         "cargoLock": null,
@@ -308,11 +470,113 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-NXwjuv9dPv135HRHlZGxuOdSL9tp67eqBF5No1Oxiyc=",
+            "sha256": "sha256-gT6FA+zqZSfO7fRTK2DZnd/aF6Q3K2OBqUSMpl2K/rw=",
             "type": "url",
-            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.7.1/pi-linux-amd64.tar.xz"
+            "url": "https://github.com/Dicklesworthstone/pi_agent_rust/releases/download/v0.9.0/pi-linux-amd64.tar.xz"
         },
-        "version": "v0.7.1"
+        "version": "v0.9.0"
+    },
+    "spotify-library-mcp": {
+        "cargoLock": null,
+        "date": "2026-10-14",
+        "extract": null,
+        "name": "spotify-library-mcp",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "QuinnFrederick",
+            "repo": "spotify-library-mcp",
+            "rev": "4fde6122b8231965f21d741a4caf0adac655fc56",
+            "sha256": "sha256-fMdzBCkhyftowGEL4+tVmfAg5zBFXv1cOfDR6SYqCyM=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "4fde6122b8231965f21d741a4caf0adac655fc56"
+    },
+    "spotify-mcp-server": {
+        "cargoLock": null,
+        "date": "2026-11-14",
+        "extract": null,
+        "name": "spotify-mcp-server",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "marcelmarais",
+            "repo": "spotify-mcp-server",
+            "rev": "8c772fe5628bb63df41ed1358f6d84d20422e49a",
+            "sha256": "sha256-7x3yTI/spYF3+wg4IYrkXiMFouUe+C+3xTnZHMyFvco=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "8c772fe5628bb63df41ed1358f6d84d20422e49a"
+    },
+    "wacli-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-IImFI6cPs62ZL4og14b3BIS7UyId8BfNr9y39/yILY8=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_darwin_arm64.tar.gz"
+        },
+        "version": "0.26.1"
+    },
+    "wacli-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-nv54mwHhJGIUAIl0nYtc4K0pJSGJP0Fm4T7KgfCsrEw=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_linux_arm64.tar.gz"
+        },
+        "version": "0.26.1"
+    },
+    "wacli-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-1VYaQVNOyDvovKYR0fzvErv7mWejZh3MfQMouSkiSn0=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_darwin_amd64.tar.gz"
+        },
+        "version": "0.26.1"
+    },
+    "wacli-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "wacli-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-UVQFxaM8f2UaNoSEdA22YnNvUMJ1vloFBPsKhNzkcBM=",
+            "type": "url",
+            "url": "https://github.com/openclaw/wacli/releases/download/v0.26.1/wacli_0.26.1_linux_amd64.tar.gz"
+        },
+        "version": "0.26.1"
     },
     "zai": {
         "cargoLock": null,
@@ -328,12 +592,12 @@
             "name": null,
             "owner": "dotcommander",
             "repo": "zai",
-            "rev": "v0.1.8",
-            "sha256": "sha256-nruE/9tmeEuEO/x4NPyb9cUkDe3MapSuBePPTRosHrw=",
+            "rev": "v0.2.1",
+            "sha256": "sha256-l9jB7PNPT+xIX+O8LodcyKco24050UZYIkcpFNOWo5U=",
             "sparseCheckout": [],
             "type": "github"
         },
-        "version": "v0.1.8"
+        "version": "v0.2.1"
     },
     "zehn": {
         "cargoLock": null,
@@ -365,11 +629,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-M828ABO6uCtUDH32GdjcFR/nLJQiXmVyMaF6xagf3KQ=",
+            "sha256": "sha256-xYsBZ98dqA99r2XK84FRULHq82mZGGfan+CHFV4/mNw=",
             "type": "url",
-            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zb-darwin-arm64"
+            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.2/zb-darwin-arm64"
         },
-        "version": "v0.4.0"
+        "version": "v0.4.2"
     },
     "zerobrew-zb-x86_64": {
         "cargoLock": null,
@@ -380,11 +644,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-CDicChVQHPv5Rx4Uu/40sopURDwWnWjcQiaVQAn4wfs=",
+            "sha256": "sha256-UQiemToipnbMfSWixzPDZ6z/LeQAVQipe2kqq3kP8to=",
             "type": "url",
-            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zb-darwin-x64"
+            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.2/zb-darwin-x64"
         },
-        "version": "v0.4.0"
+        "version": "v0.4.2"
     },
     "zerobrew-zbx-aarch64": {
         "cargoLock": null,
@@ -395,11 +659,11 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-JMRRiDqKKdQUaIQ3ak6zbXxGaThdGsSicTIVjfn9gSM=",
+            "sha256": "sha256-jdpXwgjIKfc0VqVaXGzRVFhOK4AXmq8GPzDE6KC+q0U=",
             "type": "url",
-            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zbx-darwin-arm64"
+            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.2/zbx-darwin-arm64"
         },
-        "version": "v0.4.0"
+        "version": "v0.4.2"
     },
     "zerobrew-zbx-x86_64": {
         "cargoLock": null,
@@ -410,10 +674,70 @@
         "pinned": false,
         "src": {
             "name": null,
-            "sha256": "sha256-GEGGHL9bwsNUmcEdosWfYTZCgeC2HNuFfDHk0FJRVQw=",
+            "sha256": "sha256-RQ8gefqL8+V9uhm1hwmm/tEvhQpi+k/deAHGrbcwBH0=",
             "type": "url",
-            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.0/zbx-darwin-x64"
+            "url": "https://github.com/lucasgelfond/zerobrew/releases/download/v0.4.2/zbx-darwin-x64"
         },
-        "version": "v0.4.0"
+        "version": "v0.4.2"
+    },
+    "zoetrope-aarch64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-aarch64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-S0f3tECoMUoYc1qJZKUTfqPqfFO95cygMc+NGkwV5BM=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-apple-darwin.tar.gz"
+        },
+        "version": "0.2.0"
+    },
+    "zoetrope-aarch64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-aarch64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-NkFCgpwVvu0cgWlbhUM+OZT9i1ssSczTJrPUci6fMxs=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-aarch64-unknown-linux-musl.tar.gz"
+        },
+        "version": "0.2.0"
+    },
+    "zoetrope-x86_64-darwin": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-x86_64-darwin",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-kg1QbAgd+mITJemU7EXPSQ91crNx855WqHtOi7bK69I=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-apple-darwin.tar.gz"
+        },
+        "version": "0.2.0"
+    },
+    "zoetrope-x86_64-linux": {
+        "cargoLock": null,
+        "date": null,
+        "extract": null,
+        "name": "zoetrope-x86_64-linux",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-Yuc2l5hMEijFU2eiJFmDdKJB02OIga+IlJkp6jPrW+8=",
+            "type": "url",
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.2.0/zoetrope-0.2.0-x86_64-unknown-linux-musl.tar.gz"
+        },
+        "version": "0.2.0"
     }
 }

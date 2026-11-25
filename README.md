@@ -62,7 +62,7 @@ This repository provides reusable Nix home-manager modules and personal configur
 | **Cloud platforms** | `kaggle`, `huggingface_hub` (`hf`) |
 | **Voice** | Talon + `talon-community`, Wispr Flow (darwin cask) |
 | **Token optimization** | `headroom` proxy, `rtk` (Rust Token Killer), `ponytail` config |
-| **Custom packages** | `gowa` (WhatsApp MCP), `zai` (Z.AI CLI), `lightpanda` |
+| **Custom packages** | `wacli` (WhatsApp CLI), `discrawl` (Discord CLI), `zai` (Z.AI CLI), `lightpanda`, `spotify-library-mcp` and `spotify-mcp-server` (Spotify MCP) |
 
 ______________________________________________________________________
 
@@ -86,7 +86,6 @@ graph TD
     FP --> FSand[sandnix.nix<br/>sandboxed claude]
     FP --> FAct[actions/<br/>CI workflows]
 
-    MOD --> Mccs[ccs.nix]
     MOD --> Mcodex[codex.nix]
     MOD --> Mcrush[crush.nix]
     MOD --> Mherdr[herdr.nix]
@@ -122,7 +121,7 @@ graph TD
     CCoding --> CAnti[antigravity-cli/]
     CCoding --> CPi[pi/]
 
-    PKG --> PCust[custom/<br/>gowa, lightpanda, zai]
+    PKG --> PCust[custom/<br/>discrawl, lightpanda, wacli, zai, zoetrope]
     PKG --> PDarw[darwin/<br/>Perplexity-bin]
     PKG --> PSrc[_sources/<br/>nvfetcher]
 
@@ -212,7 +211,6 @@ Import individual home-manager modules into your configuration:
 ```nix
 { inputs, ... }: {
   imports = [
-    inputs.ai-nixCfg.homeManagerModules.ccs
     inputs.ai-nixCfg.homeManagerModules.codex
     inputs.ai-nixCfg.homeManagerModules.crush
     inputs.ai-nixCfg.homeManagerModules.herdr
@@ -229,30 +227,13 @@ Import individual home-manager modules into your configuration:
 | Module | What it configures |
 |--------|--------------------|
 | `default` | Imports every `modules/home/*.nix` — useful when consuming the full personal `Cfg` |
-| `ccs` | Claude Code Switcher — package, XDG-aware config dir, `mutableUserSettings` deep-merge, legacy symlinks for OAuth tokens |
 | `codex` | Skills & prompts management via `xdg.configFile` |
 | `crush` | MCP servers, LSP, permissions, commands (typed submodules) |
 | `herdr` | Terminal multiplexer for AI agents — panes, tabs, agent labels (alias `herdr`) |
-| `n8n` | Workflow automation with SQLite backend, pnpm-dlx fallback on Darwin |
+| `n8n` | Workflow automation with SQLite backend via pinned Bunx launcher |
 | `ralph-tui` | AI agent loop orchestrator TUI — high-contrast theme by default |
 | `talon` | Talon voice programming — `~/.talon` user dir, talon-community store link |
 | `ghnf` | (re-export from upstream) |
-
-### Example: `ccs` Module
-
-```nix
-{
-  programs.ccs = {
-    enable = true;
-    package = pkgs.writeShellScriptBin "ccs" ''
-      exec ${pkgs.pnpm}/bin/pnpm dlx @kaitranntt/ccs "$@"
-    '';
-    mutableUserSettings = true;       # Deep-merge; preserves OAuth tokens
-    useXdgConfigHome = true;          # CCS_DIR = $XDG_CONFIG_HOME/ccs
-    settings.preferences.theme = "dark";
-  };
-}
-```
 
 ______________________________________________________________________
 
@@ -329,7 +310,7 @@ Or import specific subsets by path:
 | **Retrieval** | `ck`, `codegraph`, `dolt` |
 | **Misc CLI** | `happy-coder`, `zai`, `mmx-cli` |
 | **Voice (Darwin)** | Talon + talon-community, Wispr Flow cask (gated by `aiNixCfg.voice.enable`) |
-| **MCP servers** | `gowa`, `deepwiki`, `octocode`, `exa`, `playwright` |
+| **MCP servers** | `deepwiki`, `octocode`, `exa`, `playwright` |
 | **Sandboxed app** | `claude-sandboxed` via `sandnix` (macOS: sandbox-exec, Linux: landrun) |
 
 ### Top-level Options
@@ -371,7 +352,7 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 | Claude Code | ✓ | ✓ | ✓ | ✓ (PreToolUse security, PostToolUse `nix fmt`) | ✓ (caveman) | ✓ (ccstatusline) | commands + skills + agents + rules |
 | Codex | ✓ profiles (default/conservative/power) | ✓ | – | – | – | ✓ (animations) | prompts + skills |
 | Copilot CLI | ✓ | ✓ | ✓ | – | – | ✓ (theme) | skills + agents |
-| OpenCode | ✓ providers (Antigravity + Codex Everywhere + Google) | ✓ | – | – | ✓ (`antigravity-auth`, `beads`, `pty`) | – | context (memory + rules) |
+| OpenCode | ✓ providers (Antigravity + Google) | ✓ | – | – | ✓ (`antigravity-auth`, `beads`, `pty`) | – | context (memory + rules) |
 | Crush | ✓ | ✓ | ✓ | – | – | – | commands |
 | Antigravity CLI | ✓ | ✓ | – | – | – | – | commands |
 | Pi | ✓ | – | – | – | 14 extensions (bash-blacklist, codex-fast, fetch, lsp, plan-mode, …) | – | rules + skills + prompt templates |
@@ -388,14 +369,65 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 
 | Profile | Model | Approval | Sandbox | Notes |
 |---------|-------|----------|---------|-------|
-| `default` | `gpt-5.2-codex` | `on-request` | `workspace-write` | Standard daily use |
-| `conservative` | `gpt-5.2-codex` | `untrusted` | `read-only` | Audit / review |
-| `power` | `gpt-5.2-codex` (xhigh reasoning) | `on-failure` | `workspace-write` + network | Unattended autonomy |
+| `default` | built-in default | `on-request` | `workspace-write` | Standard daily use |
+| `conservative` | built-in default | `untrusted` | `read-only` | Audit / review |
+| `power` | built-in default (xhigh reasoning) | `on-failure` | `workspace-write` + network | Unattended autonomy |
+
+### Codex background server
+
+Home Manager installs the pinned Codex CLI from `config/home/coding/codex/setup.nix`.
+This configuration enables `programs.codex.syncDaemon`, which syncs the managed
+background server during activation when it is running and its version differs
+from the CLI.
+Start Codex from your profile to set up a background server on a fresh install.
+An update can interrupt active or queued Codex chats. Set
+`programs.codex.syncDaemon = lib.mkForce false;` in your host configuration
+to manage the daemon separately.
+
+To upgrade, update the version and platform archive hashes in `setup.nix`,
+then activate your Home Manager configuration and launch `codex` from your
+profile. Check the CLI and background server versions with
+`codex app-server daemon version`.
+
+### Codex pets
+
+ChatGPT desktop is disabled in favor of the web version. Custom Codex terminal
+pets are managed locally and do not require the desktop app.
+
+Custom terminal pets are declared with `programs.codex.pets`:
+
+```nix
+programs.codex = {
+  pets.pico = {
+    displayName = "Pico";
+    description = "My companion";
+    spritesheet = ./pets/pico.png;
+  };
+  settings.tui.pet = "custom:pico";
+};
+```
+
+Home Manager installs the generated manifest and image under `CODEX_HOME/pets`.
+Pico's original v2 sprite sheet is tracked in
+`config/home/coding/codex/pets/pico.png`, so rebuilding never depends on Downloads.
+The module accepts 1536×1872 v1 and 1536×2288 v2 sheets. Codex CLI 0.171.0
+requires nine rows; the build keeps those animation rows and omits v2's two
+look-direction rows from the CLI copy, preserving the original source.
+After activating Home Manager, restart Codex or select **Pico** with `/pets`.
+Terminal graphics support is required; see the
+[official pet documentation](https://learn.chatgpt.com/docs/pets).
 
 ### Pi Coding-Agent Extensions
 
+TypeScript Pi (`pi`) is off by default. Set `programs.pi.coding-agent.enable = true;`
+in your Home Manager config to enable it without opting into the other archived
+tools. The wrapper loads `pi-grok` v0.13.1 automatically. In Pi, run `/login`,
+choose **Use a subscription → xAI (SuperGrok Subscription)**, and then run
+`/model xai-oauth/grok-4.7`. This integration does not change `pi-rust`.
+
 | Extension | Purpose |
 |-----------|---------|
+| `pi-grok` | xAI SuperGrok subscription login and model discovery |
 | `fetch` | URL → markdown extraction (Mozilla Readability, jsdom, turndown, unpdf) |
 | `bash-blacklist` | Block dangerous shell commands |
 | `codex-fast.ts` | Optimized Codex prompt construction |
@@ -413,13 +445,12 @@ Each tool under `config/home/coding/<tool>/` follows the same shape:
 | `tps-tracker.ts` | Tokens-per-second tracker |
 | `web-search` | Web search fallback |
 
-Pinned to upstream `kissgyorgy/coding-agents` rev `4d8c448033ca332b55e79de4cbd0737da5c5cfda`. Update by bumping rev + re-running `nix build` to refresh hashes.
+The other extensions are pinned to upstream `kissgyorgy/coding-agents` rev `4d8c448033ca332b55e79de4cbd0737da5c5cfda`. Update by bumping rev + re-running `nix build` to refresh hashes.
 
 ### OpenCode Providers
 
 | Provider | Models |
 |----------|--------|
-| `codex-everywhere` | GPT-5.5 |
 | `google` | Gemini 3 Pro (Antigravity), Gemini 3 Flash, Gemini 2.5 Pro/Flash, Gemini 3 Flash/Pro Preview, Claude Sonnet 4.5/4.6 + Thinking, Claude Opus 4.5/4.6 + Thinking |
 | `opencode` (default) | Standard OpenCode model zoo |
 
@@ -530,10 +561,11 @@ Defined in `config/home/mcp.nix` and applied via `programs.mcp.servers`. Togglea
 | Server | Type | Source | Purpose |
 |--------|------|--------|---------|
 | `deepwiki` | HTTP | `https://mcp.deepwiki.com/mcp` | AI-powered repo documentation |
-| `octocode` | stdio | `pnpm dlx octocode-mcp@latest` | Code research agent (local + GitHub + npm) |
-| `exa` | stdio | `pnpm dlx exa-mcp-server` | Neural web search |
-| `playwright` | stdio | `pnpm dlx @playwright/mcp` | Browser automation |
-| `gowa` | package | `customPkgs.gowa` | WhatsApp REST API + MCP (Go) |
+| `octocode` | stdio | `bun x octocode-mcp@latest` | Code research agent (local + GitHub + npm) |
+| `exa` | stdio | `bun x exa-mcp-server` | Neural web search |
+| `playwright` | stdio | `bun x @playwright/mcp` | Browser automation |
+
+Messaging tools are installed as launchers by `config/home/messaging.nix`, without automatic MCP registration. After configuring an account, register the desired launcher with your agent. `wacli` is a WhatsApp CLI, not an MCP server.
 
 > **Optional servers** (commented in `mcp.nix`): `headroom`, `cognee` (knowledge graph memory), `sequential-thinking`, `filesystem`, `memory`, `markitdown`. Uncomment to enable.
 
@@ -583,11 +615,21 @@ The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its ha
 
 | Tool | Source | Purpose |
 |------|--------|---------|
-| `lightpanda` | `customPkgs.lightpanda` | Headless browser built for AI (Rust) |
-| `agent-browser` | nixpkgs on Linux; `pnpm dlx` on Darwin | Headless browser automation CLI |
-| `playwright-mcp` | `pnpm dlx @playwright/mcp` | Playwright-driven MCP server |
+| `lightpanda` | `customPkgs.lightpanda` | Headless browser built for AI (Zig) |
+| `agent-browser` | Upstream Nix package on Linux; `bun x` on Darwin | Browser automation CLI for agents |
+| `playwright-mcp` | `bun x @playwright/mcp` | Playwright-driven MCP server |
 
-`LIGHTPANDA_DISABLE_TELEMETRY=false` is set as a session variable.
+`LIGHTPANDA_DISABLE_TELEMETRY=true` is set as a session variable to opt out of usage telemetry.
+
+[agent-browser](https://github.com/vercel-labs/agent-browser) provides an agent-facing CLI with accessibility snapshots and element references. It uses Chrome by default for full browser fidelity. [Lightpanda](https://github.com/lightpanda-io/browser) provides a lightweight browser engine for extraction and automation. Its upstream performance figures compare it with Chrome, rather than with the agent-browser CLI.
+
+Current agent-browser releases can also [use Lightpanda as their engine](https://agent-browser.dev/engines/lightpanda): `agent-browser --engine lightpanda open example.com`. This mode lacks Chrome extensions, persistent profiles, and storage-state support; screenshot support depends on Lightpanda's CDP implementation. Availability depends on the installed agent-browser version.
+
+### Amazon orders (`config/home/cli/amazon-orders.nix`)
+
+[amazon-orders](https://github.com/alexdlaird/amazon-orders) provides a CLI for Amazon order history, line items, and transactions. Import this module with the repository's `customLib` argument, or use the full configuration, to install the `amazon-orders` wrapper. It runs through `uv`, downloading the Python package on first use; its dependencies are resolved at runtime rather than pinned in `flake.lock`.
+
+Run `amazon-orders --help` to inspect commands and `amazon-orders login` to establish a session interactively. Authentication and session data stay in the tool's runtime configuration.
 
 ______________________________________________________________________
 
@@ -664,10 +706,10 @@ Herdr keybindings:
 
 | Tool | Install | Purpose |
 |------|---------|---------|
-| `ruflo` | `pnpm dlx ruflo` | Agent meta-harness for Claude Code & Codex (`ruflo init` / `ruflo mcp start`) |
-| `caveman` | `pnpm dlx github:JuliusBrussee/caveman` | Token-compression skill/plugin installer |
+| `ruflo` | `bun x ruflo` | Agent meta-harness for Claude Code & Codex (`ruflo init` / `ruflo mcp start`) |
+| `caveman` | `bun x github:JuliusBrussee/caveman` | Token-compression skill/plugin installer |
 | `gastown` | `customPkgs.gastown` (binary `gt`) | Gas Town multi-agent workspace manager |
-| `zeroshot` | `pnpm dlx @the-open-engine/zeroshot` | Zero-shot orchestration |
+| `zeroshot` | `bun x @the-open-engine/zeroshot` | Zero-shot orchestration |
 | `mardi-gras` | `customPkgs.mardi-gras` (binary `mg`) | Beads issue-tracker TUI, parade-style |
 | `ralph-tui` | `programs.ralph-tui` | AI Agent Loop Orchestrator TUI (high-contrast theme) |
 | `gnhf` | `programs.gnhf` | Conventional-Commits-preset auto-commit helper |
@@ -689,23 +731,34 @@ Herdr keybindings:
 
 ### CLIProxyAPI(Plus) (`config/home/cliproxyapi/`, `modules/home/cliproxyapi.nix`)
 
-Replaces the previous `ccs` (Claude Code Switcher)-managed proxy. Runs
-`cli-proxy-api-plus` locally on port 8317, fronting both OAuth-backed
+Runs `cli-proxy-api-plus` as a background user service (launchd agent on Darwin,
+systemd user unit on Linux) on `127.0.0.1:8317`, fronting both OAuth-backed
 providers (gemini, codex, agy, qwen, kiro, ghcp, kimi, cursor, etc.) and
 custom OpenAI-compatible providers (z-ai, minimax, openrouter) behind one
-Anthropic- and OpenAI-compatible endpoint. `claude-code` gets
-`ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN` pointed at it
-(`config/home/coding/claude/proxy.nix`); every other harness that honors
-`OPENAI_BASE_URL`/`OPENAI_API_KEY` (codex, opencode, jcode, forgecode, …)
-routes through it too.
+Anthropic- and OpenAI-compatible endpoint. Logs go to
+`~/Library/Logs/cliproxyapi.log` on Darwin and the journal on Linux.
 
-On first activation, an existing `~/.ccs/cliproxy/auth` directory (if
-present) is symlinked into the new config location so already-logged-in
-OAuth accounts carry over without re-authentication
-(`programs.cliproxyapi.inheritLegacyAuth`). Provider API keys are left
-empty in the repo by design — populate them via the dashboard at
+Clients are opt-in under `programs.cliproxyapi.clients`:
+
+| Option | Effect | Default here |
+|--------|--------|--------------|
+| `clients.openai` | exports `OPENAI_BASE_URL`/`OPENAI_API_KEY` (codex, opencode, jcode, forgecode, …) | on |
+| `clients.claudeCode` | sets `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN` in Claude Code's settings, replacing its own login | off |
+
+goose, jcode, Pi, pi-rust, zerostack and Hermes ignore `OPENAI_BASE_URL`, so
+`config/home/cliproxyapi/harnesses.nix` wires each one up, and pins Claude
+Code's model tiers for when `clients.claudeCode` is on. Cursor and Antigravity
+CLI have no base-URL override.
+
+Only turn on `clients.claudeCode` once the proxy has an account serving the
+models you use (e.g. `cli-proxy-api-plus -claude-login`).
+
+OAuth accounts live in `~/.config/cliproxyapi/auth`; add them with the
+binary's login flags (e.g. `cli-proxy-api-plus -codex-login`). Provider API keys are left out
+of the repo by design — populate them via the dashboard at
 `http://localhost:8317` or inject them from a secret manager by overriding
-`programs.cliproxyapi.settings.openai-compatibility` downstream.
+`programs.cliproxyapi.settings.openai-compatibility` downstream. The
+activation merge keys providers by `name`, so runtime-added keys survive.
 
 ### Usage (`config/home/usage.nix`)
 
@@ -724,7 +777,7 @@ graph TD
     P --> Llm["llm-agents.nix<br/>apm, beads, beads-viewer,<br/>beads-cli, ck, codegraph,<br/>crush, dolt, gastown,<br/>happy-coder, mardi-gras,<br/>openspecui, rtk, …"]
     P --> Stp["nix-steipete-tools<br/>aarch64-darwin:<br/>summarize, gogcli, openclaw"]
 
-    Cust --> Gowa["gowa<br/>(WhatsApp MCP, Go)"]
+    Cust --> Wacli["wacli<br/>(WhatsApp CLI, Go)"]
     Cust --> Panda["lightpanda<br/>(headless browser, Rust)"]
     Cust --> Zai["zai<br/>(Z.AI CLI)"]
 
@@ -739,9 +792,15 @@ graph TD
 
 | Package | Description | Source |
 |---------|-------------|--------|
-| `gowa` | WhatsApp REST API with MCP support (Go) | `pkgs/custom/gowa/package.nix` (nvfetcher) |
+| `wacli` | WhatsApp CLI with local sync and search (prebuilt) | `pkgs/custom/wacli/package.nix` (nvfetcher) |
+| `discrawl` | Discord CLI with local SQLite archive (prebuilt) | `pkgs/custom/discrawl/package.nix` (nvfetcher) |
+| `spotify-library-mcp` | Spotify playlist curation MCP server and CLI (Node) | `pkgs/custom/spotify-library-mcp/package.nix` (nvfetcher) |
 | `lightpanda` | Headless browser built for AI automation (Rust) | `pkgs/custom/lightpanda/package.nix` (nvfetcher) |
 | `zai` | Z.AI CLI for GLM models | `pkgs/custom/zai/package.nix` (nvfetcher) |
+| `higgsfield-cli` | Higgsfield AI image/video CLI as `higgsfield`/`higgs` (prebuilt; `hf` dropped to avoid clashing with Hugging Face) | `pkgs/custom/higgsfield-cli/package.nix` (nvfetcher) |
+| `higgsfield-skills` | Higgsfield skills as a Claude Code marketplace, with the hosted MCP server bundled into the plugin | `pkgs/custom/higgsfield-skills/package.nix` (nvfetcher) |
+| `elevenlabs-cli` | ElevenLabs API CLI (`elevenlabs`: agents, speech, music, dubbing); telemetry off by default | `pkgs/custom/elevenlabs-cli/package.nix` (nvfetcher) |
+| `elevenlabs-skills` | ElevenLabs agent skills (not enabled globally); hosted MCP config bundled as `mcp.json` | `pkgs/custom/elevenlabs-skills/package.nix` (nvfetcher) |
 
 ### `pkgs/darwin/`
 
@@ -785,7 +844,7 @@ Never edit `pkgs/_sources/` by hand — it's regenerated by `nvfetcher`.
 ```nix
 { inputs, pkgs, ... }: {
   home.packages = [
-    inputs.ai-nixCfg.packages.${pkgs.system}.gowa
+    inputs.ai-nixCfg.packages.${pkgs.system}.wacli
     inputs.ai-nixCfg.packages.${pkgs.system}.lightpanda
     inputs.ai-nixCfg.packages.${pkgs.system}.zai
   ];
@@ -883,9 +942,8 @@ ______________________________________________________________________
 │       └── flake-lock-update.nix # flake-lock-update.yml
 │
 ├── modules/                    # Home-manager modules (reusable)
-│   ├── default.nix             # Exports: ccs, codex, crush, herdr, n8n, ralph-tui, talon, ghnf
+│   ├── default.nix             # Exports: codex, crush, herdr, n8n, ralph-tui, talon, ghnf
 │   └── home/
-│       ├── ccs.nix             # Claude Code Switcher
 │       ├── codex.nix           # Skills + prompts
 │       ├── crush.nix           # MCP/LSP/permissions/commands
 │       ├── ghnf.nix            # gnhf auto-committer
@@ -913,7 +971,9 @@ ______________________________________________________________________
 │       │   ├── crush/          # Crush settings, MCP, LSP, permissions
 │       │   ├── antigravity-cli/# Antigravity CLI settings + global skills
 │       │   ├── pi/             # Pi coding agent + 14 extensions
-│       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli)
+│       │   ├── higgsfield.nix  # Higgsfield CLI + opt-in Claude plugin (skills + MCP)
+│       │   ├── elevenlabs.nix  # ElevenLabs CLI + opt-in skills (hosted MCP not global)
+│       │   └── misc.nix        # Misc CLI tools (happy-coder, zai, mmx-cli, zoetrope)
 │       ├── assistants/         # Standalone assistants
 │       │   ├── hermes-agent/   # Hermes Agent setup
 │       │   └── openclaw/       # OpenClaw setup (aarch64-darwin)
@@ -930,11 +990,11 @@ ______________________________________________________________________
 │       ├── orchestration.nix   # ruflo, caveman, gastown, zeroshot, mardi-gras
 │       ├── tasks.nix           # bead (bd), Beads-Viewer (bv)
 │       ├── review.nix          # lumen
-│       ├── cliproxyapi/        # CLIProxyAPI(Plus) settings (replaces ccs)
+│       ├── cliproxyapi/        # CLIProxyAPI(Plus) settings
 │       ├── usage.nix           # ccusage
 │       ├── workflows.nix       # ralph-tui, gnhf, openspec, openspecui, …
 │       ├── cloud.nix           # kaggle, hf
-│       ├── mcp.nix             # Shared MCP servers (deepwiki, octocode, exa, gowa)
+│       ├── mcp.nix             # Shared MCP servers (deepwiki, octocode, exa)
 │       ├── browser.nix         # lightpanda, agent-browser, playwright-mcp
 │       ├── gui.nix             # GUI casks (Antigravity, Perplexity, t3-code, handy)
 │       └── voice.nix           # Talon + Wispr Flow (Darwin)
@@ -943,7 +1003,7 @@ ______________________________________________________________________
 │   ├── default.nix             # Re-exports all packages per system
 │   ├── custom/
 │   │   ├── default.nix
-│   │   ├── gowa/               # WhatsApp REST API + MCP (Go)
+│   │   ├── wacli/              # WhatsApp CLI (prebuilt)
 │   │   ├── lightpanda/         # Headless browser (Rust)
 │   │   └── zai/                # Z.AI CLI
 │   ├── darwin/
@@ -1012,7 +1072,7 @@ ______________________________________________________________________
 ```bash
 nix fmt                                        # Format all Nix files (alejandra + deadnix + statix)
 nix -vL flake check --impure --all-systems --no-build  # Validate flake
-nix build .#<attr>                             # Build a package (e.g. .#gowa, .#zai)
+nix build .#<attr>                             # Build a package (e.g. .#wacli, .#zai)
 nix develop                                    # Enter dev shell
 ```
 
@@ -1029,7 +1089,7 @@ nix shell github:DivitMittal/ai-nixCfg --impure   # Augment current shell's PATH
 ### Build outputs
 
 ```bash
-nix build .#gowa                               # WhatsApp MCP server
+nix build .#wacli                              # WhatsApp CLI
 nix build .#lightpanda                         # Headless browser
 nix build .#zai                                # Z.AI CLI
 nix build .#Perplexity-bin                     # Perplexity desktop (darwin only)
@@ -1039,7 +1099,7 @@ ______________________________________________________________________
 
 ## Related Repositories
 
-- [DivitMittal/OS-nixCfg](https://github.com/DivitMittal/OS-nixCfg) — Main Nix configurations repository (provides `customLib.scanPaths`, `customLib.mkPnpmDlxBin`, `customLib.mkUvxBin`)
+- [DivitMittal/OS-nixCfg](https://github.com/DivitMittal/OS-nixCfg) — Main Nix configurations repository (provides `customLib.scanPaths` and `customLib.mkUvxBin`)
 
 ______________________________________________________________________
 

@@ -3,7 +3,7 @@ self: let
     (import (self.inputs.OS-nixCfg + "/lib/custom.nix") {inherit (self.inputs.nixpkgs) lib;})
     // {
       ## bun x <pkg> — faster JS/npm runner, preferred tier 1 in the
-      ## bunx>pnpmx>uvx>zbx>brew x86_64-darwin fallback cascade.
+      ## bunx>uvx>zbx>brew x86_64-darwin fallback cascade.
       mkBunxBin = pkgs: name: pkg:
         pkgs.writeShellScriptBin name ''exec ${pkgs.bun}/bin/bun x ${pkg} "$@"'';
       ## Local variant of OS-nixCfg's mkZbxBin: that one hardcodes

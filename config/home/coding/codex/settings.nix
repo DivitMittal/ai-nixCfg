@@ -2,19 +2,16 @@ _: {
   programs.codex = {
     profiles = {
       default = {
-        model = "gpt-5.2-codex";
         approval_policy = "on-request";
         sandbox_mode = "workspace-write";
       };
 
       conservative = {
-        model = "gpt-5.2-codex";
         approval_policy = "untrusted";
         sandbox_mode = "read-only";
       };
 
       power = {
-        model = "gpt-5.2-codex";
         model_reasoning_effort = "xhigh";
         approval_policy = "on-failure";
         sandbox_mode = "workspace-write";
@@ -26,10 +23,7 @@ _: {
     };
 
     settings = {
-      # ===== Core Model Settings =====
-      model = "gpt-5.2-codex";
-
-      # GPT-5 specific settings
+      # ===== Reasoning and Output =====
       model_reasoning_effort = "medium";
       model_reasoning_summary = "detailed";
       model_verbosity = "medium";
@@ -38,6 +32,33 @@ _: {
       tui = {
         notifications = true;
         animations = true;
+        pet = "custom:pico";
+        vim_mode_default = true;
+        keymap = {
+          # Match Vim-Cfg: U/R undo and redo. Move replace mode out of R's way.
+          vim_normal = {
+            undo = ["shift-u"];
+            redo = ["shift-r" "ctrl-r"];
+            enter_replace_mode = ["shift-alt-r"];
+            move_left = ["left"];
+            move_down = ["down"];
+            move_up = ["up"];
+            move_right = ["right"];
+          };
+          vim_operator = {
+            motion_left = ["left"];
+            motion_down = ["down"];
+            motion_up = ["up"];
+            motion_right = ["right"];
+          };
+          pager = {
+            scroll_up = ["up" "alt-up"];
+            scroll_down = ["down" "alt-down"];
+            # Pager chords cannot start with an unmodified character.
+            jump_top = ["home"];
+            jump_bottom = ["end" "shift-g"];
+          };
+        };
       };
       check_for_update_on_startup = false;
       cli_auth_credentials_store = "file";

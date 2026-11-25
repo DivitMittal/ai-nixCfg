@@ -10,7 +10,7 @@ in {
   programs.opencode = let
     package = customLib.mkBunxBin pkgs "opencode" "opencode-ai";
   in {
-    enable = true;
+    enable = false; # Archived: not in active use.
     inherit package;
   };
 
