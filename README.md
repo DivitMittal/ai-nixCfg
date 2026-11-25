@@ -101,7 +101,7 @@ graph TD
     CHome --> CCld[cloud.nix]
     CHome --> CMcp[mcp.nix]
     CHome --> CAsst[assistants/]
-    CHome --> CVoic[voice.nix]
+    CHome --> CVoic[voice/]
     CHome --> CBrws[browser.nix]
     CHome --> CGui[gui.nix]
     CHome --> CMult[multiplexers.nix]
@@ -273,7 +273,7 @@ graph LR
     IT --> R[review.nix]
     IT --> T[tasks.nix]
     IT --> U[usage.nix]
-    IT --> V[voice.nix]
+    IT --> V[voice/]
     IT --> W[workflows.nix]
 
     style Cfg fill:#1f6feb,stroke:#fff,color:#fff
@@ -584,7 +584,7 @@ ______________________________________________________________________
 
 ## Voice & Browser
 
-### Voice (`config/home/voice.nix`)
+### Voice (`config/home/voice/default.nix`)
 
 Voice input via Talon — declarative, cross-platform (Linux + Darwin), with optional macOS app installation.
 
@@ -607,7 +607,7 @@ graph LR
 | `aiNixCfg.voice.installDarwinApps` | `pkgs.stdenv.isDarwin` | Install Wispr Flow and Talon.app via brew-nix casks (needs the host's `pkgs.brewCasks` overlay) |
 | `aiNixCfg.voice.enableTalonCommunity` | `true` | Link `talonhub/community` (read-only, from the Nix store) into `~/.talon/user/community` |
 
-The Talon cask downloads an unversioned `latest` DMG, so `voice.nix` pins its hash. When upstream ships a new release the build fails on a hash mismatch; refresh it with `nix store prefetch-file https://talonvoice.com/dl/latest/talon-mac.dmg`.
+The Talon cask downloads an unversioned `latest` DMG, so `voice/default.nix` pins its hash. When upstream ships a new release the build fails on a hash mismatch; refresh it with `nix store prefetch-file https://talonvoice.com/dl/latest/talon-mac.dmg`.
 
 `programs.talon.files."custom/ai-nixCfg.talon"` carries a personal `.talon` script in `voice/talon/`.
 
@@ -997,7 +997,7 @@ ______________________________________________________________________
 │       ├── mcp.nix             # Shared MCP servers (deepwiki, octocode, exa)
 │       ├── browser.nix         # lightpanda, agent-browser, playwright-mcp
 │       ├── gui.nix             # GUI casks (Antigravity, Perplexity, t3-code, handy)
-│       └── voice.nix           # Talon + Wispr Flow (Darwin)
+│       └── voice/              # Talon + Wispr Flow (Darwin)
 │
 ├── pkgs/                       # Custom package definitions
 │   ├── default.nix             # Re-exports all packages per system
