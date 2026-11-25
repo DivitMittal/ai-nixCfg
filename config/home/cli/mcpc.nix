@@ -1,13 +1,19 @@
 {
+  lib,
   pkgs,
-  customLib,
   ...
 }: {
-  ## mcpc: universal MCP client CLI (tools/resources/prompts, persistent
-  ## sessions, OAuth via OS keychain, `--json` for agent code mode). npm-only
-  ## with a native keyring addon, so it runs through bun x rather than a Nix
-  ## build. Published only under the `@apify` scope.
   home.packages = [
-    (customLib.mkBunxBin pkgs "mcpc" "@apify/mcpc")
+    (
+      if pkgs ? mcpc && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.mcpc
+      then pkgs.mcpc
+      # The 26.05 Intel macOS pin lacks mcpc. Bun honors the npm CLI's
+      # Node shebang, so the fallback supplies Node even in a clean profile.
+      else
+        (pkgs.writeShellScriptBin "mcpc" ''
+          export PATH="${lib.makeBinPath [pkgs.nodejs_24]}''${PATH:+:$PATH}"
+          exec ${lib.getExe pkgs.bun} x --package @apify/mcpc@0.8.0 mcpc "$@"
+        '')
+    )
   ];
 }

@@ -94,6 +94,17 @@
         expected = true;
       };
 
+      testMcpcInHomePackages = {
+        expr = map (pkg: pkg.name) (lib.filter (pkg: lib.getName pkg == "mcpc") (composed {}).home.packages);
+        expected = [
+          (
+            if pkgs ? mcpc && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.mcpc
+            then pkgs.mcpc.name
+            else "mcpc"
+          )
+        ];
+      };
+
       testPiGrokWithStandalonePiOptIn = {
         expr = let
           piEnabled = extra:
