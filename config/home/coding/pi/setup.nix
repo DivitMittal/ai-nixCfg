@@ -96,16 +96,6 @@
     "web-search"
   ];
 
-  # Pi Durable subagents: crash-safe, resumable background subagents built on
-  # @earendil-works/pi-durable. The npm tarball ships prebuilt dist/ and only
-  # peer-depends on pi packages, which the TypeScript Pi host provides. It is
-  # not loaded into Pi Rust (no pi-tui/coding-agent module bridge there).
-  piDurableSubagents = pkgs.fetchzip {
-    name = "pi-durable-subagents-1.7.0";
-    url = "https://registry.npmjs.org/pi-durable-subagents/-/pi-durable-subagents-1.7.0.tgz";
-    hash = "sha256-SgGEkC22cZc2Uuy83t9Sf6hsThXyKtEXFTTNa6uwKo8=";
-  };
-
   # The fetch extension needs external npm deps (@mozilla/readability, jsdom,
   # turndown, unpdf) that pi's own node_modules don't include. buildNpmPackage
   # installs them alongside the source so jiti can resolve them at runtime.
@@ -193,7 +183,7 @@ in {
   programs.pi.coding-agent = {
     enable = lib.mkDefault (hasLegacyPiBundle && config.aiCoding.installArchivedTools);
     extensions =
-      ["${piGrok}/index.ts" "${piDurableSubagents}/index.js"]
+      ["${piGrok}/index.ts"]
       ++ lib.optionals hasLegacyPiBundle (
         ["${piFetchExt}/index.ts"]
         ++ map (n: "${piExtensionsDir}/${n}") otherExtNames
