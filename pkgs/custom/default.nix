@@ -15,6 +15,7 @@ in
     jcode = pkgs.callPackage ./jcode/package.nix {inherit sources;};
     lightpanda = pkgs.callPackage ./lightpanda/package.nix {inherit sources;};
     pi-agent-rust = pkgs.callPackage ./pi-agent-rust/package.nix {inherit sources;};
+    pi-durable = pkgs.callPackage ./pi-durable/package.nix {};
     zai = pkgs.callPackage ./zai/package.nix {inherit sources;};
     zehn = pkgs.callPackage ./zehn/package.nix {inherit sources;};
   }

@@ -41,7 +41,11 @@ in {
     home.sessionVariables.GROK_HOME = "${config.xdg.configHome}/grok";
 
     home.packages =
-      [customPkgs.jcode]
+      [
+        customPkgs.jcode
+        ## pi-durable — @earendil-works/pi-durable plus a small crash-safe CLI host.
+        customPkgs.pi-durable
+      ]
       ## pi-agent-rust — Dicklesworthstone's Rust port of Pi (binary: pi-rust).
       ## Prebuilt only for aarch64-darwin/x86_64-linux, source build on
       ## x86_64-darwin; no aarch64-linux release, and the package's prebuilt
