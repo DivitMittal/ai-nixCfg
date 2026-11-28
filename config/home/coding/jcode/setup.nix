@@ -26,5 +26,9 @@
         workspace_right = "ctrl+right";
       };
     };
+
+    providerSettings = {
+      lappkart = "JCODE_PROVIDER_LAPPKART_API_KEY";
+    };
   };
 }
