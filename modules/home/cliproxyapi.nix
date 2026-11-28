@@ -28,6 +28,7 @@
   port = cfg.settings.port or 8317;
   apiKeys = cfg.settings.api-keys or [];
   apiKey = lib.findFirst (key: builtins.isString key && key != "") "" apiKeys;
+  proxyBaseUrl = cfg.endpoint;
 
   mutableConfigMerger = ''
     ${configMerger}/bin/python - ${lib.escapeShellArg configPath} ${lib.escapeShellArg staticSettings} <<'PY'
@@ -207,15 +208,19 @@ in {
     # are public, so anyone on the LAN could spend the OAuth accounts.
     programs.cliproxyapi.settings.host = lib.mkDefault "127.0.0.1";
 
-    home.packages = lib.optional (cfg.package != null) cfg.package;
+    home.packages = lib.optional (cfg.package != null) cfg.package ++ lib.optional (cfg.package != null && !cfg.service.enable) (
+      pkgs.writeShellScriptBin "cliproxyapi-local" ''
+        exec ${lib.getExe cfg.package} -config ${lib.escapeShellArg configPath} "$@"
+      ''
+    );
 
     programs.claude-code.settings.env = mkIf cfg.clients.claudeCode {
-      ANTHROPIC_BASE_URL = cfg.endpoint;
+      ANTHROPIC_BASE_URL = proxyBaseUrl;
       ANTHROPIC_AUTH_TOKEN = apiKey;
     };
 
     home.sessionVariables = mkIf cfg.clients.openai {
-      OPENAI_BASE_URL = "${cfg.endpoint}/v1";
+      OPENAI_BASE_URL = "${proxyBaseUrl}/v1";
       OPENAI_API_KEY = apiKey;
     };
 

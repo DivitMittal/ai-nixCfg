@@ -4,11 +4,9 @@
       enable = true;
       mutableUserSettings = true;
 
-      # Codex/opencode/jcode/forgecode reach every provider through the proxy.
-      # Claude Code keeps its own Anthropic login: no claude account is wired
-      # into the proxy, so routing it there would serve Claude models from
-      # other providers' accounts.
+      service.enable = true;
       clients.openai = true;
+      clients.claudeCode = true;
 
       settings = {
         port = 8317;
@@ -33,7 +31,7 @@
 
         # API-key providers (OpenAI Chat Completions compatible). The proxy
         # itself acts as an Anthropic- and OpenAI-compatible frontend so all
-        # five harnesses (claude-code, codex, opencode, forgecode, jcode) can
+        # the five harnesses (claude-code, codex, opencode, forgecode, jcode) can
         # reach these providers without per-harness provider config.
         #
         # `api-key-entries` are deliberately left out so secrets stay out of the
